@@ -15,7 +15,20 @@ Projeto-fonte organizado em `reels/BT_6x1_9x16_ptBR/` na branch `claude/video-us
 
 ## 2. Medidas (conferidas nos arquivos finais)
 
-MEDIDAS
+| Medida | Principal | Reduzida | Meta |
+| --- | --- | --- | --- |
+| Quadros | 1800 (60,0 s) | 1800 (60,0 s) | até 62 s |
+| Vídeo | 1080 x 1920, 30 fps, H.264 | igual | 9:16, 30 fps |
+| Áudio | AAC 48 kHz, 192 kbps | igual | |
+| Loudness integrado | -16,0 LUFS | -16,0 LUFS | -16 LUFS |
+| Pico real | -3,9 dBTP | -3,9 dBTP | até -1,5 dBTP |
+| Tamanho | 25,1 MB | 19,2 MB | |
+| Quadros em branco ou pretos | 0 | 0 | 0 |
+
+- `npx hyperframes lint`: 0 erros, 0 avisos.
+- `npx hyperframes check`: aprovado, 0 erros. Os avisos restantes são sobreposição de texto durante o dissolve de 0,55 s (as duas cenas aparecem juntas por desenho, como pede o modelo) e mensagens de desempenho da GPU de software.
+- Bolinha medida quadro a quadro a partir da timeline: pico de 129,4 px por quadro (critério do modelo: 130), nenhuma inversão brusca, nenhuma chegada atrasada em relação à fala.
+- Luminância média conferida nos 1800 quadros de cada arquivo: nenhum quadro isolado destoando dos vizinhos nas trocas de cena.
 
 ## 3. O que foi aplicado da Direção Visual BT
 

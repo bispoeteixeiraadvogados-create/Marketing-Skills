@@ -1,0 +1,84 @@
+{
+ "normal": {
+  "arquivo": "bt-reel-divorcio-nao-quer_v1_normal.mp4",
+  "loudness_LUFS": -16.2,
+  "pico_dBTP": -1.7,
+  "medicoes": [
+   [
+    -16.5,
+    -1.3
+   ],
+   [
+    -16.2,
+    -1.7
+   ]
+  ],
+  "ffprobe": {
+   "programs": [],
+   "streams": [
+    {
+     "codec_name": "h264",
+     "width": 1080,
+     "height": 1920,
+     "r_frame_rate": "30/1",
+     "nb_frames": "1539"
+    },
+    {
+     "codec_name": "aac",
+     "sample_rate": "48000",
+     "r_frame_rate": "0/0",
+     "nb_frames": "2405"
+    }
+   ],
+   "format": {
+    "duration": "51.300000",
+    "size": "6971518"
+   }
+  },
+  "varredura_quadros_em_branco": {
+   "quadros": 1539,
+   "suspeitos": []
+  }
+ },
+ "reduzido": {
+  "arquivo": "bt-reel-divorcio-nao-quer_v1_reduzido.mp4",
+  "loudness_LUFS": -16.2,
+  "pico_dBTP": -1.7,
+  "medicoes": [
+   [
+    -16.5,
+    -1.4
+   ],
+   [
+    -16.2,
+    -1.7
+   ]
+  ],
+  "ffprobe": {
+   "programs": [],
+   "streams": [
+    {
+     "codec_name": "h264",
+     "width": 1080,
+     "height": 1920,
+     "r_frame_rate": "30/1",
+     "nb_frames": "1539"
+    },
+    {
+     "codec_name": "aac",
+     "sample_rate": "48000",
+     "r_frame_rate": "0/0",
+     "nb_frames": "2405"
+    }
+   ],
+   "format": {
+    "duration": "51.300000",
+    "size": "5286742"
+   }
+  },
+  "varredura_quadros_em_branco": {
+   "quadros": 1539,
+   "suspeitos": []
+  }
+ }
+}

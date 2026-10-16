@@ -134,11 +134,37 @@ FFmpeg 6.1.1, faster-whisper 1.2.1, NumPy e SciPy (efeitos). Fontes OFL locais: 
 Condensed 500 e 800, Piazzolla 400 e 600, Funnel Sans 500 e 600, IBM Plex Mono 500.
 
 ========================================================================
-7. MEDIÇÕES
+7. MEDIÇÕES (tools/relatorio_final.json e tools/conferencia_automatica.json)
 ========================================================================
-(preenchido no fim)
+Vídeo, nas duas versões: H.264, 1080 x 1920, 30 fps, 1539 quadros, 51,30 s.
+Áudio, nas duas versões: AAC 48 kHz, -16,2 LUFS integrados, pico de -1,7 dBTP (alvo: -16 LUFS e
+no máximo -1,5 dBTP), medidos com ebur128 depois da correção em duas passagens com loudnorm.
+Efeitos em relação ao pico da voz: R1 -18 dB, R2 -14, R3 -10, partida -6, impacto -8
+(reduzida: R3 -16, partida -12, impacto -14). Voz 15,6 dB acima do efeito da partida na faixa
+300 a 3400 Hz durante "impede": o efeito não mascara a palavra.
+Bolinha, quadro a quadro: maior passo de 130,9 px (no arco da troca C1 para C2), nenhum salto
+acima de 140 px, nenhuma inversão brusca de direção.
+Legenda: 15 blocos, todos na faixa y 1240 a 1460 (até y 1412). Bloco 4 termina em x 905 (1 px
+além da coluna, é o espaço do ponto final). O bloco 13 do SRT provisório foi dividido em dois,
+na conjunção "e", porque passava 63 px da coluna.
+Margens seguras (60 / 250 / 300 px): nenhum texto fora, exceto o texto ancorado no mundo durante
+a queda, que sai de quadro de propósito (ajuste A4).
+Quadros em branco: nenhum quadro de branco puro ou chapado nas duas versões (varredura de
+1539 quadros cada).
+HyperFrames: lint e check com 0 erro; 51 de 51 textos passam no contraste WCAG AA. Avisos
+restantes são de estrutura (sugestão de subcomposições) e de transições intencionais.
+Render: normal em 7 min 14 s, reduzida em 2 min 24 s (captura beginframe, GPU por software).
 
 ========================================================================
 8. PENDÊNCIAS
 ========================================================================
-(preenchido no fim)
+1. Conferência dos advogados (T5) sobre os quadros-chave e o vídeo, antes de publicar.
+2. Reconferir telefone, perfil, nota informativa e fontes da assinatura.
+3. Duração de 51,3 s em vez de 61 s (ver item 3). Decidir se fica assim ou se a voz deve ser
+   regenerada mais lenta (gasta créditos e exige refazer a transcrição).
+4. Logo: só existe o PNG original (391 px e a versão de 520 px do modelo BT). Sem vetor, a logo
+   ficou em 520 px de largura na assinatura. Enviar o vetor se quiser a logo maior.
+5. Verificar no painel da ElevenLabs se a chamada que falhou foi cobrada.
+6. Pequenos pontos visuais observados: no meio da inclinação da câmera (cerca de 25,6 s) as
+   metades passam por baixo da legenda por alguns quadros; no dissolve de C1 para C2 há uma
+   diferença de 2 níveis de cor numa área retangular, imperceptível na prática.

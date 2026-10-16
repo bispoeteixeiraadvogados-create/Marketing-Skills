@@ -115,7 +115,7 @@ for nome, t in QUADROS:
     run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-ss", f"{t:.3f}", "-i", str(normal), "-frames:v", "1", str(QC / f"{nome}_{t:.2f}s.png")])
 reduz = ROOT / f"{NOME}_reduzido.mp4"
 if reduz.exists():
-    for nome, t in [("R1_aneis_inteiro", T0 - 1.0), ("R2_rachaduras", T0 - 0.15), ("R3_metades_separadas", T0 + 1.0), ("R4_metades_no_chao", T_A + 1.0)]:
+    for nome, t in [("R1_alianca_inteira", T0 - 1.0), ("R2_rachaduras", T0 - 0.15), ("R3_metades_separadas", T0 + 1.0), ("R4_metades_no_chao", T_A + 1.0)]:
         run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-ss", f"{t:.3f}", "-i", str(reduz), "-frames:v", "1", str(QC / f"reduzido_{nome}_{t:.2f}s.png")])
 
 

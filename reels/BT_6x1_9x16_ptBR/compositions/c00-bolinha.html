@@ -21,8 +21,9 @@
           // Bolinha condutora, receita do modelo v005 (bt-reels-direcao-visual/references/bolinha.md):
           // um único trajeto, cada movimento começa quando o anterior termina; x com sine.inOut e
           // y com power2.inOut desenham arcos; nas trocas de cena, arco amplo por um ponto afastado.
-          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
-          const R = vars.reducedMotion === true;
+          // A variável reducedMotion é da raiz; dentro da subcomposição o runtime só expõe as variáveis
+          // da própria cena, por isso a leitura é feita pelo kit global (BT.reduzido).
+          const R = window.BT && BT.reduzido ? BT.reduzido() : false;
           const pontos = (window.BT_T && window.BT_T.bolinha) || [];
           const DUR = (window.BT_T && window.BT_T.duracao) || 59.98;
           const tl = gsap.timeline({ paused: true });

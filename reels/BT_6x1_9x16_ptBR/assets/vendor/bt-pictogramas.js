@@ -72,10 +72,13 @@
     const v = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
     return v.reducedMotion === true;
   };
+  // Num fromTo, x e y ficam parados no valor de destino (o elemento já está onde a animação o deixaria).
   const MOVE = ["x", "y", "rotation", "rotate", "scale", "skewX", "skewY", "filter", "motionPath"];
   const limpa = (de, para) => {
     const a = de ? Object.assign({}, de) : null;
     const b = para ? Object.assign({}, para) : null;
+    const fixos = {};
+    if (a && b) for (const k of ["x", "y"]) if (k in a && k in b && typeof b[k] === "number") fixos[k] = b[k];
     if (a && typeof a.scale === "number" && a.scale < 0.5 && a.opacity === undefined) {
       a.opacity = 0;
       if (b && b.opacity === undefined) b.opacity = 1;
@@ -85,6 +88,8 @@
       if (a) delete a[k];
       if (b) delete b[k];
     }
+    Object.assign(a || {}, fixos);
+    Object.assign(b || {}, fixos);
     return [a, b];
   };
   const timelineOriginal = gsap.timeline.bind(gsap);
@@ -92,7 +97,11 @@
     const tl = timelineOriginal(opts);
     if (!reduzido()) return tl;
     const to = tl.to.bind(tl), from = tl.from.bind(tl), fromTo = tl.fromTo.bind(tl);
-    tl.to = (alvo, vars, pos) => to(alvo, limpa(null, vars)[1], pos);
+    tl.to = (alvo, vars, pos) => {
+      // Contadores que rolam (trilhos de números) trocam de valor por corte seco, sem deslizar.
+      if (typeof alvo === "string" && alvo.indexOf("trilho") >= 0 && vars && typeof vars.y === "number") tl.set(alvo, { y: vars.y }, pos);
+      return to(alvo, limpa(null, vars)[1], pos);
+    };
     tl.from = (alvo, vars, pos) => from(alvo, limpa(vars, null)[0], pos);
     tl.fromTo = (alvo, de, para, pos) => {
       const [a, b] = limpa(de, para);

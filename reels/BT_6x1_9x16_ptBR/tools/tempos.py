@@ -217,7 +217,7 @@ B = {
     "c05-rito": [(0.2, "move", 700, 540), ("sancao", "move", 140, 805), ("promulga", "move", 617, 945)],
     "c06-horas": [("sessenta", "move", 470, 340), ("quarenta", "move", 380, 1150), ("duas", "move", 680, 630)],
     "c07-calendario": [("descanso", "move", 812, 690), (k["c07-calendario"]["dois"] - 0.45, "move", 497, 690), (k["c07-calendario"]["dois"] + 0.1, "some", 0, 0)],
-    "c08-salario": [("doze", "move", 840, 345), ("quarenta", "move", 380, 1150), ("sem", "move", 800, 385), ("salario", "move", 655, 690),
+    "c08-salario": [("doze", "move", 945, 345), ("quarenta", "move", 380, 1150), ("sem", "move", 800, 385), ("salario", "move", 655, 690),
                     (k["c08-salario"]["salario"] + 0.4, "some", 0, 0)],
     "c09-excecoes": [("escalas", "move", 880, 640), ("setores", "move", 880, 930), ("regras", "move", 560, 500)],
     "c10-dois-lados": [("contrata", "move", 470, 470), ("rever", "move", 355, 665), ("trabalha", "move", 600, 540),

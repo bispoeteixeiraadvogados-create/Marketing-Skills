@@ -46,8 +46,9 @@
       <script>
         (function () {
           const T = (window.BT_T && window.BT_T.c13) || { dur: 4.29 };
-          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
-          const R = vars.reducedMotion === true;
+          // A variável reducedMotion é da raiz; dentro da subcomposição o runtime só expõe as variáveis
+          // da própria cena, por isso a leitura é feita pelo kit global (BT.reduzido).
+          const R = window.BT && BT.reduzido ? BT.reduzido() : false;
           const tl = gsap.timeline({ paused: true });
           if (!R) {
             tl.fromTo("#c13-ma", { x: 0, y: 0 }, { x: 260, y: 180, duration: 4.4, ease: "sine.inOut" }, 0);

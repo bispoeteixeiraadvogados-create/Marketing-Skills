@@ -23,8 +23,9 @@
         (function () {
           // Legenda editorial da Direção Visual BT: à esquerda, fio curto acima, a palavra falada acende.
           const cues = (window.BT_T && window.BT_T.legendas) || [];
-          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
-          const R = vars.reducedMotion === true;
+          // A variável reducedMotion é da raiz; dentro da subcomposição o runtime só expõe as variáveis
+          // da própria cena, por isso a leitura é feita pelo kit global (BT.reduzido).
+          const R = window.BT && BT.reduzido ? BT.reduzido() : false;
           const raiz = document.querySelector('[data-composition-id="c00-legendas"]');
           const tl = gsap.timeline({ paused: true });
           let html = "";

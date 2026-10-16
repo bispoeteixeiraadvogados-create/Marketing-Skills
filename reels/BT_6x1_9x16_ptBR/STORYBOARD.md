@@ -9,7 +9,7 @@ mode: collaborative
 
 Tempos estimados; serão recalculados pela transcrição por palavra da voz final. Técnicas citadas pelos nomes de `hyperframes-animation/rules-index.md`.
 
-## Frame 1 — Gancho
+## Frame 1, Gancho
 
 - status: built
 - src: compositions/c01-gancho.html
@@ -22,9 +22,9 @@ Tempos estimados; serão recalculados pela transcrição por palavra da voz fina
 
 Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pulsa 4% na palavra "um". Saída: a tira se comprime em um bloco (match cut para a cena 2).
 
-## Frame 2 — Rotina
+## Frame 2, Rotina
 
-- status: outline
+- status: built
 - src: compositions/c02-rotina.html
 - duration: 4s
 - transition_in: cut
@@ -32,7 +32,7 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Essa é a rotina da escala seis por um. E ela está perto do fim."
 - rules: vertical-spring-ticker (contador de dias, sem mola), svg-path-draw (traço sobre o 6), viewport-change (parallax)
 
-## Frame 3 — Câmara dos Deputados
+## Frame 3, Câmara dos Deputados
 
 - status: built
 - src: compositions/c03-camara.html
@@ -43,9 +43,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Em maio, a Câmara aprovou a proposta. Quatrocentos e sessenta e um votos a dezenove."
 - rules: counting-dynamic-scale (placar sincronizado às cadeiras), svg-path-draw (quórum), media treatment canônico (curvas por canal, grão, vinheta), nudge-curve (saída para a cena 4)
 
-## Frame 4 — Senado Federal
+## Frame 4, Senado Federal
 
-- status: outline
+- status: built
 - src: compositions/c04-senado.html
 - duration: 4s
 - transition_in: cut
@@ -53,9 +53,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Em outubro, o Senado confirmou. Setenta e cinco a um."
 - rules: counting-dynamic-scale, svg-path-draw, viewport-change (miniaturas lado a lado)
 
-## Frame 5 — Rito
+## Frame 5, Rito
 
-- status: outline
+- status: built
 - src: compositions/c05-rito.html
 - duration: 6s
 - transition_in: crossfade
@@ -63,9 +63,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Por ser uma emenda à Constituição, ela não vai para sanção do presidente. Quem promulga é o próprio Congresso."
 - rules: svg-path-draw (trilha e risco), discrete-text-sequence (estados dos marcadores)
 
-## Frame 6 — Horas
+## Frame 6, Horas
 
-- status: outline
+- status: built
 - src: compositions/c06-horas.html
 - duration: 7s
 - transition_in: crossfade
@@ -73,7 +73,7 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Sessenta dias depois, a jornada máxima cai de quarenta e quatro para quarenta e duas horas por semana."
 - rules: stat-bars-and-fills (anel de progresso), vertical-spring-ticker (contador mecânico, sem mola)
 
-## Frame 7 — Calendário
+## Frame 7, Calendário
 
 - status: built
 - src: compositions/c07-calendario.html
@@ -84,9 +84,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "E o descanso passa a ser de dois dias."
 - rules: svg-path-draw (linha de corte), vertical-spring-ticker (troca 6 x 1 para 5 x 2, sem rotação de texto)
 
-## Frame 8 — 40 horas e salário
+## Frame 8, 40 horas e salário
 
-- status: outline
+- status: built
 - src: compositions/c08-salario.html
 - duration: 6s
 - transition_in: crossfade
@@ -94,9 +94,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Doze meses depois, o limite chega a quarenta horas. Sem redução de salário."
 - rules: stat-bars-and-fills (barras), vertical-spring-ticker
 
-## Frame 9 — Exceções
+## Frame 9, Exceções
 
-- status: outline
+- status: built
 - src: compositions/c09-excecoes.html
 - duration: 5s
 - transition_in: crossfade
@@ -104,9 +104,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Escalas especiais, como a doze por trinta e seis, e alguns setores terão regras próprias."
 - rules: waterfall-entry (cartões com 24 px)
 
-## Frame 10 — Dois lados
+## Frame 10, Dois lados
 
-- status: outline
+- status: built
 - src: compositions/c10-dois-lados.html
 - duration: 6s
 - transition_in: crossfade
@@ -114,9 +114,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: "Para quem contrata, é hora de rever escalas e contratos. Para quem trabalha, de conhecer os novos limites."
 - rules: svg-path-draw (linha central), split em espelho com o mesmo tempo dos dois lados
 
-## Frame 11 — Respiro
+## Frame 11, Respiro
 
-- status: outline
+- status: built
 - src: compositions/c11-respiro.html
 - duration: 2s
 - transition_in: crossfade
@@ -124,7 +124,7 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 - voiceover: ""
 - rules: svg-icon-enrichment (despertador), overshoot de até 4% só no despertador
 
-## Frame 12 — CTA
+## Frame 12, CTA
 
 - status: built
 - src: compositions/c12-cta.html
@@ -137,9 +137,9 @@ Cartões entram em cascata, ganham Primary e Sky na fala, o cartão de folga pul
 
 Legenda omitida nesta cena por recomendação: o título é a própria fala. O .srt continua completo.
 
-## Frame 13 — Assinatura
+## Frame 13, Assinatura
 
-- status: outline
+- status: built
 - src: compositions/c13-assinatura.html
 - duration: 3.5s
 - transition_in: crossfade

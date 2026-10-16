@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(180deg, #faf8f4 0%, #f4ede2 70%); }
+        #c11-luz { position: absolute; inset: 0; background: radial-gradient(circle at 900px 360px, rgba(212, 175, 124, 0.38) 0%, rgba(212, 175, 124, 0) 50%); }
+        #c11-cena { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        #c11-pessoa { position: absolute; left: 150px; top: 760px; width: 150px; height: 258px; }
+        #c11-pessoa svg { width: 150px; height: 258px; display: block; }
+        #c11-despertador { position: absolute; left: 360px; top: 868px; width: 130px; height: 130px; overflow: visible; }
+        .c11-folga { position: absolute; top: 600px; width: 96px; height: 140px; border-radius: 16px; background: #8fc5ef; box-shadow: 0 14px 30px rgba(8, 26, 53, 0.12);
+          display: flex; align-items: center; justify-content: center; }
+        .c11-folga svg { width: 52px; height: 52px; }
+        #c11-vaso { position: absolute; left: 740px; top: 860px; width: 160px; height: 240px; overflow: visible; }
+      </style>
+
+      <div id="root" data-composition-id="c11-respiro" data-width="1080" data-height="1920">
+        <div id="c11-luz"></div>
+        <svg id="c11-cena" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="1018" width="1080" height="10" fill="#0b1f4b" fill-opacity="0.85" />
+          <rect x="340" y="998" width="170" height="20" rx="6" fill="#0b1f4b" fill-opacity="0.2" />
+        </svg>
+        <div id="c11-pessoa"></div>
+        <svg id="c11-despertador" viewBox="0 0 130 130" aria-hidden="true">
+          <g fill="none" stroke="#0b1f4b" stroke-width="6" stroke-linecap="round">
+            <circle cx="65" cy="70" r="44" fill="#faf8f4" /><path d="M65 70 V44 M65 70 H84" /><path d="M24 30 a20 20 0 0 1 26 -12" /><path d="M106 30 a20 20 0 0 0 -26 -12" />
+            <path d="M36 112 L28 124 M94 112 L102 124" />
+          </g>
+        </svg>
+        <div id="c11-f1" class="c11-folga" style="left: 600px"><svg viewBox="0 0 48 48"><g fill="none" stroke="#0b1f4b" stroke-width="3.5" stroke-linecap="round"><circle cx="24" cy="24" r="8" /><path d="M24 4 V9 M24 39 V44 M4 24 H9 M39 24 H44 M9.9 9.9 L13.4 13.4 M34.6 34.6 L38.1 38.1 M9.9 38.1 L13.4 34.6 M34.6 13.4 L38.1 9.9" /></g></svg></div>
+        <div id="c11-f2" class="c11-folga" style="left: 710px"><svg viewBox="0 0 48 48"><g fill="none" stroke="#0b1f4b" stroke-width="3.5" stroke-linecap="round"><circle cx="24" cy="24" r="8" /><path d="M24 4 V9 M24 39 V44 M4 24 H9 M39 24 H44 M9.9 9.9 L13.4 13.4 M34.6 34.6 L38.1 38.1 M9.9 38.1 L13.4 34.6 M34.6 13.4 L38.1 9.9" /></g></svg></div>
+        <svg id="c11-vaso" viewBox="0 0 160 240" aria-hidden="true">
+          <path id="c11-caule" d="M80 170 C80 130 78 100 84 60" stroke="#66725c" stroke-width="7" stroke-linecap="round" fill="none" />
+          <path d="M84 110 C110 96 124 104 128 120 C108 128 92 124 84 110 Z" fill="#66725c" />
+          <path id="c11-folha" d="M84 62 C60 40 40 46 36 62 C52 74 72 74 84 62 Z" fill="#66725c" />
+          <path d="M40 160 H120 L110 220 H50 Z" fill="#0b1f4b" />
+        </svg>
+      </div>
+
+      <script>
+        (function () {
+          const T = (window.BT_T && window.BT_T.c11) || { dur: 2.04 };
+          const tl = gsap.timeline({ paused: true });
+          const o = T.off || 0; // o despertador toca no corte, junto com o som
+          document.getElementById("c11-pessoa").innerHTML = BT.picto("c11-f", "#0b1f4b", "nenhum", { fundo: "#faf8f4" });
+          tl.fromTo("#c11-luz", { opacity: 0.5 }, { opacity: 1, duration: T.dur, ease: "none" }, 0);
+          // O despertador toca, balança uma vez (até 4%) e o braço do pictograma o desliga.
+          tl.fromTo("#c11-despertador", { rotation: 0, transformOrigin: "50% 90%" }, { rotation: 7, duration: 0.08, ease: "power1.out" }, o + 0.15);
+          tl.to("#c11-despertador", { rotation: -5, duration: 0.12, ease: "sine.inOut" }, o + 0.23);
+          tl.to("#c11-despertador", { rotation: 0, duration: 0.18, ease: "bt-overshoot" }, o + 0.35);
+          tl.fromTo("#c11-f-bf", { rotation: 0 }, { rotation: -70, svgOrigin: "50 48", duration: 0.3, ease: "bt-standard" }, o + 0.1);
+          tl.to("#c11-f-bf", { rotation: 0, svgOrigin: "50 48", duration: 0.35, ease: "bt-standard" }, o + 0.55);
+          // Dois cartões de folga lado a lado; a planta cresce uma folha.
+          tl.fromTo(["#c11-f1", "#c11-f2"], { opacity: 0, y: 24, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "bt-overshoot", stagger: 0.12 }, 0.5);
+          BT.tracar(tl, "#c11-caule", 120, 0.8, 0.6);
+          tl.fromTo("#c11-folha", { scale: 0, transformOrigin: "84px 62px" }, { scale: 1, duration: 0.45, ease: "bt-overshoot" }, 1.25);
+          window.__timelines["c11-respiro"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

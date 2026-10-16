@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Capa do Reel (1080 x 1920). Conteúdo essencial entre y 300 e 1600, área que o feed mostra em 3:4. -->
+    <style>
+      @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("../assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 500; src: url("../assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Montserrat"; font-weight: 600; src: url("../assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #faf8f4; }
+      #capa { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: "Montserrat", Arial, sans-serif;
+        background: radial-gradient(circle at 860px 520px, rgba(143, 197, 239, 0.34) 0%, rgba(143, 197, 239, 0) 46%),
+          radial-gradient(circle at 160px 1380px, rgba(212, 175, 124, 0.16) 0%, rgba(212, 175, 124, 0) 40%),
+          linear-gradient(to right, rgba(11, 31, 75, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(11, 31, 75, 0.035) 1px, transparent 1px), #faf8f4;
+        background-size: 100% 100%, 100% 100%, 8px 8px, 8px 8px, auto; }
+      #meta { position: absolute; left: 96px; top: 360px; font-weight: 600; font-size: 34px; letter-spacing: 0.12em; color: #214d8c; }
+      #titulo { position: absolute; left: 96px; top: 420px; width: 900px; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 176px;
+        line-height: 0.98; letter-spacing: -0.015em; color: #0b1f4b; font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
+      #sublinhado { position: absolute; left: 96px; top: 806px; width: 520px; height: 8px; border-radius: 4px; background: #d4af7c; }
+      #cartoes { position: absolute; left: 96px; top: 900px; display: flex; gap: 14px; }
+      .cartao { width: 100px; height: 236px; border-radius: 16px; background: #0b1f4b; display: flex; align-items: center; justify-content: center;
+        font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 64px; color: #faf8f4; box-shadow: 0 14px 30px rgba(8, 26, 53, 0.14); }
+      .cartao.folga { background: #8fc5ef; color: #0b1f4b; box-shadow: 0 0 0 4px rgba(143, 197, 239, 0.35), 0 0 34px rgba(143, 197, 239, 0.75); }
+      #rotulos { position: absolute; left: 96px; top: 1160px; width: 798px; display: flex; justify-content: space-between; font-weight: 600; font-size: 30px;
+        letter-spacing: 0.12em; color: #0b1f4b; }
+      #chamada { position: absolute; left: 96px; top: 1290px; width: 920px; font-weight: 500; font-size: 54px; line-height: 1.2; color: #202631; }
+      #chamada b { font-weight: 600; color: #214d8c; }
+      #faixa { position: absolute; left: 0; top: 1560px; width: 1080px; height: 360px; background: linear-gradient(135deg, #081a35 0%, #0b1f4b 100%); }
+      #logo { position: absolute; left: 96px; top: 1600px; width: 300px; height: auto; }
+      #insta { position: absolute; right: 96px; top: 1650px; font-weight: 500; font-size: 30px; color: #faf8f4; text-align: right; line-height: 1.5; }
+      #bolinha { position: absolute; left: 908px; top: 1003px; width: 30px; height: 30px; border-radius: 15px; background: #8fc5ef; border: 3px solid #0b1f4b; }
+    </style>
+  </head>
+  <body>
+    <div id="capa">
+      <div id="meta">JORNADA DE TRABALHO</div>
+      <div id="titulo">Fim da escala 6x1</div>
+      <div id="sublinhado"></div>
+      <div id="cartoes">
+        <div class="cartao">S</div><div class="cartao">T</div><div class="cartao">Q</div><div class="cartao">Q</div><div class="cartao">S</div><div class="cartao">S</div>
+        <div class="cartao folga">D</div>
+      </div>
+      <div id="bolinha"></div>
+      <div id="rotulos"><span>6 DIAS DE TRABALHO</span><span>1 DE FOLGA</span></div>
+      <div id="chamada">Entenda <b>o que muda</b> e quando.</div>
+      <div id="faixa"></div>
+      <img id="logo" src="../assets/brand/Logo_BT_Original_Transparente_520.png" alt="Bispo e Teixeira Advogados" />
+      <div id="insta">@bispoeteixeiraadvogados<br />(38) 9 9129-6401</div>
+    </div>
+  </body>
+</html>

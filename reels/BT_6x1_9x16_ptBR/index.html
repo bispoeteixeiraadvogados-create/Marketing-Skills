@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="pt-BR" data-resolution="portrait">
+<html lang="pt-BR" data-resolution="portrait" data-composition-variables='[{"id":"reducedMotion","type":"boolean","label":"Movimento reduzido","default":false}]'>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
+    <!-- Gerado por tools/tempos.py. Edite o gerador, não este arquivo. -->
     <script src="assets/vendor/gsap.min.js"></script>
     <script src="assets/vendor/CustomEase.min.js"></script>
     <script>
@@ -13,7 +14,10 @@
       CustomEase.create("bt-exit", "M0,0 C0.4,0 1,1 1,1");
       CustomEase.create("bt-emphasized", "M0,0 C0.22,1 0.36,1 1,1");
       CustomEase.create("bt-overshoot", "M0,0 C0.34,1.12 0.64,1 1,1");
+      CustomEase.create("bt-inout", "M0,0 C0.45,0 0.25,1 1,1");
     </script>
+    <script src="assets/data/tempos.js"></script>
+    <script src="assets/vendor/bt-pictogramas.js"></script>
     <script src="assets/vendor/hf-motion-blur.js"></script>
     <style>
       @font-face { font-family: "Cormorant Garamond"; font-weight: 500; src: url("assets/fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2"); }
@@ -27,14 +31,50 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="17" data-width="1080" data-height="1920" data-fps="30">
-      <div id="c01-gancho" data-composition-id="c01-gancho" data-composition-src="compositions/c01-gancho.html" data-start="0" data-duration="3.2" data-track-index="0" data-width="1080" data-height="1920"></div>
-      <div id="c03-camara" data-composition-id="c03-camara" data-composition-src="compositions/c03-camara.html" data-start="3.2" data-duration="6.4" data-track-index="0" data-width="1080" data-height="1920"></div>
-      <div id="c07-calendario" data-composition-id="c07-calendario" data-composition-src="compositions/c07-calendario.html" data-start="9.6" data-duration="3.4" data-track-index="0" data-width="1080" data-height="1920"></div>
-      <div id="c12-cta" data-composition-id="c12-cta" data-composition-src="compositions/c12-cta.html" data-start="13" data-duration="4" data-track-index="0" data-width="1080" data-height="1920"></div>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="59.98" data-width="1080" data-height="1920" data-fps="30">
+      <div id="c01-gancho" data-composition-id="c01-gancho" data-composition-src="compositions/c01-gancho.html" data-start="0.000" data-duration="3.505" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="c02-rotina" data-composition-id="c02-rotina" data-composition-src="compositions/c02-rotina.html" data-start="2.655" data-duration="5.270" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c03-camara" data-composition-id="c03-camara" data-composition-src="compositions/c03-camara.html" data-start="7.075" data-duration="6.690" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="c04-senado" data-composition-id="c04-senado" data-composition-src="compositions/c04-senado.html" data-start="12.915" data-duration="5.710" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c05-rito" data-composition-id="c05-rito" data-composition-src="compositions/c05-rito.html" data-start="17.775" data-duration="6.350" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="c06-horas" data-composition-id="c06-horas" data-composition-src="compositions/c06-horas.html" data-start="23.275" data-duration="6.330" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c07-calendario" data-composition-id="c07-calendario" data-composition-src="compositions/c07-calendario.html" data-start="28.755" data-duration="3.950" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="c08-salario" data-composition-id="c08-salario" data-composition-src="compositions/c08-salario.html" data-start="31.855" data-duration="6.150" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c09-excecoes" data-composition-id="c09-excecoes" data-composition-src="compositions/c09-excecoes.html" data-start="37.155" data-duration="6.170" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="c10-dois-lados" data-composition-id="c10-dois-lados" data-composition-src="compositions/c10-dois-lados.html" data-start="42.475" data-duration="7.690" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c11-respiro" data-composition-id="c11-respiro" data-composition-src="compositions/c11-respiro.html" data-start="49.315" data-duration="2.890" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="c12-cta" data-composition-id="c12-cta" data-composition-src="compositions/c12-cta.html" data-start="51.355" data-duration="4.910" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div id="c13-assinatura" data-composition-id="c13-assinatura" data-composition-src="compositions/c13-assinatura.html" data-start="55.415" data-duration="4.565" data-track-index="0" data-width="1080" data-height="1920"></div>
+      <div id="c00-bolinha" data-composition-id="c00-bolinha" data-composition-src="compositions/c00-bolinha.html" data-start="0" data-duration="59.98" data-track-index="7" data-width="1080" data-height="1920"></div>
+      <div id="c00-legendas" data-composition-id="c00-legendas" data-composition-src="compositions/c00-legendas.html" data-start="0" data-duration="59.98" data-track-index="8" data-width="1080" data-height="1920"></div>
+      <audio id="bt-audio" src="assets/audio/mix-final.wav" data-start="0" data-duration="59.98" data-track-index="9" data-volume="1"></audio>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#c02-rotina", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 2.655);
+      tl.set("#c01-gancho", { opacity: 0 }, 3.225);
+      tl.fromTo("#c03-camara", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 7.075);
+      tl.set("#c02-rotina", { opacity: 0 }, 7.645);
+      tl.fromTo("#c04-senado", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 12.915);
+      tl.set("#c03-camara", { opacity: 0 }, 13.485);
+      tl.fromTo("#c05-rito", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 17.775);
+      tl.set("#c04-senado", { opacity: 0 }, 18.345);
+      tl.fromTo("#c06-horas", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 23.275);
+      tl.set("#c05-rito", { opacity: 0 }, 23.845);
+      tl.fromTo("#c07-calendario", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 28.755);
+      tl.set("#c06-horas", { opacity: 0 }, 29.325);
+      tl.fromTo("#c08-salario", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 31.855);
+      tl.set("#c07-calendario", { opacity: 0 }, 32.425);
+      tl.fromTo("#c09-excecoes", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 37.155);
+      tl.set("#c08-salario", { opacity: 0 }, 37.725);
+      tl.fromTo("#c10-dois-lados", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 42.475);
+      tl.set("#c09-excecoes", { opacity: 0 }, 43.045);
+      tl.fromTo("#c11-respiro", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 49.315);
+      tl.set("#c10-dois-lados", { opacity: 0 }, 49.885);
+      tl.fromTo("#c12-cta", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 51.355);
+      tl.set("#c11-respiro", { opacity: 0 }, 51.925);
+      tl.fromTo("#c13-assinatura", { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "bt-inout" }, 55.415);
+      tl.set("#c12-cta", { opacity: 0 }, 55.985);
       window.__timelines["main"] = tl;
     </script>
   </body>

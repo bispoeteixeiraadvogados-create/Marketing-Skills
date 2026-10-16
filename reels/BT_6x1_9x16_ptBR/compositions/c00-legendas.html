@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Montserrat"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+        #root { position: absolute; inset: 0; pointer-events: none; }
+        /* Faixa da legenda do modelo v005: y de 1240 a 1460, coluna de 96 a 904, fio de 56 x 4 px. */
+        .leg { position: absolute; left: 96px; top: 1240px; width: 808px; height: 220px; opacity: 0; }
+        .leg .fio { position: absolute; left: 0; top: 24px; width: 56px; height: 4px; }
+        .leg .txt { position: absolute; left: 0; top: 48px; width: 808px; }
+        .leg .ln { display: block; white-space: nowrap; font-family: "Montserrat", Arial, sans-serif; font-weight: 500; font-size: 48px; line-height: 1.14; }
+        .leg.clara .fio { background: #0b1f4b; }
+        .leg.clara .ln { color: #202631; }
+        .leg.escura .fio { background: #d4af7c; }
+        .leg.escura .ln { color: #faf8f4; }
+      </style>
+      <div id="root" data-composition-id="c00-legendas" data-width="1080" data-height="1920"></div>
+      <script>
+        (function () {
+          // Legenda editorial da Direção Visual BT: à esquerda, fio curto acima, a palavra falada acende.
+          const cues = (window.BT_T && window.BT_T.legendas) || [];
+          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+          const R = vars.reducedMotion === true;
+          const raiz = document.querySelector('[data-composition-id="c00-legendas"]');
+          const tl = gsap.timeline({ paused: true });
+          let html = "";
+          cues.forEach((c, i) => {
+            const linhas = [];
+            c.toks.forEach((t, j) => {
+              (linhas[t.l] = linhas[t.l] || []).push(`<span id="leg${i}-w${j}">${t.x}</span>`);
+            });
+            html += `<div id="leg${i}" class="leg ${c.estilo}"><div class="fio"></div><div class="txt">${linhas.map((l) => `<span class="ln">${l.join(" ")}</span>`).join("")}</div></div>`;
+          });
+          raiz.innerHTML = html;
+          cues.forEach((c, i) => {
+            const base = c.estilo === "escura" ? "#faf8f4" : "#202631";
+            const acesa = c.estilo === "escura" ? "#d4af7c" : "#214d8c";
+            tl.fromTo(`#leg${i}`, { opacity: 0, y: R ? 0 : 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "bt-enter" }, Math.max(0, c.t0 - 0.05));
+            // A saída (0,3 s, sobe 16 px) termina antes de o bloco seguinte entrar: nunca há dois blocos na faixa.
+            const seguinte = cues[i + 1];
+            const saida = Math.min(c.t1 - 0.15, seguinte ? seguinte.t0 - 0.38 : Infinity);
+            tl.to(`#leg${i}`, { opacity: 0, y: R ? 0 : -16, duration: 0.3, ease: "bt-exit" }, Math.max(c.t0 + 0.4, saida));
+            c.toks.forEach((t, j) => {
+              tl.fromTo(`#leg${i}-w${j}`, { color: base }, { color: acesa, duration: 0.08, ease: "none" }, t.t);
+              const prox = c.toks[j + 1];
+              if (prox) tl.to(`#leg${i}-w${j}`, { color: base, duration: 0.12, ease: "none" }, prox.t);
+            });
+          });
+          window.__timelines["c00-legendas"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

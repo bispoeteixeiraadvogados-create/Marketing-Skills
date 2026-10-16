@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+        #root { position: absolute; inset: 0; overflow: hidden; background: #f4ede2; font-family: "Montserrat", Arial, sans-serif; }
+        #c02-ceu { position: absolute; inset: 0; background: linear-gradient(180deg, #faf8f4 0%, #f4ede2 62%); }
+        #c02-sol { position: absolute; left: 0; top: 0; width: 120px; height: 120px; border-radius: 50%; background: #d4af7c;
+          box-shadow: 0 0 80px rgba(212, 175, 124, 0.55); }
+        .c02-camada { position: absolute; left: -40px; top: 0; width: 1160px; height: 1920px; }
+        #c02-meta { position: absolute; left: 96px; top: 300px; font-size: 36px; font-weight: 600; letter-spacing: 0.12em; color: #214d8c; }
+        #c02-num { position: absolute; left: 96px; top: 344px; width: 180px; height: 250px; overflow: hidden; }
+        #c02-trilho { position: absolute; left: 0; top: 0; width: 180px; }
+        #c02-trilho span { display: block; height: 250px; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 240px;
+          line-height: 250px; color: #0b1f4b; font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
+        #c02-risco { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        #c02-frase { position: absolute; left: 300px; top: 420px; width: 600px; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+          font-size: 92px; line-height: 1.05; color: #0b1f4b; transform-origin: 0% 50%; }
+        .c02-pessoa { position: absolute; left: 0; top: 912px; width: 85px; height: 146px; }
+        .c02-pessoa svg { width: 85px; height: 146px; display: block; }
+        #c02-placa { position: absolute; left: 690px; top: 652px; width: 210px; height: 62px; border: 3px solid #d4af7c; background: #0b1f4b;
+          color: #faf8f4; font-size: 36px; font-weight: 600; letter-spacing: 0.04em; line-height: 56px; text-align: center; }
+      </style>
+
+      <div id="root" data-composition-id="c02-rotina" data-width="1080" data-height="1920">
+        <div id="c02-ceu"></div>
+        <div id="c02-sol" data-layout-ignore></div>
+        <svg id="c02-longe" class="c02-camada" viewBox="0 0 1160 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-layout-ignore>
+          <g fill="#0b1f4b" fill-opacity="0.07">
+            <rect x="20" y="760" width="130" height="300" /><rect x="160" y="700" width="90" height="360" /><rect x="262" y="790" width="150" height="270" />
+            <rect x="424" y="720" width="110" height="340" /><rect x="548" y="780" width="140" height="280" /><rect x="700" y="690" width="120" height="370" />
+            <rect x="836" y="750" width="160" height="310" /><rect x="1010" y="710" width="140" height="350" />
+          </g>
+        </svg>
+        <svg id="c02-meio" class="c02-camada" viewBox="0 0 1160 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-layout-ignore>
+          <g fill="#0b1f4b" fill-opacity="0.12">
+            <rect x="60" y="860" width="110" height="200" /><rect x="190" y="820" width="80" height="240" /><rect x="300" y="880" width="130" height="180" />
+            <rect x="460" y="840" width="90" height="220" /><rect x="580" y="870" width="120" height="190" />
+          </g>
+          <g fill="#0b1f4b">
+            <rect x="780" y="620" width="300" height="440" fill-opacity="0.88" />
+            <g fill="#faf8f4" fill-opacity="0.28">
+              <rect x="810" y="740" width="34" height="44" /><rect x="868" y="740" width="34" height="44" /><rect x="926" y="740" width="34" height="44" /><rect x="984" y="740" width="34" height="44" />
+              <rect x="810" y="812" width="34" height="44" /><rect x="868" y="812" width="34" height="44" /><rect x="926" y="812" width="34" height="44" /><rect x="984" y="812" width="34" height="44" />
+              <rect x="810" y="884" width="34" height="44" /><rect x="984" y="884" width="34" height="44" />
+            </g>
+            <rect x="868" y="958" width="76" height="102" fill="#214d8c" />
+          </g>
+          <rect x="0" y="1060" width="1160" height="12" fill="#0b1f4b" fill-opacity="0.85" />
+          <rect x="0" y="1072" width="1160" height="46" fill="#0b1f4b" fill-opacity="0.07" />
+        </svg>
+        <div id="c02-placa">TRABALHO</div>
+
+        <div id="c02-meta">DIA</div>
+        <div id="c02-num"><div id="c02-trilho" data-layout-allow-overflow data-layout-allow-occlusion data-layout-allow-overlap><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div></div>
+        <svg id="c02-risco" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path id="c02-traco" d="M84 484 L262 452" stroke="#d4af7c" stroke-width="10" stroke-linecap="round" fill="none" /></svg>
+        <div id="c02-frase">perto do fim</div>
+        <div id="c02-pessoas"></div>
+      </div>
+
+      <script>
+        (function () {
+          const T = (window.BT_T && window.BT_T.c02) || { dur: 4.42, k: { rotina: 0.95, escala: 1.41, perto: 3.35, fim: 3.89 } };
+          const tl = gsap.timeline({ paused: true });
+          // Pictogramas: variedade só por silhueta.
+          const acessorios = ["mochila", "marmita", "capacete", "avental", "cracha", "mochila", "marmita", "capacete", "avental"];
+          const caixa = document.getElementById("c02-pessoas");
+          caixa.innerHTML = acessorios.map((a, i) => `<div id="c02-p${i}" class="c02-pessoa">${BT.picto("c02-f" + i, "#0b1f4b", a, { fundo: "#f4ede2" })}</div>`).join("");
+          const v = 230;
+          const T1 = T.k.perto;
+          const porta = 820;
+          acessorios.forEach((_, i) => {
+            const x0 = 720 - 215 * i;
+            const sel = "#c02-p" + i;
+            tl.fromTo(sel, { x: x0, opacity: 1 }, { x: x0 + v * T1, duration: T1, ease: "none" }, 0);
+            tl.to(sel, { x: x0 + v * T1 + 60, duration: 0.6, ease: "power2.out" }, T1);
+            if (x0 + v * T1 >= porta) tl.to(sel, { opacity: 0, duration: 0.15 }, Math.max(0, (porta - x0) / v));
+            BT.andar(tl, "c02-f" + i, 0, T1 + 0.5, 0.31);
+          });
+          // Sol nasce em arco; camadas com parallax leve.
+          tl.fromTo("#c02-sol", { x: 120 }, { x: 250, duration: T.dur, ease: "none" }, 0);
+          tl.fromTo("#c02-sol", { y: 1000 }, { y: 690, duration: T.dur, ease: "power2.out" }, 0);
+          tl.fromTo("#c02-longe", { x: 0 }, { x: -16, duration: T.dur, ease: "none" }, 0);
+          tl.fromTo("#c02-meio", { x: 0 }, { x: -30, duration: T.dur, ease: "none" }, 0);
+          tl.fromTo("#c02-placa", { x: 0 }, { x: -30, duration: T.dur, ease: "none" }, 0);
+          // Contador de dias gira rápido e para no 6.
+          tl.fromTo(["#c02-meta", "#c02-num"], { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-emphasized" }, 0.1);
+          for (let j = 1; j <= 5; j++) tl.to("#c02-trilho", { y: -250 * j, duration: 0.14, ease: "bt-standard" }, T.k.rotina + j * 0.32);
+          // "Perto do fim": a frase cresce e um traço Gold risca o 6.
+          tl.fromTo("#c02-frase", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "bt-enter" }, T.k.perto - 0.05);
+          BT.tracar(tl, "#c02-traco", 190, T.k.fim, 0.4);
+          BT.realce(tl, "#c02-frase", T.k.fim, "rgba(212, 175, 124, 0.9)", 1.07);
+          window.__timelines["c02-rotina"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

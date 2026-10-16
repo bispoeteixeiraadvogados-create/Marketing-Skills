@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+        #root { position: absolute; inset: 0; overflow: hidden; background: #f4ede2; font-family: "Montserrat", Arial, sans-serif; }
+        #c09-fundo { position: absolute; inset: 0;
+          background: radial-gradient(circle at 800px 520px, rgba(143, 197, 239, 0.3) 0%, rgba(143, 197, 239, 0) 44%),
+            linear-gradient(to right, rgba(11, 31, 75, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(11, 31, 75, 0.035) 1px, transparent 1px);
+          background-size: 100% 100%, 8px 8px, 8px 8px; }
+        #c09-titulo { position: absolute; left: 96px; top: 300px; width: 820px; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+          font-size: 112px; line-height: 1.05; letter-spacing: -0.015em; color: #0b1f4b; transform-origin: 0% 50%; }
+        .c09-card { position: absolute; left: 96px; width: 804px; border-radius: 24px; background: #faf8f4; box-shadow: 0 18px 48px rgba(8, 26, 53, 0.12); }
+        #c09-card1 { top: 610px; height: 250px; }
+        #c09-card2 { top: 900px; height: 290px; }
+        #c09-texto1 { position: absolute; left: 250px; top: 86px; font-size: 56px; font-weight: 600; color: #0b1f4b; white-space: nowrap; transform-origin: 0% 50%; }
+        #c09-texto2 { position: absolute; left: 44px; top: 190px; font-size: 56px; font-weight: 600; color: #0b1f4b; white-space: nowrap; }
+        .c09-icone { position: absolute; width: 96px; height: 96px; }
+        #c09-relogio { position: absolute; left: 44px; top: 35px; width: 180px; height: 180px; overflow: visible; }
+        #c09-sublinhado-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+      </style>
+
+      <div id="root" data-composition-id="c09-excecoes" data-width="1080" data-height="1920">
+        <div id="c09-fundo"></div>
+        <div id="c09-titulo">Há regras próprias.</div>
+        <svg id="c09-sublinhado-svg" viewBox="0 0 1080 1920" aria-hidden="true"><path id="c09-sublinhado" d="M96 545 H520" stroke="#d4af7c" stroke-width="10" stroke-linecap="round" fill="none" /></svg>
+
+        <div id="c09-card1" class="c09-card">
+          <svg id="c09-relogio" viewBox="0 0 180 180" aria-hidden="true">
+            <circle cx="90" cy="90" r="80" fill="#8fc5ef" fill-opacity="0.35" stroke="#0b1f4b" stroke-width="6" />
+            <path id="c09-setor" d="M90 90 L90 10 A80 80 0 0 1 170 90 Z" fill="#0b1f4b" />
+            <circle cx="90" cy="90" r="7" fill="#0b1f4b" />
+          </svg>
+          <div id="c09-texto1">Escala 12x36</div>
+        </div>
+
+        <div id="c09-card2" class="c09-card">
+          <svg id="c09-i1" class="c09-icone" style="left: 44px; top: 50px" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#0b1f4b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="36" height="34" rx="4" /><path d="M24 16 V34 M15 25 H33" /></g></svg>
+          <svg id="c09-i2" class="c09-icone" style="left: 176px; top: 50px" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#0b1f4b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 42 V22 L16 28 V22 L27 28 V22 L38 28 V8 H43 V42 Z" /><path d="M5 42 H43" /></g></svg>
+          <svg id="c09-i3" class="c09-icone" style="left: 308px; top: 50px" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#0b1f4b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 L10 8 H38 L42 18 Z" /><path d="M6 18 a6 6 0 0 0 12 0 a6 6 0 0 0 12 0 a6 6 0 0 0 12 0" /><path d="M9 24 V42 H39 V24" /><path d="M20 42 V32 H28 V42" /></g></svg>
+          <div id="c09-texto2">Regras por setor</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const T = (window.BT_T && window.BT_T.c09) || { dur: 5.32, k: { escalas: 0.25, doze: 1.67, setores: 3.41, regras: 4.25 } };
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#c09-titulo", { opacity: 0, y: 48 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-emphasized" }, 0.05);
+          tl.fromTo("#c09-card1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-enter" }, T.k.escalas);
+          // Relógio dividido: 12 horas de um ciclo de 48, o setor se abre na palavra "doze".
+          tl.fromTo("#c09-setor", { scale: 0, transformOrigin: "90px 90px" }, { scale: 1, duration: 0.5, ease: "bt-overshoot" }, T.k.doze - 0.1);
+          BT.realce(tl, "#c09-texto1", T.k.doze, "rgba(143, 197, 239, 0.95)", 1.07);
+          tl.fromTo("#c09-card2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-enter" }, T.k.setores - 0.15);
+          ["#c09-i1", "#c09-i2", "#c09-i3"].forEach((s, i) => tl.fromTo(s, { opacity: 0, y: 20, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "bt-overshoot" }, T.k.setores + i * 0.18));
+          BT.realce(tl, "#c09-titulo", T.k.regras, "rgba(212, 175, 124, 0.95)", 1.05);
+          BT.tracar(tl, "#c09-sublinhado", 424, T.k.regras + 0.05, 0.5);
+          window.__timelines["c09-excecoes"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+        #root { position: absolute; inset: 0; overflow: hidden; background: #f4ede2; font-family: "Montserrat", Arial, sans-serif; }
+        #c05-fundo { position: absolute; inset: 0;
+          background: radial-gradient(circle at 760px 980px, rgba(143, 197, 239, 0.3) 0%, rgba(143, 197, 239, 0) 48%),
+            linear-gradient(to right, rgba(11, 31, 75, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(11, 31, 75, 0.035) 1px, transparent 1px);
+          background-size: 100% 100%, 8px 8px, 8px 8px; }
+        #c05-tag { position: absolute; left: 96px; top: 300px; font-size: 36px; font-weight: 600; letter-spacing: 0.12em; color: #214d8c; }
+        #c05-titulo { position: absolute; left: 96px; top: 352px; width: 820px; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+          font-size: 112px; line-height: 1.05; letter-spacing: -0.015em; color: #0b1f4b; transform-origin: 0% 50%; }
+        #c05-sancao { position: absolute; left: 96px; top: 670px; width: 700px; height: 120px; }
+        #c05-sancao svg.c05-caneta { position: absolute; left: 0; top: 10px; width: 92px; height: 92px; }
+        #c05-sancao-rot { position: absolute; left: 120px; top: 30px; font-size: 48px; font-weight: 500; color: #202631; white-space: nowrap; }
+        #c05-desenho { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        .c05-rot { position: absolute; font-size: 36px; font-weight: 600; letter-spacing: 0.06em; color: #0b1f4b; white-space: nowrap; }
+        #c05-pelo { position: absolute; left: 467px; top: 1100px; width: 300px; text-align: center; font-size: 36px; font-weight: 500; color: #214d8c; }
+      </style>
+
+      <div id="root" data-composition-id="c05-rito" data-width="1080" data-height="1920">
+        <div id="c05-fundo"></div>
+        <div id="c05-tag">PEC 221/2019</div>
+        <div id="c05-titulo">Emenda à Constituição</div>
+
+        <div id="c05-sancao">
+          <svg class="c05-caneta" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#0b1f4b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 8 L40 18 L18 40 L6 42 L8 30 Z" /><path d="M26 12 L36 22" /><path d="M8 30 L18 40" /></g></svg>
+          <div id="c05-sancao-rot">Sanção presidencial</div>
+        </div>
+
+        <svg id="c05-desenho" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path id="c05-risco" d="M86 780 L680 676" stroke="#0b1f4b" stroke-width="7" stroke-linecap="round" fill="none" />
+          <line x1="150" y1="1000" x2="850" y2="1000" stroke="#0b1f4b" stroke-opacity="0.15" stroke-width="6" stroke-linecap="round" />
+          <path id="c05-trilha" d="M150 1000 H617" stroke="#0b1f4b" stroke-width="6" stroke-linecap="round" fill="none" />
+          <path id="c05-pendente" d="M617 1000 H850" stroke="#0b1f4b" stroke-width="6" stroke-dasharray="4 14" stroke-linecap="round" fill="none" />
+          <g id="c05-m1"><circle cx="150" cy="1000" r="26" fill="#8fc5ef" stroke="#0b1f4b" stroke-width="4" /><path d="M139 1000 L147 1008 L162 992" stroke="#0b1f4b" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /></g>
+          <g id="c05-m2"><circle cx="383" cy="1000" r="26" fill="#8fc5ef" stroke="#0b1f4b" stroke-width="4" /><path d="M372 1000 L380 1008 L395 992" stroke="#0b1f4b" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /></g>
+          <g id="c05-m3"><circle id="c05-m3-halo" cx="617" cy="1000" r="40" fill="#8fc5ef" fill-opacity="0.35" /><circle cx="617" cy="1000" r="26" fill="#faf8f4" stroke="#0b1f4b" stroke-width="4" stroke-dasharray="7 6" /></g>
+          <g id="c05-m4"><circle cx="850" cy="1000" r="26" fill="#faf8f4" stroke="#0b1f4b" stroke-opacity="0.35" stroke-width="4" /></g>
+        </svg>
+        <div id="c05-r1" class="c05-rot" style="left: 96px; top: 1050px">CÂMARA</div>
+        <div id="c05-r2" class="c05-rot" style="left: 283px; top: 912px; width: 200px; text-align: center">SENADO</div>
+        <div id="c05-r3" class="c05-rot" style="left: 467px; top: 1050px; width: 300px; text-align: center">PROMULGAÇÃO</div>
+        <div id="c05-r4" class="c05-rot" style="left: 560px; top: 912px; width: 340px; text-align: right">DIÁRIO OFICIAL</div>
+        <div id="c05-pelo">pelo Congresso</div>
+      </div>
+
+      <script>
+        (function () {
+          const T = (window.BT_T && window.BT_T.c05) || { dur: 5.5, k: { emenda: 0.1, sancao: 2.03, presidente: 2.51, promulga: 3.53, congresso: 4.69 } };
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#c05-tag", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 0);
+          tl.fromTo("#c05-titulo", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-emphasized" }, 0.05);
+          BT.realce(tl, "#c05-titulo", Math.max(0.35, T.k.emenda + 0.1), "rgba(143, 197, 239, 0.8)", 1.03);
+          tl.fromTo("#c05-sancao", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-enter" }, 0.6);
+          // Trilha do rito: Câmara e Senado concluídos, promulgação pendente, Diário Oficial a seguir.
+          BT.tracar(tl, "#c05-trilha", 467, 0.5, 0.8);
+          ["#c05-m1", "#c05-m2", "#c05-m3", "#c05-m4"].forEach((m, i) => tl.fromTo(m, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, ease: "bt-overshoot" }, 0.6 + i * 0.22));
+          ["#c05-r1", "#c05-r2", "#c05-r3", "#c05-r4"].forEach((r, i) => tl.fromTo(r, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 0.7 + i * 0.22));
+          tl.fromTo("#c05-pendente", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.1);
+          // "Sanção": a etapa não existe na emenda, é riscada e se desfaz.
+          BT.tracar(tl, "#c05-risco", 605, T.k.sancao, 0.3, "power2.out");
+          tl.to("#c05-sancao-rot", { opacity: 0.45, duration: 0.3 }, T.k.sancao + 0.25);
+          tl.to(["#c05-sancao", "#c05-risco"], { opacity: 0, y: -12, duration: 0.45, ease: "bt-exit" }, T.k.presidente + 0.6);
+          // "Quem promulga é o próprio Congresso": a promulgação pulsa e ganha o rótulo.
+          tl.fromTo("#c05-m3-halo", { scale: 0.6, opacity: 0, transformOrigin: "617px 1000px" }, { scale: 1.25, opacity: 1, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, T.k.promulga);
+          BT.realce(tl, "#c05-r3", T.k.promulga, "rgba(143, 197, 239, 0.95)", 1.08);
+          tl.fromTo("#c05-pelo", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, T.k.congresso);
+          window.__timelines["c05-rito"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

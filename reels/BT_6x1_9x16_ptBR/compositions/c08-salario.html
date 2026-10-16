@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+        #root { position: absolute; inset: 0; overflow: hidden; background: #faf8f4; font-family: "Montserrat", Arial, sans-serif; }
+        #c08-fundo { position: absolute; inset: 0;
+          background: radial-gradient(circle at 540px 860px, rgba(143, 197, 239, 0.3) 0%, rgba(143, 197, 239, 0) 46%),
+            linear-gradient(to right, rgba(11, 31, 75, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(11, 31, 75, 0.035) 1px, transparent 1px);
+          background-size: 100% 100%, 8px 8px, 8px 8px; }
+        #c08-a { position: absolute; inset: 0; }
+        #c08-esq { position: absolute; left: 96px; top: 330px; font-size: 36px; font-weight: 600; letter-spacing: 0.12em; color: #214d8c; }
+        #c08-prazo { position: absolute; left: 400px; top: 276px; width: 500px; text-align: right; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+          font-size: 112px; line-height: 1; color: #0b1f4b; font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; transform-origin: 100% 60%; }
+        #c08-desenho { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        #c08-num { position: absolute; left: 230px; top: 735px; width: 300px; height: 250px; overflow: hidden; }
+        #c08-trilho { position: absolute; left: 0; top: 0; width: 300px; }
+        #c08-trilho span { display: block; height: 250px; text-align: center; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 230px;
+          line-height: 250px; color: #0b1f4b; font-variant-numeric: lining-nums tabular-nums; font-feature-settings: "lnum" 1, "tnum" 1; }
+        #c08-h { position: absolute; left: 352px; top: 975px; width: 60px; text-align: center; font-size: 48px; font-weight: 600; color: #214d8c; }
+        #c08-b { position: absolute; inset: 0; }
+        #c08-titulo { position: absolute; left: 96px; top: 300px; width: 820px; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+          font-size: 112px; line-height: 1.05; letter-spacing: -0.015em; color: #0b1f4b; transform-origin: 0% 50%; }
+        .c08-barra { position: absolute; bottom: 780px; width: 190px; height: 440px; border-radius: 16px 16px 0 0; transform-origin: 50% 100%; }
+        #c08-horas { left: 150px; background: #0b1f4b; }
+        #c08-bsal { left: 560px; background: #8fc5ef; }
+        #c08-base { position: absolute; left: 96px; top: 1140px; width: 804px; height: 4px; background: #0b1f4b; }
+        .c08-rot { position: absolute; top: 1160px; width: 290px; text-align: center; font-size: 36px; font-weight: 600; letter-spacing: 0.06em; color: #0b1f4b; }
+        #c08-valor { position: absolute; left: 150px; top: 600px; width: 190px; text-align: center; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+          font-size: 72px; line-height: 1; color: #0b1f4b; font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
+        #c08-mantido { position: absolute; left: 560px; top: 612px; width: 190px; text-align: center; font-size: 40px; font-weight: 500; color: #214d8c; }
+      </style>
+
+      <div id="root" data-composition-id="c08-salario" data-width="1080" data-height="1920">
+        <div id="c08-fundo"></div>
+        <div id="c08-a">
+          <div id="c08-esq">PRIMEIRA ETAPA</div>
+          <div id="c08-prazo">+12 meses</div>
+          <svg id="c08-desenho" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="110" y1="440" x2="890" y2="440" stroke="#0b1f4b" stroke-opacity="0.14" stroke-width="6" stroke-linecap="round" />
+            <path id="c08-linha" d="M110 440 H890" stroke="#0b1f4b" stroke-width="6" stroke-linecap="round" fill="none" />
+            <circle id="c08-marcador" cx="110" cy="440" r="14" fill="#d4af7c" stroke="#0b1f4b" stroke-width="3" />
+            <circle cx="380" cy="860" r="240" fill="none" stroke="#0b1f4b" stroke-opacity="0.08" stroke-width="30" />
+            <circle id="c08-arco" cx="380" cy="860" r="240" fill="none" stroke="#0b1f4b" stroke-width="30" stroke-linecap="round" transform="rotate(-90 380 860)" />
+          </svg>
+          <div id="c08-num"><div id="c08-trilho" data-layout-allow-overflow data-layout-allow-occlusion><span>42</span><span>40</span></div></div>
+          <div id="c08-h">h</div>
+        </div>
+        <div id="c08-b">
+          <div id="c08-titulo">Sem redução de salário.</div>
+          <svg style="position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible" viewBox="0 0 1080 1920" aria-hidden="true">
+            <path id="c08-sublinhado" d="M96 545 H520" stroke="#d4af7c" stroke-width="10" stroke-linecap="round" fill="none" />
+            <path id="c08-nivel" d="M540 700 H770" stroke="#d4af7c" stroke-width="6" stroke-linecap="round" fill="none" />
+          </svg>
+          <div id="c08-horas" class="c08-barra"></div>
+          <div id="c08-bsal" class="c08-barra"></div>
+          <div id="c08-base"></div>
+          <div class="c08-rot" style="left: 100px">HORAS</div>
+          <div class="c08-rot" style="left: 510px">SALÁRIO</div>
+          <div id="c08-valor">44 h</div>
+          <div id="c08-mantido">mantido</div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const T = (window.BT_T && window.BT_T.c08) || { dur: 5.3, k: { doze: 0.25, quarenta: 2.55, sem: 3.85, salario: 4.71 } };
+          const tl = gsap.timeline({ paused: true });
+          const C = 2 * Math.PI * 240;
+          const S = T.k.sem;
+          // Etapa A: +12 meses e o relógio de 42 para 40.
+          tl.fromTo("#c08-esq", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 0);
+          tl.fromTo("#c08-prazo", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.45, ease: "bt-emphasized" }, T.k.doze);
+          BT.realce(tl, "#c08-prazo", T.k.doze + 0.15, "rgba(212, 175, 124, 0.95)", 1.08);
+          BT.tracar(tl, "#c08-linha", 780, T.k.doze, 1.0);
+          tl.fromTo("#c08-marcador", { x: 0 }, { x: 780, duration: 1.0, ease: "bt-standard" }, T.k.doze);
+          tl.fromTo(["#c08-num", "#c08-h"], { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-emphasized" }, 0.35);
+          tl.fromTo("#c08-arco", { strokeDasharray: C, strokeDashoffset: C }, { strokeDashoffset: C * (2 / 44), duration: 0.9, ease: "bt-standard" }, 0.35);
+          tl.to("#c08-trilho", { y: -250, duration: 0.3, ease: "bt-standard" }, T.k.quarenta);
+          tl.to("#c08-arco", { strokeDashoffset: C * (4 / 44), duration: 0.5, ease: "bt-standard" }, T.k.quarenta);
+          BT.realce(tl, "#c08-num", T.k.quarenta + 0.1, "rgba(212, 175, 124, 0.95)", 1.08);
+          // Etapa B: "Sem redução de salário", destaque principal, com as barras lado a lado.
+          tl.to("#c08-a", { opacity: 0, y: -40, duration: 0.4, ease: "bt-exit" }, S - 0.25);
+          tl.fromTo("#c08-titulo", { opacity: 0, y: 48, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: "bt-emphasized" }, S - 0.05);
+          BT.realce(tl, "#c08-titulo", S + 0.25, "rgba(212, 175, 124, 0.95)", 1.06);
+          tl.fromTo(["#c08-horas", "#c08-bsal"], { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "bt-enter", stagger: 0.08 }, S + 0.05);
+          tl.fromTo(["#c08-base", ".c08-rot"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, S + 0.05);
+          tl.fromTo("#c08-valor", { opacity: 0 }, { opacity: 1, duration: 0.3 }, S + 0.2);
+          // A barra de horas desce em dois degraus; a de salário fica igual, com a linha Gold de nível.
+          tl.to("#c08-horas", { scaleY: 42 / 44, duration: 0.3, ease: "bt-standard" }, S + 0.6);
+          tl.set("#c08-valor", { textContent: "42 h" }, S + 0.6);
+          tl.to("#c08-valor", { y: 20, duration: 0.3, ease: "bt-standard" }, S + 0.6);
+          tl.to("#c08-horas", { scaleY: 40 / 44, duration: 0.3, ease: "bt-standard" }, S + 0.95);
+          tl.set("#c08-valor", { textContent: "40 h" }, S + 0.95);
+          tl.to("#c08-valor", { y: 40, duration: 0.3, ease: "bt-standard" }, S + 0.95);
+          BT.tracar(tl, "#c08-nivel", 230, T.k.salario - 0.2, 0.45);
+          BT.tracar(tl, "#c08-sublinhado", 424, T.k.salario, 0.55);
+          tl.fromTo("#c08-mantido", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, T.k.salario);
+          window.__timelines["c08-salario"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

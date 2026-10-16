@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+        #root { position: absolute; inset: 0; overflow: hidden; background: #faf8f4; font-family: "Montserrat", Arial, sans-serif; }
+        #c10-esq { position: absolute; left: 0; top: 0; width: 540px; height: 1190px; background: radial-gradient(circle at 270px 760px, #214d8c 0%, #0b1f4b 58%, #081a35 100%); }
+        #c10-dir { position: absolute; left: 540px; top: 0; width: 540px; height: 1190px; background: #f4ede2; }
+        #c10-faixa { position: absolute; left: 0; top: 1190px; width: 1080px; height: 730px; background: #faf8f4; }
+        #c10-desenho { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        .c10-titulo { position: absolute; top: 300px; width: 440px; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 100px; line-height: 1; }
+        #c10-t1 { left: 96px; color: #faf8f4; }
+        #c10-t2 { left: 586px; color: #0b1f4b; }
+        .c10-pessoa { position: absolute; top: 700px; width: 110px; height: 189px; }
+        .c10-pessoa svg { width: 110px; height: 189px; display: block; }
+        #c10-prancheta { position: absolute; left: 250px; top: 690px; width: 210px; height: 260px; border-radius: 14px; border: 5px solid #faf8f4; }
+        .c10-linha { position: absolute; left: 22px; width: 156px; height: 44px; border-radius: 8px; }
+        #c10-calendario { position: absolute; left: 730px; top: 690px; width: 150px; height: 150px; overflow: visible; }
+        #c10-relogio { position: absolute; left: 760px; top: 870px; width: 100px; height: 100px; overflow: visible; }
+        .c10-rot { position: absolute; top: 1010px; width: 400px; font-size: 44px; font-weight: 600; line-height: 1.15; }
+        #c10-r1 { left: 96px; color: #8fc5ef; }
+        #c10-r2 { left: 586px; color: #214d8c; }
+      </style>
+
+      <div id="root" data-composition-id="c10-dois-lados" data-width="1080" data-height="1920">
+        <div id="c10-esq"></div>
+        <div id="c10-dir"></div>
+        <div id="c10-faixa"></div>
+        <svg id="c10-desenho" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path id="c10-divisa" d="M540 250 V1170" stroke="#d4af7c" stroke-width="4" stroke-linecap="round" fill="none" />
+        </svg>
+        <div id="c10-t1" class="c10-titulo">Quem contrata</div>
+        <div id="c10-t2" class="c10-titulo">Quem trabalha</div>
+
+        <div id="c10-p1" class="c10-pessoa" style="left: 110px"></div>
+        <div id="c10-prancheta">
+          <div id="c10-l1" class="c10-linha" style="top: 30px; background: #8fc5ef"></div>
+          <div id="c10-l2" class="c10-linha" style="top: 100px; background: rgba(250, 248, 244, 0.85)"></div>
+          <div id="c10-l3" class="c10-linha" style="top: 170px; background: rgba(250, 248, 244, 0.45)"></div>
+        </div>
+
+        <div id="c10-p2" class="c10-pessoa" style="left: 596px"></div>
+        <svg id="c10-calendario" viewBox="0 0 150 150" aria-hidden="true">
+          <rect x="6" y="18" width="138" height="126" rx="14" fill="#faf8f4" stroke="#0b1f4b" stroke-width="5" />
+          <path d="M6 52 H144" stroke="#0b1f4b" stroke-width="5" /><path d="M42 6 V30 M108 6 V30" stroke="#0b1f4b" stroke-width="6" stroke-linecap="round" />
+          <g id="c10-dias" fill="#0b1f4b"><rect x="24" y="68" width="24" height="24" rx="5" /><rect x="63" y="68" width="24" height="24" rx="5" /><rect x="102" y="68" width="24" height="24" rx="5" fill="#8fc5ef" />
+            <rect x="24" y="104" width="24" height="24" rx="5" /><rect x="63" y="104" width="24" height="24" rx="5" fill="#8fc5ef" /><rect x="102" y="104" width="24" height="24" rx="5" /></g>
+        </svg>
+        <svg id="c10-relogio" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="44" fill="#faf8f4" stroke="#0b1f4b" stroke-width="5" />
+          <path id="c10-ponteiro" d="M50 50 V20" stroke="#0b1f4b" stroke-width="5" stroke-linecap="round" />
+          <path d="M50 50 H70" stroke="#214d8c" stroke-width="5" stroke-linecap="round" />
+        </svg>
+
+        <div id="c10-r1" class="c10-rot"><span id="c10-r1a" style="display: block">Escalas</span><span id="c10-r1b" style="display: block">Contratos</span></div>
+        <div id="c10-r2" class="c10-rot"><span id="c10-r2a" style="display: block">Novos</span><span id="c10-r2b" style="display: block">limites</span></div>
+      </div>
+
+      <script>
+        (function () {
+          const T = (window.BT_T && window.BT_T.c10) || { dur: 6.84, k: { contrata: 0.53, rever: 1.73, trabalha: 4.15, conhecer: 5.01, limites: 6.05 } };
+          const tl = gsap.timeline({ paused: true });
+          document.getElementById("c10-p1").innerHTML = BT.picto("c10-f1", "#faf8f4", "cracha", { fundo: "#0b1f4b" });
+          document.getElementById("c10-p2").innerHTML = BT.picto("c10-f2", "#0b1f4b", "mochila", { fundo: "#f4ede2" });
+          // Os dois lados entram em espelho, com o mesmo tempo; nenhum ganha mais destaque.
+          tl.fromTo("#c10-esq", { x: -540 }, { x: 0, duration: 0.55, ease: "bt-emphasized" }, 0);
+          tl.fromTo("#c10-dir", { x: 540 }, { x: 0, duration: 0.55, ease: "bt-emphasized" }, 0);
+          BT.tracar(tl, "#c10-divisa", 920, 0.2, 0.8);
+          tl.fromTo(["#c10-t1", "#c10-t2"], { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-emphasized" }, 0.25);
+          tl.fromTo(["#c10-p1", "#c10-p2"], { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-enter" }, 0.4);
+          tl.fromTo(["#c10-prancheta", "#c10-calendario"], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-enter" }, 0.55);
+          tl.fromTo("#c10-relogio", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-enter" }, 0.65);
+          BT.realce(tl, "#c10-t1", T.k.contrata, "rgba(143, 197, 239, 0.9)", 1.05);
+          // Quem contrata: os cartões da escala trocam de lugar na palavra "rever".
+          tl.fromTo("#c10-l1", { y: 0 }, { y: 140, duration: 0.45, ease: "bt-standard" }, T.k.rever);
+          tl.fromTo("#c10-l3", { y: 0 }, { y: -140, duration: 0.45, ease: "bt-standard" }, T.k.rever);
+          tl.fromTo("#c10-r1a", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T.k.rever);
+          tl.fromTo("#c10-r1b", { opacity: 0 }, { opacity: 1, duration: 0.4 }, T.k.rever + 0.75);
+          BT.realce(tl, "#c10-r1", T.k.rever + 0.8, "rgba(143, 197, 239, 0.9)", 1.05);
+          // Quem trabalha: o relógio anda e o calendário destaca os novos limites.
+          BT.realce(tl, "#c10-t2", T.k.trabalha, "rgba(212, 175, 124, 0.9)", 1.05);
+          tl.fromTo("#c10-ponteiro", { rotation: 0, svgOrigin: "50 50" }, { rotation: 300, svgOrigin: "50 50", duration: 1.2, ease: "bt-standard" }, T.k.conhecer);
+          BT.realce(tl, "#c10-calendario", T.k.conhecer + 0.2, "rgba(143, 197, 239, 0.9)", 1.06);
+          tl.fromTo(["#c10-r2a", "#c10-r2b"], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter", stagger: 0.1 }, T.k.limites - 0.3);
+          BT.realce(tl, "#c10-r2", T.k.limites, "rgba(212, 175, 124, 0.95)", 1.07);
+          window.__timelines["c10-dois-lados"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

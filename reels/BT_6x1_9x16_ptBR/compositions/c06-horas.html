@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+        #root { position: absolute; inset: 0; overflow: hidden; background: #faf8f4; font-family: "Montserrat", Arial, sans-serif; }
+        #c06-fundo { position: absolute; inset: 0;
+          background: radial-gradient(circle at 380px 860px, rgba(143, 197, 239, 0.32) 0%, rgba(143, 197, 239, 0) 40%),
+            linear-gradient(to right, rgba(11, 31, 75, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(11, 31, 75, 0.035) 1px, transparent 1px);
+          background-size: 100% 100%, 8px 8px, 8px 8px; }
+        #c06-esq { position: absolute; left: 96px; top: 330px; font-size: 36px; font-weight: 600; letter-spacing: 0.12em; color: #214d8c; }
+        #c06-prazo { position: absolute; left: 500px; top: 276px; width: 400px; text-align: right; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
+          font-size: 112px; line-height: 1; color: #0b1f4b; font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; transform-origin: 100% 60%; }
+        #c06-desenho { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        #c06-meta { position: absolute; left: 96px; top: 530px; font-size: 36px; font-weight: 600; letter-spacing: 0.12em; color: #214d8c; }
+        #c06-num { position: absolute; left: 230px; top: 735px; width: 300px; height: 250px; overflow: hidden; }
+        #c06-trilho { position: absolute; left: 0; top: 0; width: 300px; }
+        #c06-trilho span { display: block; height: 250px; text-align: center; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; font-size: 230px;
+          line-height: 250px; color: #0b1f4b; font-variant-numeric: lining-nums tabular-nums; font-feature-settings: "lnum" 1, "tnum" 1; }
+        #c06-h { position: absolute; left: 352px; top: 975px; width: 60px; text-align: center; font-size: 48px; font-weight: 600; color: #214d8c; }
+        #c06-blocos { position: absolute; left: 700px; top: 640px; width: 190px; height: 280px; }
+        .c06-b { position: absolute; width: 40px; height: 18px; border-radius: 4px; background: #0b1f4b; }
+        #c06-blocos-rot { position: absolute; left: 700px; top: 935px; width: 190px; text-align: center; font-size: 36px; font-weight: 600; letter-spacing: 0.04em; color: #0b1f4b; }
+      </style>
+
+      <div id="root" data-composition-id="c06-horas" data-width="1080" data-height="1920">
+        <div id="c06-fundo"></div>
+        <div id="c06-esq">PROMULGAÇÃO</div>
+        <div id="c06-prazo">+60 dias</div>
+        <svg id="c06-desenho" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="110" y1="440" x2="890" y2="440" stroke="#0b1f4b" stroke-opacity="0.14" stroke-width="6" stroke-linecap="round" />
+          <path id="c06-linha" d="M110 440 H890" stroke="#0b1f4b" stroke-width="6" stroke-linecap="round" fill="none" />
+          <circle id="c06-marcador" cx="110" cy="440" r="14" fill="#d4af7c" stroke="#0b1f4b" stroke-width="3" />
+          <circle cx="380" cy="860" r="240" fill="none" stroke="#0b1f4b" stroke-opacity="0.08" stroke-width="30" />
+          <circle id="c06-arco" cx="380" cy="860" r="240" fill="none" stroke="#0b1f4b" stroke-width="30" stroke-linecap="round" transform="rotate(-90 380 860)" />
+        </svg>
+        <div id="c06-meta">JORNADA MÁXIMA</div>
+        <div id="c06-num"><div id="c06-trilho" data-layout-allow-overflow data-layout-allow-occlusion data-layout-allow-overlap><span>44</span><span>42</span></div></div>
+        <div id="c06-h">h</div>
+        <div id="c06-blocos"></div>
+        <div id="c06-blocos-rot">HORAS</div>
+      </div>
+
+      <script>
+        (function () {
+          const T = (window.BT_T && window.BT_T.c06) || { dur: 5.48, k: { sessenta: 0.25, depois: 0.93, quarenta: 2.97, duas: 4.63, semana: 5.35 } };
+          const tl = gsap.timeline({ paused: true });
+          // Pilha de 44 blocos, uma hora cada: 4 colunas por 11 fileiras.
+          const caixa = document.getElementById("c06-blocos");
+          let html = "";
+          for (let i = 0; i < 44; i++) {
+            const col = i % 4;
+            const lin = 10 - Math.floor(i / 4);
+            html += `<div id="c06-b${i}" class="c06-b" style="left:${col * 50}px;top:${lin * 25}px"></div>`;
+          }
+          caixa.innerHTML = html;
+          const C = 2 * Math.PI * 240;
+          tl.fromTo("#c06-esq", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 0);
+          tl.fromTo("#c06-prazo", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.45, ease: "bt-emphasized" }, T.k.sessenta);
+          BT.realce(tl, "#c06-prazo", T.k.sessenta + 0.15, "rgba(212, 175, 124, 0.95)", 1.08);
+          BT.tracar(tl, "#c06-linha", 780, T.k.sessenta, Math.max(0.8, T.k.depois + 0.4 - T.k.sessenta));
+          tl.fromTo("#c06-marcador", { x: 0 }, { x: 780, duration: Math.max(0.8, T.k.depois + 0.4 - T.k.sessenta), ease: "bt-standard" }, T.k.sessenta);
+          // Relógio de jornada: o arco se desenha cheio em 44 h.
+          tl.fromTo(["#c06-meta", "#c06-num", "#c06-h"], { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-emphasized", stagger: 0.08 }, 0.5);
+          tl.fromTo("#c06-arco", { strokeDasharray: C, strokeDashoffset: C }, { strokeDashoffset: 0, duration: 0.9, ease: "bt-standard" }, 0.5);
+          const blocos = Array.from({ length: 44 }, (_, i) => "#c06-b" + i);
+          tl.fromTo(blocos, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "bt-enter", stagger: 0.012 }, 0.8);
+          tl.fromTo("#c06-blocos-rot", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.2);
+          BT.realce(tl, "#c06-num", T.k.quarenta, "rgba(143, 197, 239, 0.9)", 1.05);
+          // "Quarenta e duas": o número rola como contador mecânico, o arco encolhe e duas horas saem flutuando.
+          tl.to("#c06-trilho", { y: -250, duration: 0.3, ease: "bt-standard" }, T.k.duas);
+          tl.to("#c06-arco", { strokeDashoffset: C * (2 / 44), duration: 0.5, ease: "bt-standard" }, T.k.duas);
+          BT.realce(tl, "#c06-num", T.k.duas + 0.1, "rgba(212, 175, 124, 0.95)", 1.08);
+          ["#c06-b43", "#c06-b42"].forEach((b, i) => tl.to(b, { y: -110 - i * 30, x: 30 + i * 20, opacity: 0, duration: 0.8, ease: "power2.out" }, T.k.duas + i * 0.08));
+          window.__timelines["c06-horas"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

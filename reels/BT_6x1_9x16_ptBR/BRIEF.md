@@ -20,10 +20,10 @@ Fonte do pedido: prompt de produção "Fim da escala 6x1" enviado pelo escritór
 
 ## Assets
 
-- assets/fotos/foto-06-camara.jpg — foto 6 do envio (Câmara, plenário com painel), cena 3. Uso confirmado pelo escritório. Crédito pendente.
-- assets/fotos/foto-08-senado.jpg — foto 8 do envio (Senado, plenário visto do alto), cena 4. Uso confirmado pelo escritório. Crédito pendente.
-- assets/brand/Logo_BT_Original_Transparente.png — PNG branco transparente, 391 x 193 px, do branch ccr-3f2a1194-6op9j2 do Marketing-Skills. Uso na assinatura entendido como aprovado na resposta 6; aguarda confirmação expressa.
-- assets/fonts/ — Cormorant Garamond 500 e 600 e Montserrat 400, 500 e 600, @fontsource 5.3.0, SIL Open Font License 1.1 (LICENSE ao lado).
+- assets/fotos/foto-06-camara.jpg, foto 6 do envio (Câmara, plenário com painel), cena 3. Uso confirmado pelo escritório. Crédito pendente.
+- assets/fotos/foto-08-senado.jpg, foto 8 do envio (Senado, plenário visto do alto), cena 4. Uso confirmado pelo escritório. Crédito pendente.
+- assets/brand/Logo_BT_Original_Transparente.png, PNG branco transparente, 391 x 193 px, do branch ccr-3f2a1194-6op9j2 do Marketing-Skills. Uso na assinatura entendido como aprovado na resposta 6; aguarda confirmação expressa.
+- assets/fonts/, Cormorant Garamond 500 e 600 e Montserrat 400, 500 e 600, @fontsource 5.3.0, SIL Open Font License 1.1 (LICENSE ao lado).
 
 ## Customizations
 
@@ -46,3 +46,11 @@ Decisões do escritório em 15/10/2026, respostas ao plano técnico:
 8. Data de publicação: ciente do período eleitoral.
 
 Limites inegociáveis do prompt (seção 11) valem para tudo: Provimento 205/2021 da OAB, neutralidade política, nenhum dado fora da seção 2, nenhum contato ou crédito inventado, nenhuma imagem de IA de pessoas ou lugares reais, nenhum travessão longo em texto do vídeo, legenda ou relatório.
+
+Rodada de 16/10/2026 (pedido do escritório após os quadros de estilo):
+
+- Direção Visual BT aplicada a partir do modelo v005 (pasta bt-reels-direcao-visual, branch ccr-3f2a1194-6op9j2): paleta Paper, Sand, Midnight para Navy, Navy, Blue, Sky, Gold e Ink; bolinha condutora com rastro de 8 pontos, um movimento por vez; legenda editorial à esquerda na faixa y 1240 a 1460; dissolve de 0,55 s centrado no corte com a cena que sai mantida +0,3 s; desfoque de 18 px para a assinatura; assinatura com logo de 520 px, telefone, Instagram, fio dourado, nota e fonte.
+- Fontes mantidas por escolha expressa do escritório: Cormorant Garamond e Montserrat (o modelo v005 usa Fira Sans Condensed, Piazzolla, Funnel Sans e IBM Plex Mono).
+- Vídeo mais claro: só as cenas 3 e 4 ficam escuras (gradiente 135 graus Midnight para Navy); fotos com cantos arredondados de 40 px e tratamento mais leve.
+- Palavras importantes com realce (cresce, brilha e assenta) e estalo sonoro sintetizado; destaque grave em "Sem redução de salário".
+- Instagram @bispoeteixeiraadvogados e telefone (38) 9 9129-6401 na assinatura, informados pelo escritório.

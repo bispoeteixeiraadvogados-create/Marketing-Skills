@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; pointer-events: none; }
+        #bol-b { position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 15px; background: #8fc5ef; border: 3px solid #0b1f4b;
+          box-sizing: border-box; opacity: 0; }
+        .bol-g { position: absolute; left: 0; top: 0; border-radius: 50%; background: #8fc5ef; opacity: 0; }
+      </style>
+      <div id="root" data-composition-id="c00-bolinha" data-width="1080" data-height="1920" data-layout-ignore>
+        <i id="bol-g0" class="bol-g"></i><i id="bol-g1" class="bol-g"></i><i id="bol-g2" class="bol-g"></i><i id="bol-g3" class="bol-g"></i>
+        <i id="bol-g4" class="bol-g"></i><i id="bol-g5" class="bol-g"></i><i id="bol-g6" class="bol-g"></i><i id="bol-g7" class="bol-g"></i>
+        <div id="bol-b"></div>
+      </div>
+      <script>
+        (function () {
+          // Bolinha condutora, receita do modelo v005 (bt-reels-direcao-visual/references/bolinha.md):
+          // um único trajeto, cada movimento começa quando o anterior termina; x com sine.inOut e
+          // y com power2.inOut desenham arcos; nas trocas de cena, arco amplo por um ponto afastado.
+          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+          const R = vars.reducedMotion === true;
+          const pontos = (window.BT_T && window.BT_T.bolinha) || [];
+          const DUR = (window.BT_T && window.BT_T.duracao) || 59.98;
+          const tl = gsap.timeline({ paused: true });
+          if (R || !pontos.length) {
+            // Movimento reduzido: a bolinha não aparece.
+            window.__timelines["c00-bolinha"] = tl;
+            return;
+          }
+          let busy = 0;
+          let atual = null;
+          let visivel = false;
+          const move = (t, p, d) => {
+            const s0 = Math.max(t, busy);
+            tl.to("#bol-b", { x: p.x, duration: d, ease: "sine.inOut" }, s0);
+            tl.to("#bol-b", { y: p.y, duration: d, ease: "power2.inOut" }, s0);
+            busy = s0 + d;
+          };
+          const swoop = (t, via, p, d) => {
+            move(t, via, d * 0.45);
+            move(busy, p, d * 0.55);
+          };
+          const p0 = pontos[0];
+          tl.set("#bol-b", { xPercent: -50, yPercent: -50, x: 1000, y: 1180, opacity: 0, scale: 1 }, 0);
+          tl.to("#bol-b", { opacity: 1, duration: 0.3, ease: "bt-standard" }, 0.2);
+          atual = { x: 1000, y: 1180 };
+          visivel = true;
+          pontos.forEach((p) => {
+            if (p.a === "some") {
+              // Entra na palavra protagonista e some (escala 0 em 0,18 s).
+              if (visivel) {
+                const t0 = Math.max(p.t, busy);
+                tl.to("#bol-b", { scale: 0, duration: 0.18, ease: "bt-exit" }, t0);
+                busy = t0 + 0.18;
+              }
+              visivel = false;
+              return;
+            }
+            if (!visivel) {
+              // Renasce no alvo da cena seguinte.
+              const t0 = Math.max(p.t - 0.3, busy);
+              tl.set("#bol-b", { x: p.x, y: p.y }, t0);
+              tl.to("#bol-b", { scale: 1, duration: 0.3, ease: "bt-enter" }, t0);
+              busy = t0 + 0.3;
+              visivel = true;
+              atual = p;
+              return;
+            }
+            if (atual.x === p.x && atual.y === p.y) return;
+            const dist = Math.hypot(p.x - atual.x, p.y - atual.y);
+            if (p.troca) {
+              const d = 1.05;
+              const via = { x: Math.round((atual.x + p.x) / 2 + (p.x >= atual.x ? 160 : -160)), y: Math.max(300, Math.min(atual.y, p.y) - 240) };
+              swoop(p.t - d, via, p, d);
+            } else {
+              // Duração pela distância (0,4 a 0,9 s); se a fala aperta, encurta até 0,35 s para chegar junto.
+              const natural = Math.max(0.4, Math.min(0.9, 0.35 + dist / 1400));
+              const d = Math.max(0.35, Math.min(natural, p.t - busy));
+              move(p.t - d, p, d);
+            }
+            atual = p;
+          });
+
+          // Rastro: o caminho é amostrado a 60 fps depois de montado; um tween de relógio desenha o rastro.
+          const FPS = 60;
+          const xs = [], ys = [], os = [];
+          for (let f = 0; f <= DUR * FPS; f++) {
+            tl.seek(f / FPS, true);
+            xs.push(gsap.getProperty("#bol-b", "x"));
+            ys.push(gsap.getProperty("#bol-b", "y"));
+            os.push(gsap.getProperty("#bol-b", "opacity") * gsap.getProperty("#bol-b", "scale"));
+          }
+          tl.seek(0, true);
+          const at = (arr, t) => arr[Math.max(0, Math.min(arr.length - 1, Math.round(t * FPS)))];
+          const ghosts = [];
+          for (let k = 0; k < 8; k++) {
+            const el = document.getElementById("bol-g" + k);
+            const size = 22 - k * 2;
+            gsap.set(el, { width: size, height: size, xPercent: -50, yPercent: -50 });
+            ghosts.push({ el, lag: (k + 1) * 0.03, a: 0.42 - k * 0.045 });
+          }
+          const clock = { t: 0 };
+          tl.fromTo(clock, { t: 0 }, {
+            t: DUR, duration: DUR, ease: "none",
+            onUpdate: () => {
+              const now = clock.t;
+              const cx = at(xs, now), cy = at(ys, now);
+              for (const g of ghosts) {
+                const tt = now - g.lag;
+                const gx = at(xs, tt), gy = at(ys, tt);
+                const moving = Math.min(1, Math.hypot(cx - gx, cy - gy) / 24);
+                gsap.set(g.el, { x: gx, y: gy, opacity: g.a * moving * at(os, tt) });
+              }
+            },
+          }, 0);
+          window.__timelines["c00-bolinha"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

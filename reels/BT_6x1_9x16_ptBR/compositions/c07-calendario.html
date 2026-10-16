@@ -44,7 +44,7 @@
           font-variant-numeric: lining-nums;
           font-feature-settings: "lnum" 1;
         }
-        #c07-calendario {
+        #c07-cal {
           position: absolute;
           left: 96px;
           top: 600px;
@@ -99,13 +99,13 @@
         <div id="c07-grade"></div>
 
         <div id="c07-escala">
-          <div id="c07-trilho" data-layout-allow-overflow data-layout-allow-occlusion>
+          <div id="c07-trilho" data-layout-allow-overflow data-layout-allow-occlusion data-layout-allow-overlap>
             <span class="c07-rot" data-layout-allow-occlusion>6 x 1</span>
             <span class="c07-rot" data-layout-allow-occlusion>5 x 2</span>
           </div>
         </div>
 
-        <div id="c07-calendario"></div>
+        <div id="c07-cal"></div>
         <svg id="c07-desenho" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <mask id="c07-mascara-corte" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
@@ -143,32 +143,31 @@
             <circle cx="86" cy="55" r="6" fill="#faf8f4" stroke="#0b1f4b" stroke-width="3" />
           </svg>
         </div>
-
-        <div id="c07-legenda" class="legenda clara"><span class="ln">E o descanso passa</span><span class="ln">a ser de <span id="c07-w2">2</span> dias.</span></div>
       </div>
 
       <script>
         (function () {
+          const T = (window.BT_T && window.BT_T.c07) || { dur: 3.1, k: { descanso: 0.81, dois: 2.05 } };
+          const D = T.k.dois;
           const tl = gsap.timeline({ paused: true });
           const pastas = ["#c07-d0", "#c07-d1", "#c07-d2", "#c07-d3", "#c07-d4", "#c07-d5", "#c07-d6"];
-          // Entrada do calendário como objeto: desloca 24 px e assenta, sem rebote.
-          tl.fromTo(["#c07-calendario", "#c07-desenho"], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 0);
-          tl.fromTo(pastas, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter", stagger: 0.04 }, 0.05);
-          tl.fromTo("#c07-escala", { opacity: 0, y: 48 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-emphasized" }, 0);
-          tl.fromTo("#c07-legenda", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0);
-          // Linha de corte desenhada em volta do quarto cartão, com a tesoura percorrendo a borda superior.
-          tl.fromTo("#c07-corte-revela", { strokeDasharray: 820, strokeDashoffset: 820 }, { strokeDashoffset: 0, duration: 0.5, ease: "bt-standard" }, 0.35);
-          tl.fromTo("#c07-tesoura", { opacity: 0, x: 140, y: 40 }, { opacity: 1, x: -110, y: 40, duration: 0.5, ease: "bt-standard" }, 0.35);
-          // Na palavra "dois": o cartão se solta, vira folga e a escala rola de 6 x 1 para 5 x 2.
-          tl.to("#c07-tesoura", { x: 40, y: -60, opacity: 0, duration: 0.4, ease: "bt-exit" }, 1.35);
-          tl.fromTo("#c07-d3", { y: 0, scale: 1, backgroundColor: "#0b1f4b" }, { y: -40, scale: 1.03, backgroundColor: "#8fc5ef", duration: 0.4, ease: "bt-enter" }, 0.9);
-          tl.fromTo("#c07-d3-pasta", { opacity: 1 }, { opacity: 0, duration: 0.2 }, 0.9);
-          tl.fromTo("#c07-d3-sol", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.95);
-          tl.fromTo("#c07-trilho", { y: 0 }, { y: -250, duration: 0.3, ease: "bt-standard" }, 0.9);
-          tl.fromTo("#c07-w2", { color: "#faf8f4" }, { color: "#d4af7c", duration: 0.1 }, 0.9);
-          // O cartão volta ao lugar já como folga; a linha de corte some.
-          tl.to("#c07-d3", { y: 0, scale: 1, duration: 0.4, ease: "bt-standard" }, 1.8);
-          tl.to("#c07-corte", { opacity: 0, duration: 0.3 }, 1.8);
+          // Calendário como objeto: desloca e assenta, sem rebote; o rótulo 6 x 1 já está no quadro.
+          tl.fromTo(["#c07-cal", "#c07-desenho"], { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-enter" }, 0);
+          tl.fromTo(pastas, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter", stagger: 0.04 }, 0.08);
+          tl.fromTo("#c07-escala", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "bt-emphasized" }, 0);
+          BT.realce(tl, "#c07-d6", T.k.descanso, "rgba(143, 197, 239, 0.95)", 1.05);
+          // Linha de corte em volta do quarto cartão, com a tesoura percorrendo a borda superior.
+          tl.fromTo("#c07-corte-revela", { strokeDasharray: 820, strokeDashoffset: 820 }, { strokeDashoffset: 0, duration: 0.55, ease: "bt-standard" }, D - 0.65);
+          tl.fromTo("#c07-tesoura", { opacity: 0, x: 140, y: 40 }, { opacity: 1, x: -110, y: 40, duration: 0.55, ease: "bt-standard" }, D - 0.65);
+          // Na palavra "dois": o cartão se solta e vira folga, a escala rola de 6 x 1 para 5 x 2.
+          tl.fromTo("#c07-d3", { y: 0, scale: 1, backgroundColor: "#0b1f4b" }, { y: -40, scale: 1.03, backgroundColor: "#8fc5ef", duration: 0.4, ease: "bt-enter" }, D);
+          tl.fromTo("#c07-d3-pasta", { opacity: 1 }, { opacity: 0, duration: 0.2 }, D);
+          tl.fromTo("#c07-d3-sol", { opacity: 0 }, { opacity: 1, duration: 0.2 }, D + 0.05);
+          tl.fromTo("#c07-trilho", { y: 0 }, { y: -250, duration: 0.3, ease: "bt-standard" }, D);
+          BT.realce(tl, "#c07-escala", D + 0.3, "rgba(212, 175, 124, 0.95)", 1.06);
+          tl.to("#c07-tesoura", { x: 40, y: -60, opacity: 0, duration: 0.4, ease: "bt-exit" }, D + 0.15);
+          tl.to("#c07-d3", { y: 0, scale: 1, duration: 0.4, ease: "bt-standard" }, D + 0.6);
+          tl.to("#c07-corte", { opacity: 0, duration: 0.3 }, D + 0.6);
           window.__timelines["c07-calendario"] = tl;
         })();
       </script>

@@ -1,0 +1,1076 @@
+{
+ "palavras": [
+  {
+   "frase": 1,
+   "texto": "Seis",
+   "chave": "seis",
+   "inicio": 0.0,
+   "fim": 0.44
+  },
+  {
+   "frase": 1,
+   "texto": "dias",
+   "chave": "dias",
+   "inicio": 0.44,
+   "fim": 0.66
+  },
+  {
+   "frase": 1,
+   "texto": "de",
+   "chave": "de",
+   "inicio": 0.66,
+   "fim": 0.86
+  },
+  {
+   "frase": 1,
+   "texto": "trabalho.",
+   "chave": "trabalho",
+   "inicio": 0.86,
+   "fim": 1.24
+  },
+  {
+   "frase": 1,
+   "texto": "Um",
+   "chave": "um",
+   "inicio": 1.62,
+   "fim": 1.9
+  },
+  {
+   "frase": 1,
+   "texto": "de",
+   "chave": "de",
+   "inicio": 1.9,
+   "fim": 2.02
+  },
+  {
+   "frase": 1,
+   "texto": "folga.",
+   "chave": "folga",
+   "inicio": 2.02,
+   "fim": 2.42
+  },
+  {
+   "frase": 2,
+   "texto": "Essa",
+   "chave": "essa",
+   "inicio": 2.88,
+   "fim": 3.26
+  },
+  {
+   "frase": 2,
+   "texto": "é",
+   "chave": "e",
+   "inicio": 3.26,
+   "fim": 3.5
+  },
+  {
+   "frase": 2,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 3.5,
+   "fim": 3.58
+  },
+  {
+   "frase": 2,
+   "texto": "rotina",
+   "chave": "rotina",
+   "inicio": 3.58,
+   "fim": 3.9
+  },
+  {
+   "frase": 2,
+   "texto": "da",
+   "chave": "da",
+   "inicio": 3.9,
+   "fim": 4.04
+  },
+  {
+   "frase": 2,
+   "texto": "escala",
+   "chave": "escala",
+   "inicio": 4.04,
+   "fim": 4.38
+  },
+  {
+   "frase": 2,
+   "texto": "seis",
+   "chave": "seis",
+   "inicio": 4.38,
+   "fim": 4.72
+  },
+  {
+   "frase": 2,
+   "texto": "por",
+   "chave": "por",
+   "inicio": 4.72,
+   "fim": 4.96
+  },
+  {
+   "frase": 2,
+   "texto": "um.",
+   "chave": "um",
+   "inicio": 4.96,
+   "fim": 5.18
+  },
+  {
+   "frase": 2,
+   "texto": "E",
+   "chave": "e",
+   "inicio": 5.64,
+   "fim": 5.7
+  },
+  {
+   "frase": 2,
+   "texto": "ela",
+   "chave": "ela",
+   "inicio": 5.7,
+   "fim": 5.8
+  },
+  {
+   "frase": 2,
+   "texto": "está",
+   "chave": "esta",
+   "inicio": 5.8,
+   "fim": 5.98
+  },
+  {
+   "frase": 2,
+   "texto": "perto",
+   "chave": "perto",
+   "inicio": 5.98,
+   "fim": 6.32
+  },
+  {
+   "frase": 2,
+   "texto": "do",
+   "chave": "do",
+   "inicio": 6.32,
+   "fim": 6.52
+  },
+  {
+   "frase": 2,
+   "texto": "fim.",
+   "chave": "fim",
+   "inicio": 6.52,
+   "fim": 6.74
+  },
+  {
+   "frase": 3,
+   "texto": "Em",
+   "chave": "em",
+   "inicio": 7.3,
+   "fim": 7.46
+  },
+  {
+   "frase": 3,
+   "texto": "maio,",
+   "chave": "maio",
+   "inicio": 7.46,
+   "fim": 7.82
+  },
+  {
+   "frase": 3,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 8.04,
+   "fim": 8.06
+  },
+  {
+   "frase": 3,
+   "texto": "Câmara",
+   "chave": "camara",
+   "inicio": 8.06,
+   "fim": 8.4
+  },
+  {
+   "frase": 3,
+   "texto": "aprovou",
+   "chave": "aprovou",
+   "inicio": 8.4,
+   "fim": 8.98
+  },
+  {
+   "frase": 3,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 8.98,
+   "fim": 9.1
+  },
+  {
+   "frase": 3,
+   "texto": "proposta.",
+   "chave": "proposta",
+   "inicio": 9.1,
+   "fim": 9.6
+  },
+  {
+   "frase": 3,
+   "texto": "Quatrocentos",
+   "chave": "quatrocentos",
+   "inicio": 10.2,
+   "fim": 10.76
+  },
+  {
+   "frase": 3,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 10.76,
+   "fim": 10.9
+  },
+  {
+   "frase": 3,
+   "texto": "sessenta",
+   "chave": "sessenta",
+   "inicio": 10.9,
+   "fim": 11.18
+  },
+  {
+   "frase": 3,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 11.18,
+   "fim": 11.3
+  },
+  {
+   "frase": 3,
+   "texto": "um",
+   "chave": "um",
+   "inicio": 11.3,
+   "fim": 11.4
+  },
+  {
+   "frase": 3,
+   "texto": "votos",
+   "chave": "votos",
+   "inicio": 11.4,
+   "fim": 11.9
+  },
+  {
+   "frase": 3,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 11.9,
+   "fim": 12.08
+  },
+  {
+   "frase": 3,
+   "texto": "dezenove.",
+   "chave": "dezenove",
+   "inicio": 12.08,
+   "fim": 12.66
+  },
+  {
+   "frase": 4,
+   "texto": "Em",
+   "chave": "em",
+   "inicio": 13.14,
+   "fim": 13.3
+  },
+  {
+   "frase": 4,
+   "texto": "outubro,",
+   "chave": "outubro",
+   "inicio": 13.3,
+   "fim": 13.76
+  },
+  {
+   "frase": 4,
+   "texto": "o",
+   "chave": "o",
+   "inicio": 14.02,
+   "fim": 14.06
+  },
+  {
+   "frase": 4,
+   "texto": "Senado",
+   "chave": "senado",
+   "inicio": 14.06,
+   "fim": 14.4
+  },
+  {
+   "frase": 4,
+   "texto": "confirmou.",
+   "chave": "confirmou",
+   "inicio": 14.4,
+   "fim": 14.94
+  },
+  {
+   "frase": 4,
+   "texto": "Setenta",
+   "chave": "setenta",
+   "inicio": 15.32,
+   "fim": 15.7
+  },
+  {
+   "frase": 4,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 15.7,
+   "fim": 15.86
+  },
+  {
+   "frase": 4,
+   "texto": "cinco",
+   "chave": "cinco",
+   "inicio": 15.86,
+   "fim": 16.2
+  },
+  {
+   "frase": 4,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 16.2,
+   "fim": 16.5
+  },
+  {
+   "frase": 4,
+   "texto": "um.",
+   "chave": "um",
+   "inicio": 16.5,
+   "fim": 16.72
+  },
+  {
+   "frase": 5,
+   "texto": "Por",
+   "chave": "por",
+   "inicio": 17.1,
+   "fim": 17.28
+  },
+  {
+   "frase": 5,
+   "texto": "ser",
+   "chave": "ser",
+   "inicio": 17.28,
+   "fim": 17.42
+  },
+  {
+   "frase": 5,
+   "texto": "uma",
+   "chave": "uma",
+   "inicio": 17.42,
+   "fim": 17.58
+  },
+  {
+   "frase": 5,
+   "texto": "emenda",
+   "chave": "emenda",
+   "inicio": 17.58,
+   "fim": 17.9
+  },
+  {
+   "frase": 5,
+   "texto": "à",
+   "chave": "a",
+   "inicio": 17.9,
+   "fim": 18.08
+  },
+  {
+   "frase": 5,
+   "texto": "Constituição,",
+   "chave": "constituicao",
+   "inicio": 18.08,
+   "fim": 18.66
+  },
+  {
+   "frase": 5,
+   "texto": "ela",
+   "chave": "ela",
+   "inicio": 18.94,
+   "fim": 19.08
+  },
+  {
+   "frase": 5,
+   "texto": "não",
+   "chave": "nao",
+   "inicio": 19.08,
+   "fim": 19.34
+  },
+  {
+   "frase": 5,
+   "texto": "vai",
+   "chave": "vai",
+   "inicio": 19.34,
+   "fim": 19.6
+  },
+  {
+   "frase": 5,
+   "texto": "para",
+   "chave": "para",
+   "inicio": 19.6,
+   "fim": 19.78
+  },
+  {
+   "frase": 5,
+   "texto": "sanção",
+   "chave": "sancao",
+   "inicio": 19.78,
+   "fim": 20.12
+  },
+  {
+   "frase": 5,
+   "texto": "do",
+   "chave": "do",
+   "inicio": 20.12,
+   "fim": 20.26
+  },
+  {
+   "frase": 5,
+   "texto": "presidente.",
+   "chave": "presidente",
+   "inicio": 20.26,
+   "fim": 20.62
+  },
+  {
+   "frase": 5,
+   "texto": "Quem",
+   "chave": "quem",
+   "inicio": 21.14,
+   "fim": 21.28
+  },
+  {
+   "frase": 5,
+   "texto": "promulga",
+   "chave": "promulga",
+   "inicio": 21.28,
+   "fim": 21.82
+  },
+  {
+   "frase": 5,
+   "texto": "é",
+   "chave": "e",
+   "inicio": 21.82,
+   "fim": 22.04
+  },
+  {
+   "frase": 5,
+   "texto": "o",
+   "chave": "o",
+   "inicio": 22.04,
+   "fim": 22.16
+  },
+  {
+   "frase": 5,
+   "texto": "próprio",
+   "chave": "proprio",
+   "inicio": 22.16,
+   "fim": 22.44
+  },
+  {
+   "frase": 5,
+   "texto": "Congresso.",
+   "chave": "congresso",
+   "inicio": 22.44,
+   "fim": 22.96
+  },
+  {
+   "frase": 6,
+   "texto": "Sessenta",
+   "chave": "sessenta",
+   "inicio": 23.5,
+   "fim": 23.94
+  },
+  {
+   "frase": 6,
+   "texto": "dias",
+   "chave": "dias",
+   "inicio": 23.94,
+   "fim": 24.18
+  },
+  {
+   "frase": 6,
+   "texto": "depois,",
+   "chave": "depois",
+   "inicio": 24.18,
+   "fim": 24.52
+  },
+  {
+   "frase": 6,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 25.0,
+   "fim": 25.04
+  },
+  {
+   "frase": 6,
+   "texto": "jornada",
+   "chave": "jornada",
+   "inicio": 25.04,
+   "fim": 25.38
+  },
+  {
+   "frase": 6,
+   "texto": "máxima",
+   "chave": "maxima",
+   "inicio": 25.38,
+   "fim": 25.92
+  },
+  {
+   "frase": 6,
+   "texto": "cai",
+   "chave": "cai",
+   "inicio": 25.92,
+   "fim": 26.1
+  },
+  {
+   "frase": 6,
+   "texto": "de",
+   "chave": "de",
+   "inicio": 26.1,
+   "fim": 26.22
+  },
+  {
+   "frase": 6,
+   "texto": "quarenta",
+   "chave": "quarenta",
+   "inicio": 26.22,
+   "fim": 26.64
+  },
+  {
+   "frase": 6,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 26.64,
+   "fim": 26.68
+  },
+  {
+   "frase": 6,
+   "texto": "quatro",
+   "chave": "quatro",
+   "inicio": 26.68,
+   "fim": 26.96
+  },
+  {
+   "frase": 6,
+   "texto": "para",
+   "chave": "para",
+   "inicio": 26.96,
+   "fim": 27.28
+  },
+  {
+   "frase": 6,
+   "texto": "quarenta",
+   "chave": "quarenta",
+   "inicio": 27.28,
+   "fim": 27.82
+  },
+  {
+   "frase": 6,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 27.82,
+   "fim": 27.88
+  },
+  {
+   "frase": 6,
+   "texto": "duas",
+   "chave": "duas",
+   "inicio": 27.88,
+   "fim": 28.1
+  },
+  {
+   "frase": 6,
+   "texto": "horas",
+   "chave": "horas",
+   "inicio": 28.1,
+   "fim": 28.4
+  },
+  {
+   "frase": 6,
+   "texto": "por",
+   "chave": "por",
+   "inicio": 28.4,
+   "fim": 28.6
+  },
+  {
+   "frase": 6,
+   "texto": "semana.",
+   "chave": "semana",
+   "inicio": 28.6,
+   "fim": 28.98
+  },
+  {
+   "frase": 7,
+   "texto": "E",
+   "chave": "e",
+   "inicio": 28.98,
+   "fim": 29.48
+  },
+  {
+   "frase": 7,
+   "texto": "o",
+   "chave": "o",
+   "inicio": 29.48,
+   "fim": 29.54
+  },
+  {
+   "frase": 7,
+   "texto": "descanso",
+   "chave": "descanso",
+   "inicio": 29.54,
+   "fim": 30.08
+  },
+  {
+   "frase": 7,
+   "texto": "passa",
+   "chave": "passa",
+   "inicio": 30.08,
+   "fim": 30.38
+  },
+  {
+   "frase": 7,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 30.38,
+   "fim": 30.56
+  },
+  {
+   "frase": 7,
+   "texto": "ser",
+   "chave": "ser",
+   "inicio": 30.56,
+   "fim": 30.64
+  },
+  {
+   "frase": 7,
+   "texto": "de",
+   "chave": "de",
+   "inicio": 30.64,
+   "fim": 30.78
+  },
+  {
+   "frase": 7,
+   "texto": "dois",
+   "chave": "dois",
+   "inicio": 30.78,
+   "fim": 31.08
+  },
+  {
+   "frase": 7,
+   "texto": "dias.",
+   "chave": "dias",
+   "inicio": 31.08,
+   "fim": 31.48
+  },
+  {
+   "frase": 8,
+   "texto": "Doze",
+   "chave": "doze",
+   "inicio": 32.08,
+   "fim": 32.46
+  },
+  {
+   "frase": 8,
+   "texto": "meses",
+   "chave": "meses",
+   "inicio": 32.46,
+   "fim": 32.72
+  },
+  {
+   "frase": 8,
+   "texto": "depois,",
+   "chave": "depois",
+   "inicio": 32.72,
+   "fim": 33.12
+  },
+  {
+   "frase": 8,
+   "texto": "o",
+   "chave": "o",
+   "inicio": 33.54,
+   "fim": 33.64
+  },
+  {
+   "frase": 8,
+   "texto": "limite",
+   "chave": "limite",
+   "inicio": 33.64,
+   "fim": 33.88
+  },
+  {
+   "frase": 8,
+   "texto": "chega",
+   "chave": "chega",
+   "inicio": 33.88,
+   "fim": 34.22
+  },
+  {
+   "frase": 8,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 34.22,
+   "fim": 34.38
+  },
+  {
+   "frase": 8,
+   "texto": "quarenta",
+   "chave": "quarenta",
+   "inicio": 34.38,
+   "fim": 34.94
+  },
+  {
+   "frase": 8,
+   "texto": "horas.",
+   "chave": "horas",
+   "inicio": 34.94,
+   "fim": 35.26
+  },
+  {
+   "frase": 8,
+   "texto": "Sem",
+   "chave": "sem",
+   "inicio": 35.68,
+   "fim": 36.02
+  },
+  {
+   "frase": 8,
+   "texto": "redução",
+   "chave": "reducao",
+   "inicio": 36.02,
+   "fim": 36.42
+  },
+  {
+   "frase": 8,
+   "texto": "de",
+   "chave": "de",
+   "inicio": 36.42,
+   "fim": 36.54
+  },
+  {
+   "frase": 8,
+   "texto": "salário.",
+   "chave": "salario",
+   "inicio": 36.54,
+   "fim": 37.0
+  },
+  {
+   "frase": 9,
+   "texto": "Escalas",
+   "chave": "escalas",
+   "inicio": 37.38,
+   "fim": 37.8
+  },
+  {
+   "frase": 9,
+   "texto": "especiais,",
+   "chave": "especiais",
+   "inicio": 37.8,
+   "fim": 38.44
+  },
+  {
+   "frase": 9,
+   "texto": "como",
+   "chave": "como",
+   "inicio": 38.52,
+   "fim": 38.72
+  },
+  {
+   "frase": 9,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 38.72,
+   "fim": 38.8
+  },
+  {
+   "frase": 9,
+   "texto": "doze",
+   "chave": "doze",
+   "inicio": 38.8,
+   "fim": 39.16
+  },
+  {
+   "frase": 9,
+   "texto": "por",
+   "chave": "por",
+   "inicio": 39.16,
+   "fim": 39.32
+  },
+  {
+   "frase": 9,
+   "texto": "trinta",
+   "chave": "trinta",
+   "inicio": 39.32,
+   "fim": 39.56
+  },
+  {
+   "frase": 9,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 39.56,
+   "fim": 39.68
+  },
+  {
+   "frase": 9,
+   "texto": "seis,",
+   "chave": "seis",
+   "inicio": 39.68,
+   "fim": 39.94
+  },
+  {
+   "frase": 9,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 39.94,
+   "fim": 40.24
+  },
+  {
+   "frase": 9,
+   "texto": "alguns",
+   "chave": "alguns",
+   "inicio": 40.24,
+   "fim": 40.54
+  },
+  {
+   "frase": 9,
+   "texto": "setores",
+   "chave": "setores",
+   "inicio": 40.54,
+   "fim": 41.04
+  },
+  {
+   "frase": 9,
+   "texto": "terão",
+   "chave": "terao",
+   "inicio": 41.16,
+   "fim": 41.38
+  },
+  {
+   "frase": 9,
+   "texto": "regras",
+   "chave": "regras",
+   "inicio": 41.38,
+   "fim": 41.68
+  },
+  {
+   "frase": 9,
+   "texto": "próprias.",
+   "chave": "proprias",
+   "inicio": 41.68,
+   "fim": 42.18
+  },
+  {
+   "frase": 10,
+   "texto": "Para",
+   "chave": "para",
+   "inicio": 42.7,
+   "fim": 42.84
+  },
+  {
+   "frase": 10,
+   "texto": "quem",
+   "chave": "quem",
+   "inicio": 42.84,
+   "fim": 42.98
+  },
+  {
+   "frase": 10,
+   "texto": "contrata,",
+   "chave": "contrata",
+   "inicio": 42.98,
+   "fim": 43.56
+  },
+  {
+   "frase": 10,
+   "texto": "é",
+   "chave": "e",
+   "inicio": 43.82,
+   "fim": 43.88
+  },
+  {
+   "frase": 10,
+   "texto": "hora",
+   "chave": "hora",
+   "inicio": 43.88,
+   "fim": 44.02
+  },
+  {
+   "frase": 10,
+   "texto": "de",
+   "chave": "de",
+   "inicio": 44.02,
+   "fim": 44.18
+  },
+  {
+   "frase": 10,
+   "texto": "rever",
+   "chave": "rever",
+   "inicio": 44.18,
+   "fim": 44.42
+  },
+  {
+   "frase": 10,
+   "texto": "escalas",
+   "chave": "escalas",
+   "inicio": 44.42,
+   "fim": 45.12
+  },
+  {
+   "frase": 10,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 45.12,
+   "fim": 45.26
+  },
+  {
+   "frase": 10,
+   "texto": "contratos.",
+   "chave": "contratos",
+   "inicio": 45.26,
+   "fim": 45.82
+  },
+  {
+   "frase": 10,
+   "texto": "Para",
+   "chave": "para",
+   "inicio": 46.32,
+   "fim": 46.44
+  },
+  {
+   "frase": 10,
+   "texto": "quem",
+   "chave": "quem",
+   "inicio": 46.44,
+   "fim": 46.6
+  },
+  {
+   "frase": 10,
+   "texto": "trabalha,",
+   "chave": "trabalha",
+   "inicio": 46.6,
+   "fim": 47.14
+  },
+  {
+   "frase": 10,
+   "texto": "de",
+   "chave": "de",
+   "inicio": 47.36,
+   "fim": 47.46
+  },
+  {
+   "frase": 10,
+   "texto": "conhecer",
+   "chave": "conhecer",
+   "inicio": 47.46,
+   "fim": 47.92
+  },
+  {
+   "frase": 10,
+   "texto": "os",
+   "chave": "os",
+   "inicio": 47.92,
+   "fim": 48.16
+  },
+  {
+   "frase": 10,
+   "texto": "novos",
+   "chave": "novos",
+   "inicio": 48.16,
+   "fim": 48.5
+  },
+  {
+   "frase": 10,
+   "texto": "limites.",
+   "chave": "limites",
+   "inicio": 48.5,
+   "fim": 48.94
+  },
+  {
+   "frase": 11,
+   "texto": "Ficou",
+   "chave": "ficou",
+   "inicio": 49.58,
+   "fim": 49.92
+  },
+  {
+   "frase": 11,
+   "texto": "com",
+   "chave": "com",
+   "inicio": 49.92,
+   "fim": 50.06
+  },
+  {
+   "frase": 11,
+   "texto": "dúvida",
+   "chave": "duvida",
+   "inicio": 50.06,
+   "fim": 50.46
+  },
+  {
+   "frase": 11,
+   "texto": "sobre",
+   "chave": "sobre",
+   "inicio": 50.46,
+   "fim": 50.68
+  },
+  {
+   "frase": 11,
+   "texto": "a",
+   "chave": "a",
+   "inicio": 50.68,
+   "fim": 50.78
+  },
+  {
+   "frase": 11,
+   "texto": "nova",
+   "chave": "nova",
+   "inicio": 50.78,
+   "fim": 50.92
+  },
+  {
+   "frase": 11,
+   "texto": "jornada?",
+   "chave": "jornada",
+   "inicio": 50.92,
+   "fim": 51.4
+  },
+  {
+   "frase": 11,
+   "texto": "Busque",
+   "chave": "busque",
+   "inicio": 51.84,
+   "fim": 52.16
+  },
+  {
+   "frase": 11,
+   "texto": "orientação",
+   "chave": "orientacao",
+   "inicio": 52.16,
+   "fim": 52.6
+  },
+  {
+   "frase": 11,
+   "texto": "jurídica.",
+   "chave": "juridica",
+   "inicio": 52.6,
+   "fim": 53.18
+  },
+  {
+   "frase": 12,
+   "texto": "Bispo",
+   "chave": "bispo",
+   "inicio": 53.64,
+   "fim": 53.94
+  },
+  {
+   "frase": 12,
+   "texto": "e",
+   "chave": "e",
+   "inicio": 53.94,
+   "fim": 54.04
+  },
+  {
+   "frase": 12,
+   "texto": "Teixeira",
+   "chave": "teixeira",
+   "inicio": 54.04,
+   "fim": 54.5
+  },
+  {
+   "frase": 12,
+   "texto": "Advogados.",
+   "chave": "advogados",
+   "inicio": 54.5,
+   "fim": 55.18
+  }
+ ],
+ "sem_correspondencia": 0
+}

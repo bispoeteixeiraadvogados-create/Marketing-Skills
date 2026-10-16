@@ -1,0 +1,8 @@
+{
+  "fotoFim": 1.2,
+  "varreduraInicio": 1.75,
+  "varreduraDuracao": 1.6,
+  "legenda1": [0.05, 0.3, 0.6, 0.72, 1.6, 2.1, 2.25],
+  "legenda2Inicio": 2.9,
+  "legenda2": [2.95, 3.6, 4.0, 4.15]
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 400; src: url("assets/fonts/montserrat-latin-400-normal.woff2") format("woff2"); }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: linear-gradient(135deg, #081a35 0%, #0b1f4b 100%);
+          font-family: "Montserrat", Arial, sans-serif;
+        }
+        #c12-ruido {
+          position: absolute;
+          inset: 0;
+          background-image: url("assets/texturas/ruido-256.png");
+          background-size: 256px 256px;
+          opacity: 0.07;
+          mix-blend-mode: overlay;
+        }
+        #c12-grade {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(to right, rgba(250, 248, 244, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(250, 248, 244, 0.04) 1px, transparent 1px);
+          background-size: 8px 8px;
+        }
+        #c12-linha { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        #c12-titulo {
+          position: absolute;
+          left: 96px;
+          top: 752px;
+          width: 830px;
+          font-family: "Cormorant Garamond", Georgia, serif;
+          font-weight: 600;
+          font-size: 112px;
+          line-height: 1.05;
+          letter-spacing: -0.015em;
+          color: #faf8f4;
+        }
+        #c12-cta {
+          position: absolute;
+          left: 96px;
+          top: 1150px;
+          width: 804px;
+          font-family: "Montserrat", Arial, sans-serif;
+          font-weight: 400;
+          font-size: 48px;
+          line-height: 1.3;
+          color: #8fc5ef;
+        }
+      </style>
+
+      <div id="root" data-composition-id="c12-cta" data-width="1080" data-height="1920">
+        <div id="c12-ruido"></div>
+        <div id="c12-grade"></div>
+        <svg id="c12-linha" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path id="c12-traco" d="M96 712 H296" stroke="#d4af7c" stroke-width="6" stroke-linecap="butt" fill="none" />
+        </svg>
+        <div id="c12-titulo">Ficou com dúvida sobre a nova jornada?</div>
+        <div id="c12-cta">Busque orientação jurídica.</div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          tl.fromTo("#c12-traco", { strokeDasharray: 200, strokeDashoffset: 200 }, { strokeDashoffset: 0, duration: 0.4, ease: "bt-standard" }, 0);
+          tl.fromTo("#c12-titulo", { opacity: 0, y: 48 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-emphasized" }, 0.15);
+          tl.fromTo("#c12-cta", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 2.1);
+          window.__timelines["c12-cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

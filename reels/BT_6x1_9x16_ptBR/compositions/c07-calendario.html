@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #f4ede2;
+          font-family: "Montserrat", Arial, sans-serif;
+        }
+        #c07-grade {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(to right, rgba(11, 31, 75, 0.035) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(11, 31, 75, 0.035) 1px, transparent 1px);
+          background-size: 8px 8px;
+        }
+        #c07-escala {
+          position: absolute;
+          left: 96px;
+          top: 300px;
+          width: 804px;
+          height: 250px;
+          overflow: hidden;
+        }
+        #c07-trilho { position: absolute; left: 0; top: 0; width: 804px; }
+        .c07-rot {
+          display: block;
+          height: 250px;
+          font-family: "Cormorant Garamond", Georgia, serif;
+          font-weight: 600;
+          font-size: 240px;
+          line-height: 250px;
+          letter-spacing: -0.01em;
+          color: #0b1f4b;
+          font-variant-numeric: lining-nums;
+          font-feature-settings: "lnum" 1;
+        }
+        #c07-calendario {
+          position: absolute;
+          left: 96px;
+          top: 600px;
+          width: 804px;
+          height: 500px;
+          border-radius: 24px;
+          background: #faf8f4;
+          box-shadow: 0 18px 48px rgba(8, 26, 53, 0.12);
+        }
+        #c07-desenho { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+        .c07-dia {
+          position: absolute;
+          top: 720px;
+          width: 93px;
+          height: 300px;
+          border-radius: 16px;
+          background: #0b1f4b;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .c07-dia svg { width: 62px; height: 62px; overflow: visible; }
+        .c07-folga { background: #8fc5ef; }
+        #c07-d0 { left: 136px; }
+        #c07-d1 { left: 241px; }
+        #c07-d2 { left: 346px; }
+        #c07-d3 { left: 451px; }
+        #c07-d4 { left: 556px; }
+        #c07-d5 { left: 661px; }
+        #c07-d6 { left: 766px; }
+        #c07-d3 { box-shadow: 0 18px 40px rgba(8, 26, 53, 0.16); }
+        #c07-d3-sol { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+        #c07-tesoura { position: absolute; left: 520px; top: 600px; width: 170px; height: 110px; }
+        .legenda {
+          position: absolute;
+          left: 96px;
+          top: 1262px;
+          max-width: 804px;
+          padding: 20px 30px 22px;
+          border-radius: 12px;
+          font-family: "Montserrat", Arial, sans-serif;
+          font-weight: 500;
+          font-size: 48px;
+          line-height: 1.2;
+          width: fit-content;
+        }
+        .legenda .ln { display: block; white-space: nowrap; }
+        .legenda.clara { background: #0b1f4b; color: #faf8f4; }
+      </style>
+
+      <div id="root" data-composition-id="c07-calendario" data-width="1080" data-height="1920">
+        <div id="c07-grade"></div>
+
+        <div id="c07-escala">
+          <div id="c07-trilho" data-layout-allow-overflow data-layout-allow-occlusion>
+            <span class="c07-rot" data-layout-allow-occlusion>6 x 1</span>
+            <span class="c07-rot" data-layout-allow-occlusion>5 x 2</span>
+          </div>
+        </div>
+
+        <div id="c07-calendario"></div>
+        <svg id="c07-desenho" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <mask id="c07-mascara-corte" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">
+              <rect id="c07-corte-revela" x="443" y="712" width="109" height="316" rx="20" fill="none" stroke="#fff" stroke-width="12" />
+            </mask>
+          </defs>
+          <line x1="136" y1="668" x2="860" y2="668" stroke="#0b1f4b" stroke-opacity="0.14" stroke-width="2" />
+          <g id="c07-espiral">
+            <g fill="#e6dccb"><circle cx="156" cy="624" r="8" /><circle cx="220" cy="624" r="8" /><circle cx="284" cy="624" r="8" /><circle cx="348" cy="624" r="8" /><circle cx="412" cy="624" r="8" /><circle cx="476" cy="624" r="8" /><circle cx="540" cy="624" r="8" /><circle cx="604" cy="624" r="8" /><circle cx="668" cy="624" r="8" /><circle cx="732" cy="624" r="8" /><circle cx="796" cy="624" r="8" /><circle cx="860" cy="624" r="8" /></g>
+            <g fill="none" stroke="#0b1f4b" stroke-width="4"><rect x="148" y="584" width="16" height="48" rx="8" /><rect x="212" y="584" width="16" height="48" rx="8" /><rect x="276" y="584" width="16" height="48" rx="8" /><rect x="340" y="584" width="16" height="48" rx="8" /><rect x="404" y="584" width="16" height="48" rx="8" /><rect x="468" y="584" width="16" height="48" rx="8" /><rect x="532" y="584" width="16" height="48" rx="8" /><rect x="596" y="584" width="16" height="48" rx="8" /><rect x="660" y="584" width="16" height="48" rx="8" /><rect x="724" y="584" width="16" height="48" rx="8" /><rect x="788" y="584" width="16" height="48" rx="8" /><rect x="852" y="584" width="16" height="48" rx="8" /></g>
+          </g>
+          <rect id="c07-vaga" x="451" y="720" width="93" height="300" rx="16" fill="#0b1f4b" fill-opacity="0.05" />
+          <rect id="c07-corte" x="447" y="716" width="101" height="308" rx="18" fill="none" stroke="#0b1f4b" stroke-width="3" stroke-dasharray="10 8" mask="url(#c07-mascara-corte)" />
+        </svg>
+
+        <div id="c07-d0" class="c07-dia"><svg viewBox="0 0 48 48"><g fill="none" stroke="#faf8f4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="17" width="34" height="23" rx="4" /><path d="M18 17 V13 a3 3 0 0 1 3 -3 h6 a3 3 0 0 1 3 3 V17" /><path d="M7 27 H41" /></g></svg></div>
+        <div id="c07-d1" class="c07-dia"><svg viewBox="0 0 48 48"><g fill="none" stroke="#faf8f4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="17" width="34" height="23" rx="4" /><path d="M18 17 V13 a3 3 0 0 1 3 -3 h6 a3 3 0 0 1 3 3 V17" /><path d="M7 27 H41" /></g></svg></div>
+        <div id="c07-d2" class="c07-dia"><svg viewBox="0 0 48 48"><g fill="none" stroke="#faf8f4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="17" width="34" height="23" rx="4" /><path d="M18 17 V13 a3 3 0 0 1 3 -3 h6 a3 3 0 0 1 3 3 V17" /><path d="M7 27 H41" /></g></svg></div>
+        <div id="c07-d3" class="c07-dia">
+          <svg id="c07-d3-pasta" viewBox="0 0 48 48"><g fill="none" stroke="#faf8f4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="17" width="34" height="23" rx="4" /><path d="M18 17 V13 a3 3 0 0 1 3 -3 h6 a3 3 0 0 1 3 3 V17" /><path d="M7 27 H41" /></g></svg>
+          <div id="c07-d3-sol"><svg viewBox="0 0 48 48"><g fill="none" stroke="#0b1f4b" stroke-width="3.5" stroke-linecap="round"><circle cx="24" cy="24" r="8" /><path d="M24 4 V9 M24 39 V44 M4 24 H9 M39 24 H44 M9.9 9.9 L13.4 13.4 M34.6 34.6 L38.1 38.1 M9.9 38.1 L13.4 34.6 M34.6 13.4 L38.1 9.9" /></g></svg></div>
+        </div>
+        <div id="c07-d4" class="c07-dia"><svg viewBox="0 0 48 48"><g fill="none" stroke="#faf8f4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="17" width="34" height="23" rx="4" /><path d="M18 17 V13 a3 3 0 0 1 3 -3 h6 a3 3 0 0 1 3 3 V17" /><path d="M7 27 H41" /></g></svg></div>
+        <div id="c07-d5" class="c07-dia"><svg viewBox="0 0 48 48"><g fill="none" stroke="#faf8f4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="17" width="34" height="23" rx="4" /><path d="M18 17 V13 a3 3 0 0 1 3 -3 h6 a3 3 0 0 1 3 3 V17" /><path d="M7 27 H41" /></g></svg></div>
+        <div id="c07-d6" class="c07-dia c07-folga"><svg viewBox="0 0 48 48"><g fill="none" stroke="#0b1f4b" stroke-width="3.5" stroke-linecap="round"><circle cx="24" cy="24" r="8" /><path d="M24 4 V9 M24 39 V44 M4 24 H9 M39 24 H44 M9.9 9.9 L13.4 13.4 M34.6 34.6 L38.1 38.1 M9.9 38.1 L13.4 34.6 M34.6 13.4 L38.1 9.9" /></g></svg></div>
+
+        <div id="c07-tesoura" data-layout-allow-overflow>
+          <svg viewBox="0 0 170 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#0b1f4b" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="34" cy="28" r="18" stroke-width="8" />
+              <circle cx="34" cy="82" r="18" stroke-width="8" />
+              <path d="M48 38 L86 55 L162 32" stroke-width="9" />
+              <path d="M48 72 L86 55 L162 78" stroke-width="9" />
+            </g>
+            <circle cx="86" cy="55" r="6" fill="#faf8f4" stroke="#0b1f4b" stroke-width="3" />
+          </svg>
+        </div>
+
+        <div id="c07-legenda" class="legenda clara"><span class="ln">E o descanso passa</span><span class="ln">a ser de <span id="c07-w2">2</span> dias.</span></div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const pastas = ["#c07-d0", "#c07-d1", "#c07-d2", "#c07-d3", "#c07-d4", "#c07-d5", "#c07-d6"];
+          // Entrada do calendário como objeto: desloca 24 px e assenta, sem rebote.
+          tl.fromTo(["#c07-calendario", "#c07-desenho"], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 0);
+          tl.fromTo(pastas, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter", stagger: 0.04 }, 0.05);
+          tl.fromTo("#c07-escala", { opacity: 0, y: 48 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-emphasized" }, 0);
+          tl.fromTo("#c07-legenda", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0);
+          // Linha de corte desenhada em volta do quarto cartão, com a tesoura percorrendo a borda superior.
+          tl.fromTo("#c07-corte-revela", { strokeDasharray: 820, strokeDashoffset: 820 }, { strokeDashoffset: 0, duration: 0.5, ease: "bt-standard" }, 0.35);
+          tl.fromTo("#c07-tesoura", { opacity: 0, x: 140, y: 40 }, { opacity: 1, x: -110, y: 40, duration: 0.5, ease: "bt-standard" }, 0.35);
+          // Na palavra "dois": o cartão se solta, vira folga e a escala rola de 6 x 1 para 5 x 2.
+          tl.to("#c07-tesoura", { x: 40, y: -60, opacity: 0, duration: 0.4, ease: "bt-exit" }, 1.35);
+          tl.fromTo("#c07-d3", { y: 0, scale: 1, backgroundColor: "#0b1f4b" }, { y: -40, scale: 1.03, backgroundColor: "#8fc5ef", duration: 0.4, ease: "bt-enter" }, 0.9);
+          tl.fromTo("#c07-d3-pasta", { opacity: 1 }, { opacity: 0, duration: 0.2 }, 0.9);
+          tl.fromTo("#c07-d3-sol", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.95);
+          tl.fromTo("#c07-trilho", { y: 0 }, { y: -250, duration: 0.3, ease: "bt-standard" }, 0.9);
+          tl.fromTo("#c07-w2", { color: "#faf8f4" }, { color: "#d4af7c", duration: 0.1 }, 0.9);
+          // O cartão volta ao lugar já como folga; a linha de corte some.
+          tl.to("#c07-d3", { y: 0, scale: 1, duration: 0.4, ease: "bt-standard" }, 1.8);
+          tl.to("#c07-corte", { opacity: 0, duration: 0.3 }, 1.8);
+          window.__timelines["c07-calendario"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

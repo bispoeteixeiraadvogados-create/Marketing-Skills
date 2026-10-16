@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Cormorant Garamond"; font-weight: 600; src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 500; src: url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+        @font-face { font-family: "Montserrat"; font-weight: 600; src: url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+        #root {
+          --midnight: #081a35;
+          --primary: #0b1f4b;
+          --blue: #214d8c;
+          --sky: #8fc5ef;
+          --gold: #d4af7c;
+          --sand: #f4ede2;
+          --paper: #faf8f4;
+          --ink: #202631;
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: var(--paper);
+          font-family: "Montserrat", Arial, sans-serif;
+        }
+        #c01-grade {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(to right, rgba(11, 31, 75, 0.035) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(11, 31, 75, 0.035) 1px, transparent 1px);
+          background-size: 8px 8px;
+        }
+        #c01-marca {
+          position: absolute;
+          left: 84px;
+          top: 404px;
+          width: 700px;
+          font-variant-numeric: lining-nums;
+          font-feature-settings: "lnum" 1;
+          font-family: "Cormorant Garamond", Georgia, serif;
+          font-weight: 600;
+          font-size: 320px;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          color: rgba(11, 31, 75, 0.1);
+        }
+        .c01-cartao {
+          position: absolute;
+          top: 740px;
+          width: 100px;
+          height: 260px;
+          border-radius: 16px;
+          background: var(--sand);
+          box-shadow: 0 18px 40px rgba(8, 26, 53, 0.12);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Cormorant Garamond", Georgia, serif;
+          font-weight: 600;
+          font-size: 104px;
+          line-height: 1;
+          color: var(--ink);
+        }
+        #c01-c0 { left: 98px; }
+        #c01-c1 { left: 210px; }
+        #c01-c2 { left: 322px; }
+        #c01-c3 { left: 434px; }
+        #c01-c4 { left: 546px; }
+        #c01-c5 { left: 658px; }
+        #c01-c6 { left: 798px; }
+        #c01-colchetes {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 1080px;
+          height: 1920px;
+          overflow: visible;
+        }
+        .c01-rotulo {
+          position: absolute;
+          top: 1044px;
+          font-size: 36px;
+          font-weight: 600;
+          line-height: 1.2;
+          letter-spacing: 0.04em;
+        }
+        #c01-rot-trabalho { left: 98px; width: 660px; text-align: center; color: var(--primary); }
+        #c01-rot-folga { left: 760px; width: 140px; text-align: right; color: var(--blue); }
+        #c01-corredor {
+          position: absolute;
+          left: 0;
+          top: 546px;
+          width: 168px;
+          height: 196px;
+        }
+        #c01-corredor svg { display: block; width: 168px; height: 196px; }
+        .legenda {
+          position: absolute;
+          left: 96px;
+          top: 1262px;
+          max-width: 804px;
+          padding: 20px 30px 22px;
+          border-radius: 12px;
+          font-family: "Montserrat", Arial, sans-serif;
+          font-weight: 500;
+          font-size: 48px;
+          line-height: 1.2;
+          width: fit-content;
+        }
+        .legenda .ln { display: block; white-space: nowrap; }
+        .legenda.clara { background: var(--primary); color: var(--paper); }
+        .legenda .on { color: var(--gold); }
+      </style>
+
+      <div id="root" data-composition-id="c01-gancho" data-width="1080" data-height="1920">
+        <div id="c01-grade"></div>
+        <div id="c01-marca" data-layout-ignore aria-hidden="true">6x1</div>
+
+        <div id="c01-c0" class="c01-cartao">S</div>
+        <div id="c01-c1" class="c01-cartao">T</div>
+        <div id="c01-c2" class="c01-cartao">Q</div>
+        <div id="c01-c3" class="c01-cartao">Q</div>
+        <div id="c01-c4" class="c01-cartao">S</div>
+        <div id="c01-c5" class="c01-cartao">S</div>
+        <div id="c01-c6" class="c01-cartao">D</div>
+
+        <svg id="c01-colchetes" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+          <path id="c01-col-trabalho" d="M98 1010 V1024 H758 V1010" fill="none" stroke="#0b1f4b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <path id="c01-col-folga" d="M798 1010 V1024 H898 V1010" fill="none" stroke="#214d8c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div id="c01-rot-trabalho" class="c01-rotulo">TRABALHO</div>
+        <div id="c01-rot-folga" class="c01-rotulo">FOLGA</div>
+
+        <div id="c01-corredor" data-layout-allow-overflow data-hf-motion-blur='{"shutterAngle":180,"shutterPhase":-90,"samplesPerFrame":12}'>
+          <svg viewBox="0 0 140 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#0b1f4b" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M78 56 L60 76 L46 70" stroke-width="12" />
+              <path d="M62 100 L50 128 L26 136" stroke-width="15" />
+              <rect x="40" y="46" width="26" height="42" rx="9" transform="rotate(16.5 53 67)" fill="#0b1f4b" stroke="none" />
+              <path d="M80 46 L64 100" stroke-width="30" />
+              <path d="M66 98 L92 112 L88 142 L100 146" stroke-width="15" />
+              <path d="M80 54 L98 70 L112 56" stroke-width="12" />
+            </g>
+            <circle cx="88" cy="24" r="16" fill="#0b1f4b" />
+          </svg>
+        </div>
+
+        <div id="c01-legenda" class="legenda clara"><span class="ln">6 dias de trabalho. <span id="c01-w1">1</span> de folga.</span></div>
+      </div>
+
+      <script>
+        (function () {
+          const tl = gsap.timeline({ paused: true });
+          const cartoes = ["#c01-c0", "#c01-c1", "#c01-c2", "#c01-c3", "#c01-c4", "#c01-c5", "#c01-c6"];
+          const trabalho = cartoes.slice(0, 6);
+
+          tl.fromTo("#c01-marca", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "bt-enter" }, 0);
+          tl.fromTo(cartoes, { opacity: 0, x: -48 }, { opacity: 1, x: 0, duration: 0.4, ease: "bt-enter", stagger: 0.04 }, 0);
+          tl.fromTo(trabalho, { backgroundColor: "#f4ede2", color: "#202631" }, { backgroundColor: "#0b1f4b", color: "#faf8f4", duration: 0.2, ease: "bt-standard", stagger: 0.06 }, 0.4);
+          tl.fromTo("#c01-col-trabalho", { strokeDasharray: 700, strokeDashoffset: 700 }, { strokeDashoffset: 0, duration: 0.4, ease: "bt-standard" }, 0.85);
+          tl.fromTo("#c01-rot-trabalho", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 0.95);
+          tl.fromTo("#c01-c6", { backgroundColor: "#f4ede2", color: "#202631" }, { backgroundColor: "#8fc5ef", color: "#0b1f4b", duration: 0.2, ease: "bt-standard" }, 1.4);
+          tl.fromTo("#c01-col-folga", { strokeDasharray: 140, strokeDashoffset: 140 }, { strokeDashoffset: 0, duration: 0.3, ease: "bt-standard" }, 1.45);
+          tl.fromTo("#c01-rot-folga", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "bt-enter" }, 1.5);
+          tl.fromTo("#c01-c6", { scale: 1 }, { scale: 1.04, duration: 0.18, ease: "bt-overshoot" }, 1.5);
+          tl.to("#c01-c6", { scale: 1, duration: 0.22, ease: "bt-standard" }, 1.68);
+          tl.fromTo("#c01-corredor", { x: -220 }, { x: 1300, duration: 2.0, ease: "power1.in" }, 0.3);
+          tl.fromTo("#c01-legenda", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0);
+          tl.fromTo("#c01-w1", { color: "#faf8f4" }, { color: "#d4af7c", duration: 0.1 }, 1.5);
+
+          window.__timelines["c01-gancho"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

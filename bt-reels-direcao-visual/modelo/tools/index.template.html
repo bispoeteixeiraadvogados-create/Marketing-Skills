@@ -484,6 +484,31 @@
         letter-spacing: 0.005em;
         color: var(--surface-paper);
       }
+      #s8-ig-label {
+        margin-top: 44px;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: 28px;
+        letter-spacing: 0.12em;
+        color: var(--brand-sky);
+      }
+      #s8-ig {
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+      #s8-ig-icon {
+        display: block;
+        flex: none;
+      }
+      #s8-ig-handle {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 64px;
+        line-height: 1;
+        color: var(--surface-paper);
+      }
       #s8-rule {
         width: 120px;
         height: 3px;
@@ -801,6 +826,15 @@
             <img id="s8-logo" src="assets/brand/Logo_BT_Original_Transparente_520.png" alt="Bispo &amp; Teixeira Advogados" />
             <p id="s8-tel-label">TELEFONE</p>
             <p id="s8-tel">(38) 9 9129-6401</p>
+            <p id="s8-ig-label">INSTAGRAM</p>
+            <div id="s8-ig">
+              <svg id="s8-ig-icon" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+                <rect x="4" y="4" width="56" height="56" rx="16" fill="none" stroke="#FAF8F4" stroke-width="5" />
+                <circle cx="32" cy="32" r="13" fill="none" stroke="#FAF8F4" stroke-width="5" />
+                <circle cx="47.5" cy="16.5" r="3.6" fill="#FAF8F4" />
+              </svg>
+              <span id="s8-ig-handle">@bispoeteixeiraadvogados</span>
+            </div>
             <div id="s8-rule"></div>
             <p id="s8-note">Conteúdo informativo. A orientação depende dos documentos do caso.</p>
             <p id="s8-source">Fontes: Súmula 358 do STJ e art. 528 do CPC.</p>
@@ -1118,9 +1152,11 @@
           }
           card("#s8-tel-label", 34.9);
           card("#s8-tel", 34.95);
-          tl.fromTo("#s8-rule", { scaleX: 0 }, { scaleX: 1, duration: BASE, ease: E.inOut }, 35.3);
-          fadeIn("#s8-note", 35.4);
-          fadeIn("#s8-source", 35.5);
+          card("#s8-ig-label", 35.2);
+          card("#s8-ig", 35.25);
+          tl.fromTo("#s8-rule", { scaleX: 0 }, { scaleX: 1, duration: BASE, ease: E.inOut }, 35.55);
+          fadeIn("#s8-note", 35.65);
+          fadeIn("#s8-source", 35.75);
 
           // ===== Tudo daqui para baixo está no tempo da locução final (RAW, sem conversão) =====
 

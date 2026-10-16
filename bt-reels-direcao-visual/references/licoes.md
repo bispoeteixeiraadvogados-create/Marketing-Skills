@@ -1,5 +1,7 @@
 # Lições aprendidas
 
+Primeiro projeto feito com esta direção (Reel "Pensão aos 18"). As decisões abaixo valem para todos os vídeos.
+
 ## O que o escritório aprovou e recusou
 
 | Versão | Pedido ou reação | Ficou como regra |

@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@500;800&family=Funnel+Sans:wght@500;600&family=IBM+Plex+Mono:wght@500&family=Piazzolla:opsz,wght@8..30,400;8..30,600&display=swap">
 <style>
-/* Layout: coluna editorial alinhada à esquerda, como a grade dos Reels; quadros 9:16 ao lado do texto que explicam */
+/* Layout: coluna editorial alinhada à esquerda, como a grade dos vídeos; quadros 9:16 ao lado do texto que explicam */
 :root {
   --bg: #faf8f4;
   --bg-alt: #f4ede2;
@@ -16,6 +16,7 @@
   --sky: #8fc5ef;
   --gold: #b08a55;
   --alert: #b43a35;
+  --ok: #3f6b4a;
   /* cores fixas dos quadros de vídeo: iguais nos dois temas */
   --v-paper: #faf8f4; --v-sand: #f4ede2; --v-navy: #0b1f4b; --v-mid: #081a35; --v-blue: #214d8c;
   --v-sky: #8fc5ef; --v-gold: #d4af7c; --v-ink: #202631; --v-red: #b43a35;
@@ -27,12 +28,12 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #081a35; --bg-alt: #0b1f4b; --fg: #e9e6df; --head: #faf8f4; --muted: #a9b3c4;
-    --line: #22355a; --accent: #8fc5ef; --sky: #8fc5ef; --gold: #d4af7c; --alert: #e07a72; color-scheme: dark;
+    --line: #22355a; --accent: #8fc5ef; --sky: #8fc5ef; --gold: #d4af7c; --alert: #e07a72; --ok: #8fc79c; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #081a35; --bg-alt: #0b1f4b; --fg: #e9e6df; --head: #faf8f4; --muted: #a9b3c4;
-  --line: #22355a; --accent: #8fc5ef; --sky: #8fc5ef; --gold: #d4af7c; --alert: #e07a72; color-scheme: dark;
+  --line: #22355a; --accent: #8fc5ef; --sky: #8fc5ef; --gold: #d4af7c; --alert: #e07a72; --ok: #8fc79c; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--fg); font-family: var(--f-text); font-size: 17px; line-height: 1.55; }
@@ -40,35 +41,56 @@ body { background: var(--bg); color: var(--fg); font-family: var(--f-text); font
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .eyebrow { font-family: var(--f-mono); font-weight: 500; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
 h1, h2, h3 { font-family: var(--f-display); font-weight: 800; color: var(--head); line-height: 1; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
-h1 { font-size: clamp(44px, 8vw, 88px); }
-h2 { font-size: clamp(32px, 5vw, 52px); margin-bottom: 18px; }
-h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+h1 { font-size: clamp(48px, 9vw, 104px); }
+h2 { font-size: clamp(32px, 5vw, 54px); margin-bottom: 18px; }
+h3 { font-size: 24px; margin-bottom: 8px; }
 p { margin: 0 0 14px; max-width: 64ch; }
 .lede { font-size: 20px; max-width: 58ch; }
 .hl { background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 94%; background-size: 100% 3px; font-weight: 600; }
-section { padding-block: 64px; border-top: 1px solid var(--line); display: grid; gap: 28px; }
-.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; padding-bottom: 64px; }
+section { padding-block: 72px; border-top: 1px solid var(--line); display: grid; gap: 32px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; padding-bottom: 72px; }
 .two { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: start; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
 .mono { font-family: var(--f-mono); font-size: 13px; }
 .small { font-size: 14.5px; color: var(--muted); }
-.note { border-left: 3px solid var(--alert); padding: 4px 0 4px 16px; max-width: 64ch; }
-.note b { color: var(--alert); font-family: var(--f-mono); font-weight: 500; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+.note { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; max-width: 68ch; margin: 0; }
+.note.warn { border-color: var(--alert); }
+.note b { color: var(--accent); font-family: var(--f-mono); font-weight: 500; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+.note.warn b { color: var(--alert); }
+
+/* princípios */
+.principles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 32px; }
+.principles li { padding-block: 18px; border-top: 2px solid var(--head); }
+.principles b { display: block; font-family: var(--f-display); font-weight: 800; font-size: 26px; color: var(--head); line-height: 1.05; margin-bottom: 6px; }
 
 /* quadro 9:16 */
 .frame { width: min(300px, 100%); aspect-ratio: 9 / 16; position: relative; overflow: hidden; background: var(--v-paper); box-shadow: 0 0 0 1px var(--line); }
+.frame.sm { width: 100%; }
 .frame .stage { position: absolute; left: 0; top: 0; width: 360px; height: 640px; transform-origin: 0 0; }
 .frame-cap { font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin-top: 8px; }
 .ctrl { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
 button { font: 600 15px var(--f-motion); color: var(--bg); background: var(--head); border: 0; padding: 10px 16px; cursor: pointer; }
 button:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
 .v-cat { position: absolute; left: 32px; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--v-blue); }
+.dark .v-cat { color: var(--v-sky); }
 .v-title { position: absolute; left: 32px; width: 296px; font: 800 40px/1 var(--f-display); letter-spacing: -.01em; color: var(--v-navy); }
+.dark .v-title { color: var(--v-paper); }
 .v-title .w { display: inline-block; }
+.v-text { position: absolute; left: 32px; width: 280px; font: 400 15px/1.4 var(--f-text); color: var(--v-ink); }
+.dark .v-text { color: var(--v-paper); }
 .v-cap { position: absolute; left: 32px; top: 413px; width: 296px; }
 .v-cap .rule { width: 19px; height: 2px; background: var(--v-navy); margin-bottom: 8px; }
+.dark .v-cap .rule { background: var(--v-gold); }
 .v-cap .txt { font: 500 18px/1.14 var(--f-display); color: var(--v-ink); }
+.dark .v-cap .txt { color: var(--v-paper); }
+.v-hl { background-image: linear-gradient(var(--v-gold), var(--v-gold)); background-repeat: no-repeat; background-position: 0 94%; background-size: 100% 2px; }
 .dot { position: absolute; left: 0; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--v-sky); border: 1px solid var(--v-navy); margin: -5px 0 0 -5px; }
 .ghost { position: absolute; left: 0; top: 0; border-radius: 50%; background: var(--v-sky); opacity: 0; }
+.dark { background: linear-gradient(135deg, var(--v-mid), var(--v-navy)); }
+.layouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 22px; }
+.layouts figure { margin: 0; }
+.layouts figcaption { margin-top: 10px; font-size: 14.5px; line-height: 1.4; }
+.layouts figcaption b { display: block; font-family: var(--f-display); font-weight: 800; font-size: 19px; color: var(--head); }
 
 /* cores */
 .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
@@ -78,22 +100,27 @@ button:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
 .sw strong { font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--head); line-height: 1.1; }
 .sw code { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
 .sw span { font-size: 13.5px; line-height: 1.35; }
+.ratio { display: flex; height: 44px; width: 100%; border: 1px solid var(--line); }
+.ratio i { display: block; height: 100%; }
+.pairs { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.pair { padding: 16px; font: 800 26px/1 var(--f-display); display: grid; gap: 8px; }
+.pair small { font: 500 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
 
 /* tipografia */
-.spec { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 20px; padding-block: 20px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.spec { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 20px; padding-block: 22px; border-bottom: 1px solid var(--line); align-items: baseline; }
 .spec:last-child { border-bottom: 0; }
 .spec .meta { font-family: var(--f-mono); font-size: 12px; color: var(--muted); line-height: 1.5; }
 .spec .meta b { display: block; color: var(--accent); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
-.s-title { font: 800 clamp(40px, 6vw, 64px)/1 var(--f-display); color: var(--head); letter-spacing: -.01em; }
+.s-title { font: 800 clamp(44px, 7vw, 76px)/1 var(--f-display); color: var(--head); letter-spacing: -.01em; }
 .s-cap { font: 500 30px/1.14 var(--f-display); }
 .s-cap .on { color: var(--accent); }
 .s-text { font: 400 21px/1.45 var(--f-text); }
 .s-motion { font: 500 24px/1.25 var(--f-motion); color: var(--accent); }
 .s-mono { font: 500 16px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
 
-/* curvas */
+/* curvas e tabelas */
 .curves { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
-.curve { border: 1px solid var(--line); padding: 14px; display: grid; gap: 8px; }
+.curve { border: 1px solid var(--line); padding: 14px; display: grid; gap: 8px; align-content: start; }
 .curve svg { width: 100%; height: auto; display: block; }
 .curve strong { font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--head); }
 .curve span { font-size: 14px; line-height: 1.4; }
@@ -103,16 +130,33 @@ th { font-family: var(--f-mono); font-weight: 500; font-size: 12px; letter-spaci
 td.num { font-family: var(--f-mono); font-size: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .tbl { overflow-x: auto; }
 
+/* anti IA */
+.versus { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+.vs-tag { font: 500 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+.vs-tag.no { color: var(--alert); }
+.vs-tag.yes { color: var(--ok); }
+.ai { background: radial-gradient(circle at 30% 20%, #8b5cf6, #3b82f6 45%, #0f172a 90%); }
+.ai-card { position: absolute; left: 40px; top: 170px; width: 280px; padding: 26px 20px; border-radius: 22px; background: rgba(255,255,255,.12); box-shadow: 0 0 40px rgba(139,92,246,.7); text-align: center; }
+.ai-card h4 { margin: 0; font: 700 30px/1.1 Inter, Arial, sans-serif; background: linear-gradient(90deg, #fde68a, #f0abfc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ai-card p { margin: 12px 0 0; font: 400 13px/1.4 Inter, Arial, sans-serif; color: #e0e7ff; }
+.ai-spark { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px 3px #c4b5fd; }
+.ai-cap { position: absolute; left: 0; right: 0; top: 440px; text-align: center; font: 900 22px Arial, sans-serif; color: #fde047; text-shadow: 0 2px 0 #000, 0 0 12px #f0f; }
+.tells { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 0 32px; }
+.tell { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.4; }
+.tell span:first-child { color: var(--alert); }
+.tell span:first-child::before { content: "Evite  "; font: 500 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
+.tell span:last-child::before { content: "Faça  "; font: 500 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ok); }
+
 /* processo */
-ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; display: grid; gap: 0; }
+ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; display: grid; }
 ol.steps li { counter-increment: s; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; padding-block: 16px; border-bottom: 1px solid var(--line); }
 ol.steps li::before { content: counter(s, decimal-leading-zero); font: 500 14px var(--f-mono); color: var(--accent); padding-top: 4px; }
 ol.steps b { font-family: var(--f-display); font-weight: 800; font-size: 21px; color: var(--head); display: block; line-height: 1.15; margin-bottom: 4px; }
-.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
-.rules ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
-.rules h3.no { color: var(--alert); }
+.checks { list-style: none; margin: 0; padding: 0; columns: 2 300px; column-gap: 32px; }
+.checks li { break-inside: avoid; padding: 9px 0 9px 30px; border-bottom: 1px solid var(--line); position: relative; }
+.checks li::before { content: ""; position: absolute; left: 0; top: 13px; width: 14px; height: 14px; border: 2px solid var(--accent); }
 
-/* impacto */
+/* ênfase */
 .pz-word { position: absolute; left: 0; top: 0; width: 360px; text-align: center; font: 800 72px/1 var(--f-display); color: var(--v-red); opacity: 0; }
 .pz-sh { position: absolute; left: 0; top: 0; width: 360px; text-align: center; }
 .pz-p { position: absolute; left: 180px; top: 250px; background: var(--v-red); opacity: 0; }
@@ -123,97 +167,210 @@ ol.steps b { font-family: var(--f-display); font-weight: 800; font-size: 21px; c
 .blob { position: absolute; width: 380px; height: 380px; border-radius: 50%; filter: blur(60px); background: var(--v-blue); opacity: .55; }
 .sig-in { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .sig-in img { width: 174px; height: auto; }
-.sig-lbl { margin-top: 22px; font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--v-sky); }
-.sig-tel { margin-top: 4px; font: 800 31px/1 var(--f-display); color: var(--v-paper); }
+.sig-lbl { margin-top: 18px; font: 500 9.5px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--v-sky); }
+.sig-tel { margin-top: 3px; font: 800 30px/1 var(--f-display); color: var(--v-paper); }
+.sig-ig { margin-top: 4px; display: flex; align-items: center; gap: 7px; font: 800 21px/1 var(--f-display); color: var(--v-paper); }
 .sig-rule { margin-top: 14px; width: 40px; height: 2px; background: var(--v-gold); }
 
 footer { padding-top: 40px; border-top: 1px solid var(--line); }
 @media (max-width: 760px) {
   .hero, .two { grid-template-columns: minmax(0, 1fr); }
   .spec { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .tell { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
 </style>
 
 <div class="wrap">
   <header class="hero">
     <div>
-      <p class="eyebrow">Bispo &amp; Teixeira Advogados · Reels 9:16</p>
-      <h1>Direção visual dos nossos vídeos</h1>
-      <p class="lede" style="margin-top:22px">O jeito BT de animar, consolidado a partir do Reel <span class="hl">Mito ou Verdade 01, Pensão aos 18</span> (versão v005). Calmo, editorial e guiado pela fala: cada coisa aparece quando a voz fala dela, e uma bolinha azul leva o olho até lá.</p>
-      <p class="small">É ponto de partida, não fôrma. Cada vídeo pode trazer composições novas; ficam as fontes, as cores, a bolinha, as legendas, o ritmo e o modo de trabalhar.</p>
+      <p class="eyebrow">Bispo &amp; Teixeira Advogados · Reels e vídeos 9:16</p>
+      <h1>Direção visual BT para vídeos</h1>
+      <p class="lede" style="margin-top:24px">O padrão de todos os nossos Reels e vídeos animados: cores, fontes, composição, movimento e som. <span class="hl">Calmo, editorial e guiado pela fala.</span> Cada elemento aparece quando a voz fala dele, e uma bolinha azul leva o olho até lá.</p>
+      <p class="note" style="margin-top:22px"><b>Como esta direção se aplica</b>Ela define a identidade visual, não o conteúdo. O prompt de cada vídeo traz o tema, o roteiro e o formato, e pode ajustar pontos desta direção quando o vídeo pedir. Na dúvida, vale o que o prompt do vídeo disser; o que ele não disser segue este padrão.</p>
     </div>
     <div>
       <div class="frame" id="demo1"><div class="stage">
-        <div class="v-cat" style="top:150px">Mito ou verdade</div>
-        <div class="v-title" style="top:172px"><span class="w" id="d1w1">Seu</span> <span class="w" id="d1w2">filho</span> <span class="w" id="d1w3">fez</span> <span class="w" id="d1w4" style="color:var(--v-blue)">18</span> <span class="w" id="d1w5">anos.</span><br><span class="w" id="d1q">A pensão acaba?</span></div>
+        <div class="v-cat" style="top:150px">Seus direitos</div>
+        <div class="v-title" style="top:172px"><span class="w" id="d1w1">Antes</span> <span class="w" id="d1w2">de</span> <span class="w" id="d1w3" style="color:var(--v-blue)">assinar,</span><br><span class="w" id="d1w4">leia</span> <span class="w" id="d1w5">tudo.</span></div>
+        <div class="v-text" id="d1txt" style="top:290px">Um documento assinado tem consequências. Entenda cada cláusula.</div>
         <div class="v-cap"><div class="rule"></div><div class="txt" id="d1cap"></div></div>
         <div id="d1ghosts"></div>
         <div class="dot" id="d1dot"></div>
       </div></div>
       <div class="ctrl"><button type="button" id="play1">Reproduzir</button></div>
-      <p class="frame-cap">Gancho: palavra a palavra, legenda acendendo, bolinha com rastro</p>
+      <p class="frame-cap">Abertura: palavra a palavra, legenda acendendo, bolinha com rastro</p>
     </div>
   </header>
+
+  <section aria-labelledby="h-pri">
+    <div>
+      <p class="eyebrow">Princípios</p>
+      <h2 id="h-pri">Cinco ideias que valem para qualquer tema</h2>
+    </div>
+    <ul class="principles">
+      <li><b>Editorial</b>Parece uma página bem diagramada que ganhou movimento, não um anúncio. Tipografia forte, espaço vazio, alinhamento à esquerda.</li>
+      <li><b>Guiado pela fala</b>Nada aparece antes da voz mencionar. Nada fica se mexendo depois que a voz terminou de explicar.</li>
+      <li><b>Um protagonista por cena</b>Uma ideia dominante e no máximo dois apoios. Se não cabe, vira outra cena, não fonte menor.</li>
+      <li><b>Calmo e fluido</b>Movimentos contínuos, curvas suaves, um de cada vez. Ritmo de quem explica com segurança.</li>
+      <li><b>Humano, não genérico</b>Linguagem simples, marca real, detalhes do mundo jurídico de verdade. Nada que pareça feito por máquina.</li>
+    </ul>
+  </section>
 
   <section aria-labelledby="h-cores">
     <div>
       <p class="eyebrow">01 · Cores</p>
-      <h2 id="h-cores">Paleta do manual, com papéis definidos</h2>
-      <p>Os tokens são os do Design System BT. O vídeo alterna fundos claros (Paper, Sand) com cenas escuras em gradiente tonal Midnight para Navy, e fecha em Navy liso. Dourado em pouca área.</p>
+      <h2 id="h-cores">A paleta BT e o papel de cada cor</h2>
+      <p>Os tokens são os do Design System do escritório. No vídeo, cada cor tem uma função fixa: assim o público reconhece a marca pela forma de usar a cor, não só pela cor.</p>
     </div>
     <div class="swatches">
-      <div class="sw"><i style="background:#FAF8F4;box-shadow:inset 0 -1px 0 var(--line)"></i><div><strong>Paper</strong><code>#FAF8F4</code><span>Fundo claro principal; texto no escuro</span></div></div>
-      <div class="sw"><i style="background:#F4EDE2"></i><div><strong>Sand</strong><code>#F4EDE2</code><span>Fundo claro alternativo</span></div></div>
-      <div class="sw"><i style="background:linear-gradient(135deg,#081A35,#0B1F4B)"></i><div><strong>Midnight → Navy</strong><code>#081A35 → #0B1F4B</code><span>Gradiente das cenas escuras</span></div></div>
-      <div class="sw"><i style="background:#0B1F4B"></i><div><strong>Navy</strong><code>#0B1F4B</code><span>Títulos, assinatura, borda da bolinha</span></div></div>
-      <div class="sw"><i style="background:#214D8C"></i><div><strong>Blue</strong><code>#214D8C</code><span>Categoria e palavra falada (claro)</span></div></div>
-      <div class="sw"><i style="background:#8FC5EF"></i><div><strong>Sky</strong><code>#8FC5EF</code><span>A bolinha e o rastro</span></div></div>
-      <div class="sw"><i style="background:#D4AF7C"></i><div><strong>Gold</strong><code>#D4AF7C</code><span>Sublinhados e legenda no escuro</span></div></div>
+      <div class="sw"><i style="background:#FAF8F4;box-shadow:inset 0 -1px 0 var(--line)"></i><div><strong>Paper</strong><code>#FAF8F4</code><span>Fundo claro principal; texto sobre escuro</span></div></div>
+      <div class="sw"><i style="background:#F4EDE2"></i><div><strong>Sand</strong><code>#F4EDE2</code><span>Fundo claro alternativo, para variar o ritmo</span></div></div>
+      <div class="sw"><i style="background:#081A35"></i><div><strong>Midnight</strong><code>#081A35</code><span>Início do gradiente escuro; profundidade</span></div></div>
+      <div class="sw"><i style="background:#0B1F4B"></i><div><strong>Navy</strong><code>#0B1F4B</code><span>Títulos no claro, fundo da assinatura, contorno da bolinha</span></div></div>
+      <div class="sw"><i style="background:#214D8C"></i><div><strong>Blue</strong><code>#214D8C</code><span>Categoria, palavra-chave, palavra falada na legenda clara</span></div></div>
+      <div class="sw"><i style="background:#8FC5EF"></i><div><strong>Sky</strong><code>#8FC5EF</code><span>A bolinha, o rastro e rótulos no escuro</span></div></div>
+      <div class="sw"><i style="background:#D4AF7C"></i><div><strong>Gold</strong><code>#D4AF7C</code><span>Sublinhado, fio, palavra falada na legenda escura. Pouca área</span></div></div>
       <div class="sw"><i style="background:#202631"></i><div><strong>Ink</strong><code>#202631</code><span>Texto corrido e legenda no claro</span></div></div>
-      <div class="sw"><i style="background:#B43A35"></i><div><strong>Vermelho alerta</strong><code>#B43A35</code><span>Só para mito, falso e consequência grave</span></div></div>
+      <div class="sw"><i style="background:#A66E52"></i><div><strong>Clay</strong><code>#A66E52</code><span>Apoio humano eventual, quando o tema pedir</span></div></div>
+      <div class="sw"><i style="background:#66725C"></i><div><strong>Olive</strong><code>#66725C</code><span>Campo e território (rural, ambiental)</span></div></div>
+      <div class="sw"><i style="background:#B43A35"></i><div><strong>Vermelho alerta</strong><code>#B43A35</code><span>Só para risco, erro e consequência grave</span></div></div>
     </div>
-    <p class="note"><b>Para decidir</b>O vermelho de alerta não faz parte dos 10 tokens do manual. Foi aprovado neste Reel; se virar padrão, convém incluí-lo oficialmente no Design System.</p>
+    <div class="grid2">
+      <div>
+        <h3>Proporção na tela</h3>
+        <div class="ratio" role="img" aria-label="Cerca de 65% fundo, 25% azuis, 7% Sky e Gold, 3% alerta"><i style="width:65%;background:#FAF8F4;box-shadow:inset -1px 0 0 var(--line)"></i><i style="width:25%;background:#0B1F4B"></i><i style="width:4%;background:#8FC5EF"></i><i style="width:3%;background:#D4AF7C"></i><i style="width:3%;background:#B43A35"></i></div>
+        <p class="small" style="margin-top:10px">Referência, não cálculo: fundo domina, azuis estruturam, Sky e Gold são detalhe (o manual pede Gold em torno de 5% a 10%), vermelho é exceção.</p>
+      </div>
+      <div>
+        <h3>Ritmo de fundos</h3>
+        <p>Alterne cenas claras (Paper, Sand) com cenas escuras no gradiente tonal Midnight para Navy, a 135°. Feche sempre em Navy liso. Use o escuro para os momentos de peso: a regra, a decisão, o chamado final.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Combinações aprovadas</h3>
+      <div class="pairs" style="margin-top:12px">
+        <div class="pair" style="background:#FAF8F4;color:#0B1F4B;box-shadow:inset 0 0 0 1px var(--line)"><small style="color:#214D8C">Paper + Navy</small>Título no claro</div>
+        <div class="pair" style="background:#F4EDE2;color:#202631"><small style="color:#214D8C">Sand + Ink</small>Texto de apoio</div>
+        <div class="pair" style="background:linear-gradient(135deg,#081A35,#0B1F4B);color:#FAF8F4"><small style="color:#8FC5EF">Gradiente + Paper</small>Cena de peso</div>
+        <div class="pair" style="background:#0B1F4B;color:#D4AF7C"><small style="color:#8FC5EF">Navy + Gold</small>Destaque curto</div>
+      </div>
+    </div>
+    <p class="note warn"><b>Não fazer</b>Gold em texto fino sobre fundo claro (não se lê). Gradientes coloridos, brilho, metal ou neon. Gerar paleta nova a partir de uma cor. Recolorir a logo. O vermelho de alerta não é cor de marca: se ele virar padrão, deve entrar oficialmente no Design System.</p>
   </section>
 
   <section aria-labelledby="h-tipo">
     <div>
       <p class="eyebrow">02 · Tipografia</p>
-      <h2 id="h-tipo">Quatro famílias, cada uma com um papel</h2>
-      <p>Escolhidas porque a combinação anterior parecia genérica no vídeo. Títulos condensados e pesados ocupam a tela sem gritar; a serifa traz o tom de escritório; a mono marca categorias e números.</p>
+      <h2 id="h-tipo">Nossas fontes principais para vídeo</h2>
+      <p>Quatro famílias, cada uma com um papel que não se troca. Títulos condensados e pesados ocupam a tela com autoridade sem gritar; a serifa dá o tom de escritório; a mono marca categorias, números e fontes; a Funnel Sans cuida dos textos de interface.</p>
     </div>
     <div>
-      <div class="spec"><div class="meta"><b>Título</b>Fira Sans Condensed 800<br>120 px no quadro · entrelinha 1</div><div class="s-title">A pensão acaba?</div></div>
-      <div class="spec"><div class="meta"><b>Legenda</b>Fira Sans Condensed 500<br>54 px · palavra falada acende</div><div class="s-cap">A maioridade, sozinha, <span class="on">não encerra</span> a pensão.</div></div>
-      <div class="spec"><div class="meta"><b>Texto de apoio</b>Piazzolla 400 e 600</div><div class="s-text">O cancelamento depende de decisão do juiz, e o filho pode se manifestar antes.</div></div>
-      <div class="spec"><div class="meta"><b>Motion e interface</b>Funnel Sans 500 e 600</div><div class="s-motion">Busque orientação jurídica</div></div>
-      <div class="spec"><div class="meta"><b>Metadado</b>IBM Plex Mono 500<br>32 px · maiúsculas · 0,06em</div><div class="s-mono">Mito ou verdade · 18 anos</div></div>
+      <div class="spec"><div class="meta"><b>Título e palavra protagonista</b>Fira Sans Condensed 800<br>96 a 160 px no quadro 1080<br>entrelinha 1 · tracking −0,01em</div><div class="s-title">Antes de assinar, leia tudo.</div></div>
+      <div class="spec"><div class="meta"><b>Legenda</b>Fira Sans Condensed 500<br>54 px · entrelinha 1,14<br>palavra falada acende</div><div class="s-cap">Um documento assinado <span class="on">tem consequências.</span></div></div>
+      <div class="spec"><div class="meta"><b>Texto de apoio</b>Piazzolla 400 e 600<br>40 a 50 px · entrelinha 1,35</div><div class="s-text">Leia cada cláusula, guarde uma cópia e tire as dúvidas antes de assinar.</div></div>
+      <div class="spec"><div class="meta"><b>Motion e interface</b>Funnel Sans 500 e 600<br>46 a 76 px</div><div class="s-motion">Envie uma mensagem e tire suas dúvidas</div></div>
+      <div class="spec"><div class="meta"><b>Categoria, número, fonte</b>IBM Plex Mono 500<br>28 a 32 px · maiúsculas · 0,06em</div><div class="s-mono">Direito civil · Contratos</div></div>
     </div>
-    <p class="note"><b>Para decidir</b>O manual estático usa Cormorant Garamond e Montserrat. Esta combinação vale para vídeo. Unificar ou manter separado é decisão do escritório.</p>
+    <div class="tbl"><table>
+      <tr><th>Regra</th><th>Como aplicar</th></tr>
+      <tr><td>Hierarquia</td><td>Categoria (mono) acima, título (Fira 800) dominante, apoio (Piazzolla) abaixo. Nunca dois títulos do mesmo peso na cena</td></tr>
+      <tr><td>Texto longo</td><td>Editar ou dividir em outra cena. Nunca diminuir a fonte para caber</td></tr>
+      <tr><td>Palavra-chave</td><td>Mesma fonte, cor Blue (claro) ou Gold (escuro). Sem negrito extra, sem sombra, sem contorno</td></tr>
+      <tr><td>Maiúsculas</td><td>Só na mono das categorias e rótulos. Títulos em caixa normal</td></tr>
+      <tr><td>Fontes locais</td><td>Arquivos no projeto (licença OFL). O vídeo só monta depois que todas carregam</td></tr>
+    </table></div>
+    <p class="note"><b>Para decidir</b>O manual estático (feed e carrossel) usa Cormorant Garamond e Montserrat. Esta combinação é a do vídeo, escolhida porque a outra ficava genérica em movimento. Unificar ou manter as duas é decisão do escritório.</p>
+  </section>
+
+  <section aria-labelledby="h-grid">
+    <div>
+      <p class="eyebrow">03 · Grade e composição</p>
+      <h2 id="h-grid">Onde as coisas ficam no quadro</h2>
+      <p>Quadro 1080 × 1920, 30 quadros por segundo. Coluna de conteúdo de x 96 a 904, sempre alinhada à esquerda. Legenda na faixa de y 1240 a 1460. Margens livres para a interface do Instagram: 250 px no topo, 300 na base, 60 nas laterais. Centralizado, só o momento de ênfase e a assinatura final.</p>
+    </div>
+    <div class="layouts">
+      <figure><div class="frame sm"><div class="stage">
+        <div class="v-cat" style="top:150px">Contratos</div>
+        <div class="v-title" style="top:172px">Antes de assinar, <span style="color:var(--v-blue)">leia tudo.</span></div>
+        <div class="v-cap"><div class="rule"></div><div class="txt">Antes de assinar, leia tudo.</div></div>
+      </div></div><figcaption><b>Título protagonista</b>A frase é a imagem. Uma palavra-chave em cor.</figcaption></figure>
+      <figure><div class="frame sm" style="background:var(--v-sand)"><div class="stage">
+        <div class="v-cat" style="top:130px">Antes de assinar</div>
+        <div style="position:absolute;left:32px;top:150px;font:800 150px/1 var(--f-display);color:var(--v-navy)">3</div>
+        <div class="v-text" style="top:310px;font-size:18px">cuidados que evitam problemas</div>
+        <div class="v-cap"><div class="rule"></div><div class="txt">São três cuidados simples.</div></div>
+      </div></div><figcaption><b>Número protagonista</b>Quando o número é a notícia. Pode contar até o valor.</figcaption></figure>
+      <figure><div class="frame sm"><div class="stage">
+        <div class="v-cat" style="top:120px">O que fazer</div>
+        <div style="position:absolute;left:32px;top:146px;display:grid;gap:16px;width:290px">
+          <div style="border-top:2px solid var(--v-navy);padding-top:8px;font:800 24px/1.05 var(--f-display);color:var(--v-navy)"><span style="font:500 11px var(--f-mono);color:var(--v-blue);display:block">01</span>Leia cada cláusula</div>
+          <div style="border-top:2px solid var(--v-navy);padding-top:8px;font:800 24px/1.05 var(--f-display);color:var(--v-navy)"><span style="font:500 11px var(--f-mono);color:var(--v-blue);display:block">02</span>Guarde uma cópia</div>
+          <div style="border-top:2px solid var(--v-navy);padding-top:8px;font:800 24px/1.05 var(--f-display);color:var(--v-navy)"><span style="font:500 11px var(--f-mono);color:var(--v-blue);display:block">03</span>Tire as dúvidas</div>
+        </div>
+        <div class="v-cap"><div class="rule"></div><div class="txt">Leia, guarde e pergunte.</div></div>
+      </div></div><figcaption><b>Lista de até três</b>Fio Navy acima de cada item. Sem cards, sem ícones.</figcaption></figure>
+      <figure><div class="frame sm dark"><div class="stage">
+        <div class="v-cat" style="top:120px">Como funciona</div>
+        <div class="v-title" style="top:142px;font-size:32px">Do pedido à <span style="color:var(--v-gold)">decisão</span></div>
+        <div style="position:absolute;left:44px;top:230px;width:2px;height:150px;background:var(--v-gold)"></div>
+        <div style="position:absolute;left:38px;top:226px;width:14px;height:14px;border-radius:50%;background:var(--v-sky);border:2px solid var(--v-navy)"></div>
+        <div class="v-text" style="left:64px;top:222px;font-size:16px">Pedido</div>
+        <div class="v-text" style="left:64px;top:292px;font-size:16px">Análise</div>
+        <div class="v-text" style="left:64px;top:362px;font-size:16px">Decisão</div>
+      </div></div><figcaption><b>Linha ou processo</b>A linha é desenhada com a fala e a bolinha percorre as etapas.</figcaption></figure>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Elemento</th><th>Medida no quadro 1080 × 1920</th></tr>
+      <tr><td>Margem lateral</td><td class="num">96 px</td></tr>
+      <tr><td>Categoria</td><td>Acima do título, a cerca de 20 px dele</td></tr>
+      <tr><td>Título</td><td>Começa entre y 400 e y 560</td></tr>
+      <tr><td>Fio de seção</td><td class="num">2 a 4 px · Navy ou Gold</td></tr>
+      <tr><td>Legenda</td><td class="num">y 1240 a 1460</td></tr>
+      <tr><td>Cantos</td><td>Retos. Nada de cards arredondados com sombra</td></tr>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-sig">
+    <div>
+      <p class="eyebrow">04 · Elementos de assinatura</p>
+      <h2 id="h-sig">O que faz um vídeo ser reconhecido como BT</h2>
+      <p>Cores e fontes sozinhas não bastam. Estes cinco recursos aparecem em todos os vídeos, sempre do mesmo jeito.</p>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Recurso</th><th>Como é</th><th>Quando usar</th></tr>
+      <tr><td><b>Bolinha condutora</b></td><td>Círculo Sky de 30 px, contorno Navy de 3 px, rastro curto</td><td>O vídeo inteiro, apontando o que a voz diz</td></tr>
+      <tr><td><b>Legenda editorial</b></td><td>À esquerda, fio curto acima, palavra falada acende</td><td>Sempre (muita gente assiste sem som)</td></tr>
+      <tr><td><b>Sublinhado dourado</b></td><td>Fio Gold de 4 px desenhado sob o trecho falado</td><td>Para o trecho mais importante da cena</td></tr>
+      <tr><td><b>Categoria em mono</b></td><td>IBM Plex Mono em maiúsculas acima do título</td><td>Em toda cena com título</td></tr>
+      <tr><td><b>Assinatura final</b></td><td>Desfoque, Navy, logo grande, telefone e Instagram</td><td>Fim de todo vídeo</td></tr>
+    </table></div>
   </section>
 
   <section aria-labelledby="h-bol">
     <div class="two">
       <div>
-        <p class="eyebrow">03 · A bolinha condutora</p>
-        <h2 id="h-bol">O cursor do vídeo</h2>
-        <p>Um círculo Sky de 30 px com borda Navy de 3 px. Funciona como o dedo de quem explica: vai até o que a voz está dizendo e espera ali.</p>
+        <p class="eyebrow">05 · A bolinha condutora</p>
+        <h2 id="h-bol">O cursor dos nossos vídeos</h2>
+        <p>Funciona como o dedo de quem explica: vai até o que a voz está dizendo e espera ali. É o recurso que mais identifica os vídeos BT.</p>
         <div class="tbl"><table>
           <tr><th>Regra</th><th>Como</th></tr>
-          <tr><td>Sempre círculo</td><td>A versão que mudava de forma foi recusada</td></tr>
-          <tr><td>Um movimento por vez</td><td>Cada trajeto começa quando o anterior acaba. Sobreposição causou a "travada" da v004</td></tr>
-          <tr><td>Arcos naturais</td><td>x com <span class="mono">sine.inOut</span>, y com <span class="mono">power2.inOut</span>; sem mola</td></tr>
-          <tr><td>Mais tela só nas trocas</td><td>Arco amplo por um ponto afastado na mudança de cena, em cerca de 1 s</td></tr>
-          <tr><td>Rastro</td><td>8 pontos de 22 a 8 px, atraso de 0,03 s cada, visíveis só em movimento</td></tr>
-          <tr><td>Pode sumir dentro</td><td>Entra na palavra que vira protagonista e renasce na cena seguinte</td></tr>
-          <tr><td>Movimento reduzido</td><td>Não aparece</td></tr>
+          <tr><td>Sempre círculo</td><td>Não muda de forma nem de cor</td></tr>
+          <tr><td>Um movimento por vez</td><td>Cada trajeto começa quando o anterior termina. Sobrepor movimentos faz a bolinha "travar" e saltar</td></tr>
+          <tr><td>Arcos naturais</td><td>Horizontal e vertical com curvas diferentes; nunca linha reta mecânica</td></tr>
+          <tr><td>Sem mola</td><td>Chega e para. Passar do alvo e voltar parece defeito</td></tr>
+          <tr><td>Onde para</td><td>Ao lado direito do alvo (cerca de 30 px), ou sobre a linha que está sendo desenhada</td></tr>
+          <tr><td>Trocas de cena</td><td>Arco amplo por um ponto afastado, em cerca de 1 s</td></tr>
+          <tr><td>Rastro</td><td>8 pontos de 22 a 8 px, 0,03 s de atraso cada, só visíveis em movimento</td></tr>
+          <tr><td>Sumir e voltar</td><td>Pode entrar no elemento que vira protagonista e renascer na cena seguinte</td></tr>
         </table></div>
       </div>
       <div>
         <div class="frame" id="demo2"><div class="stage">
-          <div class="v-cat" style="top:120px">O que diz a Justiça</div>
-          <div class="v-title" style="top:142px;font-size:34px">Depende de <span id="d2a" class="w">decisão</span><br>do <span id="d2b" class="w">juiz</span></div>
+          <div class="v-cat" style="top:120px">O que muda</div>
+          <div class="v-title" style="top:142px;font-size:34px">Cada <span id="d2a" class="w">caso</span><br>tem sua <span id="d2b" class="w">realidade</span></div>
           <div style="position:absolute;left:32px;top:250px;width:250px;height:2px;background:var(--v-navy);transform-origin:0 50%" id="d2line"></div>
-          <div style="position:absolute;left:32px;top:268px;font:400 15px/1.4 var(--f-text);color:var(--v-ink);width:270px" id="d2txt">O filho tem o direito de se manifestar antes.</div>
+          <div class="v-text" style="top:268px" id="d2txt">A orientação depende dos documentos e da situação de cada pessoa.</div>
           <div id="d2ghosts"></div>
           <div class="dot" id="d2dot"></div>
         </div></div>
@@ -225,58 +382,135 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
 
   <section aria-labelledby="h-mov">
     <div>
-      <p class="eyebrow">04 · Movimento</p>
-      <h2 id="h-mov">Cinco curvas e três durações</h2>
-      <p>Tudo entra com a fala, nunca atrasado, e fica parado enquanto a voz explica. A versão acelerada (v003) foi recusada: o ritmo é calmo.</p>
+      <p class="eyebrow">06 · Movimento</p>
+      <h2 id="h-mov">Motion fluido: como tudo se move</h2>
+      <p>Fluidez não é velocidade. É movimento contínuo, sem trancos, que começa e termina macio e nunca disputa atenção com a fala. A versão acelerada que testamos foi recusada: o ritmo BT é calmo.</p>
     </div>
-    <div class="curves" id="curves"></div>
-    <div class="tbl"><table>
-      <tr><th>Medida</th><th>Valor</th><th>Uso</th></tr>
-      <tr><td>Base</td><td class="num">0,55 s</td><td>Entradas, dissolves, linhas</td></tr>
-      <tr><td>Rápida</td><td class="num">0,30 s</td><td>Saída de texto (sobe 16 px)</td></tr>
-      <tr><td>Lenta</td><td class="num">0,80 s</td><td>Linhas longas e sublinhado de seção</td></tr>
-      <tr><td>Palavra</td><td class="num">0,40 s · 20 px</td><td>Gancho palavra a palavra</td></tr>
-      <tr><td>Título / card</td><td class="num">36 px / 20 px</td><td>Deslocamento vertical de entrada</td></tr>
-      <tr><td>Troca de cena</td><td class="num">dissolve 0,55 s</td><td>Centrado no corte; a cena que sai fica +0,3 s</td></tr>
-      <tr><td>Final</td><td class="num">desfoque 18 px</td><td>Saída para a assinatura</td></tr>
-    </table></div>
+    <div class="grid2">
+      <div>
+        <h3>Leis do movimento</h3>
+        <ol class="steps">
+          <li><div><b>Entra com a fala</b>O elemento chega junto ou um instante antes da palavra, nunca depois.</div></li>
+          <li><div><b>Para enquanto explica</b>Depois de chegar, fica quieto. Sem flutuar, pulsar ou balançar à toa.</div></li>
+          <li><div><b>Um gesto por vez</b>Duas coisas se mexendo ao mesmo tempo dividem o olhar.</div></li>
+          <li><div><b>Entrada e saída coerentes</b>Entra subindo, sai subindo. A direção conta uma história.</div></li>
+          <li><div><b>Distâncias curtas</b>Textos andam 20 a 36 px. Quem viaja longe é só a bolinha.</div></li>
+          <li><div><b>Sem efeito sem motivo</b>Cada movimento tem que explicar algo da fala.</div></li>
+        </ol>
+      </div>
+      <div>
+        <h3>Tempos</h3>
+        <div class="tbl"><table>
+          <tr><th>Medida</th><th>Valor</th><th>Uso</th></tr>
+          <tr><td>Base</td><td class="num">0,55 s</td><td>Entradas, dissolves, linhas</td></tr>
+          <tr><td>Rápida</td><td class="num">0,30 s</td><td>Saída de texto</td></tr>
+          <tr><td>Lenta</td><td class="num">0,80 s</td><td>Linhas longas, sublinhado</td></tr>
+          <tr><td>Palavra</td><td class="num">0,40 s</td><td>Abertura palavra a palavra</td></tr>
+          <tr><td>Deslocamento</td><td class="num">36 / 20 px</td><td>Título / card</td></tr>
+          <tr><td>Bolinha</td><td class="num">0,4 a 1,1 s</td><td>Curto / troca de cena</td></tr>
+          <tr><td>Troca de cena</td><td class="num">0,55 s</td><td>Dissolve centrado no corte</td></tr>
+        </table></div>
+      </div>
+    </div>
+    <div>
+      <h3>As cinco curvas BT</h3>
+      <div class="curves" id="curves" style="margin-top:12px"></div>
+    </div>
+    <div>
+      <h3>Transições permitidas</h3>
+      <div class="tbl" style="margin-top:8px"><table>
+        <tr><th>Transição</th><th>Como</th><th>Quando</th></tr>
+        <tr><td><b>Dissolve</b></td><td>0,55 s centrado no corte; a cena que sai fica 0,3 s a mais por baixo</td><td>Padrão entre cenas</td></tr>
+        <tr><td><b>Revelação circular</b></td><td>A nova cena abre em círculo a partir de um objeto da cena anterior (0,62 s)</td><td>Da abertura para a resposta</td></tr>
+        <tr><td><b>Desfoque</b></td><td>A cena desfoca 18 px enquanto a seguinte aparece</td><td>Entrada da assinatura final</td></tr>
+        <tr><td><b>Continuidade pela bolinha</b></td><td>Ela atravessa o corte em arco e leva o olho à próxima cena</td><td>Sempre que houver bolinha</td></tr>
+      </table></div>
+      <p class="small" style="margin-top:12px">Proibidas: glitch, giro 3D, cubo, página virando, zoom brusco, flash branco, "whoosh" em toda troca.</p>
+    </div>
   </section>
 
   <section aria-labelledby="h-imp">
     <div class="two">
       <div>
-        <p class="eyebrow">05 · Momento de impacto</p>
+        <p class="eyebrow">07 · Momento de ênfase</p>
         <h2 id="h-imp">No máximo um por vídeo</h2>
-        <p>A palavra sai do título, cresce no centro em vermelho, a cena escurece, ela bate com som grave, treme, racha em fragmentos e solta partículas. Foi criado para "prisão" e só deve ser usado para uma consequência real, conferida na lei.</p>
-        <p class="note"><b>Cuidado</b>O manual pede "Impact sem sensacionalismo", e a publicidade da advocacia exige sobriedade (Provimento 205/2021 do CFOAB). Sempre mostrar aos advogados antes de publicar.</p>
-        <p class="small">O botão toca uma versão sintetizada do som de impacto. No vídeo o som é gerado com ffmpeg, sem banco de áudio.</p>
+        <p>Para a palavra que carrega o risco principal do tema. A palavra sai do título, cresce no centro em vermelho, a cena escurece, ela bate com som grave, racha em fragmentos e solta partículas. Depois a cena volta ao normal.</p>
+        <p>Existe uma versão mais leve: a palavra cresce e assenta, com o sublinhado dourado, sem rachar. Use a versão forte só quando a consequência for real e grave.</p>
+        <p class="note warn"><b>Cuidado</b>O manual pede "Impact sem sensacionalismo", e a publicidade da advocacia exige sobriedade (Provimento 205/2021 do CFOAB). Sempre mostrar aos advogados antes de publicar.</p>
       </div>
       <div>
         <div class="frame" id="demo3" style="background:var(--v-sand)"><div class="stage">
           <div id="d3dim">
-            <div class="v-cat" style="top:120px">Parar por conta própria</div>
-            <div class="v-title" style="top:142px;font-size:34px">pode gerar dívida e até <span id="d3src" style="color:var(--v-red)">prisão</span></div>
+            <div class="v-cat" style="top:120px">Atenção</div>
+            <div class="v-title" style="top:142px;font-size:34px">Assinar sem ler é um <span id="d3src" style="color:var(--v-red)">risco</span></div>
           </div>
           <div class="pz-flash" id="d3flash"></div>
           <div id="d3word" class="pz-word" style="top:214px"></div>
           <div id="d3parts"></div>
         </div></div>
         <div class="ctrl"><button type="button" id="play3">Reproduzir com som</button></div>
-        <p class="frame-cap">Voo, impacto, 5 fragmentos e 28 partículas</p>
+        <p class="frame-cap">Ênfase forte: voo, impacto, fragmentos e partículas</p>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="h-sig">
+  <section aria-labelledby="h-ia">
+    <div>
+      <p class="eyebrow">08 · Sem cara de IA</p>
+      <h2 id="h-ia">O vídeo não pode parecer feito por máquina</h2>
+      <p>O público reconhece em segundos o visual genérico de vídeos gerados por IA, e associa isso a conteúdo sem cuidado. Para um escritório de advocacia, isso custa confiança. Esta é a regra mais importante da direção.</p>
+    </div>
+    <div class="versus">
+      <div>
+        <span class="vs-tag no">Cara de IA</span>
+        <div class="frame sm ai" style="max-width:300px"><div class="stage">
+          <i class="ai-spark" style="left:60px;top:90px"></i><i class="ai-spark" style="left:290px;top:130px"></i><i class="ai-spark" style="left:250px;top:520px"></i><i class="ai-spark" style="left:80px;top:560px"></i>
+          <div class="ai-card"><h4>Você conhece seus direitos?</h4><p>Descubra agora tudo o que você precisa saber sobre contratos!</p></div>
+          <div class="ai-cap">ASSINAR SEM LER?!</div>
+        </div></div>
+        <p class="small" style="margin-top:10px">Gradiente roxo, card arredondado com brilho, tudo centralizado, título com degradê, faíscas, legenda amarela com contorno.</p>
+      </div>
+      <div>
+        <span class="vs-tag yes">Padrão BT</span>
+        <div class="frame sm" style="max-width:300px"><div class="stage">
+          <div class="v-cat" style="top:150px">Contratos</div>
+          <div class="v-title" style="top:172px">Antes de assinar, <span class="v-hl">leia tudo.</span></div>
+          <div class="v-text" style="top:290px">Um documento assinado tem consequências.</div>
+          <div class="v-cap"><div class="rule"></div><div class="txt">Antes de assinar, <span style="color:var(--v-blue)">leia tudo.</span></div></div>
+          <div class="dot" style="transform:translate(232px,262px)"></div>
+        </div></div>
+        <p class="small" style="margin-top:10px">Fundo sólido da marca, alinhamento à esquerda, uma palavra destacada, legenda editorial, bolinha apontando.</p>
+      </div>
+    </div>
+    <div class="tells">
+      <div class="tell"><span>Gradiente roxo e azul, neon, brilho</span><span>Fundos sólidos da paleta ou gradiente tonal Midnight para Navy</span></div>
+      <div class="tell"><span>Tudo centralizado e simétrico</span><span>Coluna à esquerda, assimetria, espaço vazio de propósito</span></div>
+      <div class="tell"><span>Cards arredondados com sombra e vidro</span><span>Cantos retos, fios finos, tipografia organizando</span></div>
+      <div class="tell"><span>Fontes genéricas (Inter, Poppins, Montserrat em tudo)</span><span>Fira Sans Condensed, Piazzolla, Funnel Sans e IBM Plex Mono</span></div>
+      <div class="tell"><span>Texto com degradê, contorno, sombra ou brilho dourado metálico</span><span>Cor chapada; destaque por cor da paleta ou sublinhado</span></div>
+      <div class="tell"><span>Emojis e ícones 3D, martelo, balança, livro de leis</span><span>Elementos tirados do tema real: linha do tempo, documento, número</span></div>
+      <div class="tell"><span>Partículas, faíscas e bokeh flutuando o tempo todo</span><span>Fundo quieto; partículas só no momento de ênfase</span></div>
+      <div class="tell"><span>Elementos que respiram, pulsam ou balançam sem motivo</span><span>Movimento só quando a fala pede; depois, parado</span></div>
+      <div class="tell"><span>Texto "digitando" letra a letra, cursor piscando</span><span>Entrada palavra a palavra no ritmo da voz</span></div>
+      <div class="tell"><span>Zoom lento infinito em tudo, transições com glitch</span><span>Dissolve, revelação circular, desfoque no final</span></div>
+      <div class="tell"><span>Legenda gigante amarela, palavras em cores aleatórias</span><span>Legenda editorial, palavra falada em Blue ou Gold</span></div>
+      <div class="tell"><span>Pessoas e mãos geradas por IA, rostos inventados</span><span>Fotos reais do escritório ou peça só tipográfica</span></div>
+      <div class="tell"><span>Frases de impacto vazias ("Descubra agora!", "Você não vai acreditar")</span><span>Linguagem simples, concreta, de quem orienta</span></div>
+      <div class="tell"><span>Voz robótica, trilha épica, efeito sonoro em toda troca</span><span>Voz natural, sem trilha, som só no momento de ênfase</span></div>
+    </div>
+    <p class="note"><b>Teste rápido</b>Pause em qualquer quadro. Se ele pudesse ser de qualquer escritório, de qualquer área, de qualquer país, refaça. Um quadro BT tem a nossa cor, a nossa fonte, a nossa bolinha e um detalhe concreto do tema.</p>
+  </section>
+
+  <section aria-labelledby="h-leg">
     <div class="two">
       <div>
-        <p class="eyebrow">06 · Legenda e assinatura</p>
-        <h2 id="h-sig">Como o vídeo fala e como termina</h2>
+        <p class="eyebrow">09 · Legenda e assinatura final</p>
+        <h2 id="h-leg">Como o vídeo fala e como termina</h2>
         <h3>Legenda editorial</h3>
-        <p>À esquerda, na coluna de 96 a 904 px, faixa de y 1240 a 1460. Fio curto acima (Navy no claro, Gold no escuro). A palavra falada acende em Blue ou Gold. Até duas linhas por bloco, sem atravessar a troca de cena.</p>
-        <h3>Assinatura</h3>
-        <p>A cena anterior desfoca. Fundo Navy com duas manchas azuis derivando devagar. A logo original entra desfocada e assenta nítida, centralizada. Telefone grande, fio dourado, nota e fonte em texto pequeno.</p>
-        <p class="small">Use apenas a logo original. O PNG tem 391 px de largura; para assinaturas maiores, peça ao escritório o vetor.</p>
+        <p>Alinhada à esquerda na coluna, faixa de y 1240 a 1460. Fio curto acima (56 × 4 px, Navy no claro, Gold no escuro). Fira Sans Condensed 500, 54 px. A palavra falada acende em Blue (claro) ou Gold (escuro). Até duas linhas por bloco, sem quebrar expressões e sem atravessar a troca de cena. O arquivo .srt acompanha todo vídeo.</p>
+        <h3>Assinatura final</h3>
+        <p>A última cena desfoca. Fundo Navy com duas manchas azuis grandes derivando devagar. A logo original entra desfocada e assenta nítida, centralizada. Abaixo: rótulo "TELEFONE" e o número em Fira 800; rótulo "INSTAGRAM", o ícone em branco e o perfil; fio dourado; nota informativa e fontes em texto pequeno.</p>
+        <p class="small">Use apenas o arquivo original da logo, sem recolorir ou deformar. O PNG tem 391 px de largura; para assinaturas grandes, peça ao escritório o vetor. Confira telefone e perfil a cada vídeo.</p>
       </div>
       <div>
         <div class="frame sig" id="demo4"><div class="stage">
@@ -284,78 +518,87 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
           <div class="blob" id="b2" style="left:100px;top:300px;background:#081a35;opacity:.7"></div>
           <div class="sig-in">
             <img id="d4logo" alt="Logo Bispo &amp; Teixeira Advogados" src="__LOGO__">
-            <div class="sig-lbl" id="d4l">Fale com a gente</div>
+            <div class="sig-lbl" id="d4l">Telefone</div>
             <div class="sig-tel" id="d4t">(38) 9 9129-6401</div>
+            <div class="sig-lbl" id="d4il">Instagram</div>
+            <div class="sig-ig" id="d4i"><svg viewBox="0 0 64 64" width="21" height="21" aria-hidden="true"><rect x="4" y="4" width="56" height="56" rx="16" fill="none" stroke="#FAF8F4" stroke-width="5"/><circle cx="32" cy="32" r="13" fill="none" stroke="#FAF8F4" stroke-width="5"/><circle cx="47.5" cy="16.5" r="3.6" fill="#FAF8F4"/></svg>@bispoeteixeiraadvogados</div>
             <div class="sig-rule" id="d4r"></div>
           </div>
         </div></div>
         <div class="ctrl"><button type="button" id="play4">Reproduzir</button></div>
-        <p class="frame-cap">Fechamento com desfoque e logo central</p>
+        <p class="frame-cap">Fechamento padrão de todos os vídeos</p>
       </div>
     </div>
   </section>
 
   <section aria-labelledby="h-voz">
     <div>
-      <p class="eyebrow">07 · Voz e som</p>
+      <p class="eyebrow">10 · Voz e som</p>
       <h2 id="h-voz">Uma voz, sem trilha, som só onde importa</h2>
     </div>
     <div class="tbl"><table>
       <tr><th>Item</th><th>Padrão</th></tr>
       <tr><td>Voz</td><td>ElevenLabs "Henrique" (<span class="mono">3ULAAai0IVN00DTWA6vF</span>), modelo <span class="mono">eleven_v4</span>, português do Brasil</td></tr>
-      <tr><td>Geração</td><td>Uma variação por vez. Cada geração gasta créditos; texto aprovado antes de gerar</td></tr>
+      <tr><td>Tom</td><td>Calmo, próximo, seguro. Frases curtas, uma ideia por frase</td></tr>
+      <tr><td>Geração</td><td>Uma variação por vez; texto aprovado antes de gerar (cada geração gasta créditos)</td></tr>
       <tr><td>Volume final</td><td class="num">−16 LUFS · pico −1,5 dBTP</td></tr>
-      <tr><td>Trilha</td><td>Nenhuma por padrão</td></tr>
-      <tr><td>Efeitos</td><td>Sintetizados localmente, apenas no momento de impacto</td></tr>
+      <tr><td>Trilha</td><td>Nenhuma por padrão. Se o prompt pedir, discreta e abaixo da voz</td></tr>
+      <tr><td>Efeitos</td><td>Só no momento de ênfase, sintetizados, nunca em toda troca de cena</td></tr>
     </table></div>
+  </section>
+
+  <section aria-labelledby="h-ace">
+    <div>
+      <p class="eyebrow">11 · Acessibilidade</p>
+      <h2 id="h-ace">Todo vídeo sai em duas versões</h2>
+      <p>A versão normal e a versão de <b>movimento reduzido</b>, para quem se incomoda com animação. Na reduzida: sem bolinha, sem rastro, sem deslocamentos (só aparecer e sumir), sem partículas, sem desfoque. O conteúdo, a voz e a legenda são os mesmos. Contraste sempre legível no celular.</p>
+    </div>
   </section>
 
   <section aria-labelledby="h-proc">
     <div>
-      <p class="eyebrow">08 · Como trabalhamos</p>
+      <p class="eyebrow">12 · Como trabalhamos</p>
       <h2 id="h-proc">Do roteiro ao arquivo final</h2>
-      <p>A ordem importa: mudar a voz depois que a animação está pronta custa créditos e retrabalho de tempo.</p>
+      <p>A ordem importa: trocar a narração depois da animação pronta custa créditos e retrabalho.</p>
     </div>
     <ol class="steps">
-      <li><div><b>Roteiro em linguagem simples</b>Uma ideia por frase. Nada de número de súmula na fala.</div></li>
+      <li><div><b>Roteiro em linguagem simples</b>Uma ideia por frase, sem jargão (diga quem decide e o que muda na vida da pessoa).</div></li>
       <li><div><b>Conferência jurídica</b>Cada afirmação checada na fonte oficial (Planalto, STJ, STF) e aprovada pelos advogados.</div></li>
       <li><div><b>Narração</b>ElevenLabs, voz Henrique, uma geração.</div></li>
-      <li><div><b>Tempo por palavra</b>Transcrição local com faster-whisper; grafia corrigida pelo roteiro.</div></li>
-      <li><div><b>Roteiro visual</b>Cena a cena: fundo, protagonista, para onde vai a bolinha, o que é sublinhado. Decidir se há momento de impacto.</div></li>
-      <li><div><b>Composição</b>A partir do modelo da v005, no HyperFrames.</div></li>
-      <li><div><b>Verificação</b>Lint e check, quadros-chave em imagem, bolinha medida quadro a quadro, nenhum quadro em branco nas trocas.</div></li>
-      <li><div><b>Render e entrega</b>Versão normal, versão de movimento reduzido e SRT, com número de versão no nome.</div></li>
+      <li><div><b>Tempo de cada palavra</b>Transcrição para sincronizar animação e legenda com a voz.</div></li>
+      <li><div><b>Roteiro visual</b>Cena a cena: fundo, protagonista, composição, para onde vai a bolinha, o que é sublinhado, se há ênfase.</div></li>
+      <li><div><b>Animação</b>Seguindo esta direção e o prompt do vídeo.</div></li>
+      <li><div><b>Conferência visual</b>Quadros-chave em imagem, bolinha sem saltos, nenhum quadro em branco, legenda dentro da faixa.</div></li>
+      <li><div><b>Render e entrega</b>1080 × 1920, versão normal, versão reduzida e .srt, com número de versão no nome.</div></li>
     </ol>
   </section>
 
-  <section aria-labelledby="h-reg">
+  <section aria-labelledby="h-chk">
     <div>
-      <p class="eyebrow">09 · Regras rápidas</p>
-      <h2 id="h-reg">O que já aprendemos</h2>
+      <p class="eyebrow">13 · Checklist</p>
+      <h2 id="h-chk">Antes de publicar</h2>
     </div>
-    <div class="rules">
-      <div><h3>Fazer</h3><ul>
-        <li>Mostrar o título já no primeiro quadro.</li>
-        <li>Fazer cada elemento chegar junto com a fala.</li>
-        <li>Deixar a tela parada enquanto a voz explica.</li>
-        <li>Alinhar à esquerda; centralizar só o impacto e a assinatura.</li>
-        <li>Mostrar opções lado a lado quando a decisão é visual.</li>
-        <li>Mudar só o que foi pedido em cada rodada.</li>
-      </ul></div>
-      <div><h3 class="no">Evitar</h3><ul>
-        <li>Cards arredondados e tudo centralizado.</li>
-        <li>Acelerar o ritmo para parecer dinâmico.</li>
-        <li>Bolinha que muda de forma ou passa do alvo.</li>
-        <li>Mais de um momento de impacto.</li>
-        <li>Jargão jurídico na fala e na tela.</li>
-        <li>Inventar telefone, lei, prazo ou resultado.</li>
-      </ul></div>
-    </div>
+    <ul class="checks">
+      <li>Roteiro aprovado e afirmações conferidas na fonte oficial</li>
+      <li>Nenhum dado inventado (telefone, perfil, lei, prazo, resultado)</li>
+      <li>Só cores da paleta; Gold em pouca área</li>
+      <li>Só as quatro fontes, cada uma no seu papel</li>
+      <li>Coluna à esquerda; centralizado só ênfase e assinatura</li>
+      <li>Um protagonista por cena, até três itens por lista</li>
+      <li>Nada aparece antes da fala; nada se mexe à toa</li>
+      <li>Bolinha sempre círculo, sem saltos e sem mola</li>
+      <li>No máximo um momento de ênfase</li>
+      <li>Passou no teste "sem cara de IA"</li>
+      <li>Legenda sincronizada, dentro da faixa, com .srt</li>
+      <li>Assinatura com logo original, telefone e Instagram conferidos</li>
+      <li>Áudio em −16 LUFS, pico até −1,5 dBTP</li>
+      <li>Versão normal e reduzida renderizadas em 1080 × 1920</li>
+    </ul>
   </section>
 
   <footer>
-    <p class="eyebrow">Onde está o modelo</p>
-    <p>Repositório <span class="mono">Marketing-Skills</span>, pasta <span class="mono">bt-reels-direcao-visual</span>: regras, receitas de código, template da v005, fontes, logo e o som de impacto. Nos próximos vídeos, basta pedir um Reel do escritório que essa base é usada.</p>
+    <p class="eyebrow">Onde está</p>
+    <p>Esta direção também está no repositório <span class="mono">Marketing-Skills</span>, pasta <span class="mono">bt-reels-direcao-visual</span>, com as receitas de código, fontes, logo e um projeto de exemplo para reaproveitar.</p>
   </footer>
 </div>
 
@@ -364,11 +607,11 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
 (function () {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const curves = [
-    ["Emphasized", [0.22, 1, 0.36, 1], "Títulos, palavras do gancho, marca de falso"],
+    ["Emphasized", [0.22, 1, 0.36, 1], "Títulos, palavras da abertura, ênfases"],
     ["Enter", [0.16, 1, 0.3, 1], "Cards, rótulos, itens de lista"],
     ["Exit", [0.4, 0, 1, 1], "Texto que sai"],
     ["In-out", [0.45, 0, 0.25, 1], "Dissolves, linhas, sublinhados"],
-    ["Standard", [0.4, 0, 0.2, 1], "Carimbo e assentamentos"],
+    ["Standard", [0.4, 0, 0.2, 1], "Assentamentos discretos"],
   ];
   const cv = document.getElementById("curves");
   curves.forEach(([n, c, u]) => {
@@ -377,7 +620,7 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
       `<div class="curve"><svg viewBox="0 0 160 120" role="img" aria-label="Curva ${n}">
         <rect x="10" y="10" width="140" height="100" fill="none" stroke="var(--line)"/>
         <path d="M${P(0,0)} C${P(c[0],c[1])} ${P(c[2],c[3])} ${P(1,1)}" fill="none" stroke="var(--accent)" stroke-width="3"/>
-        <circle cx="${10 + 140}" cy="10" r="4" fill="var(--sky)" stroke="var(--head)"/>
+        <circle cx="150" cy="10" r="4" fill="var(--sky)" stroke="var(--head)"/>
       </svg><strong>${n}</strong><span class="mono">cubic-bezier(${c.join(", ")})</span><span>${u}</span></div>`);
   });
 
@@ -387,14 +630,12 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
   fit(); window.addEventListener("resize", fit);
   if (!window.gsap) return;
 
-  const IO = "cubic-bezier(.45,0,.25,1)";
-  const ease = (a, b, c, d) => (t) => { // aproximação de cubic-bezier para o GSAP
+  const ease = (a, b, c, d) => (t) => {
     let x = t; for (let i = 0; i < 6; i++) { const cx = 3 * a * x * (1 - x) ** 2 + 3 * c * x * x * (1 - x) + x ** 3 - t; const dx = 3 * a * (1 - x) ** 2 + 6 * (c - a) * x * (1 - x) + 3 * (1 - c) * x * x; if (Math.abs(dx) < 1e-6) break; x -= cx / dx; x = Math.min(1, Math.max(0, x)); }
     return 3 * b * x * (1 - x) ** 2 + 3 * d * x * x * (1 - x) + x ** 3;
   };
   const E = { emph: ease(0.22, 1, 0.36, 1), enter: ease(0.16, 1, 0.3, 1), inOut: ease(0.45, 0, 0.25, 1) };
 
-  // bolinha com trajeto sequencial e rastro amostrado
   function dotPath(tl, dot, gwrap, moves, total) {
     const g = [];
     for (let k = 0; k < 8; k++) { const el = document.createElement("i"); el.className = "ghost"; const s = (22 - k * 2) / 3; Object.assign(el.style, { width: s + "px", height: s + "px", margin: `${-s / 2}px 0 0 ${-s / 2}px` }); gwrap.appendChild(el); g.push({ el, lag: (k + 1) * 0.03, a: 0.42 - k * 0.045 }); }
@@ -412,27 +653,24 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
   }
   function box(stage, sel) { const s = stage.getBoundingClientRect(), r = stage.querySelector(sel).getBoundingClientRect(), k = s.width / 360; return { x: (r.left - s.left) / k, y: (r.top - s.top) / k, w: r.width / k, h: r.height / k }; }
 
-  // demo 1: gancho
   function demo1() {
     const st = document.querySelector("#demo1 .stage");
     const tl = gsap.timeline({ paused: true });
     const cap = document.getElementById("d1cap");
-    const words = ["Seu", "filho", "fez", "dezoito", "anos."];
+    const words = ["Antes", "de", "assinar,", "leia", "tudo."];
     cap.innerHTML = words.map((w, i) => `<span id="c${i}">${w}</span>`).join(" ");
-    tl.set("#d1w2,#d1w3,#d1w4,#d1w5,#d1q", { opacity: 0 }, 0);
-    const T = [0, 0.35, 0.65, 0.95, 1.4];
+    const T = [0, 0.3, 0.5, 1.1, 1.4];
+    tl.set("#d1w2,#d1w3,#d1w4,#d1w5,#d1txt", { opacity: 0 }, 0);
     ["#d1w2", "#d1w3", "#d1w4", "#d1w5"].forEach((s, i) => tl.fromTo(s, { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.4, ease: E.emph }, T[i + 1]));
-    tl.fromTo("#d1q", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.4, ease: E.emph }, 2.2);
+    tl.fromTo("#d1txt", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.55, ease: E.enter }, 2.1);
     words.forEach((w, i) => { tl.set(`#c${i}`, { color: "#214D8C" }, T[i]); if (i < 4) tl.set(`#c${i}`, { color: "#202631" }, T[i + 1]); });
-    tl.set(cap, { opacity: 1 }, 0);
-    const b4 = box(st, "#d1w4"), bq = box(st, "#d1q");
+    const b3 = box(st, "#d1w3"), b5 = box(st, "#d1w5"), bt = box(st, "#d1txt");
     const dot = st.querySelector("#d1dot");
     tl.set(dot, { x: 330, y: 400, opacity: 0 }, 0);
     tl.to(dot, { opacity: reduce ? 0 : 1, duration: 0.3 }, 0.1);
-    dotPath(tl, dot, st.querySelector("#d1ghosts"), [[0.3, b4.x + b4.w + 10, b4.y + b4.h / 2, 0.8], [2.0, bq.x + bq.w + 10, bq.y + bq.h / 2, 0.6]], 3.4);
+    dotPath(tl, dot, st.querySelector("#d1ghosts"), [[0.2, b3.x + b3.w + 10, b3.y + b3.h / 2, 0.7], [1.2, b5.x + b5.w + 10, b5.y + b5.h / 2, 0.5], [2.0, bt.x + bt.w * 0.9, bt.y + bt.h + 10, 0.6]], 3.4);
     return tl;
   }
-  // demo 2: trajeto e arco
   function demo2() {
     const st = document.querySelector("#demo2 .stage");
     const tl = gsap.timeline({ paused: true });
@@ -446,12 +684,10 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
       [1.2, b.x + b.w + 10, b.y + b.h / 2, 0.4], [1.6, 32, 251, 0.3], [1.9, 282, 251, 0.8], [3.2, 310, 300, 0.5]], 4);
     return tl;
   }
-  // demo 3: impacto
   function demo3() {
     const st = document.querySelector("#demo3 .stage");
     const word = st.querySelector("#d3word");
-    const N = 5;
-    for (let i = 0; i < N; i++) { const s = document.createElement("div"); s.className = "pz-sh"; s.textContent = "prisão"; const x0 = i * 20, x1 = (i + 1) * 20; s.style.clipPath = `polygon(${x0 - 3}% 0, ${x1 + 2}% 0, ${x1 - 2}% 100%, ${x0 + 1}% 100%)`; word.appendChild(s); }
+    for (let i = 0; i < 5; i++) { const s = document.createElement("div"); s.className = "pz-sh"; s.textContent = "risco"; const x0 = i * 20, x1 = (i + 1) * 20; s.style.clipPath = `polygon(${x0 - 3}% 0, ${x1 + 2}% 0, ${x1 - 2}% 100%, ${x0 + 1}% 100%)`; word.appendChild(s); }
     const parts = st.querySelector("#d3parts");
     let seed = 358; const rnd = () => ((seed = (seed * 1664525 + 1013904223) % 4294967296), seed / 4294967296);
     const pl = [];
@@ -465,27 +701,29 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
     if (reduce) {
       tl.fromTo(word, { opacity: 0 }, { opacity: 1, duration: 0.4 }, PZ);
       tl.to(word, { opacity: 0, duration: 0.4 }, OUT + 0.4);
-      return tl;
+    } else {
+      tl.set(word, { opacity: 1 }, PZ);
+      tl.fromTo(word, { x: src.x + src.w / 2 - 180, y: src.y + src.h / 2 - 250, scale: src.h / 72 }, { x: 0, y: 0, scale: 1, duration: HIT - PZ, ease: "power3.in", immediateRender: false }, PZ);
+      tl.fromTo("#d3flash", { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none", immediateRender: false }, HIT);
+      tl.to("#d3flash", { opacity: 0.35, duration: 0.5 }, HIT + 0.06);
+      tl.to(word, { keyframes: [{ x: -5 }, { x: 3 }, { x: -2 }, { x: 0 }], duration: 0.2, ease: "none" }, HIT);
+      [...word.children].forEach((s, i) => {
+        const dx = ((i - 2) * 12 + (rnd() - 0.5) * 8) / 3, dy = ((rnd() - 0.5) * 16) / 3, r = (rnd() - 0.5) * 6;
+        tl.fromTo(s, { x: 0, y: 0, rotation: 0, opacity: 1 }, { x: dx, y: dy, rotation: r, duration: 0.18, ease: "power2.out", immediateRender: false }, HIT + 0.02);
+        tl.to(s, { x: dx * 3, y: 75 + i * 9, rotation: r * 4, opacity: 0, duration: 0.42, ease: "power2.in" }, OUT);
+      });
+      pl.forEach((p) => {
+        const a = rnd() * Math.PI * 2, r = (200 + rnd() * 330) / 3, sz = (6 + Math.round(rnd() * 10)) / 3, sx = ((rnd() - 0.5) * 600) / 3, sy = ((rnd() - 0.5) * 160) / 3;
+        tl.set(p, { width: sz, height: sz, x: sx, y: sy, opacity: 0 }, 0);
+        tl.fromTo(p, { opacity: 1, x: sx, y: sy, rotation: 0 }, { opacity: 0, x: sx + Math.cos(a) * r, y: sy + Math.sin(a) * r * 0.8 + 40, rotation: (rnd() - 0.5) * 300, duration: 0.75 + rnd() * 0.3, ease: "power2.out", immediateRender: false }, HIT + 0.02);
+      });
+      tl.to("#d3flash", { opacity: 0, duration: 0.4 }, OUT);
     }
-    tl.set(word, { opacity: 1 }, PZ);
-    tl.fromTo(word, { x: src.x + src.w / 2 - 180, y: src.y + src.h / 2 - 250, scale: src.h / 72 }, { x: 0, y: 0, scale: 1, duration: HIT - PZ, ease: "power3.in", immediateRender: false }, PZ);
-    tl.fromTo("#d3flash", { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none", immediateRender: false }, HIT);
-    tl.to("#d3flash", { opacity: 0.35, duration: 0.5 }, HIT + 0.06);
-    tl.to(word, { keyframes: [{ x: -5 }, { x: 3 }, { x: -2 }, { x: 0 }], duration: 0.2, ease: "none" }, HIT);
-    [...word.children].forEach((s, i) => {
-      const dx = ((i - 2) * 12 + (rnd() - 0.5) * 8) / 3, dy = ((rnd() - 0.5) * 16) / 3, r = (rnd() - 0.5) * 6;
-      tl.fromTo(s, { x: 0, y: 0, rotation: 0, opacity: 1 }, { x: dx, y: dy, rotation: r, duration: 0.18, ease: "power2.out", immediateRender: false }, HIT + 0.02);
-      tl.to(s, { x: dx * 3, y: 75 + i * 9, rotation: r * 4, opacity: 0, duration: 0.42, ease: "power2.in" }, OUT);
-    });
-    pl.forEach((p) => {
-      const a = rnd() * Math.PI * 2, r = (200 + rnd() * 330) / 3, sz = (6 + Math.round(rnd() * 10)) / 3, sx = ((rnd() - 0.5) * 600) / 3, sy = ((rnd() - 0.5) * 160) / 3;
-      tl.set(p, { width: sz, height: sz, x: sx, y: sy, opacity: 0 }, 0);
-      tl.fromTo(p, { opacity: 1, x: sx, y: sy, rotation: 0 }, { opacity: 0, x: sx + Math.cos(a) * r, y: sy + Math.sin(a) * r * 0.8 + 40, rotation: (rnd() - 0.5) * 300, duration: 0.75 + rnd() * 0.3, ease: "power2.out", immediateRender: false }, HIT + 0.02);
-    });
-    tl.to("#d3flash", { opacity: 0, duration: 0.4 }, OUT);
+    // volta ao estado normal para o quadro ficar legível em repouso
+    tl.to("#d3dim", { opacity: 1, duration: 0.55, ease: E.inOut }, OUT + 0.9);
+    tl.set("#d3src", { opacity: 1 }, OUT + 0.9);
     return tl;
   }
-  // som de impacto sintetizado: batida grave descendente + estalo
   let ac;
   function thump() {
     try {
@@ -500,7 +738,6 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
       hp.type = "highpass"; hp.frequency.value = 1800; g2.gain.value = 0.5; b.buffer = n; b.connect(hp).connect(g2).connect(ac.destination); b.start(t0);
     } catch (e) { /* sem áudio: o efeito visual continua */ }
   }
-  // demo 4: assinatura
   function demo4() {
     const tl = gsap.timeline({ paused: true });
     if (!reduce) {
@@ -508,21 +745,18 @@ footer { padding-top: 40px; border-top: 1px solid var(--line); }
       tl.fromTo("#b2", { x: 0, y: 0 }, { x: -107, y: -87, duration: 4.4, ease: "sine.inOut" }, 0);
       tl.fromTo("#d4logo", { opacity: 0, scale: 1.06, filter: "blur(9px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.9, ease: E.inOut }, 0.2);
     } else tl.fromTo("#d4logo", { opacity: 0 }, { opacity: 1, duration: 0.55 }, 0.2);
-    tl.fromTo("#d4l", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.55, ease: E.enter }, 0.8);
-    tl.fromTo("#d4t", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.55, ease: E.enter }, 0.85);
-    tl.fromTo("#d4r", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: E.inOut }, 1.2);
+    [["#d4l", 0.8], ["#d4t", 0.85], ["#d4il", 1.1], ["#d4i", 1.15]].forEach(([s, t]) => tl.fromTo(s, { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.55, ease: E.enter }, t));
+    tl.fromTo("#d4r", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: E.inOut }, 1.45);
     return tl;
   }
   const run = (fn, btn, extra) => {
     let tl;
-    const go = () => { if (!tl) tl = fn(); if (extra) extra(); tl.restart(); };
-    document.getElementById(btn).addEventListener("click", go);
-    return () => { tl = fn(); tl.progress(1); };
+    document.getElementById(btn).addEventListener("click", () => { if (!tl) tl = fn(); if (extra) extra(); tl.restart(); });
+    return () => { if (!tl) tl = fn(); tl.progress(1); };
   };
   const done = [run(demo1, "play1"), run(demo2, "play2"), run(demo3, "play3", thump), run(demo4, "play4")];
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
     fit();
-    // estado final visível em repouso; o gancho toca uma vez ao abrir
     done.forEach((f) => f());
     if (!reduce) document.getElementById("play1").click();
   });

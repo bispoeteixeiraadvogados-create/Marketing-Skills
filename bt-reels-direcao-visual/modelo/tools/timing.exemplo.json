@@ -1,0 +1,263 @@
+{
+ "note": "Âncoras [tempo na locução de referência (take B), tempo na locução final (take C)]. Tudo entre âncoras é interpolado.",
+ "audio": "assets/audio/BT_pensao18_locucao_takeC.wav",
+ "audio_duration": 34.8,
+ "words": "/home/user/bt-audio/takeC_KfB6o9.wav.words.json",
+ "anchors": [
+  [
+   0,
+   0
+  ],
+  [
+   1.26,
+   1.4
+  ],
+  [
+   2.05,
+   2.22
+  ],
+  [
+   2.54,
+   2.68
+  ],
+  [
+   2.96,
+   3.08
+  ],
+  [
+   3.38,
+   3.56
+  ],
+  [
+   4.11,
+   4.16
+  ],
+  [
+   4.3,
+   4.35
+  ],
+  [
+   4.58,
+   4.58
+  ],
+  [
+   8.01,
+   7.99
+  ],
+  [
+   8.5,
+   8.5
+  ],
+  [
+   10.72,
+   8.86
+  ],
+  [
+   12.28,
+   10.42
+  ],
+  [
+   12.62,
+   10.6
+  ],
+  [
+   14.04,
+   11.94
+  ],
+  [
+   14.4,
+   12.54
+  ],
+  [
+   15.04,
+   13.02
+  ],
+  [
+   15.37,
+   13.3
+  ],
+  [
+   16.98,
+   14.88
+  ],
+  [
+   17.62,
+   15.52
+  ],
+  [
+   18.73,
+   16.76
+  ],
+  [
+   19.1,
+   16.9
+  ],
+  [
+   22.65,
+   20.36
+  ],
+  [
+   22.8,
+   20.53
+  ],
+  [
+   23.0,
+   20.7
+  ],
+  [
+   23.86,
+   21.52
+  ],
+  [
+   24.22,
+   21.88
+  ],
+  [
+   25.36,
+   22.92
+  ],
+  [
+   25.72,
+   23.2
+  ],
+  [
+   26.18,
+   23.6
+  ],
+  [
+   26.61,
+   25.1
+  ],
+  [
+   26.75,
+   25.95
+  ],
+  [
+   26.84,
+   26.05
+  ],
+  [
+   29.06,
+   27.56
+  ],
+  [
+   29.84,
+   28.3
+  ],
+  [
+   30.41,
+   28.88
+  ],
+  [
+   30.6,
+   29.1
+  ],
+  [
+   30.94,
+   29.33
+  ],
+  [
+   32.7,
+   31.3
+  ],
+  [
+   34.1,
+   32.66
+  ],
+  [
+   34.25,
+   32.8
+  ],
+  [
+   34.54,
+   33.12
+  ],
+  [
+   36.04,
+   34.58
+  ],
+  [
+   38.6,
+   37.2
+  ]
+ ],
+ "silences": [
+  [
+   1.9563,
+   2.2027
+  ],
+  [
+   3.0839,
+   3.5423
+  ],
+  [
+   4.1568,
+   4.5329
+  ],
+  [
+   7.9949,
+   8.3725
+  ],
+  [
+   10.3762,
+   10.5223
+  ],
+  [
+   12.972,
+   13.2862
+  ],
+  [
+   16.5666,
+   16.8977
+  ],
+  [
+   20.3244,
+   20.6868
+  ],
+  [
+   21.1355,
+   21.3039
+  ],
+  [
+   25.1065,
+   25.4471
+  ],
+  [
+   28.8782,
+   29.3289
+  ],
+  [
+   30.8263,
+   31.1237
+  ],
+  [
+   32.6561,
+   32.9417
+  ],
+  [
+   34.6394,
+   34.8
+  ]
+ ],
+ "blocks": [
+  "Seu filho fez 18 anos.",
+  "A pensão acaba?",
+  "É mito.",
+  "A maioridade, sozinha,",
+  "não encerra a|pensão alimentícia.",
+  "Segundo o Superior|Tribunal de Justiça,",
+  "o cancelamento depende|de decisão do juiz.",
+  "E o filho tem o direito|de se manifestar",
+  "antes dessa decisão.",
+  "O pedido pode ser feito",
+  "no mesmo processo em|que a pensão foi fixada.",
+  "Por isso, parar de|pagar por conta própria",
+  "pode gerar dívida|e até prisão.",
+  "Cada caso depende|da realidade",
+  "de quem paga e|de quem recebe.",
+  "Ficou com dúvida|sobre pensão?",
+  "Busque orientação jurídica.",
+  "Bispo e Teixeira Advogados."
+ ],
+ "srt": "BT_pensao18_9x16_ptBR_v005.srt"
+}

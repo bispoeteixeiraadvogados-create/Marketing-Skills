@@ -1,0 +1,530 @@
+<title>Direção Visual dos Reels BT</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@500;800&family=Funnel+Sans:wght@500;600&family=IBM+Plex+Mono:wght@500&family=Piazzolla:opsz,wght@8..30,400;8..30,600&display=swap">
+<style>
+/* Layout: coluna editorial alinhada à esquerda, como a grade dos Reels; quadros 9:16 ao lado do texto que explicam */
+:root {
+  --bg: #faf8f4;
+  --bg-alt: #f4ede2;
+  --fg: #202631;
+  --head: #0b1f4b;
+  --muted: #5a6272;
+  --line: #e2dccf;
+  --accent: #214d8c;
+  --sky: #8fc5ef;
+  --gold: #b08a55;
+  --alert: #b43a35;
+  /* cores fixas dos quadros de vídeo: iguais nos dois temas */
+  --v-paper: #faf8f4; --v-sand: #f4ede2; --v-navy: #0b1f4b; --v-mid: #081a35; --v-blue: #214d8c;
+  --v-sky: #8fc5ef; --v-gold: #d4af7c; --v-ink: #202631; --v-red: #b43a35;
+  --f-display: "Fira Sans Condensed", "Arial Narrow", sans-serif;
+  --f-text: "Piazzolla", Georgia, serif;
+  --f-motion: "Funnel Sans", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #081a35; --bg-alt: #0b1f4b; --fg: #e9e6df; --head: #faf8f4; --muted: #a9b3c4;
+    --line: #22355a; --accent: #8fc5ef; --sky: #8fc5ef; --gold: #d4af7c; --alert: #e07a72; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #081a35; --bg-alt: #0b1f4b; --fg: #e9e6df; --head: #faf8f4; --muted: #a9b3c4;
+  --line: #22355a; --accent: #8fc5ef; --sky: #8fc5ef; --gold: #d4af7c; --alert: #e07a72; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-text); font-size: 17px; line-height: 1.55; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 56px 96px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-family: var(--f-mono); font-weight: 500; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 800; color: var(--head); line-height: 1; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(44px, 8vw, 88px); }
+h2 { font-size: clamp(32px, 5vw, 52px); margin-bottom: 18px; }
+h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+p { margin: 0 0 14px; max-width: 64ch; }
+.lede { font-size: 20px; max-width: 58ch; }
+.hl { background-image: linear-gradient(var(--gold), var(--gold)); background-repeat: no-repeat; background-position: 0 94%; background-size: 100% 3px; font-weight: 600; }
+section { padding-block: 64px; border-top: 1px solid var(--line); display: grid; gap: 28px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; padding-bottom: 64px; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: start; }
+.mono { font-family: var(--f-mono); font-size: 13px; }
+.small { font-size: 14.5px; color: var(--muted); }
+.note { border-left: 3px solid var(--alert); padding: 4px 0 4px 16px; max-width: 64ch; }
+.note b { color: var(--alert); font-family: var(--f-mono); font-weight: 500; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+
+/* quadro 9:16 */
+.frame { width: min(300px, 100%); aspect-ratio: 9 / 16; position: relative; overflow: hidden; background: var(--v-paper); box-shadow: 0 0 0 1px var(--line); }
+.frame .stage { position: absolute; left: 0; top: 0; width: 360px; height: 640px; transform-origin: 0 0; }
+.frame-cap { font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin-top: 8px; }
+.ctrl { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+button { font: 600 15px var(--f-motion); color: var(--bg); background: var(--head); border: 0; padding: 10px 16px; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+.v-cat { position: absolute; left: 32px; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--v-blue); }
+.v-title { position: absolute; left: 32px; width: 296px; font: 800 40px/1 var(--f-display); letter-spacing: -.01em; color: var(--v-navy); }
+.v-title .w { display: inline-block; }
+.v-cap { position: absolute; left: 32px; top: 413px; width: 296px; }
+.v-cap .rule { width: 19px; height: 2px; background: var(--v-navy); margin-bottom: 8px; }
+.v-cap .txt { font: 500 18px/1.14 var(--f-display); color: var(--v-ink); }
+.dot { position: absolute; left: 0; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--v-sky); border: 1px solid var(--v-navy); margin: -5px 0 0 -5px; }
+.ghost { position: absolute; left: 0; top: 0; border-radius: 50%; background: var(--v-sky); opacity: 0; }
+
+/* cores */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.sw { display: grid; grid-template-rows: 84px auto; border: 1px solid var(--line); }
+.sw i { display: block; }
+.sw div { padding: 10px 12px 12px; display: grid; gap: 2px; min-width: 0; }
+.sw strong { font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--head); line-height: 1.1; }
+.sw code { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.sw span { font-size: 13.5px; line-height: 1.35; }
+
+/* tipografia */
+.spec { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 20px; padding-block: 20px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.spec:last-child { border-bottom: 0; }
+.spec .meta { font-family: var(--f-mono); font-size: 12px; color: var(--muted); line-height: 1.5; }
+.spec .meta b { display: block; color: var(--accent); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
+.s-title { font: 800 clamp(40px, 6vw, 64px)/1 var(--f-display); color: var(--head); letter-spacing: -.01em; }
+.s-cap { font: 500 30px/1.14 var(--f-display); }
+.s-cap .on { color: var(--accent); }
+.s-text { font: 400 21px/1.45 var(--f-text); }
+.s-motion { font: 500 24px/1.25 var(--f-motion); color: var(--accent); }
+.s-mono { font: 500 16px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+
+/* curvas */
+.curves { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 18px; }
+.curve { border: 1px solid var(--line); padding: 14px; display: grid; gap: 8px; }
+.curve svg { width: 100%; height: auto; display: block; }
+.curve strong { font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--head); }
+.curve span { font-size: 14px; line-height: 1.4; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--f-mono); font-weight: 500; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+td.num { font-family: var(--f-mono); font-size: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tbl { overflow-x: auto; }
+
+/* processo */
+ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; display: grid; gap: 0; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+ol.steps li::before { content: counter(s, decimal-leading-zero); font: 500 14px var(--f-mono); color: var(--accent); padding-top: 4px; }
+ol.steps b { font-family: var(--f-display); font-weight: 800; font-size: 21px; color: var(--head); display: block; line-height: 1.15; margin-bottom: 4px; }
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+.rules ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; }
+.rules h3.no { color: var(--alert); }
+
+/* impacto */
+.pz-word { position: absolute; left: 0; top: 0; width: 360px; text-align: center; font: 800 72px/1 var(--f-display); color: var(--v-red); opacity: 0; }
+.pz-sh { position: absolute; left: 0; top: 0; width: 360px; text-align: center; }
+.pz-p { position: absolute; left: 180px; top: 250px; background: var(--v-red); opacity: 0; }
+.pz-flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 40%, rgba(180,58,53,.42), rgba(180,58,53,.08) 60%, rgba(180,58,53,0) 80%); opacity: 0; }
+
+/* assinatura */
+.sig { background: var(--v-navy); }
+.blob { position: absolute; width: 380px; height: 380px; border-radius: 50%; filter: blur(60px); background: var(--v-blue); opacity: .55; }
+.sig-in { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.sig-in img { width: 174px; height: auto; }
+.sig-lbl { margin-top: 22px; font: 500 11px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--v-sky); }
+.sig-tel { margin-top: 4px; font: 800 31px/1 var(--f-display); color: var(--v-paper); }
+.sig-rule { margin-top: 14px; width: 40px; height: 2px; background: var(--v-gold); }
+
+footer { padding-top: 40px; border-top: 1px solid var(--line); }
+@media (max-width: 760px) {
+  .hero, .two { grid-template-columns: minmax(0, 1fr); }
+  .spec { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Bispo &amp; Teixeira Advogados · Reels 9:16</p>
+      <h1>Direção visual dos nossos vídeos</h1>
+      <p class="lede" style="margin-top:22px">O jeito BT de animar, consolidado a partir do Reel <span class="hl">Mito ou Verdade 01, Pensão aos 18</span> (versão v005). Calmo, editorial e guiado pela fala: cada coisa aparece quando a voz fala dela, e uma bolinha azul leva o olho até lá.</p>
+      <p class="small">É ponto de partida, não fôrma. Cada vídeo pode trazer composições novas; ficam as fontes, as cores, a bolinha, as legendas, o ritmo e o modo de trabalhar.</p>
+    </div>
+    <div>
+      <div class="frame" id="demo1"><div class="stage">
+        <div class="v-cat" style="top:150px">Mito ou verdade</div>
+        <div class="v-title" style="top:172px"><span class="w" id="d1w1">Seu</span> <span class="w" id="d1w2">filho</span> <span class="w" id="d1w3">fez</span> <span class="w" id="d1w4" style="color:var(--v-blue)">18</span> <span class="w" id="d1w5">anos.</span><br><span class="w" id="d1q">A pensão acaba?</span></div>
+        <div class="v-cap"><div class="rule"></div><div class="txt" id="d1cap"></div></div>
+        <div id="d1ghosts"></div>
+        <div class="dot" id="d1dot"></div>
+      </div></div>
+      <div class="ctrl"><button type="button" id="play1">Reproduzir</button></div>
+      <p class="frame-cap">Gancho: palavra a palavra, legenda acendendo, bolinha com rastro</p>
+    </div>
+  </header>
+
+  <section aria-labelledby="h-cores">
+    <div>
+      <p class="eyebrow">01 · Cores</p>
+      <h2 id="h-cores">Paleta do manual, com papéis definidos</h2>
+      <p>Os tokens são os do Design System BT. O vídeo alterna fundos claros (Paper, Sand) com cenas escuras em gradiente tonal Midnight para Navy, e fecha em Navy liso. Dourado em pouca área.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#FAF8F4;box-shadow:inset 0 -1px 0 var(--line)"></i><div><strong>Paper</strong><code>#FAF8F4</code><span>Fundo claro principal; texto no escuro</span></div></div>
+      <div class="sw"><i style="background:#F4EDE2"></i><div><strong>Sand</strong><code>#F4EDE2</code><span>Fundo claro alternativo</span></div></div>
+      <div class="sw"><i style="background:linear-gradient(135deg,#081A35,#0B1F4B)"></i><div><strong>Midnight → Navy</strong><code>#081A35 → #0B1F4B</code><span>Gradiente das cenas escuras</span></div></div>
+      <div class="sw"><i style="background:#0B1F4B"></i><div><strong>Navy</strong><code>#0B1F4B</code><span>Títulos, assinatura, borda da bolinha</span></div></div>
+      <div class="sw"><i style="background:#214D8C"></i><div><strong>Blue</strong><code>#214D8C</code><span>Categoria e palavra falada (claro)</span></div></div>
+      <div class="sw"><i style="background:#8FC5EF"></i><div><strong>Sky</strong><code>#8FC5EF</code><span>A bolinha e o rastro</span></div></div>
+      <div class="sw"><i style="background:#D4AF7C"></i><div><strong>Gold</strong><code>#D4AF7C</code><span>Sublinhados e legenda no escuro</span></div></div>
+      <div class="sw"><i style="background:#202631"></i><div><strong>Ink</strong><code>#202631</code><span>Texto corrido e legenda no claro</span></div></div>
+      <div class="sw"><i style="background:#B43A35"></i><div><strong>Vermelho alerta</strong><code>#B43A35</code><span>Só para mito, falso e consequência grave</span></div></div>
+    </div>
+    <p class="note"><b>Para decidir</b>O vermelho de alerta não faz parte dos 10 tokens do manual. Foi aprovado neste Reel; se virar padrão, convém incluí-lo oficialmente no Design System.</p>
+  </section>
+
+  <section aria-labelledby="h-tipo">
+    <div>
+      <p class="eyebrow">02 · Tipografia</p>
+      <h2 id="h-tipo">Quatro famílias, cada uma com um papel</h2>
+      <p>Escolhidas porque a combinação anterior parecia genérica no vídeo. Títulos condensados e pesados ocupam a tela sem gritar; a serifa traz o tom de escritório; a mono marca categorias e números.</p>
+    </div>
+    <div>
+      <div class="spec"><div class="meta"><b>Título</b>Fira Sans Condensed 800<br>120 px no quadro · entrelinha 1</div><div class="s-title">A pensão acaba?</div></div>
+      <div class="spec"><div class="meta"><b>Legenda</b>Fira Sans Condensed 500<br>54 px · palavra falada acende</div><div class="s-cap">A maioridade, sozinha, <span class="on">não encerra</span> a pensão.</div></div>
+      <div class="spec"><div class="meta"><b>Texto de apoio</b>Piazzolla 400 e 600</div><div class="s-text">O cancelamento depende de decisão do juiz, e o filho pode se manifestar antes.</div></div>
+      <div class="spec"><div class="meta"><b>Motion e interface</b>Funnel Sans 500 e 600</div><div class="s-motion">Busque orientação jurídica</div></div>
+      <div class="spec"><div class="meta"><b>Metadado</b>IBM Plex Mono 500<br>32 px · maiúsculas · 0,06em</div><div class="s-mono">Mito ou verdade · 18 anos</div></div>
+    </div>
+    <p class="note"><b>Para decidir</b>O manual estático usa Cormorant Garamond e Montserrat. Esta combinação vale para vídeo. Unificar ou manter separado é decisão do escritório.</p>
+  </section>
+
+  <section aria-labelledby="h-bol">
+    <div class="two">
+      <div>
+        <p class="eyebrow">03 · A bolinha condutora</p>
+        <h2 id="h-bol">O cursor do vídeo</h2>
+        <p>Um círculo Sky de 30 px com borda Navy de 3 px. Funciona como o dedo de quem explica: vai até o que a voz está dizendo e espera ali.</p>
+        <div class="tbl"><table>
+          <tr><th>Regra</th><th>Como</th></tr>
+          <tr><td>Sempre círculo</td><td>A versão que mudava de forma foi recusada</td></tr>
+          <tr><td>Um movimento por vez</td><td>Cada trajeto começa quando o anterior acaba. Sobreposição causou a "travada" da v004</td></tr>
+          <tr><td>Arcos naturais</td><td>x com <span class="mono">sine.inOut</span>, y com <span class="mono">power2.inOut</span>; sem mola</td></tr>
+          <tr><td>Mais tela só nas trocas</td><td>Arco amplo por um ponto afastado na mudança de cena, em cerca de 1 s</td></tr>
+          <tr><td>Rastro</td><td>8 pontos de 22 a 8 px, atraso de 0,03 s cada, visíveis só em movimento</td></tr>
+          <tr><td>Pode sumir dentro</td><td>Entra na palavra que vira protagonista e renasce na cena seguinte</td></tr>
+          <tr><td>Movimento reduzido</td><td>Não aparece</td></tr>
+        </table></div>
+      </div>
+      <div>
+        <div class="frame" id="demo2"><div class="stage">
+          <div class="v-cat" style="top:120px">O que diz a Justiça</div>
+          <div class="v-title" style="top:142px;font-size:34px">Depende de <span id="d2a" class="w">decisão</span><br>do <span id="d2b" class="w">juiz</span></div>
+          <div style="position:absolute;left:32px;top:250px;width:250px;height:2px;background:var(--v-navy);transform-origin:0 50%" id="d2line"></div>
+          <div style="position:absolute;left:32px;top:268px;font:400 15px/1.4 var(--f-text);color:var(--v-ink);width:270px" id="d2txt">O filho tem o direito de se manifestar antes.</div>
+          <div id="d2ghosts"></div>
+          <div class="dot" id="d2dot"></div>
+        </div></div>
+        <div class="ctrl"><button type="button" id="play2">Reproduzir</button></div>
+        <p class="frame-cap">Trajeto sequencial, arco e rastro</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-mov">
+    <div>
+      <p class="eyebrow">04 · Movimento</p>
+      <h2 id="h-mov">Cinco curvas e três durações</h2>
+      <p>Tudo entra com a fala, nunca atrasado, e fica parado enquanto a voz explica. A versão acelerada (v003) foi recusada: o ritmo é calmo.</p>
+    </div>
+    <div class="curves" id="curves"></div>
+    <div class="tbl"><table>
+      <tr><th>Medida</th><th>Valor</th><th>Uso</th></tr>
+      <tr><td>Base</td><td class="num">0,55 s</td><td>Entradas, dissolves, linhas</td></tr>
+      <tr><td>Rápida</td><td class="num">0,30 s</td><td>Saída de texto (sobe 16 px)</td></tr>
+      <tr><td>Lenta</td><td class="num">0,80 s</td><td>Linhas longas e sublinhado de seção</td></tr>
+      <tr><td>Palavra</td><td class="num">0,40 s · 20 px</td><td>Gancho palavra a palavra</td></tr>
+      <tr><td>Título / card</td><td class="num">36 px / 20 px</td><td>Deslocamento vertical de entrada</td></tr>
+      <tr><td>Troca de cena</td><td class="num">dissolve 0,55 s</td><td>Centrado no corte; a cena que sai fica +0,3 s</td></tr>
+      <tr><td>Final</td><td class="num">desfoque 18 px</td><td>Saída para a assinatura</td></tr>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-imp">
+    <div class="two">
+      <div>
+        <p class="eyebrow">05 · Momento de impacto</p>
+        <h2 id="h-imp">No máximo um por vídeo</h2>
+        <p>A palavra sai do título, cresce no centro em vermelho, a cena escurece, ela bate com som grave, treme, racha em fragmentos e solta partículas. Foi criado para "prisão" e só deve ser usado para uma consequência real, conferida na lei.</p>
+        <p class="note"><b>Cuidado</b>O manual pede "Impact sem sensacionalismo", e a publicidade da advocacia exige sobriedade (Provimento 205/2021 do CFOAB). Sempre mostrar aos advogados antes de publicar.</p>
+        <p class="small">O botão toca uma versão sintetizada do som de impacto. No vídeo o som é gerado com ffmpeg, sem banco de áudio.</p>
+      </div>
+      <div>
+        <div class="frame" id="demo3" style="background:var(--v-sand)"><div class="stage">
+          <div id="d3dim">
+            <div class="v-cat" style="top:120px">Parar por conta própria</div>
+            <div class="v-title" style="top:142px;font-size:34px">pode gerar dívida e até <span id="d3src" style="color:var(--v-red)">prisão</span></div>
+          </div>
+          <div class="pz-flash" id="d3flash"></div>
+          <div id="d3word" class="pz-word" style="top:214px"></div>
+          <div id="d3parts"></div>
+        </div></div>
+        <div class="ctrl"><button type="button" id="play3">Reproduzir com som</button></div>
+        <p class="frame-cap">Voo, impacto, 5 fragmentos e 28 partículas</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-sig">
+    <div class="two">
+      <div>
+        <p class="eyebrow">06 · Legenda e assinatura</p>
+        <h2 id="h-sig">Como o vídeo fala e como termina</h2>
+        <h3>Legenda editorial</h3>
+        <p>À esquerda, na coluna de 96 a 904 px, faixa de y 1240 a 1460. Fio curto acima (Navy no claro, Gold no escuro). A palavra falada acende em Blue ou Gold. Até duas linhas por bloco, sem atravessar a troca de cena.</p>
+        <h3>Assinatura</h3>
+        <p>A cena anterior desfoca. Fundo Navy com duas manchas azuis derivando devagar. A logo original entra desfocada e assenta nítida, centralizada. Telefone grande, fio dourado, nota e fonte em texto pequeno.</p>
+        <p class="small">Use apenas a logo original. O PNG tem 391 px de largura; para assinaturas maiores, peça ao escritório o vetor.</p>
+      </div>
+      <div>
+        <div class="frame sig" id="demo4"><div class="stage">
+          <div class="blob" id="b1" style="left:-180px;top:-90px"></div>
+          <div class="blob" id="b2" style="left:100px;top:300px;background:#081a35;opacity:.7"></div>
+          <div class="sig-in">
+            <img id="d4logo" alt="Logo Bispo &amp; Teixeira Advogados" src="__LOGO__">
+            <div class="sig-lbl" id="d4l">Fale com a gente</div>
+            <div class="sig-tel" id="d4t">(38) 9 9129-6401</div>
+            <div class="sig-rule" id="d4r"></div>
+          </div>
+        </div></div>
+        <div class="ctrl"><button type="button" id="play4">Reproduzir</button></div>
+        <p class="frame-cap">Fechamento com desfoque e logo central</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-voz">
+    <div>
+      <p class="eyebrow">07 · Voz e som</p>
+      <h2 id="h-voz">Uma voz, sem trilha, som só onde importa</h2>
+    </div>
+    <div class="tbl"><table>
+      <tr><th>Item</th><th>Padrão</th></tr>
+      <tr><td>Voz</td><td>ElevenLabs "Henrique" (<span class="mono">3ULAAai0IVN00DTWA6vF</span>), modelo <span class="mono">eleven_v4</span>, português do Brasil</td></tr>
+      <tr><td>Geração</td><td>Uma variação por vez. Cada geração gasta créditos; texto aprovado antes de gerar</td></tr>
+      <tr><td>Volume final</td><td class="num">−16 LUFS · pico −1,5 dBTP</td></tr>
+      <tr><td>Trilha</td><td>Nenhuma por padrão</td></tr>
+      <tr><td>Efeitos</td><td>Sintetizados localmente, apenas no momento de impacto</td></tr>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-proc">
+    <div>
+      <p class="eyebrow">08 · Como trabalhamos</p>
+      <h2 id="h-proc">Do roteiro ao arquivo final</h2>
+      <p>A ordem importa: mudar a voz depois que a animação está pronta custa créditos e retrabalho de tempo.</p>
+    </div>
+    <ol class="steps">
+      <li><div><b>Roteiro em linguagem simples</b>Uma ideia por frase. Nada de número de súmula na fala.</div></li>
+      <li><div><b>Conferência jurídica</b>Cada afirmação checada na fonte oficial (Planalto, STJ, STF) e aprovada pelos advogados.</div></li>
+      <li><div><b>Narração</b>ElevenLabs, voz Henrique, uma geração.</div></li>
+      <li><div><b>Tempo por palavra</b>Transcrição local com faster-whisper; grafia corrigida pelo roteiro.</div></li>
+      <li><div><b>Roteiro visual</b>Cena a cena: fundo, protagonista, para onde vai a bolinha, o que é sublinhado. Decidir se há momento de impacto.</div></li>
+      <li><div><b>Composição</b>A partir do modelo da v005, no HyperFrames.</div></li>
+      <li><div><b>Verificação</b>Lint e check, quadros-chave em imagem, bolinha medida quadro a quadro, nenhum quadro em branco nas trocas.</div></li>
+      <li><div><b>Render e entrega</b>Versão normal, versão de movimento reduzido e SRT, com número de versão no nome.</div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-reg">
+    <div>
+      <p class="eyebrow">09 · Regras rápidas</p>
+      <h2 id="h-reg">O que já aprendemos</h2>
+    </div>
+    <div class="rules">
+      <div><h3>Fazer</h3><ul>
+        <li>Mostrar o título já no primeiro quadro.</li>
+        <li>Fazer cada elemento chegar junto com a fala.</li>
+        <li>Deixar a tela parada enquanto a voz explica.</li>
+        <li>Alinhar à esquerda; centralizar só o impacto e a assinatura.</li>
+        <li>Mostrar opções lado a lado quando a decisão é visual.</li>
+        <li>Mudar só o que foi pedido em cada rodada.</li>
+      </ul></div>
+      <div><h3 class="no">Evitar</h3><ul>
+        <li>Cards arredondados e tudo centralizado.</li>
+        <li>Acelerar o ritmo para parecer dinâmico.</li>
+        <li>Bolinha que muda de forma ou passa do alvo.</li>
+        <li>Mais de um momento de impacto.</li>
+        <li>Jargão jurídico na fala e na tela.</li>
+        <li>Inventar telefone, lei, prazo ou resultado.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="eyebrow">Onde está o modelo</p>
+    <p>Repositório <span class="mono">Marketing-Skills</span>, pasta <span class="mono">bt-reels-direcao-visual</span>: regras, receitas de código, template da v005, fontes, logo e o som de impacto. Nos próximos vídeos, basta pedir um Reel do escritório que essa base é usada.</p>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function () {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const curves = [
+    ["Emphasized", [0.22, 1, 0.36, 1], "Títulos, palavras do gancho, marca de falso"],
+    ["Enter", [0.16, 1, 0.3, 1], "Cards, rótulos, itens de lista"],
+    ["Exit", [0.4, 0, 1, 1], "Texto que sai"],
+    ["In-out", [0.45, 0, 0.25, 1], "Dissolves, linhas, sublinhados"],
+    ["Standard", [0.4, 0, 0.2, 1], "Carimbo e assentamentos"],
+  ];
+  const cv = document.getElementById("curves");
+  curves.forEach(([n, c, u]) => {
+    const P = (x, y) => `${10 + x * 140},${110 - y * 100}`;
+    cv.insertAdjacentHTML("beforeend",
+      `<div class="curve"><svg viewBox="0 0 160 120" role="img" aria-label="Curva ${n}">
+        <rect x="10" y="10" width="140" height="100" fill="none" stroke="var(--line)"/>
+        <path d="M${P(0,0)} C${P(c[0],c[1])} ${P(c[2],c[3])} ${P(1,1)}" fill="none" stroke="var(--accent)" stroke-width="3"/>
+        <circle cx="${10 + 140}" cy="10" r="4" fill="var(--sky)" stroke="var(--head)"/>
+      </svg><strong>${n}</strong><span class="mono">cubic-bezier(${c.join(", ")})</span><span>${u}</span></div>`);
+  });
+
+  // escala os quadros 360 x 640 para a largura disponível
+  const frames = [...document.querySelectorAll(".frame")];
+  const fit = () => frames.forEach((f) => { f.querySelector(".stage").style.transform = `scale(${f.clientWidth / 360})`; });
+  fit(); window.addEventListener("resize", fit);
+  if (!window.gsap) return;
+
+  const IO = "cubic-bezier(.45,0,.25,1)";
+  const ease = (a, b, c, d) => (t) => { // aproximação de cubic-bezier para o GSAP
+    let x = t; for (let i = 0; i < 6; i++) { const cx = 3 * a * x * (1 - x) ** 2 + 3 * c * x * x * (1 - x) + x ** 3 - t; const dx = 3 * a * (1 - x) ** 2 + 6 * (c - a) * x * (1 - x) + 3 * (1 - c) * x * x; if (Math.abs(dx) < 1e-6) break; x -= cx / dx; x = Math.min(1, Math.max(0, x)); }
+    return 3 * b * x * (1 - x) ** 2 + 3 * d * x * x * (1 - x) + x ** 3;
+  };
+  const E = { emph: ease(0.22, 1, 0.36, 1), enter: ease(0.16, 1, 0.3, 1), inOut: ease(0.45, 0, 0.25, 1) };
+
+  // bolinha com trajeto sequencial e rastro amostrado
+  function dotPath(tl, dot, gwrap, moves, total) {
+    const g = [];
+    for (let k = 0; k < 8; k++) { const el = document.createElement("i"); el.className = "ghost"; const s = (22 - k * 2) / 3; Object.assign(el.style, { width: s + "px", height: s + "px", margin: `${-s / 2}px 0 0 ${-s / 2}px` }); gwrap.appendChild(el); g.push({ el, lag: (k + 1) * 0.03, a: 0.42 - k * 0.045 }); }
+    let busy = 0;
+    moves.forEach(([t, x, y, d]) => { const s0 = Math.max(t, busy); tl.to(dot, { x, duration: d, ease: "sine.inOut" }, s0); tl.to(dot, { y, duration: d, ease: "power2.inOut" }, s0); busy = s0 + d; });
+    const xs = [], ys = [], os = [];
+    for (let f = 0; f <= total * 60; f++) { tl.seek(f / 60, true); xs.push(gsap.getProperty(dot, "x")); ys.push(gsap.getProperty(dot, "y")); os.push(gsap.getProperty(dot, "opacity")); }
+    tl.seek(0, true);
+    const at = (a, t) => a[Math.max(0, Math.min(a.length - 1, Math.round(t * 60)))];
+    const clock = { t: 0 };
+    tl.fromTo(clock, { t: 0 }, { t: total, duration: total, ease: "none", onUpdate: () => {
+      const cx = at(xs, clock.t), cy = at(ys, clock.t);
+      g.forEach((q) => { const gx = at(xs, clock.t - q.lag), gy = at(ys, clock.t - q.lag); const mv = Math.min(1, Math.hypot(cx - gx, cy - gy) / 8); gsap.set(q.el, { x: gx, y: gy, opacity: q.a * mv * at(os, clock.t - q.lag) }); });
+    } }, 0);
+  }
+  function box(stage, sel) { const s = stage.getBoundingClientRect(), r = stage.querySelector(sel).getBoundingClientRect(), k = s.width / 360; return { x: (r.left - s.left) / k, y: (r.top - s.top) / k, w: r.width / k, h: r.height / k }; }
+
+  // demo 1: gancho
+  function demo1() {
+    const st = document.querySelector("#demo1 .stage");
+    const tl = gsap.timeline({ paused: true });
+    const cap = document.getElementById("d1cap");
+    const words = ["Seu", "filho", "fez", "dezoito", "anos."];
+    cap.innerHTML = words.map((w, i) => `<span id="c${i}">${w}</span>`).join(" ");
+    tl.set("#d1w2,#d1w3,#d1w4,#d1w5,#d1q", { opacity: 0 }, 0);
+    const T = [0, 0.35, 0.65, 0.95, 1.4];
+    ["#d1w2", "#d1w3", "#d1w4", "#d1w5"].forEach((s, i) => tl.fromTo(s, { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.4, ease: E.emph }, T[i + 1]));
+    tl.fromTo("#d1q", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.4, ease: E.emph }, 2.2);
+    words.forEach((w, i) => { tl.set(`#c${i}`, { color: "#214D8C" }, T[i]); if (i < 4) tl.set(`#c${i}`, { color: "#202631" }, T[i + 1]); });
+    tl.set(cap, { opacity: 1 }, 0);
+    const b4 = box(st, "#d1w4"), bq = box(st, "#d1q");
+    const dot = st.querySelector("#d1dot");
+    tl.set(dot, { x: 330, y: 400, opacity: 0 }, 0);
+    tl.to(dot, { opacity: reduce ? 0 : 1, duration: 0.3 }, 0.1);
+    dotPath(tl, dot, st.querySelector("#d1ghosts"), [[0.3, b4.x + b4.w + 10, b4.y + b4.h / 2, 0.8], [2.0, bq.x + bq.w + 10, bq.y + bq.h / 2, 0.6]], 3.4);
+    return tl;
+  }
+  // demo 2: trajeto e arco
+  function demo2() {
+    const st = document.querySelector("#demo2 .stage");
+    const tl = gsap.timeline({ paused: true });
+    const a = box(st, "#d2a"), b = box(st, "#d2b");
+    const dot = st.querySelector("#d2dot");
+    tl.set(dot, { x: 320, y: 520, opacity: reduce ? 0 : 1 }, 0);
+    tl.fromTo("#d2line", { scaleX: 0 }, { scaleX: 1, duration: 0.8, ease: E.inOut }, 1.6);
+    tl.fromTo("#d2txt", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.55, ease: E.enter }, 2.3);
+    dotPath(tl, dot, st.querySelector("#d2ghosts"), [
+      [0.1, 300, 60, 0.45], [0.55, a.x + a.w + 10, a.y + a.h / 2, 0.55],
+      [1.2, b.x + b.w + 10, b.y + b.h / 2, 0.4], [1.6, 32, 251, 0.3], [1.9, 282, 251, 0.8], [3.2, 310, 300, 0.5]], 4);
+    return tl;
+  }
+  // demo 3: impacto
+  function demo3() {
+    const st = document.querySelector("#demo3 .stage");
+    const word = st.querySelector("#d3word");
+    const N = 5;
+    for (let i = 0; i < N; i++) { const s = document.createElement("div"); s.className = "pz-sh"; s.textContent = "prisão"; const x0 = i * 20, x1 = (i + 1) * 20; s.style.clipPath = `polygon(${x0 - 3}% 0, ${x1 + 2}% 0, ${x1 - 2}% 100%, ${x0 + 1}% 100%)`; word.appendChild(s); }
+    const parts = st.querySelector("#d3parts");
+    let seed = 358; const rnd = () => ((seed = (seed * 1664525 + 1013904223) % 4294967296), seed / 4294967296);
+    const pl = [];
+    for (let i = 0; i < 28; i++) { const p = document.createElement("div"); p.className = "pz-p"; parts.appendChild(p); pl.push(p); }
+    const src = box(st, "#d3src");
+    const tl = gsap.timeline({ paused: true });
+    const PZ = 0.4, HIT = 0.68, OUT = 1.4;
+    tl.set("#d3src", { opacity: 1 }, 0); tl.set("#d3dim", { opacity: 1 }, 0); tl.set(word, { opacity: 0 }, 0);
+    tl.set("#d3src", { opacity: 0 }, PZ);
+    tl.to("#d3dim", { opacity: 0.12, duration: 0.35, ease: E.inOut }, PZ);
+    if (reduce) {
+      tl.fromTo(word, { opacity: 0 }, { opacity: 1, duration: 0.4 }, PZ);
+      tl.to(word, { opacity: 0, duration: 0.4 }, OUT + 0.4);
+      return tl;
+    }
+    tl.set(word, { opacity: 1 }, PZ);
+    tl.fromTo(word, { x: src.x + src.w / 2 - 180, y: src.y + src.h / 2 - 250, scale: src.h / 72 }, { x: 0, y: 0, scale: 1, duration: HIT - PZ, ease: "power3.in", immediateRender: false }, PZ);
+    tl.fromTo("#d3flash", { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "none", immediateRender: false }, HIT);
+    tl.to("#d3flash", { opacity: 0.35, duration: 0.5 }, HIT + 0.06);
+    tl.to(word, { keyframes: [{ x: -5 }, { x: 3 }, { x: -2 }, { x: 0 }], duration: 0.2, ease: "none" }, HIT);
+    [...word.children].forEach((s, i) => {
+      const dx = ((i - 2) * 12 + (rnd() - 0.5) * 8) / 3, dy = ((rnd() - 0.5) * 16) / 3, r = (rnd() - 0.5) * 6;
+      tl.fromTo(s, { x: 0, y: 0, rotation: 0, opacity: 1 }, { x: dx, y: dy, rotation: r, duration: 0.18, ease: "power2.out", immediateRender: false }, HIT + 0.02);
+      tl.to(s, { x: dx * 3, y: 75 + i * 9, rotation: r * 4, opacity: 0, duration: 0.42, ease: "power2.in" }, OUT);
+    });
+    pl.forEach((p) => {
+      const a = rnd() * Math.PI * 2, r = (200 + rnd() * 330) / 3, sz = (6 + Math.round(rnd() * 10)) / 3, sx = ((rnd() - 0.5) * 600) / 3, sy = ((rnd() - 0.5) * 160) / 3;
+      tl.set(p, { width: sz, height: sz, x: sx, y: sy, opacity: 0 }, 0);
+      tl.fromTo(p, { opacity: 1, x: sx, y: sy, rotation: 0 }, { opacity: 0, x: sx + Math.cos(a) * r, y: sy + Math.sin(a) * r * 0.8 + 40, rotation: (rnd() - 0.5) * 300, duration: 0.75 + rnd() * 0.3, ease: "power2.out", immediateRender: false }, HIT + 0.02);
+    });
+    tl.to("#d3flash", { opacity: 0, duration: 0.4 }, OUT);
+    return tl;
+  }
+  // som de impacto sintetizado: batida grave descendente + estalo
+  let ac;
+  function thump() {
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      const t0 = ac.currentTime + 0.28, o = ac.createOscillator(), g = ac.createGain();
+      o.frequency.setValueAtTime(78, t0); o.frequency.exponentialRampToValueAtTime(30, t0 + 0.7);
+      g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.9, t0 + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.9);
+      o.connect(g).connect(ac.destination); o.start(t0); o.stop(t0 + 1);
+      const n = ac.createBuffer(1, ac.sampleRate * 0.5, ac.sampleRate), d = n.getChannelData(0);
+      let s = 528; for (let i = 0; i < d.length; i++) { s = (s * 1664525 + 1013904223) % 4294967296; const t = i / ac.sampleRate; d[i] = (s / 4294967296 * 2 - 1) * (Math.exp(-28 * t) + 0.35 * (Math.exp(-30 * Math.abs(t - 0.14)) + Math.exp(-30 * Math.abs(t - 0.27)))); }
+      const b = ac.createBufferSource(), hp = ac.createBiquadFilter(), g2 = ac.createGain();
+      hp.type = "highpass"; hp.frequency.value = 1800; g2.gain.value = 0.5; b.buffer = n; b.connect(hp).connect(g2).connect(ac.destination); b.start(t0);
+    } catch (e) { /* sem áudio: o efeito visual continua */ }
+  }
+  // demo 4: assinatura
+  function demo4() {
+    const tl = gsap.timeline({ paused: true });
+    if (!reduce) {
+      tl.fromTo("#b1", { x: 0, y: 0 }, { x: 87, y: 60, duration: 4.4, ease: "sine.inOut" }, 0);
+      tl.fromTo("#b2", { x: 0, y: 0 }, { x: -107, y: -87, duration: 4.4, ease: "sine.inOut" }, 0);
+      tl.fromTo("#d4logo", { opacity: 0, scale: 1.06, filter: "blur(9px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.9, ease: E.inOut }, 0.2);
+    } else tl.fromTo("#d4logo", { opacity: 0 }, { opacity: 1, duration: 0.55 }, 0.2);
+    tl.fromTo("#d4l", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.55, ease: E.enter }, 0.8);
+    tl.fromTo("#d4t", { opacity: 0, y: reduce ? 0 : 7 }, { opacity: 1, y: 0, duration: 0.55, ease: E.enter }, 0.85);
+    tl.fromTo("#d4r", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: E.inOut }, 1.2);
+    return tl;
+  }
+  const run = (fn, btn, extra) => {
+    let tl;
+    const go = () => { if (!tl) tl = fn(); if (extra) extra(); tl.restart(); };
+    document.getElementById(btn).addEventListener("click", go);
+    return () => { tl = fn(); tl.progress(1); };
+  };
+  const done = [run(demo1, "play1"), run(demo2, "play2"), run(demo3, "play3", thump), run(demo4, "play4")];
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+    fit();
+    // estado final visível em repouso; o gancho toca uma vez ao abrir
+    done.forEach((f) => f());
+    if (!reduce) document.getElementById("play1").click();
+  });
+})();
+</script>

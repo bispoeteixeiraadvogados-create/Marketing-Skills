@@ -1,0 +1,144 @@
+BT Reel, segunda-feira 19/10, tema Divórcio
+"Seu cônjuge não quer se divorciar. E agora?"
+Versão v1, 1080 x 1920, 30 quadros por segundo.
+
+SITUAÇÃO: AGUARDANDO A CONFERÊNCIA DOS ADVOGADOS (trava T5). Nada foi publicado.
+
+========================================================================
+1. ENTREGAS
+========================================================================
+bt-reel-divorcio-nao-quer_v1_normal.mp4      versão normal
+bt-reel-divorcio-nao-quer_v1_reduzido.mp4    versão de movimento reduzido (seção 13)
+bt-reel-divorcio-nao-quer_v1.srt             legenda final com os tempos reais
+assets/data/words.json                       palavras com início e fim em segundos
+assets/audio/narracao_final.wav              voz montada com os silêncios de projeto
+quadros-chave/                               quadros de conferência da seção 14
+index.html                                   composição HyperFrames (gerada, ver item 6)
+
+Medidas finais: ver o item 7 (preenchido por tools/finalizar.py em tools/relatorio_final.json).
+
+========================================================================
+2. TEXTO E CONFERÊNCIA JURÍDICA
+========================================================================
+Texto da narração usado exatamente como enviado no prompt (seção 5), aprovado pelo escritório
+no chat em 16/10/2026 ("deixa do jeito que eu mandei").
+
+Fontes conferidas pelo Claude (links abertos e lidos em 16/10/2026):
+J1  CF, art. 226, § 6º, redação da EC 66/2010: "O casamento civil pode ser dissolvido pelo
+    divórcio." https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc66.htm
+    STJ, Informativo 815 (4ª Turma, julg. 16/5/2024, segredo de justiça), divórcio como direito
+    potestativo exercido de forma unilateral.
+    https://processo.stj.jus.br/jurisprudencia/externo/informativo/?livre=@CNOT%3D020757
+J2  CPC, arts. 731 e 733. https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm
+    Resolução CNJ 35/2007, art. 34, § 2º (redação da Res. 571/2024): escritura com filhos
+    menores após resolução judicial de guarda, visitas e alimentos.
+    https://atos.cnj.jus.br/atos/detalhar/179
+J3  CC, art. 1.581. https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm
+    STJ, Informativo Edição Extraordinária 23 (3ª Turma, julg. 27/8/2024, segredo de justiça).
+    https://processo.stj.jus.br/jurisprudencia/externo/informativo/?livre=%40CNOT%3D021239
+J4  Provimento 205/2021 do CFOAB, arts. 3º e 6º.
+    https://eticaedisciplina.oab.org.br/assets/docs/Provimento%20n.%20205.2021%20-%20Publicidade.pdf
+
+Observações feitas ao escritório e não aplicadas por decisão do escritório:
+- "No divórcio consensual, os dois concordam com o fim do casamento" é uma simplificação: o
+  consensual também exige acordo sobre as condições (CPC, art. 731).
+- "o processo pode levar mais tempo": o STJ entende que o divórcio pode ser decretado logo e
+  o que demora é o restante (guarda, pensão, partilha).
+- PL 4/2025 (reforma do Código Civil) prevê divórcio unilateral em cartório. Situação no
+  Senado em 16/10/2026: em tramitação. Se for aprovado, rever "quem decide é o juiz".
+
+Assinatura (texto do prompt, a reconferir pelo escritório antes de publicar):
+Telefone (38) 9 9129-6401 · Instagram @bispoeteixeiraadvogados
+Nota: "Conteúdo informativo. Cada caso exige análise individual."
+Fontes: "Constituição Federal, art. 226, § 6º, e Código de Processo Civil."
+
+========================================================================
+3. VOZ E FAIXA
+========================================================================
+ElevenLabs, voz Henrique (3ULAAai0IVN00DTWA6vF), modelo eleven_v4 (confirmado na conta antes
+de gerar), uma geração por chamada.
+- 1ª chamada: falhou na própria ElevenLabs ("Free Tier access has been disabled", falha
+  conhecida registrada nas lições da Direção). Nenhum áudio foi entregue por ela.
+- 2ª chamada, única nova tentativa: concluída, 40,72 s. Arquivo bruto:
+  assets/audio/narracao_bruta_henrique_v4.mp3. Custo informado pela ElevenLabs: 605 créditos
+  por chamada. Você deve verificar no painel da ElevenLabs se a chamada que falhou foi cobrada.
+Faixa final (tools: script embutido, registro em assets/data/montagem_faixa.json): as 13 frases
+foram recortadas do bruto e reposicionadas sem regenerar a voz:
+  início 0,40 s · entre frases 0,35 s · respiros 0,80 s (antes de "Existem", "Mas e se" e
+  "Cada caso") · queda da aliança 3,60 s · final 6,50 s.
+Duração final: 51,3 s, e não os 61 s estimados. Motivo: a voz real fala cerca de 3,1 palavras
+por segundo, contra 2,6 estimadas no prompt. Os silêncios foram aplicados no limite superior de
+cada faixa do prompt. Chegar a 61 s exigiria silêncios fora das faixas pedidas ou regenerar a
+voz mais lenta (gasto de créditos); nenhuma das duas coisas foi feita sem autorização.
+
+========================================================================
+4. TEMPO POR PALAVRA (T4)
+========================================================================
+Transcrição local com faster-whisper 1.2.1 (modelo medium, int8, idioma pt, timestamps por
+palavra), sobre a faixa final já montada. Grafia corrigida pelo roteiro aprovado. A primeira
+palavra de cada frase foi presa ao início real do som de cada frase (conhecido da montagem).
+Âncoras conferidas à mão pela energia do sinal (perfil de 10 ms):
+  "discordância" 18,05 s · "por" 19,57 s · "não" (regra) 20,48 s · "impede" 20,99 s
+Toda a animação usa t("palavra", ocorrência), lida de assets/data/dados.js, gerado a partir de
+words.json. Tempos de cena (cortes) também saem das palavras (tools/gerar_dados.py, montar.py).
+
+========================================================================
+5. ALIANÇA 3D (seção 10)
+========================================================================
+Caminho A: Three.js 0.181.2 (arquivo local em assets/vendor) dentro da composição, renderizado
+pelo evento hf-seek do HyperFrames, sem relógio e sem requestAnimationFrame. Teste de
+determinismo feito antes: duas renderizações de teste com quadros idênticos (hash por quadro).
+- Malha procedural: raio externo 1,00, interno 0,82, faixa 0,42, chanfro 0,03, 112 pontos na
+  secção e 208 passos no anel. Duas peças pela fratura de cerca de 1 h (28°) e de cerca de
+  7 h (212°), 6 a 7 facetas, metades diferentes (184° e 176°). Face de fratura rugosa e mais
+  escura (#A57A57, entre Gold e Clay), sem brilho.
+- Material: Gold #D4AF7C, rugosidade 0,8, metalicidade 0, sem HDRI, sem bloom.
+- Luz principal do alto à esquerda a 40°, ambiente 0,35, preenchimento fraco; sombra suave
+  Navy a 35% sobre o piso Paper. Câmera com campo de visão de 35°, supersampling 2x.
+- Rachaduras Midnight a 85%, cerca de 2,6 px, crescendo pelo caminho da fratura:
+  R1 em "discordância", R2 em "por" (com um fragmento minúsculo que cai), R3 em "não"
+  (abre cerca de 4 px), partida em "impede".
+- Física pré-calculada a passo fixo de 1/120 s e guardada em curvas: queda de 2,80 s até o
+  primeiro toque, segundo toque 0,15 s depois, quique de cerca de 18 px na primeira metade,
+  deslize curto na segunda. A gravidade é estilizada e resolvida para o toque cair no tempo de
+  projeto. Observação: com essa gravidade, um quique de 18 px corresponde a uma restituição
+  efetiva menor que 0,22; o valor visível pedido (18 px) foi priorizado.
+- Câmera: parada até 0,6 s depois da partida; depois acompanha o ponto médio com mola
+  criticamente amortecida (atraso total de cerca de 0,35 s, sem passar do alvo), inclina
+  levemente para baixo perto do chão, permanece 0,80 s parada e, em 1,10 s, sobe e inclina
+  até a vista de cima. As metades terminam no canto inferior direito (caixa 652 a 972 x
+  1490 a 1612 px).
+- Partículas só na partida (12 lascas Gold, Clay e Paper e poeira) e no impacto.
+- O título "não impede" e a categoria ficam ancorados no mundo e saem por cima durante a
+  queda (ajuste A4).
+- Para o piso não aparecer no primeiro enquadramento e a vista de cima não alcançar a parede, a
+  parede fica cerca de 29 unidades atrás da aliança e a aliança começa a cerca de 23 unidades
+  de altura (raio externo = 1). A linha parede e piso só sobe no quadro na aproximação do chão.
+- Posições medidas: centro da aliança em (540, 640) px no primeiro quadro da cena; metades em
+  repouso em x 675 a 950 e y 1488 a 1614 px.
+
+========================================================================
+6. COMO REGERAR
+========================================================================
+python3 tools/gerar_dados.py      (words.json -> dados.js, legendas e .srt)
+python3 tools/som.py              (efeitos sintetizados e mixagens, -16 LUFS)
+python3 tools/montar.py           (index.template.html -> index.html)
+npx hyperframes lint && npx hyperframes check
+npx hyperframes render --quality high --fps 30 --output renders/_bruto_normal.mp4
+npx hyperframes render --quality high --fps 30 --variables '{"reducedMotion":true}' --output renders/_bruto_reduzido.mp4
+python3 tools/finalizar.py        (mixagem final, medições, quadros-chave, varredura)
+node tools/conferir.mjs           (bolinha, legenda e margens; precisa de servidor local na 8765)
+
+Ferramentas: HyperFrames CLI 0.8.166, Three.js 0.181.2, GSAP e CustomEase do modelo BT,
+FFmpeg 6.1.1, faster-whisper 1.2.1, NumPy e SciPy (efeitos). Fontes OFL locais: Fira Sans
+Condensed 500 e 800, Piazzolla 400 e 600, Funnel Sans 500 e 600, IBM Plex Mono 500.
+
+========================================================================
+7. MEDIÇÕES
+========================================================================
+(preenchido no fim)
+
+========================================================================
+8. PENDÊNCIAS
+========================================================================
+(preenchido no fim)

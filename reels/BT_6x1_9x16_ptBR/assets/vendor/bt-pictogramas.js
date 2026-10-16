@@ -92,6 +92,10 @@
     Object.assign(b || {}, fixos);
     return [a, b];
   };
+  const ehTrilho = (alvo) => {
+    const lista = typeof alvo === "string" ? [alvo] : alvo && typeof alvo.length === "number" ? Array.from(alvo) : [alvo];
+    return lista.some((x) => (typeof x === "string" ? x.indexOf("trilho") >= 0 : !!(x && x.id && String(x.id).indexOf("trilho") >= 0)));
+  };
   const timelineOriginal = gsap.timeline.bind(gsap);
   gsap.timeline = function (opts) {
     const tl = timelineOriginal(opts);
@@ -99,7 +103,8 @@
     const to = tl.to.bind(tl), from = tl.from.bind(tl), fromTo = tl.fromTo.bind(tl);
     tl.to = (alvo, vars, pos) => {
       // Contadores que rolam (trilhos de números) trocam de valor por corte seco, sem deslizar.
-      if (typeof alvo === "string" && alvo.indexOf("trilho") >= 0 && vars && typeof vars.y === "number") tl.set(alvo, { y: vars.y }, pos);
+      // O runtime das subcomposições entrega o alvo já resolvido em elementos; por isso o teste olha o id.
+      if (ehTrilho(alvo) && vars && typeof vars.y === "number") tl.set(alvo, { y: vars.y }, pos);
       return to(alvo, limpa(null, vars)[1], pos);
     };
     tl.from = (alvo, vars, pos) => from(alvo, limpa(vars, null)[0], pos);

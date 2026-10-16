@@ -36,6 +36,24 @@ https://www12.senado.leg.br/radio/1/noticia/2026/10/14/senado-aprova-pec-que-aca
 
 Situação em 15/10/2026, 23h35 de Brasília: sessão solene ainda não realizada. Confirmar depois das 9h de 16/10/2026.
 
+### Conferência de 16/10/2026, 10h32 de Brasília
+
+Agência Câmara, "Congresso promulga o fim da escala 6x1 e aposentadoria especial para agentes de saúde; assista", 16/10/2026, 10h15.
+https://www.camara.leg.br/noticias/1311742-congresso-promulga-o-fim-da-escala-6x1-e-aposentadoria-especial-para-agentes-de-saude
+
+- "Começou há pouco a sessão solene do Congresso para promulgar duas emendas à Constituição."
+- "Preside a sessão de promulgação o presidente do Senado e do Congresso Nacional, Davi Alcolumbre."
+
+TV Senado, "Congresso promulga fim da escala 6x1 e aposentadoria de agentes de saúde", 16/10/2026.
+https://www12.senado.leg.br/tv/plenario-e-comissoes/sessao-solene-do-congresso-nacional/2026/10/congresso-promulga-fim-da-escala-6x1-e-aposentadoria-de-agentes-de-saude
+
+Agência Brasil, "Alcolumbre vai promulgar fim da escala 6x1 nesta sexta", 15/10/2026, 20h10.
+https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/alcolumbre-vai-promulgar-fim-da-escala-6x1-nesta-sexta
+
+- "Pelo texto aprovado no Senado, 60 dias após a promulgação da emenda constitucional as empresas deverão adotar a escala 5x2 e reduzir a jornada máxima para 42 horas semanais de trabalho. Depois de mais 12 meses, a jornada será reduzida para 40 horas semanais."
+
+Resultado: a sessão solene começou com atraso (a Agência Câmara noticiou o início às 10h15). Até 10h32 de Brasília, nenhuma fonte oficial consultada confirmava o encerramento da promulgação nem o número da emenda constitucional. A TV Senado usa a expressão "EC 221/2019", que é o número da PEC, não o número da emenda. Conferir de novo: número da EC e data de publicação no Diário Oficial da União.
+
 ## Não verificado
 
 - Texto integral da emenda: o documento do Senado exigiu verificação de segurança e o da Câmara respondeu HTTP 429. O marco do prazo (publicação ou promulgação) e a forma (60 dias ou dois meses) devem ser conferidos no texto promulgado.

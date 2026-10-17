@@ -1,0 +1,140 @@
+{
+ "fonte": "narracao_bruta_v3_henrique_v4.mp3 (ElevenLabs, voz Henrique 3ULAAai0IVN00DTWA6vF, eleven_v4, 1 geração, 342 créditos, 17/10/2026)",
+ "duracao_bruta": 25.966,
+ "duracao_total": 25.91,
+ "cauda_final": 1.1,
+ "segmentos": [
+  {
+   "i": 0,
+   "texto": "Seu cônjuge diz não ao divórcio?",
+   "bruto": [
+    0.02,
+    2.17
+   ],
+   "silencio_antes": 0.06,
+   "final_ini": 0.06,
+   "final_fim": 2.21,
+   "desloc": 0.04
+  },
+  {
+   "i": 1,
+   "texto": "Isso não impede o divórcio.",
+   "bruto": [
+    2.52,
+    4.18
+   ],
+   "silencio_antes": 0.22,
+   "final_ini": 2.43,
+   "final_fim": 4.09,
+   "desloc": -0.09
+  },
+  {
+   "i": 2,
+   "texto": "Com acordo, consensual.",
+   "bruto": [
+    4.55,
+    6.23
+   ],
+   "silencio_antes": 0.22,
+   "final_ini": 4.31,
+   "final_fim": 5.99,
+   "desloc": -0.24
+  },
+  {
+   "i": 3,
+   "texto": "Sem acordo, litigioso.",
+   "bruto": [
+    6.5,
+    8.39
+   ],
+   "silencio_antes": 0.18,
+   "final_ini": 6.17,
+   "final_fim": 8.06,
+   "desloc": -0.33
+  },
+  {
+   "i": 4,
+   "texto": "A outra pessoa não precisa concordar.",
+   "bruto": [
+    8.66,
+    10.92
+   ],
+   "silencio_antes": 0.2,
+   "final_ini": 8.26,
+   "final_fim": 10.52,
+   "desloc": -0.4
+  },
+  {
+   "i": 5,
+   "texto": "Filhos. Alimentos. Bens.",
+   "bruto": [
+    11.27,
+    13.72
+   ],
+   "silencio_antes": 0.2,
+   "final_ini": 10.72,
+   "final_fim": 13.17,
+   "desloc": -0.55
+  },
+  {
+   "i": 6,
+   "texto": "Essas questões podem exigir análise própria.",
+   "bruto": [
+    13.98,
+    16.47
+   ],
+   "silencio_antes": 0.18,
+   "final_ini": 13.35,
+   "final_fim": 15.84,
+   "desloc": -0.63
+  },
+  {
+   "i": 7,
+   "texto": "A recusa não é um veto ao divórcio.",
+   "bruto": [
+    16.76,
+    19.08
+   ],
+   "silencio_antes": 0.2,
+   "final_ini": 16.04,
+   "final_fim": 18.36,
+   "desloc": -0.72
+  },
+  {
+   "i": 8,
+   "texto": "Cada situação exige análise individual.",
+   "bruto": [
+    19.33,
+    21.99
+   ],
+   "silencio_antes": 0.2,
+   "final_ini": 18.56,
+   "final_fim": 21.22,
+   "desloc": -0.77
+  },
+  {
+   "i": 9,
+   "texto": "Bispo e Teixeira Advogados.",
+   "bruto": [
+    22.38,
+    24.17
+   ],
+   "silencio_antes": 0.26,
+   "final_ini": 21.48,
+   "final_fim": 23.27,
+   "desloc": -0.9
+  },
+  {
+   "i": 10,
+   "texto": "Salve esta informação.",
+   "bruto": [
+    24.47,
+    25.79
+   ],
+   "silencio_antes": 0.22,
+   "final_ini": 23.49,
+   "final_fim": 24.81,
+   "desloc": -0.98
+  }
+ ]
+}

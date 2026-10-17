@@ -1,0 +1,568 @@
+<!doctype html>
+<html
+  lang="pt-BR"
+  data-composition-variables='[{"id":"reducedMotion","type":"boolean","label":"Movimento reduzido","default":false}]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>BT Reel Divórcio V3, seu cônjuge diz não ao divórcio</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/CustomEase.min.js"></script>
+    <script src="assets/data/dados_v3.js"></script>
+    <script>
+      // a composição GSAP só monta depois que a cena 3D da aliança termina o cálculo da queda
+      window.__ALIANCA_PROMISE = new Promise((res) => {
+        window.__ALIANCA_RESOLVE = res;
+      });
+      window.__hf = window.__hf || {};
+      window.__hf.buildReady = window.__hf.buildReady || {};
+      window.__hf.buildReady["alianca"] = window.__ALIANCA_PROMISE;
+    </script>
+    <style>
+      /* Duas famílias estruturais: Fira Sans Condensed (impacto, informação, rótulos; a fonte
+         condensada que já identificava a V2) e Cormorant Garamond (frases editoriais, a serifa do
+         manual estático do escritório). */
+      @font-face {
+        font-family: "Fira Sans Condensed";
+        src: url("assets/fonts/fira-sans-condensed-latin-500-normal.woff2") format("woff2");
+        font-weight: 500;
+      }
+      @font-face {
+        font-family: "Fira Sans Condensed";
+        src: url("assets/fonts/fira-sans-condensed-latin-800-normal.woff2") format("woff2");
+        font-weight: 800;
+      }
+      @font-face {
+        font-family: "Cormorant Garamond";
+        src: url("assets/fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2");
+        font-weight: 600;
+      }
+      @font-face {
+        font-family: "Cormorant Garamond";
+        src: url("assets/fonts/cormorant-garamond-latin-600-italic.woff2") format("woff2");
+        font-weight: 600;
+        font-style: italic;
+      }
+      :root {
+        --brand-midnight: #081a35;
+        --brand-primary: #0b1f4b;
+        --brand-blue: #214d8c;
+        --brand-sky: #8fc5ef;
+        --brand-gold: #d4af7c;
+        --surface-sand: #f4ede2;
+        --surface-paper: #faf8f4;
+        --text-ink: #202631;
+        --gradient-editorial: linear-gradient(135deg, var(--brand-midnight), var(--brand-primary));
+        --font-display: "Fira Sans Condensed", "Arial Narrow", sans-serif;
+        --font-serif: "Cormorant Garamond", Georgia, serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--brand-midnight);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--brand-midnight);
+        font-family: var(--font-display);
+        color: var(--text-ink);
+      }
+      .ground,
+      .scene,
+      .layer {
+        position: absolute;
+        inset: 0;
+      }
+      .ground {
+        background: var(--brand-midnight);
+      }
+      .bg-sand {
+        background: var(--surface-sand);
+      }
+      .bg-gradient {
+        background: var(--gradient-editorial);
+      }
+      .bg-primary {
+        background: var(--brand-primary);
+      }
+      .col {
+        position: absolute;
+        left: 96px;
+        width: 860px;
+      }
+      .t {
+        font-family: var(--font-display);
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: -0.01em;
+        color: var(--brand-primary);
+      }
+      .on-dark .t {
+        color: var(--surface-paper);
+      }
+      .l {
+        display: block;
+        width: fit-content;
+        white-space: nowrap;
+      }
+      .w {
+        display: inline-block;
+      }
+      .gold {
+        color: var(--brand-gold) !important;
+      }
+      .label {
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: 46px;
+        line-height: 1.1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--brand-blue);
+      }
+      .on-dark .label {
+        color: var(--brand-sky);
+      }
+      .serif {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        line-height: 1.12;
+        letter-spacing: 0;
+      }
+      svg {
+        display: block;
+        overflow: visible;
+      }
+      img {
+        display: block;
+      }
+
+      /* Cenas 1 a 3: a cena 3D contínua (aliança, queda, vista de cima) com o texto por cima */
+      #ring-out {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        display: block;
+      }
+      #s1-world {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 900px;
+      }
+      #s1-title {
+        top: 270px;
+      }
+      #s1-l1 {
+        font-size: 108px;
+      }
+      #s1-l2 {
+        font-size: 262px;
+        line-height: 0.86;
+        margin: 40px 0 4px -8px;
+      }
+      #s1-l3 {
+        font-size: 116px;
+      }
+      #s2-title {
+        top: 420px;
+      }
+      #s2-l1 {
+        font-size: 96px;
+      }
+      #s2-l2 {
+        font-size: 300px;
+        line-height: 0.84;
+        margin: 4px 0 0 -10px;
+      }
+      #s2-rule {
+        position: absolute;
+        left: 96px;
+        top: 782px;
+        width: 420px;
+        height: 8px;
+        background: var(--brand-gold);
+        transform-origin: 0 50%;
+      }
+      #s2-l3 {
+        font-size: 112px;
+        margin-top: 48px;
+      }
+      .row {
+        position: absolute;
+        left: 96px;
+        width: 880px;
+      }
+      #s3-r1 {
+        top: 316px;
+      }
+      #s3-r2 {
+        top: 1112px;
+      }
+      .row .label {
+        margin-bottom: 10px;
+        font-size: 66px;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .row .t {
+        font-size: 156px;
+      }
+
+      /* Cena 4: fotografia documental com paralaxe em camadas */
+      .plate {
+        position: absolute;
+        left: 0;
+        top: 250px;
+        width: 1080px;
+        height: 780px;
+        overflow: hidden;
+        background: #0c1424;
+      }
+      .shot {
+        position: absolute;
+        inset: 0;
+      }
+      .ph {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform-origin: 0 0;
+        filter: saturate(0.84) contrast(1.04);
+      }
+      .plate-shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(8, 26, 53, 0) 62%, rgba(8, 26, 53, 0.55) 100%);
+      }
+      .plate-grain {
+        position: absolute;
+        inset: 0;
+        background-image: url("assets/img/grao.png");
+        background-size: 2048px 512px;
+        mix-blend-mode: overlay;
+        opacity: 0.08;
+      }
+      #s4-title {
+        top: 1092px;
+      }
+      #s4-title .l {
+        font-size: 118px;
+      }
+
+      /* Cena 5: questões relacionadas, três planos rápidos e o complemento */
+      .num {
+        position: absolute;
+        left: 96px;
+        top: 330px;
+        font-size: 56px;
+      }
+      .big {
+        position: absolute;
+        left: 96px;
+        top: 780px;
+        font-size: 196px;
+      }
+      #s5c .big {
+        top: 330px;
+      }
+      #s5c .num {
+        top: 270px;
+      }
+      #s5c-photo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+      #s5c-shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(8, 26, 53, 0.55) 0%, rgba(8, 26, 53, 0.1) 34%, rgba(8, 26, 53, 0) 50%);
+      }
+      #s5d-list {
+        top: 330px;
+      }
+      .item {
+        position: relative;
+        padding-top: 22px;
+        margin-bottom: 30px;
+      }
+      .item-rule {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--brand-primary);
+        transform-origin: 0 50%;
+      }
+      .item .t {
+        font-size: 116px;
+      }
+      #s5d-sup {
+        top: 1040px;
+        width: 860px;
+        font-size: 98px;
+        color: var(--text-ink);
+      }
+
+      /* Cena 6: a conclusão no azul, aberta por uma máscara circular (a forma da aliança) */
+      #s6-iris {
+        position: absolute;
+        inset: 0;
+        background: var(--brand-primary);
+      }
+      #s6-ring {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+      }
+      #s6-title {
+        top: 360px;
+      }
+      #s6-title .l {
+        font-size: 122px;
+      }
+      #s6-veto {
+        font-size: 330px !important;
+        line-height: 0.86;
+        margin: 4px 0 8px -10px;
+      }
+      #s6-rule {
+        position: absolute;
+        left: 96px;
+        top: 1236px;
+        width: 72px;
+        height: 4px;
+        background: var(--brand-gold);
+        transform-origin: 0 50%;
+      }
+      #s6-sup {
+        top: 1270px;
+        font-size: 86px;
+        font-style: italic;
+        color: var(--surface-paper);
+      }
+
+      /* Cena 7: assinatura */
+      #s7-center {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #s7-logo {
+        margin-top: 560px;
+        width: 520px;
+        height: auto;
+      }
+      #s7-rule {
+        width: 120px;
+        height: 4px;
+        margin-top: 46px;
+        background: var(--brand-gold);
+      }
+      #s7-cta {
+        margin-top: 50px;
+        font-size: 88px;
+        line-height: 1;
+        color: var(--surface-paper);
+      }
+      #s7-contacts {
+        margin-top: 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      #s7-tel {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 68px;
+        line-height: 1;
+        color: var(--surface-paper);
+      }
+      #s7-ig {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: 54px;
+        line-height: 1;
+        color: var(--brand-sky);
+      }
+
+      #vignette {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse 85% 70% at 50% 45%, rgba(8, 26, 53, 0) 58%, rgba(4, 12, 28, 0.42) 100%);
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="25.91" data-width="1080" data-height="1920">
+      <div id="ground" class="ground clip" data-start="0" data-duration="25.91" data-track-index="0"></div>
+
+      <audio id="vo" src="assets/audio/mix_v3_normal.wav" data-start="0" data-duration="25.91" data-track-index="20" data-volume="1"></audio>
+
+      <!-- Cenas 1, 2 e 3: a aliança 3D (gancho, ruptura, queda e vista de cima) com o texto por cima -->
+      <section id="s3d" class="scene clip" data-start="0" data-duration="8.22" data-track-index="1">
+        <canvas id="ring-out" width="1080" height="1920"></canvas>
+        <!-- C1 gancho (escuro): o título fica preso ao mundo e sai por cima quando a câmera desce -->
+        <div id="s1-world" class="on-dark" data-layout-allow-overflow>
+          <div id="s1-title" class="col t">
+            <span class="l" id="s1-l1"><span class="w" data-w="0">Seu</span> <span class="w" data-w="1">cônjuge</span> <span class="w" data-w="2">diz</span></span>
+            <span class="l gold" id="s1-l2"><span class="w" data-w="3" id="s1-nao">NÃO</span></span>
+            <span class="l" id="s1-l3"><span class="w" data-w="4">ao</span> <span class="w" data-w="5">divórcio?</span></span>
+          </div>
+        </div>
+        <!-- C2 resposta (no piso Sand, depois do toque) -->
+        <div id="s2" class="layer">
+          <div id="s2-title" class="col t">
+            <span class="l" id="s2-l1"><span class="w" data-w="6">Isso</span></span>
+            <span class="l" id="s2-l2"><span class="w" data-w="7" id="s2-nao">NÃO</span></span>
+            <span class="l" id="s2-l3"><span class="w" data-w="8">impede</span> <span class="w" data-w="9">o</span><br /><span class="w" data-w="10">divórcio.</span></span>
+          </div>
+          <div id="s2-rule"></div>
+        </div>
+        <!-- C3 comparação: as duas metades no meio, como ponte entre os dois campos -->
+        <div id="s3" class="layer">
+          <div id="s3-r1" class="row">
+            <div class="label" id="s3-lab1"><span class="w" data-w="11">Com</span> <span class="w" data-w="12">acordo:</span></div>
+            <div class="t"><span class="w" data-w="13" id="s3-w1">consensual.</span></div>
+          </div>
+          <div id="s3-r2" class="row">
+            <div class="label" id="s3-lab2"><span class="w" data-w="14">Sem</span> <span class="w" data-w="15">acordo:</span></div>
+            <div class="t"><span class="w" data-w="16" id="s3-w2">litigioso.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- C4 direito ao divórcio: fotografia documental em duas camadas (paralaxe) e dois enquadramentos -->
+      <section id="s4" class="scene clip on-dark" data-start="8.16" data-duration="2.5" data-track-index="2">
+        <div class="layer bg-gradient"></div>
+        <div id="s4-plate" class="plate">
+          <div id="s4-a" class="shot">
+            <img id="s4-a-bg" class="ph" src="assets/img/v3/anel_fundo.webp" width="1600" height="1067" alt="" />
+            <img id="s4-a-fg" class="ph" src="assets/img/v3/anel_frente.webp" width="1600" height="1067" alt="Mãos tirando a aliança" />
+          </div>
+          <div id="s4-b" class="shot">
+            <img id="s4-b-bg" class="ph" src="assets/img/v3/assinatura_fundo.webp" width="1420" height="948" alt="" />
+            <img id="s4-b-fg" class="ph" src="assets/img/v3/assinatura_frente.webp" width="1420" height="948" alt="Mão assinando um documento" />
+          </div>
+          <div class="plate-shade"></div>
+          <div class="plate-grain"></div>
+        </div>
+        <div id="s4-title" class="col t">
+          <span class="l"><span class="w" data-w="17">A</span> <span class="w" data-w="18">outra</span> <span class="w" data-w="19">pessoa</span></span>
+          <span class="l gold"><span class="w" data-w="20">não</span> <span class="w" data-w="21">precisa</span></span>
+          <span class="l"><span class="w" data-w="22">concordar.</span></span>
+        </div>
+      </section>
+
+      <!-- C5 questões relacionadas: três planos rápidos e o complemento -->
+      <section id="s5a" class="scene clip bg-sand" data-start="10.62" data-duration="0.9" data-track-index="1">
+        <div class="num label">01</div>
+        <div class="big t"><span class="w" data-w="23">Filhos.</span></div>
+      </section>
+      <section id="s5b" class="scene clip bg-primary on-dark" data-start="11.51" data-duration="0.95" data-track-index="3">
+        <div class="num label">02</div>
+        <div class="big t"><span class="w" data-w="24">Alimentos.</span></div>
+      </section>
+      <section id="s5c" class="scene clip on-dark" data-start="12.46" data-duration="1.2" data-track-index="2">
+        <div id="s5c-photo">
+          <img id="s5c-bg" class="ph" src="assets/img/v3/chaves_fundo.webp" width="1080" height="1928" alt="" />
+          <img id="s5c-fg" class="ph" src="assets/img/v3/chaves_frente.webp" width="1080" height="1928" alt="Chaves com chaveiro de casa sobre a mesa" />
+          <div class="plate-grain"></div>
+        </div>
+        <div id="s5c-shade"></div>
+        <div class="num label">03</div>
+        <div class="big t"><span class="w" data-w="25">Bens.</span></div>
+      </section>
+      <section id="s5d" class="scene clip bg-sand" data-start="13.2" data-duration="2.9" data-track-index="1">
+        <div id="s5d-list" class="col">
+          <div class="item" id="it1"><div class="item-rule"></div><div class="t">Filhos.</div></div>
+          <div class="item" id="it2"><div class="item-rule"></div><div class="t">Alimentos.</div></div>
+          <div class="item" id="it3"><div class="item-rule"></div><div class="t">Bens.</div></div>
+        </div>
+        <div id="s5d-sup" class="col serif">
+          <span class="w" data-w="26">Essas</span> <span class="w" data-w="27">questões</span> <span class="w" data-w="28">podem</span> <span class="w" data-w="29">exigir</span> <span class="w" data-w="30">análise</span> <span class="w" data-w="31">própria.</span>
+        </div>
+      </section>
+
+      <!-- C6 conclusão: retorno ao azul por uma máscara circular que nasce da forma da aliança -->
+      <section id="s6" class="scene clip on-dark" data-start="15.84" data-duration="5.8" data-track-index="2">
+        <div id="s6-iris"></div>
+        <svg id="s6-ring" viewBox="0 0 1080 1920" aria-hidden="true">
+          <circle id="s6-circle" cx="540" cy="960" r="0" fill="none" stroke="#D4AF7C" stroke-width="6" />
+        </svg>
+        <div id="s6-inner" class="layer">
+          <div id="s6-title" class="col t">
+            <span class="l"><span class="w" data-w="32">A</span> <span class="w" data-w="33">recusa</span></span>
+            <span class="l"><span class="w" data-w="34">não</span> <span class="w" data-w="35">é</span> <span class="w" data-w="36">um</span></span>
+            <span class="l gold" id="s6-veto"><span class="w" data-w="37">veto</span></span>
+            <span class="l"><span class="w" data-w="38">ao</span> <span class="w" data-w="39">divórcio.</span></span>
+          </div>
+          <div id="s6-rule"></div>
+          <div id="s6-sup" class="col serif">
+            <span class="w" data-w="40">Cada</span> <span class="w" data-w="41">situação</span> <span class="w" data-w="42">exige</span><br /><span class="w" data-w="43">análise</span> <span class="w" data-w="44">individual.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- C7 assinatura: o movimento desacelera, marca oficial em branco sobre o azul -->
+      <section id="s7" class="scene clip bg-primary on-dark" data-start="21.2" data-duration="4.71" data-track-index="1">
+        <div id="s7-center">
+          <img id="s7-logo" src="assets/brand/Logo_BT_Original_Transparente_520.png" width="520" height="257" alt="Bispo &amp; Teixeira Advogados" />
+          <div id="s7-rule"></div>
+          <p id="s7-cta" class="t"><span class="w" data-w="49">Salve</span> <span class="w" data-w="50">esta</span> <span class="w" data-w="51">informação.</span></p>
+          <div id="s7-contacts">
+            <p id="s7-tel">(38) 9 9129-6401</p>
+            <div id="s7-ig">
+              <svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true">
+                <rect x="4" y="4" width="56" height="56" rx="16" fill="none" stroke="#8FC5EF" stroke-width="5" />
+                <circle cx="32" cy="32" r="13" fill="none" stroke="#8FC5EF" stroke-width="5" />
+                <circle cx="47.5" cy="16.5" r="3.6" fill="#8FC5EF" />
+              </svg>
+              <span>@bispoeteixeiraadvogados</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="vignette" class="clip" data-start="0" data-duration="25.91" data-track-index="28"></div>
+    </div>
+
+    <script type="importmap">
+      { "imports": { "three": "./assets/vendor/three.module.min.js" } }
+    </script>
+    <script type="module" src="assets/js/alianca_v3.js"></script>
+    <script src="assets/js/timeline_v3.js"></script>
+  </body>
+</html>

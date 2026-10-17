@@ -1,0 +1,368 @@
+{
+ "palavras": [
+  {
+   "texto": "Seu",
+   "ini": 0.06,
+   "fim": 0.4,
+   "frase": 0,
+   "p": 0.878
+  },
+  {
+   "texto": "cônjuge",
+   "ini": 0.4,
+   "fim": 0.92,
+   "frase": 0,
+   "p": 0.983
+  },
+  {
+   "texto": "diz",
+   "ini": 0.92,
+   "fim": 1.26,
+   "frase": 0,
+   "p": 0.997
+  },
+  {
+   "texto": "não",
+   "ini": 1.26,
+   "fim": 1.48,
+   "frase": 0,
+   "p": 0.686
+  },
+  {
+   "texto": "ao",
+   "ini": 1.48,
+   "fim": 1.68,
+   "frase": 0,
+   "p": 0.999
+  },
+  {
+   "texto": "divórcio?",
+   "ini": 1.68,
+   "fim": 2.16,
+   "frase": 0,
+   "p": 0.986
+  },
+  {
+   "texto": "Isso",
+   "ini": 2.43,
+   "fim": 2.73,
+   "frase": 1,
+   "p": 0.987
+  },
+  {
+   "texto": "não",
+   "ini": 2.73,
+   "fim": 3.09,
+   "frase": 1,
+   "p": 0.989
+  },
+  {
+   "texto": "impede",
+   "ini": 3.09,
+   "fim": 3.41,
+   "frase": 1,
+   "p": 0.997
+  },
+  {
+   "texto": "o",
+   "ini": 3.41,
+   "fim": 3.61,
+   "frase": 1,
+   "p": 0.998
+  },
+  {
+   "texto": "divórcio.",
+   "ini": 3.61,
+   "fim": 4.07,
+   "frase": 1,
+   "p": 0.995
+  },
+  {
+   "texto": "Com",
+   "ini": 4.31,
+   "fim": 4.56,
+   "frase": 2,
+   "p": 0.94
+  },
+  {
+   "texto": "acordo,",
+   "ini": 4.56,
+   "fim": 5.05,
+   "frase": 2,
+   "p": 0.954
+  },
+  {
+   "texto": "consensual.",
+   "ini": 5.21,
+   "fim": 5.96,
+   "frase": 2,
+   "p": 0.995
+  },
+  {
+   "texto": "Sem",
+   "ini": 6.17,
+   "fim": 6.51,
+   "frase": 3,
+   "p": 0.992
+  },
+  {
+   "texto": "acordo,",
+   "ini": 6.51,
+   "fim": 6.99,
+   "frase": 3,
+   "p": 0.995
+  },
+  {
+   "texto": "litigioso.",
+   "ini": 7.17,
+   "fim": 8.01,
+   "frase": 3,
+   "p": 0.996
+  },
+  {
+   "texto": "A",
+   "ini": 8.26,
+   "fim": 8.5,
+   "frase": 4,
+   "p": 0.996
+  },
+  {
+   "texto": "outra",
+   "ini": 8.5,
+   "fim": 8.68,
+   "frase": 4,
+   "p": 0.999
+  },
+  {
+   "texto": "pessoa",
+   "ini": 8.68,
+   "fim": 9.08,
+   "frase": 4,
+   "p": 0.997
+  },
+  {
+   "texto": "não",
+   "ini": 9.08,
+   "fim": 9.52,
+   "frase": 4,
+   "p": 0.984
+  },
+  {
+   "texto": "precisa",
+   "ini": 9.52,
+   "fim": 9.9,
+   "frase": 4,
+   "p": 0.999
+  },
+  {
+   "texto": "concordar.",
+   "ini": 9.9,
+   "fim": 10.48,
+   "frase": 4,
+   "p": 0.996
+  },
+  {
+   "texto": "Filhos.",
+   "ini": 10.72,
+   "fim": 11.41,
+   "frase": 5,
+   "p": 0.99
+  },
+  {
+   "texto": "Alimentos.",
+   "ini": 11.61,
+   "fim": 12.29,
+   "frase": 5,
+   "p": 0.989
+  },
+  {
+   "texto": "Bens.",
+   "ini": 12.56,
+   "fim": 13.14,
+   "frase": 5,
+   "p": 0.993
+  },
+  {
+   "texto": "Essas",
+   "ini": 13.35,
+   "fim": 13.69,
+   "frase": 6,
+   "p": 0.99
+  },
+  {
+   "texto": "questões",
+   "ini": 13.69,
+   "fim": 14.15,
+   "frase": 6,
+   "p": 0.999
+  },
+  {
+   "texto": "podem",
+   "ini": 14.15,
+   "fim": 14.43,
+   "frase": 6,
+   "p": 0.998
+  },
+  {
+   "texto": "exigir",
+   "ini": 14.43,
+   "fim": 14.91,
+   "frase": 6,
+   "p": 0.999
+  },
+  {
+   "texto": "análise",
+   "ini": 14.91,
+   "fim": 15.37,
+   "frase": 6,
+   "p": 0.978
+  },
+  {
+   "texto": "própria.",
+   "ini": 15.37,
+   "fim": 15.77,
+   "frase": 6,
+   "p": 0.994
+  },
+  {
+   "texto": "A",
+   "ini": 16.04,
+   "fim": 16.38,
+   "frase": 7,
+   "p": 0.998
+  },
+  {
+   "texto": "recusa",
+   "ini": 16.38,
+   "fim": 16.76,
+   "frase": 7,
+   "p": 0.996
+  },
+  {
+   "texto": "não",
+   "ini": 16.76,
+   "fim": 17.1,
+   "frase": 7,
+   "p": 0.988
+  },
+  {
+   "texto": "é",
+   "ini": 17.1,
+   "fim": 17.24,
+   "frase": 7,
+   "p": 0.999
+  },
+  {
+   "texto": "um",
+   "ini": 17.24,
+   "fim": 17.5,
+   "frase": 7,
+   "p": 0.996
+  },
+  {
+   "texto": "veto",
+   "ini": 17.5,
+   "fim": 17.64,
+   "frase": 7,
+   "p": 0.967
+  },
+  {
+   "texto": "ao",
+   "ini": 17.64,
+   "fim": 17.84,
+   "frase": 7,
+   "p": 0.998
+  },
+  {
+   "texto": "divórcio.",
+   "ini": 17.84,
+   "fim": 18.35,
+   "frase": 7,
+   "p": 0.996
+  },
+  {
+   "texto": "Cada",
+   "ini": 18.56,
+   "fim": 18.87,
+   "frase": 8,
+   "p": 0.996
+  },
+  {
+   "texto": "situação",
+   "ini": 18.87,
+   "fim": 19.49,
+   "frase": 8,
+   "p": 0.999
+  },
+  {
+   "texto": "exige",
+   "ini": 19.49,
+   "fim": 19.95,
+   "frase": 8,
+   "p": 0.993
+  },
+  {
+   "texto": "análise",
+   "ini": 19.95,
+   "fim": 20.51,
+   "frase": 8,
+   "p": 0.991
+  },
+  {
+   "texto": "individual.",
+   "ini": 20.51,
+   "fim": 21.13,
+   "frase": 8,
+   "p": 0.998
+  },
+  {
+   "texto": "Bispo",
+   "ini": 21.48,
+   "fim": 21.96,
+   "frase": 9,
+   "p": 0.943
+  },
+  {
+   "texto": "e",
+   "ini": 21.96,
+   "fim": 22.08,
+   "frase": 9,
+   "p": 0.977
+  },
+  {
+   "texto": "Teixeira",
+   "ini": 22.08,
+   "fim": 22.54,
+   "frase": 9,
+   "p": 0.909
+  },
+  {
+   "texto": "Advogados.",
+   "ini": 22.54,
+   "fim": 23.25,
+   "frase": 9,
+   "p": 0.91
+  },
+  {
+   "texto": "Salve",
+   "ini": 23.49,
+   "fim": 23.98,
+   "frase": 10,
+   "p": 0.987
+  },
+  {
+   "texto": "esta",
+   "ini": 23.98,
+   "fim": 24.14,
+   "frase": 10,
+   "p": 0.92
+  },
+  {
+   "texto": "informação.",
+   "ini": 24.14,
+   "fim": 24.66,
+   "frase": 10,
+   "p": 0.998
+  }
+ ]
+}

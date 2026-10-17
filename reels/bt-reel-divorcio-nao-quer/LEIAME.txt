@@ -212,3 +212,26 @@ Pendências do v2
 2. Decidir entre v1 e v2, ou um meio-termo (por exemplo, v2 sem trilha e sem grão).
 3. As pendências 2, 4 e 5 do v1 continuam valendo (dados da assinatura, vetor da logo,
    cobrança da chamada da ElevenLabs que falhou).
+
+########################################################################
+VERSÃO V3 (17/10/2026): segunda revisão, projeto BT.01.SC (prompt de segunda revisão)
+########################################################################
+O que mudou, por quê, cronograma, ajustes da aliança, limitações e conflitos: RELATORIO_v3.txt.
+A V1 e a V2 continuam intactas (arquivos sem sufixo e _v2). Os arquivos da V3 têm sufixo _v3.
+O index.html da raiz é gerado e hoje contém a V3 (para voltar à V2: python3 tools/montar_v2.py).
+
+Entregas da V3
+bt-reel-divorcio-nao-quer_v3_normal.mp4      versão principal, 25,91 s
+bt-reel-divorcio-nao-quer_v3_reduzido.mp4    versão de movimento reduzido
+bt-reel-divorcio-nao-quer_v3.srt             legenda fechada (uma frase por bloco)
+quadros-chave-v3/                            F1 gancho, F2 ruptura, F3 tela final, quadros por
+                                             cena, versão reduzida e simulação da interface
+Voz nova: ElevenLabs, Henrique (3ULAAai0IVN00DTWA6vF), eleven_v4, 1 geração, 342 créditos
+(estimativa conferida antes), texto exatamente igual aos textos de tela do prompt da V3.
+Como regerar: RELATORIO_v3.txt, item B.
+
+Pendências da V3
+1. Validação jurídica do advogado responsável (o texto falado mudou em relação ao aprovado na V1).
+2. Licença de uso das três fotos de banco (anel, assinatura, chaves): origem não informada.
+3. Decidir se a bolinha condutora volta (a Direção a considera assinatura; o prompt da V3 não).
+4. Vetor da logo (para assinatura maior que 520 px); reconferir telefone e @.

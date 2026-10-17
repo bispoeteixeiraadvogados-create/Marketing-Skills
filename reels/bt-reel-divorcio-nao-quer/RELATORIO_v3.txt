@@ -1,0 +1,317 @@
+BT Reel Divórcio, projeto BT.01.SC, versão V3 (segunda revisão, a partir da V2)
+"Seu cônjuge diz NÃO ao divórcio?"
+1080 x 1920, 9:16, 30 quadros por segundo, 25,91 s. Gerado em 17/10/2026.
+
+SITUAÇÃO: AGUARDANDO A VALIDAÇÃO JURÍDICA DO ADVOGADO RESPONSÁVEL. Nada foi publicado.
+
+########################################################################
+A. VÍDEO FINAL
+########################################################################
+bt-reel-divorcio-nao-quer_v3_normal.mp4      versão principal, com áudio
+bt-reel-divorcio-nao-quer_v3_reduzido.mp4    versão de movimento reduzido (padrão da Direção BT)
+bt-reel-divorcio-nao-quer_v3.srt             legenda fechada, uma frase por bloco
+Medidas: item H.
+
+########################################################################
+B. PROJETO-FONTE EDITÁVEL (nada da V1 ou da V2 foi apagado ou sobrescrito)
+########################################################################
+Os arquivos da V3 têm o sufixo _v3; os da V2 (_v2) e da V1 (sem sufixo) continuam intactos e
+regeráveis (LEIAME.txt). O index.html na raiz é gerado e hoje contém a V3; para voltar à V2:
+python3 tools/montar_v2.py.
+
+Fonte da V3
+  tools/index_v3.template.html      estrutura das 7 cenas, estilos e tokens de cor e tipografia
+  assets/js/alianca_v3.js           cena 3D: aliança, fissura, ruptura, queda, câmera, piso, sombras
+  assets/js/timeline_v3.js          linha do tempo GSAP (texto palavra a palavra, fotos, máscaras)
+  assets/data/dados_v3.js           palavras, frases e cortes (gerado; não editar à mão)
+  tools/montar_faixa_v3.py          faixa de voz a partir do bruto da ElevenLabs
+  tools/gerar_dados_v3.py           dados_v3.js e o .srt
+  tools/montar_v3.py                index.html a partir do modelo (tempos dos clipes pela fala)
+  tools/som_v3.py                   trilha, efeitos, ducking e mixagens a -16 LUFS
+  tools/preparar_fotos_v3.py        ampliação, recorte e fundo reconstruído das fotos
+  tools/exportar_toques_v3.mjs      instantes de toque da simulação 3D para o som
+  tools/finalizar_v3.py             mixagem final, medições, quadros, interface do Reels, varredura
+  tools/teste_alianca_v3.html/.mjs  bancada de teste só da cena 3D
+Ativos novos
+  assets/audio/narracao_bruta_v3_henrique_v4.mp3   geração única da voz (25,97 s)
+  assets/audio/narracao_final_v3.wav, mix_v3_normal.wav, mix_v3_reduzido.wav, trilha_v3.wav
+  assets/data/words_v3.json, transcricao_bruta_v3.json, montagem_faixa_v3.json, toques_v3.json,
+  som_v3.json
+  assets/img/v3/fonte/ (os três anexos usados, sem alteração) e as camadas *_fundo, *_frente e
+  *_inteira (WebP)
+  assets/fonts/cormorant-garamond-latin-600-normal/-italic, 700-normal, 500-italic (OFL, licença
+  em assets/fonts/LICENSE-cormorant-garamond.txt)
+
+Como regerar
+  python3 tools/montar_faixa_v3.py && python3 tools/gerar_dados_v3.py
+  python3 -m http.server 8765 --bind 127.0.0.1   (em outro terminal, na pasta do projeto)
+  node tools/exportar_toques_v3.mjs && python3 tools/som_v3.py
+  python3 tools/montar_v3.py
+  npx hyperframes lint && npx hyperframes check
+  npx hyperframes render --quality high --fps 30 --output renders/_bruto_v3_normal.mp4
+  npx hyperframes render --quality high --fps 30 --variables '{"reducedMotion":true}' --output renders/_bruto_v3_reduzido.mp4
+  python3 tools/finalizar_v3.py
+  (fotos, só se for refazer: python3 tools/preparar_fotos_v3.py <pasta do Real-ESRGAN ONNX>)
+
+########################################################################
+C. MODIFICAÇÕES V2 -> V3
+########################################################################
+Processo seguido (seção 2 do prompt): a V2 foi revista pelo projeto editável (código, cena 3D,
+áudio, logo), não pelo MP4 achatado. Nenhum arquivo da V2 foi sobrescrito.
+
+Achado importante antes de decidir o áudio (seção 11): a V2 tem locução (voz Henrique) com o
+roteiro aprovado na V1, de 15 frases e 44,1 s. Esse texto não contém as frases que o prompt da V3
+pede na tela ("Seu cônjuge diz NÃO ao divórcio?", "A recusa não é um veto ao divórcio" etc.) e
+contém "e quem decide é o juiz", que a seção 12 manda evitar. Como a regra da seção 10 é que a
+legenda acompanhe exatamente o áudio, recortar a voz antiga obrigaria a mostrar um texto e falar
+outro. Decisão: uma geração nova, única, com a mesma voz e o mesmo modelo (ElevenLabs, Henrique,
+eleven_v4), falando exatamente os textos de tela do prompt. Custo: 342 créditos (estimativa
+conferida antes de gerar). O texto falado mudou em relação ao aprovado na V1; por isso a
+validação do advogado é obrigatória antes de publicar.
+
+MANTIDO
+- A aliança 3D como protagonista: a mesma malha procedural, os mesmos dois cortes irregulares
+  (cerca de 1 h e 7 h, metades de 184 e 176 graus) e as faces de fratura rugosas.
+- A ideia da câmera que acompanha a queda e termina na vista de cima.
+- Paleta (Midnight, Navy, Blue, Sky, Sand, Gold), gradiente Midnight para Navy a 135 graus,
+  alternância escuro/claro, fechamento em Navy liso.
+- Fira Sans Condensed (a condensada que identificava a V2) para impacto, informação e rótulos.
+- Coluna à esquerda (x 96) e centralização só na assinatura.
+- Voz Henrique, -16 LUFS e pico até -1,5 dBTP, versão normal e reduzida, .srt.
+- Logo oficial (PNG branco original, 520 px), telefone e @ como na V2.
+
+ENCURTADO
+- Duração: 44,1 s para 25,91 s.
+- Comparação consensual/litigioso: cerca de 8,5 s na V2 (dois blocos, bifurcação, "juiz") para
+  3,96 s numa única composição.
+- Resposta jurídica: aparecia aos 16 a 20 s na V2; agora "Isso NÃO impede o divórcio." entra entre
+  2,75 s e 3,61 s (falada até 4,07 s).
+- Ruptura e queda: a aliança rompe aos 1,72 s (era 19,5 s) e toca o chão aos 2,78 s; a queda
+  dura 1,06 s (eram 3,1 s acelerados).
+- Filhos, alimentos e bens: de uma frase longa com lista para três planos de uma palavra
+  (0,9 s cada) e um complemento de uma linha.
+- Assinatura: de seis blocos de texto (com nota e fontes em letra pequena) para logo, fio Gold,
+  "Salve esta informação." e contato em tamanho legível.
+
+EXCLUÍDO
+- "Existem dois caminhos" e o "2" gigante; "e quem decide é o juiz" (seção 12).
+- A linha do tempo "mais tempo" com os passos pela metade (seção 3, 28 a 31 s).
+- "Cada caso tem a sua realidade", "A orientação depende dos documentos...", "Converse com um
+  advogado antes de decidir" (seção 3, 32 a 40 s): viraram "Cada situação exige análise
+  individual."
+- A legenda separada (o texto da tela agora é a própria narração, palavra a palavra, sem
+  duplicar um título grande).
+- Rótulos com fio nas rachaduras, categoria em mono, grão de filme em toda a tela.
+- A bolinha condutora Sky (ver item G, conflitos com a Direção).
+- Nota "Conteúdo informativo..." e fontes em letra pequena na assinatura (seção 3: "não
+  concentrar texto minúsculo"). A ideia ficou falada e escrita em "Cada situação exige análise
+  individual."; as fontes estão neste relatório e podem ir na legenda da publicação.
+
+INTRODUZIDO
+- Gancho: a pergunta inteira na tela em 0,45 s, com o NÃO em 262 px Gold fosco; a palavra falada
+  acende; o NÃO pulsa junto do salto da fissura.
+- Aliança: secção abaulada com chanfro suave, metal acetinado PBR, ambiente de estúdio fixo,
+  luz quente lateral, preenchimento azul e recorte frio, tensão de 6 quadros, ruptura em duas
+  peças, queda com gravidade, toque por uma quina, recuperação pequena, sombra de contato e
+  desfoque de movimento (item E).
+- Transição motivada: o piso Sand entra no quadro enquanto a câmera desce com as metades; o
+  azul vira areia pela queda, sem dissolve.
+- O NÃO grande da resposta entra por máscara no instante do toque (2,75 s), com fio Gold.
+- As duas metades viram a ponte entre "Com acordo: consensual." e "Sem acordo: litigioso.",
+  com os campos entrando em direções opostas e um travelling lateral lento do piso.
+- Fotografia documental com paralaxe real em camadas (recorte do primeiro plano e fundo
+  reconstruído) e dois enquadramentos na cena 4; fotografia das chaves em "Bens.".
+- Três cortes secos na cena 5, um por palavra, e um empurrão lateral para o complemento.
+- Retorno ao azul por uma máscara circular com fio Gold (a forma da aliança), "veto" em 330 px.
+- Assinatura que desacelera: a conclusão desfoca, a logo entra desfocada e assenta.
+- Cormorant Garamond (serifa do manual estático do escritório) nas duas frases editoriais.
+- Som novo: tensão no primeiro segundo, rangido da tensão, ruptura com grave moderado, contato
+  metálico de cada metade (quina, deitada, rebote), sopros pequenos em quatro trocas, trilha que
+  corta na ruptura e volta no toque com o primeiro tempo no chão.
+
+########################################################################
+D. CRONOGRAMA FINAL (tempos reais, presos à fala)
+########################################################################
+Cena                          início   fim      duração  texto falado e na tela
+C1 gancho                      0,00    1,72    1,72 s   Seu cônjuge diz NÃO ao divórcio? (0,06 a 2,21)
+C2 ruptura e resposta          1,72    4,20    2,48 s   Isso NÃO impede o divórcio. (2,43 a 4,09)
+C3 concordância                4,20    8,16    3,96 s   Com acordo: consensual. / Sem acordo: litigioso.
+C4 direito ao divórcio         8,16   10,62    2,46 s   A outra pessoa não precisa concordar.
+C5 questões relacionadas      10,62   15,94    5,32 s   Filhos. Alimentos. Bens. / Essas questões podem exigir análise própria.
+C6 conclusão                  15,94   21,35    5,41 s   A recusa não é um veto ao divórcio. / Cada situação exige análise individual.
+C7 assinatura                 21,35   25,91    4,56 s   Bispo e Teixeira Advogados. / Salve esta informação.
+Marcos: fissura visível no quadro 0; salto da fissura em 1,26 s; tensão 1,52 a 1,72 s; ruptura
+1,72 s; toque da metade A 2,78 s (o NÃO da resposta entra em 2,75 s); toque da metade B 2,88 s;
+vista de cima completa em 4,45 s; troca de foto em 9,04 s; planos Filhos 10,62, Alimentos 11,51,
+Bens 12,46; complemento 13,20; máscara circular 15,84 a 16,29 s; logo 21,36 s.
+Ritmo: mudança visual significativa a cada 0,9 a 2,5 s; o maior trecho sem troca de composição
+é o complemento da cena 5 (2,7 s, com palavras entrando).
+
+########################################################################
+E. REGISTRO DOS AJUSTES NA ALIANÇA 3D, CÂMERA, QUEDA, FÍSICA E TRANSIÇÕES
+########################################################################
+Stack verificado: HyperFrames 0.8.166 com Three.js 0.181.2 local (assets/vendor), renderização
+determinística pelo evento hf-seek, sem relógio e sem números aleatórios sem semente. Nenhuma
+biblioteca nova na cena 3D. O modelo foi reaproveitado e corrigido, não substituído.
+
+Geometria
+- Secção nova: face externa abaulada (raio 1,000 no meio, 0,965 nas bordas) e face interna de
+  conforto (0,835 no meio, 0,855 nas bordas), largura 0,44 (raio externo = 1 unidade). Chanfro
+  discreto por suavização gaussiana de 0,02 ao longo do contorno. 160 pontos na secção e 240
+  passos no anel. Espessura constante entre as metades.
+- Cortes, faces de fratura e rugosidade: os mesmos da V2 (as peças encaixam).
+Material e luz
+- Metal acetinado: metalicidade 1, rugosidade 0,36, anisotropia leve 0,35, cor base #D8B27C
+  (Gold do Design System). Face de fratura #9A7A55, rugosidade 0,8, facetada.
+- Ambiente procedural convertido em mapa de reflexos (PMREM), fixo no mundo: caixa de luz quente
+  grande à esquerda, faixa fria estreita atrás à direita (recorte), painel suave no alto,
+  preenchimento azul fraco e rebatimento quente do piso. Os reflexos não mudam entre quadros
+  sem motivo.
+- Luz principal quente lateral (#FFE3C2) com sombra, recorte frio (#DCE7FF) e hemisférica azul
+  fraca. Mapeamento de tons ACES só no metal; piso e fundo com as cores exatas da paleta.
+Câmera
+- Lente de 35 graus. Aliança grande desde o quadro 0 (cerca de 536 px de diâmetro), oblíqua
+  (giro de -38 a -29 graus e inclinação de 12 graus, sem volta completa), aproximação rápida até
+  cerca de 636 px na ruptura.
+- Na queda o alvo segue o ponto médio das metades com 0,07 s de atraso; a câmera sobe e inclina
+  de -3 para 57 graus até o toque, e de 57 para 89,6 graus (vista de cima) até 4,45 s.
+- Tremor de impacto de cerca de 3 px por 0,16 s no toque; travelling lateral lento na comparação.
+- Profundidade de campo: não usada (item G).
+Fissura, tensão e ruptura
+- Fissura em fita Midnight a 92%, cerca de 4 px, nascendo no meio da face externa e crescendo
+  para os dois lados; um giro da aliança em torno do próprio eixo leva a fissura para a face que
+  está de frente para a câmera (na V2 ela ficava de perfil e mal se via).
+- Quadro 0: fissura curta já visível; 1,26 s ("não"): salto; 1,52 a 1,72 s: 6 quadros de tensão
+  (vibração de cerca de 2 px, abertura de 2,5 px na fissura e a segunda fissura crescendo).
+- Ruptura em duas peças, com três lascas mínimas (sem partículas douradas e sem estilhaço).
+Queda e contato (física procedural pré-calculada a 1/480 s)
+- Gravidade única de 8,4 unidades/s²; a velocidade inicial de cada metade é resolvida para o
+  toque cair no tempo de projeto (A sobe 0,88 u/s, B 1,09 u/s; velocidades distintas).
+- Rotação individual com velocidade angular constante até a pose de toque.
+- Toque por uma quina inclinada (15 e 12 graus): a peça tomba sobre o ponto de contato pela
+  gravidade, bate deitada, recupera com restituição de 0,12 (rebote abaixo de 4 graus) e assenta
+  em cerca de 0,25 s; atrito leva o deslize curto até parar. Nenhum vértice atravessa o piso
+  (correção pelo vértice mais baixo a cada passo).
+- Toques medidos: A quina 2,780 s, deitada 2,808 s, rebote 3,035 s; B quina 2,880 s, deitada
+  2,899 s, rebote 3,157 s. O som usa exatamente esses instantes.
+Sombras
+- Sombra da luz principal (VSM) com raio de 7 para 1,6 texels conforme a altura: mais nítida no
+  contato. Sombra de contato separada (passe ortográfico de baixo, escuridão cúbica pela altura,
+  desfoque gaussiano), que escurece e concentra quando a peça chega ao chão.
+Transição
+- O piso é Sand dentro de uma poça de luz e escurece para o mesmo gradiente do fundo fora dela;
+  no gancho o horizonte não aparece. Quando a câmera desce com as metades, a poça entra pela base
+  do quadro e se abre: as metades provocam a passagem do azul para o areia e terminam como ponte
+  da comparação, no meio do quadro, sem decoração no rodapé.
+Desfoque de movimento
+- Média de subquadros com obturador de 180 graus (1/60 s): 5 na queda, 2 na tensão e na subida
+  da câmera. Supersampling 2x (2160 x 3840 reduzido para 1080 x 1920). Sem interpolação de
+  quadros.
+
+########################################################################
+F. TRÊS QUADROS DE CONFERÊNCIA (quadros-chave-v3/)
+########################################################################
+F1_gancho_inicial       a pergunta inteira na tela, NÃO em destaque, aliança rachando
+F2_instante_da_ruptura  dois quadros depois da ruptura (1,79 s)
+F3_tela_final           assinatura
+Mais 16 quadros-chave por cena, 4 da versão reduzida e a folha "interface_reels_folha.png" com a
+interface do Instagram simulada (cabeçalho, coluna de botões, nome, legenda, áudio e barra) e as
+margens da Direção BT em verde; também interface_F1, F2 e F3.
+
+########################################################################
+G. LIMITAÇÕES TÉCNICAS E CONFLITOS
+########################################################################
+Limitações
+1. Física: não há motor de corpo rígido no projeto. A queda é cinemática balística com tombo
+   sobre o ponto de contato e restituição, calibrada à mão (seção 6.6 admite isso); não há
+   colisão entre as duas metades.
+2. Profundidade de campo: não aplicada. O fundo é liso (não há o que desfocar) e o Three.js do
+   projeto não tem pós-processamento (EffectComposer não está no vendor). O texto nunca fica
+   desfocado.
+3. GPU por software: cada subquadro 3D custa cerca de 0,8 s. O "check" do HyperFrames tem prazo
+   fixo de 120 s; para caber, a sombra da luz principal ficou em mapa de 1024 px com 8 amostras
+   (antes 2048 e 24, 2,8 vezes mais lento). A diferença visual é pequena.
+4. Fotos: os anexos têm de 414 a 612 px de largura. Foram ampliadas 4x com Real-ESRGAN
+   (ONNX da Qualcomm AI Hub, licença BSD-3) e reduzidas para o uso; o resultado é limpo, mas é
+   uma ampliação, não um original em alta. O fundo reconstruído por trás do primeiro plano é
+   grosseiro e só aparece nos poucos pixels do deslocamento.
+5. "Filhos" e "Alimentos" ficaram em planos tipográficos: nenhum anexo mostra algo coerente com
+   esses temas sem recorrer a rosto ou cena encenada, e a Direção proíbe pessoas geradas por IA.
+6. "Isso" aparece no toque (2,75 s) e não quando é dito (2,43 s): até ali a pergunta ainda está
+   saindo da tela. São 0,3 s de atraso deliberado.
+7. Logo: só existe o PNG de 520 px; ela aparece em 520 px, sem ampliação, para não perder
+   nitidez. Para uma assinatura maior, o escritório precisa enviar o vetor.
+
+Conflitos com a "Direção visual BT para vídeos" (o prompt da V3 prevalece, mas registro)
+1. Tipografia: a Direção usa Piazzolla, Funnel Sans e IBM Plex Mono e diz que "Montserrat em
+   tudo" fica genérico. O prompt pede Cormorant Garamond e Montserrat, mas autoriza manter a
+   condensada da V2. Escolha: Fira Sans Condensed no lugar da Montserrat e Cormorant Garamond
+   (a serifa do manual estático) nas frases editoriais. Duas famílias no vídeo inteiro.
+2. Bolinha condutora Sky: a Direção a chama de "o recurso que mais identifica os vídeos BT". O
+   prompt da V3 pede para evitar "partículas azuis circulando sem função" e não a inclui no que
+   não pode ser perdido. Tirei. Se o escritório quiser mantê-la como assinatura, ela volta numa
+   versão seguinte, só em dois ou três momentos com função.
+3. Metal: a Direção lista "brilho, metal ou neon" no "não fazer"; o prompt da V3 pede metal
+   acetinado PBR. Segui o prompt, com rugosidade moderada (sem espelho e sem glitter).
+4. Som: a Direção pede nenhuma trilha e nenhum whoosh em toda troca; o prompt pede trilha e
+   whooshes pequenos. Trilha discreta (13 dB abaixo da voz) e sopros em quatro das seis trocas.
+5. Ritmo: a Direção registra que "a versão acelerada que testamos foi recusada". A V3 é bem mais
+   rápida, por pedido expresso deste prompt.
+
+########################################################################
+H. MEDIÇÕES (tools/relatorio_final_v3.json, assets/data/som_v3.json)
+########################################################################
+(preenchido depois do render)
+
+########################################################################
+I. TESTE FINAL DE APROVAÇÃO (seção 15), resposta honesta
+########################################################################
+(preenchido depois do render)
+
+########################################################################
+J. IMAGENS ANEXADAS: CLASSIFICAÇÃO E USO
+########################################################################
+1. Casa térrea com varanda (588 x 393): D (bens). Tem aparência de render ou mockup ilustrativo;
+   pela seção 8, não usada como se fosse foto real.
+2. Casa com carro na garagem (259 x 194): D/C. Resolução muito baixa e residência possivelmente
+   identificável. Não usada.
+3. Carro prata com logotipo da Chevrolet (588 x 294): D. Marca de terceiro em destaque. Não usada.
+4. Chaves com chaveiro de casa sobre a mesa (414 x 739): D. Usada em "Bens.", tela cheia, com
+   paralaxe entre as chaves e o fundo.
+5. Mão assinando documento (547 x 365): D (documento e gesto humano, como pede a cena 4). Usada
+   no segundo enquadramento da cena 4.
+6. Casal na cama, de costas um para o outro (566 x 353): C. Fica perto do que a seção 8 veda
+   (casal em conflito, choro encenado) e tem cara de banco de imagens. Não usada.
+7. Mãos tirando a aliança (612 x 408): C (contexto humano) e A (referência de material: ouro
+   acetinado sob luz lateral quente, que orientou o material 3D). Usada no primeiro
+   enquadramento da cena 4.
+Nenhum anexo é da classe B (ruptura/física) nem E (a logo usada é a do projeto). Nenhum anexo
+mostra o escritório real; se houver, ela deve substituir uma das fotos de banco.
+Direitos de uso: as fotos 4, 5 e 7 parecem de banco de imagens e a origem não foi informada.
+Você deve verificar isto (licença de uso comercial) antes de publicar.
+Nenhum dos anexos contém texto que tente orientar ou mudar estas instruções.
+
+########################################################################
+K. CONFERÊNCIA JURÍDICA (para o advogado responsável)
+########################################################################
+Textos falados e na tela: exatamente os do prompt, sem acréscimos. A frase opcional "Sem acordo,
+o divórcio pode ser solicitado judicialmente." não entrou (a duração passaria de 27 s e
+"litigioso" já cobre a ideia); se o advogado preferir, ela cabe como texto de apoio sem voz.
+Fontes conferidas:
+- CF, art. 226, § 6º, redação da EC 66/2010: "O casamento civil pode ser dissolvido pelo
+  divórcio." https://www.planalto.gov.br/ccivil_03/constituicao/emendas/emc/emc66.htm
+  (lido na fonte em 16/10/2026; em 17/10/2026 o site do Planalto não respondeu às novas
+  tentativas, ver item H.)
+- Provimento 205/2021 do CFOAB, https://www.oab.org.br/leisnormas/legislacao/provimentos/205-2021
+  (aberto em 17/10/2026): art. 3º, "A publicidade profissional deve ter caráter meramente
+  informativo e primar pela discrição e sobriedade"; art. 3º, IV, veda a "utilização de orações
+  ou expressões persuasivas, de autoengrandecimento ou de comparação"; art. 6º veda a "menção à
+  promessa de resultados". O texto da V3 não promete resultado nem rapidez. "Salve esta
+  informação." é um chamado informativo; você deve verificar isto com o advogado responsável,
+  porque a fronteira entre chamado informativo e expressão persuasiva é interpretativa.
+- O caráter unilateral do divórcio ("A outra pessoa não precisa concordar"; "A recusa não é um
+  veto"): STJ, Informativo 815, Quarta Turma, julg. 16/5/2024, que descreve o divórcio como
+  "passando a constituir direito potestativo dos cônjuges", exercido "de maneira unilateral pela
+  manifestação de vontade de um dos cônjuges" (reaberto em 17/10/2026; a página tem erros de
+  codificação nos acentos).
+  https://processo.stj.jus.br/jurisprudencia/externo/informativo/?livre=@CNOT%3D020757

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teste da aliança V3</title>
+    <script src="../assets/data/dados_v3.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #081a35; }
+      #ring-out { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      #s1-world { position: absolute; left: 96px; top: 300px; color: #faf8f4; font: 800 110px sans-serif; }
+    </style>
+  </head>
+  <body>
+    <canvas id="ring-out" width="1080" height="1920"></canvas>
+    <div id="s1-world">Seu cônjuge diz<br />NÃO<br />ao divórcio?</div>
+    <script type="importmap">
+      { "imports": { "three": "../assets/vendor/three.module.min.js" } }
+    </script>
+    <script type="module" src="../assets/js/alianca_v3.js"></script>
+  </body>
+</html>

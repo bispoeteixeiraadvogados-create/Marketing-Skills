@@ -1,0 +1,159 @@
+{
+ "normal": {
+  "arquivo": "bt-reel-divorcio-nao-quer_v3_normal.mp4",
+  "loudness_LUFS": -16.0,
+  "pico_dBTP": -1.5,
+  "medicoes": [
+   [
+    -16.1,
+    -1.4
+   ],
+   [
+    -16.0,
+    -1.5
+   ]
+  ],
+  "ffprobe": {
+   "programs": [],
+   "streams": [
+    {
+     "codec_name": "h264",
+     "profile": "High",
+     "width": 1080,
+     "height": 1920,
+     "pix_fmt": "yuv420p",
+     "r_frame_rate": "30/1",
+     "bit_rate": "1981469",
+     "nb_frames": "777"
+    },
+    {
+     "codec_name": "aac",
+     "profile": "LC",
+     "sample_rate": "48000",
+     "r_frame_rate": "0/0",
+     "bit_rate": "199600",
+     "nb_frames": "1216"
+    }
+   ],
+   "format": {
+    "duration": "26.000000",
+    "size": "7088047"
+   }
+  },
+  "varredura_quadros_em_branco": {
+   "quadros": 777,
+   "suspeitos": []
+  }
+ },
+ "reduzido": {
+  "arquivo": "bt-reel-divorcio-nao-quer_v3_reduzido.mp4",
+  "loudness_LUFS": -16.0,
+  "pico_dBTP": -1.5,
+  "medicoes": [
+   [
+    -16.1,
+    -1.4
+   ],
+   [
+    -16.0,
+    -1.5
+   ]
+  ],
+  "ffprobe": {
+   "programs": [],
+   "streams": [
+    {
+     "codec_name": "h264",
+     "profile": "High",
+     "width": 1080,
+     "height": 1920,
+     "pix_fmt": "yuv420p",
+     "r_frame_rate": "30/1",
+     "bit_rate": "1033995",
+     "nb_frames": "777"
+    },
+    {
+     "codec_name": "aac",
+     "profile": "LC",
+     "sample_rate": "48000",
+     "r_frame_rate": "0/0",
+     "bit_rate": "197756",
+     "nb_frames": "1216"
+    }
+   ],
+   "format": {
+    "duration": "26.000000",
+    "size": "4014597"
+   }
+  },
+  "varredura_quadros_em_branco": {
+   "quadros": 777,
+   "suspeitos": []
+  }
+ },
+ "cronograma": [
+  {
+   "cena": "C1 gancho",
+   "inicio": 0.0,
+   "fim": 1.72,
+   "duracao": 1.72
+  },
+  {
+   "cena": "C2 ruptura e resposta",
+   "inicio": 1.72,
+   "fim": 4.2,
+   "duracao": 2.48
+  },
+  {
+   "cena": "C3 concordância",
+   "inicio": 4.2,
+   "fim": 8.16,
+   "duracao": 3.96
+  },
+  {
+   "cena": "C4 direito ao divórcio",
+   "inicio": 8.16,
+   "fim": 10.62,
+   "duracao": 2.46
+  },
+  {
+   "cena": "C5 questões relacionadas",
+   "inicio": 10.62,
+   "fim": 15.94,
+   "duracao": 5.32
+  },
+  {
+   "cena": "C6 conclusão",
+   "inicio": 15.94,
+   "fim": 21.35,
+   "duracao": 5.41
+  },
+  {
+   "cena": "C7 assinatura",
+   "inicio": 21.35,
+   "fim": 25.91,
+   "duracao": 4.56
+  }
+ ],
+ "quadros": {
+  "F1_gancho_inicial": 0.9,
+  "F2_instante_da_ruptura": 1.787,
+  "F3_tela_final": 25.71,
+  "01_quadro_0": 0.0,
+  "02_tensao": 1.62,
+  "03_queda": 2.25,
+  "04_toque_e_NAO": 2.83,
+  "05_resposta_completa": 4.12,
+  "06_comparacao": 8.04,
+  "07_foto_anel": 8.78,
+  "08_foto_assinatura": 10.48,
+  "09_filhos": 11.41,
+  "10_alimentos": 12.29,
+  "11_bens": 13.14,
+  "12_complemento": 15.8,
+  "13_mascara_circular": 16.0,
+  "14_veto": 18.38,
+  "15_conclusao_completa": 21.16,
+  "16_assinatura_logo": 23.25
+ }
+}

@@ -261,12 +261,62 @@ Conflitos com a "Direção visual BT para vídeos" (o prompt da V3 prevalece, ma
 ########################################################################
 H. MEDIÇÕES (tools/relatorio_final_v3.json, assets/data/som_v3.json)
 ########################################################################
-(preenchido depois do render)
+Vídeo, nas duas versões: H.264 High, yuv420p, 1080 x 1920, 30 fps, 777 quadros (25,9 s).
+  Normal cerca de 7,1 MB (cerca de 2,0 Mbit/s); reduzida cerca de 4,0 MB. Sem interpolação.
+  Conferência visual de recortes em resolução cheia: texto nítido, gradiente sem banda visível,
+  fotos sem macroblocos.
+Áudio, nas duas versões: AAC 48 kHz estéreo, -16,0 LUFS integrados, pico de -1,5 dBTP.
+  Voz 24,8 dB acima da trilha na faixa 300 a 3400 Hz durante a fala (ducking de 7 dB).
+  Voz acima de todos os efeitos na faixa da fala: 10,0 dB no "NÃO" do toque e 9,4 dB na ruptura
+  durante "divórcio" (o contato metálico foi baixado 6 a 8 dB para não mascarar a palavra).
+HyperFrames lint: 0 erro (10 avisos de estrutura, os mesmos aceitos na V2).
+HyperFrames check: 0 erro; 28 de 28 textos passam no contraste WCAG AA; avisos restantes:
+  "GPU stall due to ReadPixels" (desempenho da GPU por software, sem efeito na imagem); informações
+  de sobreposição só nos quadros de transição (máscara circular e desfoque da assinatura) e do
+  zoom de paralaxe da foto das chaves, que é intencional.
+Interface do Reels simulada (quadros-chave-v3/interface_reels_folha.png): nenhum texto essencial
+  sob o cabeçalho, a coluna de botões ou a área de nome, legenda e áudio; todo o texto fica
+  dentro das margens da Direção (60 / 250 / 300 px).
+Quadros em branco: nenhum (varredura de 777 quadros em cada versão).
+Render: normal em cerca de 6 min 20 s, reduzida em cerca de 1 min 30 s (captura beginframe,
+  GPU por software).
+Planalto: em 17/10/2026 o site não respondeu (erro 503 e conexão sem resposta) nas três
+  tentativas; o texto da EC 66 citado no item K foi lido na fonte em 16/10/2026.
 
 ########################################################################
 I. TESTE FINAL DE APROVAÇÃO (seção 15), resposta honesta
 ########################################################################
-(preenchido depois do render)
+(1) Em até 1 s a dúvida central é entendida? Sim. A pergunta inteira está na tela em 0,45 s,
+    com o NÃO em 262 px Gold fosco, aceso desde a entrada; a voz começa no 2º quadro.
+(2) Até 4 s aparece a resposta? Sim. "Isso NÃO impede o divórcio." entra entre 2,75 s (o NÃO, no
+    toque) e 3,61 s; a frase falada termina em 4,07 s.
+(3) Volume, material, fissura e queda com peso? Sim, na minha avaliação: metal acetinado com
+    reflexos coerentes, fissura legível desde o quadro 0, aceleração visível, toque por quina,
+    recuperação pequena e sombra que endurece no contato. Ressalva: física procedural, não um
+    motor de corpo rígido (item G1).
+(4) A ruptura está integrada à transição? Sim. O piso Sand entra porque a câmera desce com as
+    metades; elas terminam como ponte da cena seguinte.
+(5) Comparação clara sem tempo excessivo? Sim: 3,96 s, uma composição, campos em direções
+    opostas.
+(6) Cada mudança melhora a narrativa? Em quase tudo. Os planos "Filhos." e "Alimentos." são
+    tipográficos por falta de imagem adequada (G5); funcionam como ritmo e leitura, mas uma foto
+    própria do escritório os melhoraria.
+(7) Funciona sem áudio e fica melhor com áudio? Sim. Todo o texto falado está na tela, palavra a
+    palavra (o nome do escritório é dito enquanto a logo aparece). Com áudio, a voz, o estalo da
+    ruptura e o contato metálico reforçam o peso.
+(8) As fotos acrescentam humanidade sem parecer banco genérico? Em parte. São fotos de banco
+    (anexos), tratadas com paralaxe em camadas e cor mais sóbria; ainda se reconhece a origem.
+    Uma foto real do escritório teria prioridade.
+(9) Texto legível no celular? Sim. O menor texto é o número "01/02/03" (56 px, apoio); os
+    textos falados vão de 66 a 330 px; o @ tem 54 px. Nada sob a interface do Reels.
+(10) Logo oficial e intacta? Sim. PNG branco original, sem recolorir, deformar ou ampliar
+     (520 px).
+(11) Preciso e sóbrio? O texto é o do prompt, sem promessa de resultado nem de rapidez, e não
+     confunde o direito de pedir o divórcio com guarda, alimentos e partilha. A validação final
+     é do advogado responsável.
+(12) Preserva a identidade da V2? Sim: mesma aliança, paleta, contraste escuro e claro,
+     condensada, coluna à esquerda, voz e assinatura. Mudanças de identidade conscientes:
+     Cormorant Garamond no lugar da Piazzolla e a retirada da bolinha (item G).
 
 ########################################################################
 J. IMAGENS ANEXADAS: CLASSIFICAÇÃO E USO

@@ -94,7 +94,7 @@ relatorio["cronograma"] = [{"cena": n, "inicio": round(a, 3), "fim": round(b, 3)
 
 # quadros de conferência (F) e quadros-chave por cena
 CONFERENCIA = [
-    ("F1_gancho_inicial", round(ti(5) - 0.05, 3)),  # a pergunta inteira na tela, com o NÃO
+    ("F1_gancho_inicial", 0.9),  # primeiro segundo: a pergunta inteira na tela, NÃO em destaque, fissura visível
     ("F2_instante_da_ruptura", round(AL["T_BRK"] + 2 / 30, 3)),
     ("F3_tela_final", round(DUR - 0.2, 3)),
 ]

@@ -80,12 +80,14 @@
     // a pergunta quase inteira no primeiro meio segundo; a palavra falada acende (0,6 para 1)
     init([W(0), W(1), W(2)], { opacity: 0.62 });
     if (R) {
-      tl.set([W(3), W(4), W(5)], { opacity: 0.62 }, 0.12);
+      tl.set(W(3), { opacity: 1 }, 0.12);
+      tl.set([W(4), W(5)], { opacity: 0.62 }, 0.12);
     } else {
-      tl.fromTo(W(3), { opacity: 0, scale: 1.28, transformOrigin: "0% 70%" }, { opacity: 0.62, scale: 1, duration: 0.24, ease: E.enter, immediateRender: false }, 0.1);
+      // o NÃO entra já aceso (destaque desde o primeiro segundo); as demais palavras acendem com a voz
+      tl.fromTo(W(3), { opacity: 0, scale: 1.28, transformOrigin: "0% 70%" }, { opacity: 1, scale: 1, duration: 0.24, ease: E.enter, immediateRender: false }, 0.1);
       tl.fromTo([W(4), W(5)], { opacity: 0, y: 26 }, { opacity: 0.62, y: 0, duration: 0.2, ease: E.enter, stagger: 0.07, immediateRender: false }, 0.22);
     }
-    for (let i = 0; i <= 5; i++) tl.to(W(i), { opacity: 1, duration: 0.12, ease: "none" }, Math.max(0.01, ti(i) - 0.03));
+    for (const i of [0, 1, 2, 4, 5]) tl.to(W(i), { opacity: 1, duration: 0.12, ease: "none" }, Math.max(0.01, ti(i) - 0.03));
     // o NÃO pulsa junto do salto da fissura
     if (!R) {
       tl.to("#s1-nao", { scale: 1.07, duration: 0.1, ease: E.enter, transformOrigin: "0% 70%" }, ti(3) - 0.02);

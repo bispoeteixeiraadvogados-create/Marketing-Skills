@@ -262,7 +262,7 @@ Conflitos com a "Direção visual BT para vídeos" (o prompt da V3 prevalece, ma
 H. MEDIÇÕES (tools/relatorio_final_v3.json, assets/data/som_v3.json)
 ########################################################################
 Vídeo, nas duas versões: H.264 High, yuv420p, 1080 x 1920, 30 fps, 777 quadros (25,9 s).
-  Normal cerca de 7,1 MB (cerca de 2,0 Mbit/s); reduzida cerca de 4,0 MB. Sem interpolação.
+  Normal 7,1 MB (cerca de 2,0 Mbit/s); reduzida 4,0 MB. Sem interpolação.
   Conferência visual de recortes em resolução cheia: texto nítido, gradiente sem banda visível,
   fotos sem macroblocos.
 Áudio, nas duas versões: AAC 48 kHz estéreo, -16,0 LUFS integrados, pico de -1,5 dBTP.
@@ -278,7 +278,7 @@ Interface do Reels simulada (quadros-chave-v3/interface_reels_folha.png): nenhum
   sob o cabeçalho, a coluna de botões ou a área de nome, legenda e áudio; todo o texto fica
   dentro das margens da Direção (60 / 250 / 300 px).
 Quadros em branco: nenhum (varredura de 777 quadros em cada versão).
-Render: normal em cerca de 6 min 20 s, reduzida em cerca de 1 min 30 s (captura beginframe,
+Render: normal em 6 min 11 s, reduzida em 1 min 29 s (captura beginframe,
   GPU por software).
 Planalto: em 17/10/2026 o site não respondeu (erro 503 e conexão sem resposta) nas três
   tentativas; o texto da EC 66 citado no item K foi lido na fonte em 16/10/2026.

@@ -1,0 +1,17 @@
+{
+ "video": "bt-reel-divorcio-nao-quer_v2_normal.mp4",
+ "voz": "assets/audio/narracao_final_v2.wav",
+ "mix": "assets/audio/mix_v2_normal.wav",
+ "nota": "cortes inclui os cortes reais, os chicotes, a revelação circular, a partida (início da queda), o fim da inclinação e os punch-ins (reenquadramentos, contados como troca de plano, como num jump cut)",
+ "cortes": [2.71, 3.53, 4.83, 8.615, 13.03, 13.605, 15.68, 16.06, 16.56, 18.08, 18.99, 19.5, 22.58, 27.62, 30.34, 31.2, 32.75, 37.39, 38.48, 40.22],
+ "blocos": [
+  ["Gancho", 0.0, 3.53],
+  ["Dois caminhos", 3.53, 13.605],
+  ["Pergunta", 13.605, 16.06],
+  ["Regra e aliança", 16.06, 22.58],
+  ["O que vem junto", 22.58, 27.62],
+  ["Mais tempo", 27.62, 31.2],
+  ["Cada caso e chamado", 31.2, 40.22],
+  ["Assinatura", 40.22, 44.1]
+ ]
+}

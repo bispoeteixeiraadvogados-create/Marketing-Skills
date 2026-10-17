@@ -1,0 +1,189 @@
+{
+ "fonte": "narracao_final.wav do v1 (mesma geração única, sem voz nova)",
+ "duracao_total": 44.1,
+ "cauda_final": 4.0,
+ "segmentos": [
+  {
+   "i": 0,
+   "texto": "Seu cônjuge não quer se divorciar.",
+   "bruto": [
+    0.025,
+    2.27
+   ],
+   "final_ini": 0.1,
+   "final_fim": 2.345,
+   "silencio_antes": 0.1,
+   "final_ini_v1": 0.4,
+   "final_fim_v1": 2.645,
+   "desloc": -0.3
+  },
+  {
+   "i": 1,
+   "texto": "E agora?",
+   "bruto": [
+    2.585,
+    3.105
+   ],
+   "final_ini": 2.595,
+   "final_fim": 3.115,
+   "silencio_antes": 0.25,
+   "final_ini_v1": 2.995,
+   "final_fim_v1": 3.515,
+   "desloc": -0.4
+  },
+  {
+   "i": 2,
+   "texto": "Existem dois caminhos.",
+   "bruto": [
+    3.665,
+    4.99
+   ],
+   "final_ini": 3.465,
+   "final_fim": 4.79,
+   "silencio_antes": 0.35,
+   "final_ini_v1": 4.315,
+   "final_fim_v1": 5.64,
+   "desloc": -0.85
+  },
+  {
+   "i": 3,
+   "texto": "No divórcio consensual, os dois concordam com o fim do casamento.",
+   "bruto": [
+    5.395,
+    9.08
+   ],
+   "final_ini": 4.97,
+   "final_fim": 8.655,
+   "silencio_antes": 0.18,
+   "final_ini_v1": 5.99,
+   "final_fim_v1": 9.675,
+   "desloc": -1.02
+  },
+  {
+   "i": 4,
+   "texto": "No litigioso, os dois não chegam a um acordo, e quem decide é o juiz.",
+   "bruto": [
+    9.5,
+    14.12
+   ],
+   "final_ini": 8.835,
+   "final_fim": 13.455,
+   "silencio_antes": 0.18,
+   "final_ini_v1": 10.025,
+   "final_fim_v1": 14.645,
+   "desloc": -1.19
+  },
+  {
+   "i": 5,
+   "texto": "Mas e se o outro disser não?",
+   "bruto": [
+    14.55,
+    16.58
+   ],
+   "final_ini": 14.005,
+   "final_fim": 16.035,
+   "silencio_antes": 0.55,
+   "final_ini_v1": 15.445,
+   "final_fim_v1": 17.475,
+   "desloc": -1.44
+  },
+  {
+   "i": 6,
+   "texto": "A discordância do outro cônjuge, por si só, não impede o divórcio.",
+   "bruto": [
+    17.125,
+    21.2
+   ],
+   "final_ini": 16.335,
+   "final_fim": 20.41,
+   "silencio_antes": 0.3,
+   "final_ini_v1": 17.825,
+   "final_fim_v1": 21.9,
+   "desloc": -1.49
+  },
+  {
+   "i": 7,
+   "texto": "O que pode gerar discussão é o que vem junto.",
+   "bruto": [
+    21.605,
+    24.065
+   ],
+   "final_ini": 21.61,
+   "final_fim": 24.07,
+   "silencio_antes": 1.2,
+   "final_ini_v1": 25.5,
+   "final_fim_v1": 27.96,
+   "desloc": -3.89
+  },
+  {
+   "i": 8,
+   "texto": "A guarda dos filhos, a pensão e a divisão dos bens.",
+   "bruto": [
+    24.405,
+    27.62
+   ],
+   "final_ini": 24.25,
+   "final_fim": 27.465,
+   "silencio_antes": 0.18,
+   "final_ini_v1": 28.31,
+   "final_fim_v1": 31.525,
+   "desloc": -4.06
+  },
+  {
+   "i": 9,
+   "texto": "E, quando há discussão, o processo pode levar mais tempo.",
+   "bruto": [
+    28.015,
+    31.38
+   ],
+   "final_ini": 27.685,
+   "final_fim": 31.05,
+   "silencio_antes": 0.22,
+   "final_ini_v1": 31.875,
+   "final_fim_v1": 35.24,
+   "desloc": -4.19
+  },
+  {
+   "i": 10,
+   "texto": "Cada caso tem a sua realidade.",
+   "bruto": [
+    31.835,
+    33.785
+   ],
+   "final_ini": 31.5,
+   "final_fim": 33.45,
+   "silencio_antes": 0.45,
+   "final_ini_v1": 36.04,
+   "final_fim_v1": 37.99,
+   "desloc": -4.54
+  },
+  {
+   "i": 11,
+   "texto": "A orientação depende dos documentos e da situação de cada pessoa.",
+   "bruto": [
+    34.14,
+    37.88
+   ],
+   "final_ini": 33.63,
+   "final_fim": 37.37,
+   "silencio_antes": 0.18,
+   "final_ini_v1": 38.34,
+   "final_fim_v1": 42.08,
+   "desloc": -4.71
+  },
+  {
+   "i": 12,
+   "texto": "Converse com um advogado antes de decidir.",
+   "bruto": [
+    38.29,
+    40.67
+   ],
+   "final_ini": 37.72,
+   "final_fim": 40.1,
+   "silencio_antes": 0.35,
+   "final_ini_v1": 42.43,
+   "final_fim_v1": 44.81,
+   "desloc": -4.71
+  }
+ ]
+}

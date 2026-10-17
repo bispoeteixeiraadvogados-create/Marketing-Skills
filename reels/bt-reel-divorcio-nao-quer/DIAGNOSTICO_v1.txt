@@ -1,0 +1,58 @@
+DIAGNÓSTICO DO v1 ANTES DA RECONSTRUÇÃO
+Reel BT "Seu cônjuge não quer se divorciar. E agora?" (bt-reel-divorcio-nao-quer_v1_normal.mp4)
+Medido em 17/10/2026 com tools/diagnostico.py (dados em tools/diagnostico_v1.json).
+
+0. PREMISSA DO PEDIDO
+O pedido de revisão descreve um vídeo sobre "divórcio, luto e Zenão", com uma "linha 3D estática".
+Esse vídeo não existe: não há nenhum arquivo, roteiro ou cena sobre Zenão ou luto nos repositórios
+nem nesta sessão. O único vídeo que eu gerei é este Reel do escritório, cuja peça 3D é uma
+aliança que racha, se parte e cai. A revisão foi aplicada a ele. As decisões que isso exigiu
+estão nas notas de decisão do LEIAME (seção v2).
+
+1. NÚMEROS DO v1
+Duração 51,3 s. Voz de 0,40 s a 44,7 s. Silêncio de voz total 12,5 s (24% do vídeo):
+  0,8 s antes de "Existem", 0,8 s antes de "Mas e se", 3,5 s na queda da aliança,
+  0,8 s antes de "Cada caso", 6,6 s de assinatura sem voz.
+Planos: 9 planos, média 5,7 s, mediana 5,5 s, maior 10,9 s ("Dois caminhos", uma única
+composição do segundo 4,2 ao 15,1). Alvo pedido: 2 a 4 s no expositivo, 1 a 2 s no emocional.
+Quadros praticamente parados (diferença média entre quadros abaixo de 0,35 em 255):
+  gancho 79% · dois caminhos 92% · pergunta 80% · regra e aliança 48% · o que vem junto 87% ·
+  mais tempo 81% · cada caso 80% · assinatura 88%.
+Gancho (primeiros 3 s): voz só começa em 0,40 s; primeiro segundo quase sem movimento (só a
+entrada da primeira palavra); nenhum som antes da voz; fundo Paper liso. Abre "educado", não
+interrompe a rolagem.
+
+2. CURVA DE RETENÇÃO ESTIMADA (modelo heurístico, não é dado de plataforma)
+Premissas no cabeçalho de tools/diagnostico.py. Serve para comparar versões com o mesmo critério.
+  0 s 100% · 3 s 80% · 10 s 68% · 15 s 57% · 21 s 53% · 26 s 48% · 35 s 41% · 44,7 s 35% · 51 s 21%
+Quedas previstas, em ordem de peso:
+  a) 0 a 3 s: gancho sem impacto (perda extra estimada de 16 pontos).
+  b) 5 a 15 s: "Dois caminhos" fica 10,9 s na mesma composição, com desenhos pequenos
+     (150 a 300 px) e quase nada se mexendo enquanto a voz explica.
+  c) 18 a 21 s: a aliança fica parada por regra do v1 ("a rachadura é o movimento"); as
+     rachaduras têm 2,6 px e quase não se veem no celular. É a "cena 3D estática".
+  d) 22 a 25 s: 3,5 s sem voz durante a queda. A queda tem movimento, mas é longa e sem som
+     (o v1 proibia whoosh), e depois ainda há 0,8 s de câmera parada e 1,1 s de inclinação.
+  e) 26 a 31 s e 37 a 42 s: listas e apoio em texto, sem estímulo novo além da entrada de cada
+     linha.
+  f) 45 a 51 s: 6,6 s de assinatura sem voz. É a maior perda de retenção do fim.
+
+3. ONDE FALTA SOM, MOVIMENTO, TIPOGRAFIA OU TRANSIÇÃO
+Som: nenhuma trilha, nenhum impacto no início, nenhum som nas viradas (só a sequência do anel).
+Movimento: um gesto por vez e "depois de chegar, fica quieto" deixam 80% a 92% dos quadros parados.
+Tipografia: título e legenda repetem as mesmas palavras; a legenda mostra o bloco inteiro de uma
+vez (só acende a palavra falada), sem destaque persistente de palavra-chave.
+Transição: só dissolve, revelação circular e desfoque. Nenhum corte seco, nenhum punch-in.
+Narrativa: a mensagem única ("a discordância, por si só, não impede") só chega aos 18 s; até lá
+não há promessa de resposta nem pergunta aberta além do título.
+
+4. O QUE O v1 FAZ BEM E DEVE FICAR
+Texto e afirmações jurídicas aprovados e conferidos. Voz Henrique natural. Aliança 3D com cara
+de objeto real. Sincronia pela fala. Identidade BT (paleta, fontes, bolinha, coluna à esquerda).
+
+5. CONFLITOS ENTRE O PEDIDO E AS REGRAS DO ESCRITÓRIO (decididos no v2, ver LEIAME)
+A Direção Visual BT diz que "a versão acelerada que testamos foi recusada" e proíbe trilha por
+padrão, whoosh em toda troca, zoom brusco e partículas fora da ênfase. O pedido atual exige
+ritmo maior, trilha, whoosh e punch-in. Como a Direção permite que o prompt do vídeo a ajuste,
+o v2 aplica o pedido em versão sóbria: trilha discreta com ducking, whoosh só em 4 pontos,
+punch-in de no máximo 7%, nenhuma partícula flutuando fora da aliança.

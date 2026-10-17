@@ -1,0 +1,562 @@
+{
+ "versao": "v1",
+ "modelo": "heurístico, ver docstring de tools/diagnostico.py; não é dado de plataforma",
+ "duracao_s": 51.3,
+ "voz": {
+  "inicio_s": 0.4,
+  "fim_s": 44.7,
+  "silencios_maiores_que_0_5s": [
+   {
+    "ini": 3.5,
+    "fim": 4.3,
+    "dur": 0.8
+   },
+   {
+    "ini": 14.6,
+    "fim": 15.4,
+    "dur": 0.8
+   },
+   {
+    "ini": 21.9,
+    "fim": 25.4,
+    "dur": 3.5
+   },
+   {
+    "ini": 35.2,
+    "fim": 36.0,
+    "dur": 0.8
+   },
+   {
+    "ini": 44.7,
+    "fim": 51.3,
+    "dur": 6.6
+   }
+  ],
+  "silencio_total_s": 12.5
+ },
+ "planos": {
+  "n": 9,
+  "duracoes_s": [
+   4.225,
+   10.92,
+   2.355,
+   8.74,
+   5.52,
+   3.93,
+   6.41,
+   2.83,
+   6.37
+  ],
+  "media_s": 5.7,
+  "mediana_s": 5.52,
+  "maior_s": 10.92
+ },
+ "gancho": {
+  "componentes": {
+   "voz_ate_0_2s": 0.67,
+   "movimento_1o_s": 0.14,
+   "impacto_ate_0_3s": 0.0,
+   "texto_ate_0_5s": 1.0
+  },
+  "perda_extra_estimada_pct": 16.4
+ },
+ "segundos_parados": [
+  0,
+  1,
+  2,
+  3,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  16,
+  18,
+  19,
+  20,
+  26,
+  27,
+  28,
+  29,
+  30,
+  32,
+  33,
+  34,
+  37,
+  38,
+  39,
+  40,
+  41,
+  43,
+  44,
+  46,
+  47,
+  48,
+  49,
+  50,
+  51
+ ],
+ "segundos_parados_sem_voz": [
+  46,
+  47,
+  48,
+  49,
+  50,
+  51
+ ],
+ "por_segundo": [
+  {
+   "s": 0,
+   "movimento": 0.217,
+   "voz": 0.6,
+   "perda_pct": 7.27,
+   "retencao_pct": 92.7
+  },
+  {
+   "s": 1,
+   "movimento": 0.155,
+   "voz": 1.0,
+   "perda_pct": 7.27,
+   "retencao_pct": 86.0
+  },
+  {
+   "s": 2,
+   "movimento": 0.2,
+   "voz": 0.8,
+   "perda_pct": 7.27,
+   "retencao_pct": 79.7
+  },
+  {
+   "s": 3,
+   "movimento": 0.172,
+   "voz": 0.5,
+   "perda_pct": 1.8,
+   "retencao_pct": 78.3
+  },
+  {
+   "s": 4,
+   "movimento": 0.898,
+   "voz": 0.7,
+   "perda_pct": 0.5,
+   "retencao_pct": 77.9
+  },
+  {
+   "s": 5,
+   "movimento": 0.07,
+   "voz": 0.8,
+   "perda_pct": 1.8,
+   "retencao_pct": 76.5
+  },
+  {
+   "s": 6,
+   "movimento": 0.243,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 75.1
+  },
+  {
+   "s": 7,
+   "movimento": 0.059,
+   "voz": 0.9,
+   "perda_pct": 1.8,
+   "retencao_pct": 73.8
+  },
+  {
+   "s": 8,
+   "movimento": 0.016,
+   "voz": 1.0,
+   "perda_pct": 2.19,
+   "retencao_pct": 72.2
+  },
+  {
+   "s": 9,
+   "movimento": 0.076,
+   "voz": 0.7,
+   "perda_pct": 2.69,
+   "retencao_pct": 70.2
+  },
+  {
+   "s": 10,
+   "movimento": 0.24,
+   "voz": 0.9,
+   "perda_pct": 3.19,
+   "retencao_pct": 68.0
+  },
+  {
+   "s": 11,
+   "movimento": 0.035,
+   "voz": 1.0,
+   "perda_pct": 3.69,
+   "retencao_pct": 65.5
+  },
+  {
+   "s": 12,
+   "movimento": 0.006,
+   "voz": 0.9,
+   "perda_pct": 4.19,
+   "retencao_pct": 62.7
+  },
+  {
+   "s": 13,
+   "movimento": 0.107,
+   "voz": 1.0,
+   "perda_pct": 4.3,
+   "retencao_pct": 60.0
+  },
+  {
+   "s": 14,
+   "movimento": 0.042,
+   "voz": 0.6,
+   "perda_pct": 4.3,
+   "retencao_pct": 57.5
+  },
+  {
+   "s": 15,
+   "movimento": 0.376,
+   "voz": 0.6,
+   "perda_pct": 0.5,
+   "retencao_pct": 57.2
+  },
+  {
+   "s": 16,
+   "movimento": 0.253,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 56.1
+  },
+  {
+   "s": 17,
+   "movimento": 7.042,
+   "voz": 0.7,
+   "perda_pct": 0.5,
+   "retencao_pct": 55.9
+  },
+  {
+   "s": 18,
+   "movimento": 0.022,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 54.9
+  },
+  {
+   "s": 19,
+   "movimento": 0.014,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 53.9
+  },
+  {
+   "s": 20,
+   "movimento": 0.093,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 52.9
+  },
+  {
+   "s": 21,
+   "movimento": 2.037,
+   "voz": 0.9,
+   "perda_pct": 0.75,
+   "retencao_pct": 52.5
+  },
+  {
+   "s": 22,
+   "movimento": 5.349,
+   "voz": 0.0,
+   "perda_pct": 1.25,
+   "retencao_pct": 51.8
+  },
+  {
+   "s": 23,
+   "movimento": 5.632,
+   "voz": 0.0,
+   "perda_pct": 1.75,
+   "retencao_pct": 50.9
+  },
+  {
+   "s": 24,
+   "movimento": 1.65,
+   "voz": 0.0,
+   "perda_pct": 2.25,
+   "retencao_pct": 49.8
+  },
+  {
+   "s": 25,
+   "movimento": 3.07,
+   "voz": 0.6,
+   "perda_pct": 2.75,
+   "retencao_pct": 48.4
+  },
+  {
+   "s": 26,
+   "movimento": 0.029,
+   "voz": 1.0,
+   "perda_pct": 1.5,
+   "retencao_pct": 47.7
+  },
+  {
+   "s": 27,
+   "movimento": 0.276,
+   "voz": 0.9,
+   "perda_pct": 1.8,
+   "retencao_pct": 46.8
+  },
+  {
+   "s": 28,
+   "movimento": 0.208,
+   "voz": 0.8,
+   "perda_pct": 1.8,
+   "retencao_pct": 46.0
+  },
+  {
+   "s": 29,
+   "movimento": 0.064,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 45.2
+  },
+  {
+   "s": 30,
+   "movimento": 0.091,
+   "voz": 1.0,
+   "perda_pct": 2.18,
+   "retencao_pct": 44.2
+  },
+  {
+   "s": 31,
+   "movimento": 0.891,
+   "voz": 0.7,
+   "perda_pct": 1.38,
+   "retencao_pct": 43.6
+  },
+  {
+   "s": 32,
+   "movimento": 0.047,
+   "voz": 0.9,
+   "perda_pct": 1.8,
+   "retencao_pct": 42.8
+  },
+  {
+   "s": 33,
+   "movimento": 0.035,
+   "voz": 0.9,
+   "perda_pct": 1.8,
+   "retencao_pct": 42.0
+  },
+  {
+   "s": 34,
+   "movimento": 0.316,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 41.3
+  },
+  {
+   "s": 35,
+   "movimento": 6.881,
+   "voz": 0.2,
+   "perda_pct": 0.62,
+   "retencao_pct": 41.0
+  },
+  {
+   "s": 36,
+   "movimento": 0.366,
+   "voz": 1.0,
+   "perda_pct": 0.8,
+   "retencao_pct": 40.7
+  },
+  {
+   "s": 37,
+   "movimento": 0.119,
+   "voz": 0.9,
+   "perda_pct": 1.8,
+   "retencao_pct": 39.9
+  },
+  {
+   "s": 38,
+   "movimento": 0.138,
+   "voz": 0.7,
+   "perda_pct": 1.8,
+   "retencao_pct": 39.2
+  },
+  {
+   "s": 39,
+   "movimento": 0.02,
+   "voz": 1.0,
+   "perda_pct": 1.96,
+   "retencao_pct": 38.5
+  },
+  {
+   "s": 40,
+   "movimento": 0.082,
+   "voz": 1.0,
+   "perda_pct": 2.46,
+   "retencao_pct": 37.5
+  },
+  {
+   "s": 41,
+   "movimento": 0.036,
+   "voz": 0.9,
+   "perda_pct": 2.96,
+   "retencao_pct": 36.4
+  },
+  {
+   "s": 42,
+   "movimento": 0.668,
+   "voz": 0.6,
+   "perda_pct": 0.5,
+   "retencao_pct": 36.2
+  },
+  {
+   "s": 43,
+   "movimento": 0.159,
+   "voz": 1.0,
+   "perda_pct": 1.8,
+   "retencao_pct": 35.6
+  },
+  {
+   "s": 44,
+   "movimento": 0.072,
+   "voz": 0.7,
+   "perda_pct": 1.5,
+   "retencao_pct": 35.0
+  },
+  {
+   "s": 45,
+   "movimento": 1.007,
+   "voz": 0.0,
+   "perda_pct": 4.5,
+   "retencao_pct": 33.5
+  },
+  {
+   "s": 46,
+   "movimento": 0.284,
+   "voz": 0.0,
+   "perda_pct": 7.3,
+   "retencao_pct": 31.0
+  },
+  {
+   "s": 47,
+   "movimento": 0.102,
+   "voz": 0.0,
+   "perda_pct": 7.3,
+   "retencao_pct": 28.8
+  },
+  {
+   "s": 48,
+   "movimento": 0.076,
+   "voz": 0.0,
+   "perda_pct": 7.33,
+   "retencao_pct": 26.6
+  },
+  {
+   "s": 49,
+   "movimento": 0.061,
+   "voz": 0.0,
+   "perda_pct": 7.83,
+   "retencao_pct": 24.6
+  },
+  {
+   "s": 50,
+   "movimento": 0.035,
+   "voz": 0.0,
+   "perda_pct": 8.34,
+   "retencao_pct": 22.5
+  },
+  {
+   "s": 51,
+   "movimento": 0.008,
+   "voz": 0.0,
+   "perda_pct": 7.3,
+   "retencao_pct": 20.9
+  }
+ ],
+ "retencao_estimada_final_pct": 20.9,
+ "retencao_estimada_3s_pct": 79.7,
+ "blocos": [
+  {
+   "bloco": "Gancho",
+   "ini": 0.0,
+   "fim": 4.225,
+   "dur": 4.22,
+   "movimento_medio": 0.288,
+   "fracao_quadros_parados": 0.794,
+   "picos_de_movimento_por_s": 0.47,
+   "planos": 1
+  },
+  {
+   "bloco": "Dois caminhos",
+   "ini": 4.225,
+   "fim": 15.145,
+   "dur": 10.92,
+   "movimento_medio": 0.139,
+   "fracao_quadros_parados": 0.924,
+   "picos_de_movimento_por_s": 0.18,
+   "planos": 2
+  },
+  {
+   "bloco": "Pergunta",
+   "ini": 15.145,
+   "fim": 17.5,
+   "dur": 2.36,
+   "movimento_medio": 0.222,
+   "fracao_quadros_parados": 0.803,
+   "picos_de_movimento_por_s": 0.0,
+   "planos": 2
+  },
+  {
+   "bloco": "Regra e aliança",
+   "ini": 17.5,
+   "fim": 26.24,
+   "dur": 8.74,
+   "movimento_medio": 2.843,
+   "fracao_quadros_parados": 0.481,
+   "picos_de_movimento_por_s": 10.76,
+   "planos": 2
+  },
+  {
+   "bloco": "O que vem junto",
+   "ini": 26.24,
+   "fim": 31.76,
+   "dur": 5.52,
+   "movimento_medio": 0.196,
+   "fracao_quadros_parados": 0.867,
+   "picos_de_movimento_por_s": 0.36,
+   "planos": 2
+  },
+  {
+   "bloco": "Mais tempo",
+   "ini": 31.76,
+   "fim": 35.69,
+   "dur": 3.93,
+   "movimento_medio": 1.139,
+   "fracao_quadros_parados": 0.805,
+   "picos_de_movimento_por_s": 1.78,
+   "planos": 2
+  },
+  {
+   "bloco": "Cada caso e chamado",
+   "ini": 35.69,
+   "fim": 44.93,
+   "dur": 9.24,
+   "movimento_medio": 0.527,
+   "fracao_quadros_parados": 0.798,
+   "picos_de_movimento_por_s": 0.87,
+   "planos": 3
+  },
+  {
+   "bloco": "Assinatura",
+   "ini": 44.93,
+   "fim": 51.3,
+   "dur": 6.37,
+   "movimento_medio": 0.254,
+   "fracao_quadros_parados": 0.88,
+   "picos_de_movimento_por_s": 0.63,
+   "planos": 2
+  }
+ ]
+}

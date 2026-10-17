@@ -168,3 +168,47 @@ Render: normal em 7 min 14 s, reduzida em 2 min 24 s (captura beginframe, GPU po
 6. Pequenos pontos visuais observados: no meio da inclinação da câmera (cerca de 25,6 s) as
    metades passam por baixo da legenda por alguns quadros; no dissolve de C1 para C2 há uma
    diferença de 2 níveis de cor numa área retangular, imperceptível na prática.
+
+########################################################################
+VERSÃO v2 (17/10/2026): revisão editorial de ritmo e retenção
+########################################################################
+O que mudou e por quê: RELATORIO_v2.txt. Diagnóstico do v1: DIAGNOSTICO_v1.txt.
+O v1 continua intacto (arquivos _v1, scripts sem sufixo). Os arquivos do v2 têm sufixo _v2.
+
+Entregas do v2
+bt-reel-divorcio-nao-quer_v2_normal.mp4      versão normal, 44,1 s
+bt-reel-divorcio-nao-quer_v2_reduzido.mp4    versão de movimento reduzido
+bt-reel-divorcio-nao-quer_v2.srt             legenda com os tempos do v2
+assets/data/words_v2.json                    tempos de palavra do v2
+assets/audio/narracao_final_v2.wav           voz do v2 (mesma geração única, silêncios novos)
+assets/audio/trilha_v2.wav                   trilha sintetizada, já no nível da mixagem
+quadros-chave-v2/                            18 quadros da versão normal e 5 da reduzida
+capa_v2.png                                  sugestão de capa
+comparacao_v1_v2.png                         retenção estimada e movimento, v1 contra v2
+
+Como regerar o v2
+python3 tools/montar_faixa_v2.py   (voz do v2 e words_v2.json, a partir da faixa do v1)
+python3 tools/gerar_dados_v2.py    (dados_v2.js, legendas, .srt e rampa de velocidade da queda)
+python3 tools/som_v2.py            (trilha, efeitos, ducking e mixagens a -16 LUFS)
+python3 tools/montar_v2.py         (index_v2.template.html + timeline_v2.js -> index.html)
+npx hyperframes lint && npx hyperframes check
+npx hyperframes render --quality high --fps 30 --output renders/_bruto_v2_normal.mp4
+npx hyperframes render --quality high --fps 30 --variables '{"reducedMotion":true}' --output renders/_bruto_v2_reduzido.mp4
+python3 tools/finalizar_v2.py      (mixagem final, medições, quadros-chave, varredura)
+node tools/conferir_v2.mjs         (bolinha, legenda e margens; servidor local na porta 8765)
+python3 tools/diagnostico.py v2    (ritmo e retenção estimada; v1 com o argumento v1)
+Para voltar a gerar o v1: python3 tools/gerar_dados.py, python3 tools/som.py, python3 tools/montar.py.
+
+Medições do v2 (tools/relatorio_final_v2.json, conferencia_automatica_v2.json, diagnostico_v2.json)
+Vídeo: H.264, 1080 x 1920, 30 fps, 1323 quadros, 44,1 s, nas duas versões.
+Áudio: estéreo AAC 48 kHz; -16,1 LUFS; pico de -1,7 dBTP (normal) e -1,6 dBTP (reduzida).
+HyperFrames lint e check: 0 erro; 48 de 48 textos passam no WCAG AA. Avisos restantes: estrutura
+(sugestão de subcomposições), um falso positivo de sobreposição na bolinha e três callbacks que só
+leem tabelas pré-calculadas (rastro da bolinha, fios dos rótulos e grão), sem medir o DOM.
+Render: normal em 8 min 52 s, reduzida em 3 min 13 s.
+
+Pendências do v2
+1. Conferência dos advogados antes de publicar (o v2 muda forma, ritmo e som, não o texto).
+2. Decidir entre v1 e v2, ou um meio-termo (por exemplo, v2 sem trilha e sem grão).
+3. As pendências 2, 4 e 5 do v1 continuam valendo (dados da assinatura, vetor da logo,
+   cobrança da chamada da ElevenLabs que falhou).

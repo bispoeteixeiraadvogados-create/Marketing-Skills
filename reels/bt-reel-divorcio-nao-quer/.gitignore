@@ -3,3 +3,4 @@ renders/
 node_modules/
 *.fix.mp4
 assets/audio/narracao_bruta.wav
+tools/_mad_*.npy

@@ -1,0 +1,233 @@
+RELATÓRIO DA REVISÃO EDITORIAL: v1 -> v2
+Reel BT "Seu cônjuge não quer se divorciar. E agora?" · 17/10/2026
+Arquivos: bt-reel-divorcio-nao-quer_v2_normal.mp4 e _v2_reduzido.mp4 (1080 x 1920, 30 fps, 44,1 s)
+
+SITUAÇÃO: AGUARDANDO A CONFERÊNCIA DOS ADVOGADOS. Nada foi publicado.
+
+========================================================================
+0. A PREMISSA DO PEDIDO ESTAVA ERRADA, E O QUE EU FIZ COM ISSO
+========================================================================
+O pedido descreve um vídeo sobre "divórcio, luto e Zenão", com uma "linha 3D estática". Esse
+vídeo não existe. Procurei nos três repositórios e no histórico desta sessão: não há roteiro,
+cena ou arquivo sobre Zenão ou luto. O único vídeo que eu gerei é este Reel do escritório, cuja
+peça 3D é uma aliança que racha, se parte e cai. O texto do pedido parece ter sido escrito para
+outro vídeo (ou é um modelo genérico).
+Decisão: apliquei a revisão a este Reel, que é o único que existe, mantendo o texto jurídico
+aprovado (o próprio pedido manda preservar o conceito e a narração). Os pontos do pedido que só
+fazem sentido no vídeo imaginado foram adaptados ou recusados, com o motivo, na seção 4.
+
+========================================================================
+1. ANÁLISE DO VÍDEO ORIGINAL (v1)
+========================================================================
+Relatório completo em DIAGNOSTICO_v1.txt; dados em tools/diagnostico_v1.json.
+- 51,3 s; 9 planos, média de 5,7 s, o maior com 10,9 s ("Dois caminhos").
+- 12,5 s sem voz (24% do vídeo): 3,5 s na queda e 6,6 s de assinatura.
+- 80% a 92% dos quadros praticamente parados em quase todas as cenas.
+- Gancho fraco: voz só em 0,40 s, nenhum som de impacto, fundo liso, primeiro segundo quase
+  sem movimento.
+- "Cena 3D estática": a aliança ficava parada 3 s enquanto as rachaduras, de 2,6 px, cresciam
+  (mal se viam no celular); a queda durava 5,25 s, com 3,6 s sem voz.
+Curva de retenção ESTIMADA (modelo heurístico explicado em tools/diagnostico.py; não é dado
+do Instagram): 80% aos 3 s, 57% aos 15 s, 35% no fim da voz e 21% no fim do vídeo.
+
+Referências pesquisadas (abertas e conferidas por mim):
+- Meta, documentação de métricas do Instagram: skip rate é "The percentage of views from people
+  who skipped during the first 3 seconds of the reel".
+  https://developers.facebook.com/docs/instagram-platform/reference/instagram-media/insights/
+- Dost e Huang (Brandenburg University of Technology), "Jump Cut Editing Style and Transition
+  Frequency Differentially Affect Interactive and Sustained Engagement in Short-Form Video",
+  Marketing Trends Conference 2026 (artigo de congresso, não periódico revisado). Em 50 vídeos
+  curtos informativos, "a mean of 0.37 cuts/s"; no experimento (N=242), "Higher pacing reduced
+  sustained engagement overall", e os autores recomendam "avoid chasing speed for its own sake".
+  https://archives.marketing-trends-congress.com/2026/pages/PDF/paper_professor_DOST_HUANG.pdf
+- Provimento 205/2021 do CFOAB, art. 3º: "A publicidade profissional deve ter caráter meramente
+  informativo e primar pela discrição e sobriedade", vedada no inciso IV a "utilização de orações
+  ou expressões persuasivas, de autoengrandecimento ou de comparação".
+  https://www.oab.org.br/leisnormas/legislacao/provimentos/205-2021
+O que isso mudou na edição: o gancho precisa resolver os 3 primeiros segundos (é o que o
+Instagram mede); o ritmo deve subir, mas sem perseguir velocidade, o que confirma a Direção
+BT ("a versão acelerada que testamos foi recusada"); e o tom continua sóbrio por norma.
+Não encontrei fonte verificável que meça o efeito de whoosh, trilha ou ducking na retenção, nem
+estudo de padrões de edição em vídeos de direito ou de divórcio: esses itens seguem prática de
+mercado, não dado. Você deve verificar isto antes de tratar qualquer número de retenção como
+certo: só o Instagram Insights do próprio post diz a verdade.
+
+========================================================================
+2. EDIÇÕES APLICADAS (antes -> depois)
+========================================================================
+Ritmo e duração
+- Duração: 51,3 s -> 44,1 s (-14%), com a mesma voz (nenhuma geração nova, nenhum crédito gasto).
+- Silêncios entre frases: 0,35 / 0,80 / 3,60 / 6,50 s -> 0,18 / 0,35 a 0,55 / 1,20 / 4,0 s.
+  Silêncio de voz total: 12,5 s -> 5,2 s.
+- Planos: 9 (média 5,7 s, maior 10,9 s) -> 21 trocas de plano (média 2,1 s, mediana 1,55 s,
+  maior 5,0 s). Destas, 11 são cortes, chicotes e trocas de cena (média 3,7 s) e 9 são
+  reenquadramentos (punch-ins). Trocas por segundo: 0,48 contando os punch-ins e 0,25 sem eles,
+  contra a média de 0,37 do estudo acima: rápido, mas sem passar do que a pesquisa sustenta.
+- J-cut: a voz de "O que pode gerar discussão" entra enquanto as metades ainda estão no chão,
+  antes da câmera subir; a voz de "E, quando há discussão" entra no meio do chicote.
+- Rampa de velocidade (speed ramp) na queda da aliança: velocidade normal na partida, até 3,3x
+  no meio da queda, cerca de 0,9x no impacto, rápida na permanência e na inclinação. A mesma
+  simulação física do v1, tocada em 3,1 s em vez de 5,25 s.
+
+Gancho (0 a 3,5 s), "imperfeitamente perfeito"
+- Antes: fundo Paper liso, voz em 0,40 s, título surgindo, nenhum som.
+- Depois: fundo escuro e a aliança 3D já no quadro 0, com a primeira rachadura nascendo junto de
+  uma batida grave e de um estalo; a câmera "pousa" (começa 7% mais perto); a voz entra em 0,10 s;
+  as palavras caem no lugar (tipografia cinética); a aliança gira e se aproxima devagar (órbita e
+  Ken Burns de verdade, em 3D); em "E agora?" a rachadura avança, há um punch-in de 6% e uma nova
+  batida; corte seco com batida para "Dois caminhos". A aliança no gancho abre uma pergunta que
+  só se resolve quando ela se parte em "impede" (gancho e recompensa).
+
+Cena 3D (o problema da cena estática)
+- A aliança gira continuamente até a partida (de -14 graus a 0).
+- Punch-in em degraus a cada rachadura (2,5%, 2,5% e 2%), no instante de "discordância", "por"
+  e "não".
+- Rachaduras de 2,6 px -> 3,6 px; a primeira já vem do gancho.
+- Rótulos com fio (motion graphics sobrepostos): "DISCORDÂNCIA" e "POR SI SÓ" nascem na
+  rachadura e vão até o rótulo no instante em que a voz diz a palavra; a rachadura avança junto
+  da fala.
+- Riser sintetizado da revelação até a partida, cortando seco no estalo.
+- Queda acelerada (acima), 6 linhas de descida em paralaxe (eram 3), vento sintetizado na queda.
+- Silêncio da queda: 3,6 s -> 1,2 s.
+
+Motion graphics e tipografia nas outras cenas
+- "Dois caminhos": de uma composição de 10,9 s para quatro planos: o número "2" protagonista
+  com uma bifurcação desenhada (Ken Burns), aproximação de 15% no bloco "Consensual", chicote
+  vertical com desfoque de movimento até "Litigioso", punch-in no "JUIZ". Desenhos de 150 a
+  300 px passaram a ocupar a coluna inteira (808 px).
+- Silêncio estratégico de 0,55 s antes de "Mas e se o outro disser não?" (a trilha some), e
+  punch-in de 7% com batida em "não?".
+- "O que vem junto": o fio de cada item é desenhado, com um tique sonoro por item, e há uma
+  aproximação lenta durante a lista.
+- Chicote vertical com desfoque e whoosh de "O que vem junto" para "Mais tempo" (era dissolve).
+- "Mais tempo" (Zenão, na forma que cabe neste vídeo): a bolinha anda sempre metade do que falta
+  até a decisão (1/2, 3/4, 7/8, 15/16, 31/32), um passo por palavra, cada marca mais perto da
+  anterior e com um tique; só então chega à "DECISÃO", com um sino. É a dicotomia de Zenão como
+  imagem de "pode levar mais tempo", sem negar que a decisão chega.
+- "Cada caso": punch-in em "realidade"; "documentos" e "situação" acendem em Gold quando faladas.
+- Chamado: 0,35 s de silêncio antes; "Antes de decidir." entra como texto na tela; punch-in de
+  6% com batida em "advogado".
+- Assinatura: 6,6 s -> 3,9 s, com os mesmos dados.
+
+Legendas
+- Antes: bloco de duas linhas com a palavra falada acesa.
+- Depois: o bloco entra subindo; a palavra falada acende e dá um pequeno salto de 6 px; a
+  palavra-chave fica marcada depois de falada (marca-texto Sky nas cenas claras, fio Gold nas
+  escuras), com 1 ou 2 por bloco; o fio da legenda é desenhado a cada bloco. Mantive os blocos de
+  duas linhas, em vez de mostrar uma palavra por vez: a única comparação que a pesquisa achou
+  (Ivanchenko, "The effects of captioning on content comprehension", dissertação de mestrado,
+  Ca' Foscari, 2023/24, evidência fraca, https://unitesi.unive.it/handle/20.500.14247/18007)
+  concluiu que "two-lined captions were the most beneficial to aid participants' comprehension".
+
+Textura
+- Grão de filme determinístico (7,5%, em overlay) em todo o vídeo e vinheta nas cenas escuras.
+  O grão aumenta o tamanho do arquivo normal (38,7 MB contra 6,9 MB do v1); o Instagram
+  recomprime de qualquer forma.
+
+Som
+- Antes: sem trilha; efeitos só na aliança.
+- Depois: trilha sintetizada em ré menor com arco emocional. Na tensão, drone grave e
+  dedilhado; na pergunta, silêncio; na regra, riser; na queda, corte; da lista em diante, catarse
+  com pad (Dm, Bb, F, C) e dedilhado; na assinatura, resolução em fá maior. Ducking de até 7 dB
+  sob a voz e vale fixo de 3 dB na faixa da voz. Voz 24,3 dB acima da trilha na faixa de 300 a
+  3400 Hz. Batidas graves nas 5 viradas, whoosh em 3 pontos (não em toda troca), tiques nos
+  rótulos, na lista e nos passos de Zenão, e um sino na chegada. Os estalos da aliança são os do
+  v1. Mixagem final em -16,1 LUFS, pico de -1,7 dBTP (normal) e -1,6 dBTP (reduzida).
+
+Correção de defeito do v1 encontrada na revisão
+- Os rótulos "Pedido" e "Decisão" estavam em caixa mista; a Direção pede maiúsculas na mono.
+
+========================================================================
+3. NOVA VERSÃO RENDERIZADA
+========================================================================
+bt-reel-divorcio-nao-quer_v2_normal.mp4      38,7 MB · 1323 quadros · 44,1 s
+bt-reel-divorcio-nao-quer_v2_reduzido.mp4    6,2 MB · mesmo conteúdo, sem movimento extra
+bt-reel-divorcio-nao-quer_v2.srt             legenda com os tempos novos
+assets/data/words_v2.json · assets/audio/narracao_final_v2.wav · quadros-chave-v2/ (23 imagens)
+capa_v2.png (sugestão de capa) · comparacao_v1_v2.png (gráfico) · DIAGNOSTICO_v1.txt
+Verificações:
+- HyperFrames: lint e check sem erros; 48 de 48 textos passam no contraste WCAG AA.
+- Conferência automática (tools/conferencia_automatica_v2.json): legenda sempre na faixa (o
+  bloco 4 passa 1 px da coluna por causa do ponto final, como no v1); nenhum texto legível fora
+  das margens seguras; bolinha com passo máximo de 132 px por quadro, sem saltos.
+- Nenhum quadro em branco nas duas versões.
+- Tempos de palavra: uma transcrição nova bateu com os tempos remapeados em 110 de 111 palavras
+  (mediana de 10 ms). A exceção é "E," (a transcrição a coloca 0,33 s antes, dentro do silêncio,
+  vício conhecido dela na primeira palavra de uma frase).
+- Mesmo modelo heurístico do item 1: 93% aos 3 s, 85% aos 15 s, 66% no fim da voz e 50% no fim.
+  Atenção: o modelo pune exatamente o que eu mudei (plano parado, silêncio, gancho sem impacto),
+  então a melhora é esperada por construção e não prova nada. Compare a taxa de pulo (skip rate)
+  e o tempo médio de exibição no Instagram Insights.
+
+========================================================================
+4. NOTAS DE DECISÃO (o que mudou, o que não mudou, e por quê)
+========================================================================
+D1. Texto, voz e afirmações jurídicas não mudaram. O texto foi aprovado pelo escritório e
+    conferido em fonte oficial; o pedido manda preservar o conceito e a narração.
+D2. Nenhuma voz nova. Não havia hesitações para cortar (é voz sintética); as pausas de vírgula
+    (0,18 a 0,26 s) ficaram porque cortá-las picotaria a fala. Não acelerei a voz: ela já está em
+    cerca de 3,1 palavras por segundo, e acelerar tiraria o tom calmo que a Direção exige. A rampa
+    de velocidade foi aplicada na animação.
+D3. Linha do tempo do luto (negação, raiva, barganha, depressão, aceitação): não foi aplicada.
+    a) A narração não fala de luto, e a regra da Direção é que nada apareça antes da voz falar.
+       Pôr cinco estágios na tela exigiria texto novo, nova aprovação dos advogados e nova voz,
+       e mudaria o conceito, o que o próprio pedido proíbe.
+    b) O modelo dos cinco estágios é contestado: Stroebe, Schut e Boerner (Omega, 2017) apontam
+       "the absence of sound empirical evidence" e concluem que "stage theory should be discarded
+       by all concerned" ("Cautioning Health-Care Professionals: Bereaved Persons Are Misguided
+       Through the Stages of Grief", https://pmc.ncbi.nlm.nih.gov/articles/PMC5375020, conferido
+       em 17/10/2026).
+    c) Um escritório de advocacia apresentando etapas psicológicas sai do caráter técnico e
+       informativo que o Provimento 205/2021 pede (art. 3º, citado acima).
+    Se o escritório quiser um vídeo sobre luto e separação, ele precisa de roteiro próprio,
+    conferido por profissional da área.
+D4. "Aquiles nunca alcança a tartaruga": não visualizado literalmente. Neste vídeo, a mensagem é
+    que o divórcio acontece mesmo sem a concordância do outro; uma imagem de "nunca alcança"
+    diria o contrário. A dicotomia de Zenão entrou como passos pela metade em "Mais tempo", onde
+    ela ilustra a demora e termina com a chegada.
+D5. Transições: o pedido lista fade, dissolve, chicote e match cut. Usei corte seco (gancho), a
+    revelação circular a partir da bolinha (assinatura da marca), dissolve na virada emocional
+    ("Cada caso"), desfoque na assinatura e chicote vertical em dois pontos. O chicote é vertical,
+    e não horizontal, porque a Direção BT manda "entra subindo, sai subindo". Não há match cut
+    literal; a ponte entre cenas é a bolinha, que atravessa os cortes (continuidade).
+D6. Partículas e poeira contínuas: não. A Direção proíbe partículas flutuando fora da ênfase. Ficou
+    o grão de filme, que é textura, e a vinheta nas cenas escuras. Sem luz vazada (seria "brilho").
+D7. Punch-ins limitados a 7% e com as curvas BT, para não virar o "zoom brusco" que a Direção
+    proíbe; todos ficam dentro das margens seguras (conferido quadro a quadro).
+D8. Whoosh só em 3 pontos (chicote do bloco 2, queda, chicote para "Mais tempo"). A Direção proíbe
+    "whoosh em toda troca".
+D9. Estrutura narrativa: mantida, porque já segue o arco pedido e porque o texto é jurídico e
+    aprovado. Gancho ("E agora?"), tensão ("Dois caminhos" e "Mas e se o outro disser não?"),
+    regra (o equivalente à "filosofia" neste vídeo), aplicação ("O que vem junto" e "Mais tempo"),
+    virada ("Cada caso tem a sua realidade") e chamado. Cada bloco termina numa pergunta ou numa
+    promessa que puxa o próximo.
+D10. A Direção BT diz que "a versão acelerada que testamos foi recusada" e que não há trilha por
+    padrão. O v2 contraria esses dois pontos por ordem deste pedido, que, pela própria Direção,
+    pode ajustá-la. Se o escritório achar que passou do tom, o caminho mais curto é tirar a trilha
+    e o grão e manter o resto (cortes, gancho, cena 3D e legendas).
+D11. A aliança agora aparece também no gancho, o que o prompt original restringia à cena 4.
+    Mudei porque é a imagem mais forte do vídeo e resolve o gancho sem inventar elemento novo.
+
+Limitações conhecidas
+- No meio da queda acelerada (cerca de 20,3 s), uma metade passa por trás de "não impede" por
+  alguns quadros.
+- O dissolve de "Mais tempo" para "Cada caso" passa por um tom acinzentado (meio caminho entre
+  Sand e Navy), como no v1.
+- A bolinha muda de direção em dois pontos de propósito: no arco de entrada na aliança e nos
+  passos de Zenão.
+
+========================================================================
+5. SUGESTÃO DE THUMBNAIL (CAPA) E TÍTULO
+========================================================================
+Capa: capa_v2.png, o quadro do gancho com o título completo e a aliança rachada, sem legenda
+nem bolinha. O título e a aliança ficam dentro do recorte 4:5 que o Instagram mostra na grade
+(cerca de y 285 a 1635).
+Título e primeira linha da publicação (tom informativo, sem expressões persuasivas, conforme o
+art. 3º do Provimento 205/2021):
+  Opção A (recomendada, é o próprio gancho): "Seu cônjuge não quer se divorciar. E agora?"
+  Opção B: "A recusa do cônjuge impede o divórcio?"
+  Texto da legenda: "A discordância do outro cônjuge, por si só, não impede o divórcio. O que
+  pode gerar discussão é o que vem junto: guarda dos filhos, pensão e divisão dos bens.
+  Conteúdo informativo. Cada caso exige análise individual."
+Evite na capa ou na legenda: "Descubra", "Você precisa saber", "urgente", números de prazo ou de
+resultado, e o vermelho de alerta.

@@ -3,7 +3,8 @@
 
 Text always comes from the approved script (briefing/01_Narracao_Integral_ElevenLabs_PTBR.txt), never
 from the recognizer, so punctuation and capitalization stay literal. Timing comes from
-assets/audio/timing_v1.json (faster-whisper word times mapped onto the 42 s timeline).
+assets/audio/timing_<version>.json (faster-whisper word times mapped onto the 42 s timeline).
+Usage: python3 scripts/build_captions.py [v1|v2]   (default v2)
 """
 import json
 import re
@@ -13,12 +14,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT / "briefing/01_Narracao_Integral_ElevenLabs_PTBR.txt"
-TIMING = ROOT / "assets/audio/timing_v1.json"
 TARGET = ROOT / "compositions/legendas.html"
 OUT_DIR = ROOT / "output"
+VERSION = sys.argv[1] if len(sys.argv) > 1 else "v2"
+TIMING = ROOT / f"assets/audio/timing_{VERSION}.json"
 SRT_NAMES = [
-    "2026-10-20_divorcio_cartorio_filhos_menores_LEGENDAS_v1.srt",
-    "REEL_20-10-2026_LEGENDA_FINAL.srt",
+    f"2026-10-20_divorcio_cartorio_filhos_menores_LEGENDAS_{VERSION}.srt",
+    f"REEL_20-10-2026_LEGENDA_FINAL_{VERSION}.srt",
 ]
 
 # (first word, end word exclusive, [indices where a new line starts]) over the 89 script words.

@@ -93,8 +93,9 @@ def contact(files, dst, cols=4, scale=0.3):
 
 def main():
     mp4 = Path(sys.argv[1]).resolve()
-    stem = mp4.stem.replace("_REEL_v1", "")
-    outdir = mp4.parent / f"{stem}_FRAMES_v1"
+    version = mp4.stem.rsplit("_", 1)[-1]  # ..._REEL_v2 -> v2
+    stem = mp4.stem.replace(f"_REEL_{version}", "")
+    outdir = mp4.parent / f"{stem}_FRAMES_{version}"
     info = probe(mp4)
     loud = loudness(mp4)
     dec = decode_check(mp4)
@@ -103,11 +104,11 @@ def main():
     safe_dir.mkdir(exist_ok=True)
     for f in files:
         safe_overlay(f, safe_dir / f.name)
-    contact(files, outdir / "contact_sheet_v1.jpg")
-    contact([safe_dir / f.name for f in files], outdir / "contact_sheet_safe_zones_v1.jpg")
+    contact(files, outdir / f"contact_sheet_{version}.jpg")
+    contact([safe_dir / f.name for f in files], outdir / f"contact_sheet_safe_zones_{version}.jpg")
     result = {"file": str(mp4.relative_to(ROOT)), "bytes": mp4.stat().st_size, "probe": info,
               "loudness": loud, "full_decode": dec, "frames": [str(f.relative_to(ROOT)) for f in files]}
-    (mp4.parent / "qa_medicoes_v1.json").write_text(json.dumps(result, indent=1, ensure_ascii=False))
+    (mp4.parent / f"qa_medicoes_{version}.json").write_text(json.dumps(result, indent=1, ensure_ascii=False))
     print(json.dumps({"loudness": loud, "decode_rc": dec["returncode"], "decode_errors": dec["errors"][:300]}, indent=1))
     for s in info["streams"]:
         print({k: s.get(k) for k in ["codec_type", "codec_name", "profile", "width", "height", "pix_fmt", "r_frame_rate",

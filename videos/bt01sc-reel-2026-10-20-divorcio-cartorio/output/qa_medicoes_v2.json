@@ -1,0 +1,60 @@
+{
+ "file": "output/2026-10-20_divorcio_cartorio_filhos_menores_REEL_v2.mp4",
+ "bytes": 37315679,
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "index": 0,
+    "codec_name": "h264",
+    "profile": "High",
+    "codec_type": "video",
+    "width": 1080,
+    "height": 1920,
+    "display_aspect_ratio": "9:16",
+    "pix_fmt": "yuv420p",
+    "r_frame_rate": "30/1",
+    "avg_frame_rate": "30/1",
+    "bit_rate": "6902494",
+    "nb_read_frames": "1260"
+   },
+   {
+    "index": 1,
+    "codec_name": "aac",
+    "profile": "LC",
+    "codec_type": "audio",
+    "sample_rate": "48000",
+    "channels": 2,
+    "channel_layout": "stereo",
+    "r_frame_rate": "0/0",
+    "avg_frame_rate": "0/0",
+    "bit_rate": "197914",
+    "nb_read_frames": "1969"
+   }
+  ],
+  "format": {
+   "duration": "42.000000",
+   "size": "37315679",
+   "bit_rate": "7107748"
+  }
+ },
+ "loudness": {
+  "integrated_lufs": -16.1,
+  "loudness_range_lu": 4.4,
+  "true_peak_dbtp": -2.7
+ },
+ "full_decode": {
+  "returncode": 0,
+  "errors": ""
+ },
+ "frames": [
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_0-5s.png",
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_1-5s.png",
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_4-5s.png",
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_10-0s.png",
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_18-0s.png",
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_25-0s.png",
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_35-0s.png",
+  "output/2026-10-20_divorcio_cartorio_filhos_menores_FRAMES_v2/frame_40-0s.png"
+ ]
+}

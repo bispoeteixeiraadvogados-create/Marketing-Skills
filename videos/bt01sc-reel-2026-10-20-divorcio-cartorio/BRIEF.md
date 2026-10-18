@@ -36,6 +36,11 @@ falas e textos de tela TRAVADOS) e `briefing/00_INSTRUCOES_ASSETS_CLAUDE.md` (co
 
 ## Notes
 
+- V2 (18/10/2026, pedido do usuário após aprovar a V1): trocar a locução pela mesma voz do Reel
+  anterior "bt-reel-divorcio-nao-quer" V3, que é ElevenLabs "Henrique - Clear and Knowledgeable"
+  (`3ULAAai0IVN00DTWA6vF`, `eleven_v4`), voz MASCULINA. Isso substitui, por decisão expressa do
+  usuário, o item "Locução: voz feminina" do prompt técnico. Imagem, textos e roteiro inalterados.
+
 - Proibido: aliança 3D, martelo, balança, colunas, tribunal 3D, selos, brasões, carimbos, assinaturas, números de processo, documentos que simulem peça judicial autêntica.
 - Gold apenas como linhas e microdetalhes; nunca metálico, partículas ou brilho.
 - Logo apenas na cena 07; sem telefone, WhatsApp, oferta ou CTA.

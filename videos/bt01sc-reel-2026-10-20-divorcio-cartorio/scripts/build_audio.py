@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """BT.01.SC Reel 2026-10-20: build the three audio stems and the timing map.
 
-Reproducible and deterministic (seeded RNG). Inputs:
-  assets/audio/source/narracao_elevenlabs_take3_clarice.mp3  (ElevenLabs, voz Clarice Rodrigues, eleven_v4)
-  assets/audio/source/narracao_elevenlabs_take3_clarice.mp3.words.json  (faster-whisper word timestamps)
-Outputs (assets/audio/):
-  voz_narracao_v1.wav, trilha_original_v1.wav, sfx_papel_v1.wav  (48 kHz, stereo, 24-bit)
-  mix_referencia_v1.wav  (sum of the three stems, for QA only)
-  timing_v1.json         (segment placement + every word in global time)
+Usage: python3 scripts/build_audio.py [v1|v2]   (default v2)
+
+Reproducible and deterministic (seeded RNG). Inputs per version (CONFIGS below):
+  v1: assets/audio/source/narracao_elevenlabs_take3_clarice.mp3  (ElevenLabs, Clarice Rodrigues, eleven_v4)
+  v2: assets/audio/source/narracao_elevenlabs_v2_henrique.mp3     (ElevenLabs, Henrique, eleven_v4)
+  plus <take>.words.json (faster-whisper word timestamps)
+Outputs (assets/audio/), suffixed with the version:
+  voz_narracao_vN.wav, trilha_original_vN.wav, sfx_papel_vN.wav  (48 kHz, stereo, 24-bit)
+  mix_referencia_vN.wav  (sum of the three stems, for QA only)
+  timing_vN.json         (segment placement + every word in global time)
 
 The voice is never time-stretched: each paragraph of the single take is cut inside a natural pause
 and placed at its scene. Music and paper sound design are synthesized here, so they carry no
@@ -21,11 +24,9 @@ from pathlib import Path
 
 import numpy as np
 import soundfile as sf
-from scipy import signal
+from scipy import ndimage, signal
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "assets/audio/source/narracao_elevenlabs_take3_clarice.mp3"
-WORDS = Path(str(SRC) + ".words.json")
 OUT = ROOT / "assets/audio"
 SR = 48000
 DUR = 42.0
@@ -35,17 +36,40 @@ TP_CEILING = -1.5
 rng = np.random.default_rng(20261020)
 
 # Paragraph cuts inside the take's own pauses (source seconds) and the speech onset inside each
-# segment. `place` is where the segment starts on the 42 s timeline.
-SEGMENTS = [
-    # id, src_in, src_out, onset_in_segment, target_onset
-    ("P1", 0.000, 3.260, 0.000, 0.10),
-    ("P2", 3.260, 5.430, 0.079, 3.62),
-    ("P3", 5.430, 13.540, 0.161, 6.35),
-    ("P4", 13.540, 20.540, 0.347, 15.20),
-    ("P5", 20.540, 28.000, 0.206, 22.25),
-    ("P6", 28.000, 35.020, 0.167, 31.15),
-    ("P7", 35.020, 37.564, 0.179, 39.25),
-]
+# segment. A segment may join several pieces of the take (only to shorten a pause; never inside a
+# word). `place` is where the segment starts on the 42 s timeline.
+CONFIGS = {
+    "v1": {
+        "src": "narracao_elevenlabs_take3_clarice.mp3",
+        "snap_to_pauses": False,
+        "voice_comp": False,
+        "segments": [
+            # id, [(src_in, src_out), ...], onset_in_segment, target_onset
+            ("P1", [(0.000, 3.260)], 0.000, 0.10),
+            ("P2", [(3.260, 5.430)], 0.079, 3.62),
+            ("P3", [(5.430, 13.540)], 0.161, 6.35),
+            ("P4", [(13.540, 20.540)], 0.347, 15.20),
+            ("P5", [(20.540, 28.000)], 0.206, 22.25),
+            ("P6", [(28.000, 35.020)], 0.167, 31.15),
+            ("P7", [(35.020, 37.564)], 0.179, 39.25),
+        ],
+    },
+    "v2": {
+        "src": "narracao_elevenlabs_v2_henrique.mp3",
+        "snap_to_pauses": True,
+        "voice_comp": True,  # Henrique has a higher crest factor: gentle 2.5:1 leveling before the mix
+        "segments": [
+            # P1: the 1.05 s pause between the two questions is shortened to ~0.35 s
+            ("P1", [(0.000, 1.150), (1.850, 3.950)], 0.000, 0.10),
+            ("P2", [(4.500, 6.700)], 0.160, 3.62),
+            ("P3", [(6.850, 14.950)], 0.313, 6.35),
+            ("P4", [(15.050, 21.400)], 0.230, 15.20),
+            ("P5", [(21.600, 27.980)], 0.286, 22.25),
+            ("P6", [(28.050, 34.300)], 0.153, 31.15),
+            ("P7", [(34.550, 37.146)], 0.220, 39.25),
+        ],
+    },
+}
 
 # Scene windows on the final timeline (storyboard 3/3/9/7/9/8/3 with the S1/S2/S3 micro-shift).
 SCENES = [
@@ -54,9 +78,9 @@ SCENES = [
 ]
 
 
-def load_voice():
+def load_voice(src):
     raw = subprocess.run(
-        ["ffmpeg", "-v", "error", "-i", str(SRC), "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
+        ["ffmpeg", "-v", "error", "-i", str(src), "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
         capture_output=True, check=True,
     ).stdout
     return np.frombuffer(raw, np.float32).astype(np.float64)
@@ -71,16 +95,17 @@ def fade(x, ms=8):
     return x
 
 
-def build_voice(src):
+def build_voice(src, segments):
     out = np.zeros(N)
     placed = []
-    for sid, a, b, onset, target in SEGMENTS:
-        seg = fade(src[int(a * SR):int(b * SR)].copy())
+    for sid, pieces, onset, target in segments:
+        seg = np.concatenate([fade(src[int(a * SR):int(b * SR)].copy()) for a, b in pieces])
         place = target - onset
         i = int(round(place * SR))
         out[i:i + len(seg)] += seg[: max(0, N - i)]
-        placed.append({"id": sid, "src_in": a, "src_out": b, "place": round(place, 3),
-                       "end": round(place + (b - a), 3), "speech_onset": target})
+        length = sum(b - a for a, b in pieces)
+        placed.append({"id": sid, "pieces": pieces, "place": round(place, 3),
+                       "end": round(place + length, 3), "speech_onset": target})
     # Gentle voice chain: 70 Hz high-pass and a light presence lift at 3 kHz.
     sos = signal.butter(2, 70, "highpass", fs=SR, output="sos")
     out = signal.sosfilt(sos, out)
@@ -98,15 +123,34 @@ def peaking(f0, gain_db, q):
     return b / a[0], a / a[0]
 
 
-def words_global(placed):
-    words = json.loads(WORDS.read_text())
+def pauses(src_path):
+    """Silences of the take (-45 dB, >= 0.1 s), used to move recognizer word starts out of pauses."""
+    err = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(src_path), "-af",
+                          "silencedetect=noise=-45dB:d=0.1", "-f", "null", "-"], capture_output=True, text=True).stderr
+    starts = [float(x.split("silence_start: ")[1].split()[0]) for x in err.splitlines() if "silence_start" in x]
+    ends = [float(x.split("silence_end: ")[1].split()[0]) for x in err.splitlines() if "silence_end" in x]
+    return list(zip(starts, ends))
+
+
+def words_global(placed, words_path, snap):
+    words = json.loads(words_path.read_text())
+    gaps = pauses(Path(str(words_path)[: -len(".words.json")])) if snap else []
     res = []
     for w in words:
+        s, e = w["s"], w["e"]
+        for g0, g1 in gaps:  # a start the recognizer placed inside (or 0.1 s before) a pause
+            if g0 - 0.1 <= s < g1 and g1 < e:
+                s = g1
         for p in placed:
-            if p["src_in"] <= w["s"] < p["src_out"]:
-                off = p["place"] - p["src_in"]
-                res.append({"w": w["w"], "s": round(w["s"] + off, 3), "e": round(w["e"] + off, 3), "seg": p["id"]})
-                break
+            offset = p["place"]
+            for a, b in p["pieces"]:
+                if a <= s < b:
+                    res.append({"w": w["w"], "s": round(s - a + offset, 3), "e": round(min(e, b) - a + offset, 3), "seg": p["id"]})
+                    break
+                offset += b - a
+            else:
+                continue
+            break
     return res
 
 
@@ -282,7 +326,7 @@ def folder_thump(level=0.12):
     return (body * 0.8 + snap * 0.5) * level
 
 
-SFX_EVENTS = [  # (time, generator) aligned with the composition's motion (index.html)
+SFX_V1 = [  # (time, generator) aligned with the V1 composition's motion
     (0.00, lambda: paper_slide(0.58, 0.055)), (0.55, lambda: paper_contact(0.085)),   # S1 q1 lands
     (0.92, lambda: paper_slide(0.48, 0.04)), (1.40, lambda: paper_contact(0.06)),     # S1 q2 lands
     (3.22, lambda: paper_slide(0.54, 0.05)), (3.74, lambda: paper_contact(0.07)),     # S2 sheet
@@ -302,9 +346,31 @@ SFX_EVENTS = [  # (time, generator) aligned with the composition's motion (index
 ]
 
 
-def build_sfx():
+SFX_V2 = [  # (time, generator) aligned with the V2 composition (Henrique word map, timing_v2.json)
+    (0.00, lambda: paper_slide(0.58, 0.055)), (0.55, lambda: paper_contact(0.085)),   # S1 q1 lands
+    (0.92, lambda: paper_slide(0.48, 0.04)), (1.40, lambda: paper_contact(0.06)),     # S1 q2 lands
+    (3.22, lambda: paper_slide(0.54, 0.05)), (3.74, lambda: paper_contact(0.07)),     # S2 sheet
+    (4.12, lambda: paper_slide(0.42, 0.035)), (4.52, lambda: paper_contact(0.05)),    # S2 slip
+    (5.95, lambda: paper_slide(0.85, 0.045, 900, 6000)),                              # papers lifted away
+    (9.36, lambda: paper_slide(0.5, 0.03)), (9.88, lambda: paper_contact(0.045)),      # guarda
+    (9.80, lambda: paper_slide(0.5, 0.028)), (10.32, lambda: paper_contact(0.04)),    # convivência
+    (10.33, lambda: paper_slide(0.5, 0.028)), (10.85, lambda: paper_contact(0.045)),  # alimentos
+    (11.35, lambda: paper_slide(0.75, 0.022)), (12.53, lambda: paper_contact(0.035)), # align + band
+    (14.05, lambda: folder_move(0.8, 0.05)),                                          # cover closes partially
+    (15.00, lambda: paper_slide(0.5, 0.035)), (15.48, lambda: paper_contact(0.045)),  # acordo particular
+    (16.20, lambda: paper_slide(0.9, 0.028)),                                         # pushed out of focus
+    (16.95, lambda: paper_slide(0.6, 0.03)), (17.53, lambda: paper_contact(0.04)),    # resolução card
+    (21.55, lambda: paper_slide(0.75, 0.03)),                                         # card moved away
+    (21.70, lambda: folder_move(0.85, 0.035)), (22.55, lambda: folder_thump(0.07)),   # folder closes
+    (24.10, lambda: paper_slide(0.85, 0.045)), (24.92, lambda: paper_contact(0.06)),  # escritura
+]
+
+SFX_EVENTS = {"v1": SFX_V1, "v2": SFX_V2}
+
+
+def build_sfx(events):
     out = np.zeros((N, 2))
-    for t0, gen in SFX_EVENTS:
+    for t0, gen in events:
         x = gen()
         i = int(t0 * SR)
         pan = 0.5 + 0.12 * np.sin(t0 * 3.1)
@@ -325,25 +391,37 @@ def measure(x):
     return integ, tp
 
 
-def soft_limit(x, ceiling_db):
-    """Look-ahead peak limiter (5 ms) used only if the mix would exceed the true-peak ceiling."""
+def soft_limit(x, ceiling_db, look_ms=3.0):
+    """Look-ahead peak limiter: a minimum filter over +-look then a moving average no longer than
+    the look radius, so the smoothed gain never exceeds what any sample needs."""
     ceiling = 10 ** (ceiling_db / 20)
-    peak = np.max(np.abs(x), axis=1)
-    look = int(0.005 * SR)
-    need = np.maximum(1.0, peak / ceiling)
-    g =1 / np.convolve(need, np.ones(look) / look, mode="same").clip(1)
-    g = signal.sosfiltfilt(signal.butter(1, 40, "lowpass", fs=SR, output="sos"), g).clip(0, 1)
-    return x * g[:, None]
+    peak = np.max(np.abs(x), axis=1) if x.ndim > 1 else np.abs(x)
+    need = np.minimum(1.0, ceiling / np.maximum(peak, 1e-12))
+    L = int(look_ms / 1000 * SR)
+    g = ndimage.uniform_filter1d(ndimage.minimum_filter1d(need, size=2 * L + 1), size=L)
+    return x * (g[:, None] if x.ndim > 1 else g)
 
 
-def main():
-    src = load_voice()
-    voice_m, placed = build_voice(src)
-    words = words_global(placed)
+def level_voice(x, threshold_db=-26.0, ratio=2.5):
+    """Gentle leveling on the voice: 20 ms RMS detector, 2.5:1 above the threshold, 30 ms gain smoothing."""
+    rms = np.sqrt(ndimage.uniform_filter1d(x ** 2, size=int(0.02 * SR)) + 1e-12)
+    over = np.maximum(0.0, 20 * np.log10(rms) - threshold_db)
+    gain_db = ndimage.uniform_filter1d(-over * (1 - 1 / ratio), size=int(0.03 * SR))
+    return x * 10 ** (gain_db / 20)
+
+
+def main(version="v2"):
+    cfg = CONFIGS[version]
+    src_path = ROOT / "assets/audio/source" / cfg["src"]
+    src = load_voice(src_path)
+    voice_m, placed = build_voice(src, cfg["segments"])
+    if cfg["voice_comp"]:
+        voice_m = level_voice(voice_m)
+    words = words_global(placed, Path(str(src_path) + ".words.json"), cfg["snap_to_pauses"])
 
     music = reverb(pad_layer() + keys_layer()) + sub_pulse()
     music *= music_automation(voice_m)[:, None]
-    sfx = build_sfx()
+    sfx = build_sfx(SFX_EVENTS[version])
     voice = np.stack([voice_m, voice_m], axis=1)
 
     # Relative balance (pre-master): voice reference, music bed and paper well underneath.
@@ -359,21 +437,27 @@ def main():
     voice, music, sfx = voice * gain, music * gain, sfx * gain
     mix = voice + music + sfx
     integ, tp = measure(mix)
-    if tp > TP_CEILING:
-        voice = soft_limit(voice, TP_CEILING - 0.6)
+    for _ in range(3):  # safety: limit the voice stem until the summed master is under the ceiling
+        if tp <= TP_CEILING:
+            break
+        voice = soft_limit(voice, TP_CEILING - 1.0 - (tp - TP_CEILING) * 0.5)
+        mix = voice + music + sfx
+        integ, tp = measure(mix)
+        gain = 10 ** ((TARGET_LUFS - integ) / 20)
+        voice, music, sfx = voice * gain, music * gain, sfx * gain
         mix = voice + music + sfx
         integ, tp = measure(mix)
     print(f"stems: voice {v_i:.1f} music {m_i:.1f} sfx {s_i:.1f} LUFS (pre-balance)")
     print(f"master reference: I={integ:.2f} LUFS, true peak={tp:.2f} dBTP")
 
     OUT.mkdir(parents=True, exist_ok=True)
-    sf.write(OUT / "voz_narracao_v1.wav", voice, SR, subtype="PCM_24")
-    sf.write(OUT / "trilha_original_v1.wav", music, SR, subtype="PCM_24")
-    sf.write(OUT / "sfx_papel_v1.wav", sfx, SR, subtype="PCM_24")
-    sf.write(OUT / "mix_referencia_v1.wav", mix, SR, subtype="PCM_24")
-    (OUT / "timing_v1.json").write_text(json.dumps({
+    sf.write(OUT / f"voz_narracao_{version}.wav", voice, SR, subtype="PCM_24")
+    sf.write(OUT / f"trilha_original_{version}.wav", music, SR, subtype="PCM_24")
+    sf.write(OUT / f"sfx_papel_{version}.wav", sfx, SR, subtype="PCM_24")
+    sf.write(OUT / f"mix_referencia_{version}.wav", mix, SR, subtype="PCM_24")
+    (OUT / f"timing_{version}.json").write_text(json.dumps({
         "duration": DUR, "scenes": [{"id": s, "start": a, "end": b} for s, a, b in SCENES],
-        "segments": placed, "words": words,
+        "version": version, "source": cfg["src"], "segments": placed, "words": words,
         "master_reference": {"integrated_lufs": integ, "true_peak_dbtp": tp},
     }, ensure_ascii=False, indent=1))
     print(f"{len(words)} words mapped")
@@ -381,4 +465,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else "v2"))

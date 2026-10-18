@@ -589,26 +589,26 @@
             // S3 · 6.2-15.0 · guarda, convivência, alimentos
             tl.fromTo("#cover", { rotationY: -180, transformOrigin: "0% 50%" }, { rotationY: -180, duration: 0.01 }, 0);
             const fan = [
-              { id: "#fs1", t: 9.2, x: -22, y: 6, r: -3.4 },
-              { id: "#fs2", t: 9.8, x: 26, y: 4, r: 2.6 },
-              { id: "#fs3", t: 10.6, x: -12, y: 8, r: -1.5 },
+              { id: "#fs1", t: 9.36, x: -22, y: 6, r: -3.4 }, // lands on "guarda" (9.85)
+              { id: "#fs2", t: 9.8, x: 26, y: 4, r: 2.6 }, // "convivência" (10.25)
+              { id: "#fs3", t: 10.33, x: -12, y: 8, r: -1.5 }, // "alimentos" (10.83)
             ];
             fan.forEach((s, i) => {
               slideIn(s.id, s.t, 0.52, { x: 1500, y: -70 + i * 20, rotation: 9 }, { x: s.x, y: s.y, rotation: s.r });
               // the fan tightens: sheets squared to the folder's edge
-              tl.fromTo(s.id, { x: s.x, y: s.y, rotation: s.r }, { x: 0, y: 0, rotation: [-0.5, 0.3, -0.2][i], duration: 0.75, ease: "power2.inOut", immediateRender: false }, 11.55 + i * 0.06);
+              tl.fromTo(s.id, { x: s.x, y: s.y, rotation: s.r }, { x: 0, y: 0, rotation: [-0.5, 0.3, -0.2][i], duration: 0.75, ease: "power2.inOut", immediateRender: false }, 11.35 + i * 0.06);
             });
-            tl.fromTo("#band", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 12.85);
-            tl.fromTo("#band span", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 13.0);
+            tl.fromTo("#band", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 12.5); // "resolvidos" (12.59)
+            tl.fromTo("#band span", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 12.65);
             // the folder closes partially; its surface becomes the next frame
             tl.fromTo("#cover", { rotationY: -180 }, { rotationY: -16, duration: 0.8, ease: "power2.inOut", immediateRender: false }, 14.05);
             hideCovered("#fs1 .label, #fs2 .label, #fs3 .label, #band span", 14.9);
 
             // S5 · the folder closes and stays organized on the left; the escritura arrives from the right
             tl.fromTo("#cover", { rotationY: -16 }, { rotationY: 0, duration: 0.55, ease: "power2.in", immediateRender: false }, 22.0);
-            slideIn("#escritura", 24.45, 0.85, { x: 1300, y: -40, rotation: 7 }, { x: 0, y: 0, rotation: 1.2 });
-            tl.fromTo("#pool-e", { opacity: 0.35 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 24.6);
-            tl.fromTo("#folder", { filter: "blur(0px)" }, { filter: "blur(3px)", duration: 0.8, ease: "sine.inOut" }, 24.8); // focus moves to the notarial step
+            slideIn("#escritura", 24.1, 0.85, { x: 1300, y: -40, rotation: 7 }, { x: 0, y: 0, rotation: 1.2 });
+            tl.fromTo("#pool-e", { opacity: 0.35 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 24.25);
+            tl.fromTo("#folder", { filter: "blur(0px)" }, { filter: "blur(3px)", duration: 0.8, ease: "sine.inOut" }, 24.45); // focus moves to the notarial step
 
             // S6 · both steps in focus for the synthesis
             tl.fromTo("#folder", { filter: "blur(3px)" }, { filter: "blur(0px)", duration: 0.8, ease: "sine.inOut", immediateRender: false }, 31.0);

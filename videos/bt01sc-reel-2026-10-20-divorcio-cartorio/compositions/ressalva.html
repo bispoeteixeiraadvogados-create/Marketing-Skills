@@ -185,12 +185,12 @@
               "#acordo",
               { x: 0, y: 0, rotation: 2, scale: 1, filter: "blur(0px)", opacity: 1 },
               { x: -400, y: 140, rotation: -9, scale: 0.8, filter: "blur(10px)", opacity: 0.4, duration: 0.95, ease: "power2.inOut", immediateRender: false },
-              1.55,
+              1.2,
             );
-            tl.fromTo("#acordo", { opacity: 0.4 }, { opacity: 0, duration: 0.7, ease: "power1.in", immediateRender: false }, 2.6);
+            tl.fromTo("#acordo", { opacity: 0.4 }, { opacity: 0, duration: 0.7, ease: "power1.in", immediateRender: false }, 2.25);
             // in its place: the judicial resolution, as typography
-            tl.fromTo("#resolucao", { x: 1000, y: 60, rotation: 5 }, { x: 0, y: 0, rotation: -0.8, duration: 0.6, ease: "power3.out" }, 2.25);
-            tl.fromTo("#resolucao > .lift", { opacity: 0.85 }, { opacity: 0, duration: 0.54, ease: "power2.in" }, 2.25);
+            tl.fromTo("#resolucao", { x: 1000, y: 60, rotation: 5 }, { x: 0, y: 0, rotation: -0.8, duration: 0.6, ease: "power3.out" }, 1.95);
+            tl.fromTo("#resolucao > .lift", { opacity: 0.85 }, { opacity: 0, duration: 0.54, ease: "power2.in" }, 1.95);
             // the gesture of moving the paper away leads the camera to the escritura
             tl.fromTo("#resolucao", { x: 0, rotation: -0.8 }, { x: -1200, rotation: -4, duration: 0.75, ease: "power2.in", immediateRender: false }, 6.55);
             tl.fromTo("#s4-head", { x: 0, opacity: 1 }, { x: -260, opacity: 0, duration: 0.6, ease: "power2.in" }, 6.6);

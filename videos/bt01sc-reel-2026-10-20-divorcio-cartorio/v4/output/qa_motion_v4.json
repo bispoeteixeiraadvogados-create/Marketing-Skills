@@ -21,7 +21,7 @@
   },
   "#s05-world": {
    "maxStepOutsideCuts": {
-    "step": 295.3,
+    "step": 219.4,
     "t": 12.3
    },
    "intendedCuts": []

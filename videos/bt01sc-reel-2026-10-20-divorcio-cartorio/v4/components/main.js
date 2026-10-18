@@ -94,7 +94,7 @@
     const back = w("sozinho");
     cam("#s05-world", [
       { t: s05.start, cx: 450, cy: 560, s: 1.72 },
-      { t: s05.start + 0.02, d: back - s05.start - 0.04, cx: 440, cy: 545, s: 1.86, ease: "sine.inOut" },
+      { t: s05.start + 0.02, d: back - s05.start - 0.04, cx: 440, cy: 545, s: 1.86, ease: "sine.inOut", push: true },
       { t: back - 0.06, d: 0.82, cx: 1167, cy: 1919, s: 0.42 },
     ]);
     tl.to("#s05-doc", { opacity: 0.5, filter: R ? "none" : "blur(1.5px)", duration: 0.5, ease: E.inOut }, back + 0.15);
@@ -118,7 +118,7 @@
     cam("#s07-world", [
       { t: s07.start, cx: 540, cy: 960, s: 1 },
       { t: w("casal") - 0.02, cut: true, cx: 538, cy: 1110, s: 1.6 },
-      { t: w("casal"), d: MATCH - w("casal"), cx: 536, cy: 1112, s: 2.25, ease: "sine.inOut" },
+      { t: w("casal"), d: MATCH - w("casal"), cx: 536, cy: 1112, s: 2.25, ease: "sine.inOut", push: true },
     ]);
     if (!R) {
       // gestos discretos: quem fala move a mão, quem escuta acena com a cabeça

@@ -1,0 +1,83 @@
+{
+ "file": "output/BT_Divorcio_Cartorio_Reel_V4_ReducedMotion.mp4",
+ "bytes": 7435022,
+ "probe": {
+  "programs": [],
+  "streams": [
+   {
+    "codec_name": "h264",
+    "profile": "High",
+    "codec_type": "video",
+    "width": 1080,
+    "height": 1920,
+    "display_aspect_ratio": "9:16",
+    "pix_fmt": "yuv420p",
+    "r_frame_rate": "30/1",
+    "nb_read_frames": "990"
+   },
+   {
+    "codec_name": "aac",
+    "profile": "LC",
+    "codec_type": "audio",
+    "sample_rate": "48000",
+    "channels": 2,
+    "r_frame_rate": "0/0",
+    "nb_read_frames": "1547"
+   }
+  ],
+  "format": {
+   "duration": "33.000000",
+   "size": "7435022",
+   "bit_rate": "1802429"
+  }
+ },
+ "loudness": {
+  "integrated_lufs": -16.1,
+  "lra_lu": 3.1,
+  "true_peak_dbtp": -2.1
+ },
+ "black_segments": [],
+ "frozen_segments": [
+  "[freezedetect @ 0x55764b3e6b80] lavfi.freezedetect.freeze_start: 0.133333",
+  "[freezedetect @ 0x55764b3e6b80] lavfi.freezedetect.freeze_duration: 1.36667",
+  "[freezedetect @ 0x55764b3e6b80] lavfi.freezedetect.freeze_start: 10.7667",
+  "[freezedetect @ 0x55764b3e6b80] lavfi.freezedetect.freeze_duration: 1.36667",
+  "[freezedetect @ 0x55764b3e6b80] lavfi.freezedetect.freeze_start: 27.4333",
+  "[freezedetect @ 0x55764b3e6b80] lavfi.freezedetect.freeze_duration: 1.2",
+  "[freezedetect @ 0x55764b3e6b80] lavfi.freezedetect.freeze_start: 30.8"
+ ],
+ "decode_errors": "",
+ "audio_sync_offset_ms": 0.0,
+ "frames": [
+  "output/QA_V4_ReducedMotion/frame_00-00.png",
+  "output/QA_V4_ReducedMotion/frame_01-20.png",
+  "output/QA_V4_ReducedMotion/frame_02-70.png",
+  "output/QA_V4_ReducedMotion/frame_03-60.png",
+  "output/QA_V4_ReducedMotion/frame_04-60.png",
+  "output/QA_V4_ReducedMotion/frame_05-80.png",
+  "output/QA_V4_ReducedMotion/frame_06-30.png",
+  "output/QA_V4_ReducedMotion/frame_07-10.png",
+  "output/QA_V4_ReducedMotion/frame_07-90.png",
+  "output/QA_V4_ReducedMotion/frame_09-90.png",
+  "output/QA_V4_ReducedMotion/frame_11-20.png",
+  "output/QA_V4_ReducedMotion/frame_13-30.png",
+  "output/QA_V4_ReducedMotion/frame_14-00.png",
+  "output/QA_V4_ReducedMotion/frame_14-27.png",
+  "output/QA_V4_ReducedMotion/frame_14-60.png",
+  "output/QA_V4_ReducedMotion/frame_15-90.png",
+  "output/QA_V4_ReducedMotion/frame_16-90.png",
+  "output/QA_V4_ReducedMotion/frame_17-60.png",
+  "output/QA_V4_ReducedMotion/frame_18-17.png",
+  "output/QA_V4_ReducedMotion/frame_18-23.png",
+  "output/QA_V4_ReducedMotion/frame_19-90.png",
+  "output/QA_V4_ReducedMotion/frame_21-20.png",
+  "output/QA_V4_ReducedMotion/frame_22-60.png",
+  "output/QA_V4_ReducedMotion/frame_24-40.png",
+  "output/QA_V4_ReducedMotion/frame_25-80.png",
+  "output/QA_V4_ReducedMotion/frame_27-30.png",
+  "output/QA_V4_ReducedMotion/frame_29-40.png",
+  "output/QA_V4_ReducedMotion/frame_30-10.png",
+  "output/QA_V4_ReducedMotion/frame_31-40.png",
+  "output/QA_V4_ReducedMotion/frame_32-95.png"
+ ]
+}

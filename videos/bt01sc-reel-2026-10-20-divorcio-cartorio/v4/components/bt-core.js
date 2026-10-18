@@ -101,7 +101,8 @@
       const last = shots[shots.length - 1];
       if (BT.R) {
         // movimento reduzido: um enquadramento fixo por trecho, trocado por corte
-        shots.forEach((sh) => BT.tl.set(worldSel, BT.SceneLayout.cam(sh.cx, sh.cy, sh.s), sh.t));
+        // os empurrões lentos de câmera (push) somem: fica o enquadramento anterior
+        shots.filter((sh) => !sh.push).forEach((sh) => BT.tl.set(worldSel, BT.SceneLayout.cam(sh.cx, sh.cy, sh.s), sh.t));
         return last;
       }
       BT.tl.set(worldSel, BT.SceneLayout.cam(first.cx, first.cy, first.s), first.t);

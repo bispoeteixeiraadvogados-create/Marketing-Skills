@@ -1,0 +1,42 @@
+{
+ "dot": {
+  "frames": 196,
+  "maxStepPx": 101,
+  "maxAt": 25.133,
+  "reversals": 0,
+  "isolatedJumps": []
+ },
+ "cameras": {
+  "#s04-world": {
+   "maxStepOutsideCuts": {
+    "step": 142.2,
+    "t": 7.533
+   },
+   "intendedCuts": [
+    {
+     "t": 6,
+     "step": 743.4
+    }
+   ]
+  },
+  "#s05-world": {
+   "maxStepOutsideCuts": {
+    "step": 295.3,
+    "t": 12.3
+   },
+   "intendedCuts": []
+  },
+  "#s07-world": {
+   "maxStepOutsideCuts": {
+    "step": 84.3,
+    "t": 17.767
+   },
+   "intendedCuts": [
+    {
+     "t": 17.3,
+     "step": 1476.8
+    }
+   ]
+  }
+ }
+}

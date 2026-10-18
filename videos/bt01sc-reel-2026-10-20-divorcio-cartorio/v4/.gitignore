@@ -1,0 +1,4 @@
+# fonte 4K do Mixkit (65 MB): baixar de https://assets.mixkit.co/videos/241/241-2160.mp4 (ver MANIFESTO_ASSETS.md)
+assets/footage/source/*.mp4
+.hyperframes/
+output/render_v4.log

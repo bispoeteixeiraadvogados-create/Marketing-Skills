@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cena 07: assinatura institucional</title>
+  </head>
+  <body>
+    <template id="assinatura-template">
+      <div data-composition-id="assinatura" data-width="1080" data-height="1920" data-duration="3.5">
+        <style>
+          @font-face {
+            font-family: "Montserrat";
+            src: url("../assets/fonts/Montserrat-latin.woff2") format("woff2");
+            font-weight: 100 900;
+            font-style: normal;
+          }
+          [data-composition-id="assinatura"] {
+            position: absolute;
+            inset: 0;
+          }
+          #s7-ground {
+            position: absolute;
+            inset: 0;
+            background-color: #081a35;
+            background-image: url("../assets/textures/mesa_grao.png");
+            background-size: 512px 512px;
+            background-blend-mode: overlay;
+          }
+          #s7-pool {
+            position: absolute;
+            left: -260px;
+            top: 260px;
+            width: 1600px;
+            height: 1300px;
+            border-radius: 50%;
+            background: radial-gradient(closest-side, rgba(11, 31, 75, 0.95), rgba(11, 31, 75, 0) 100%);
+          }
+          /* official logo file, untouched: 391 x 193 raster shown at 440 x 217 (same aspect ratio) */
+          #logo {
+            position: absolute;
+            left: 320px;
+            top: 735px;
+            width: 440px;
+            height: 217px;
+          }
+          #s7-rule {
+            position: absolute;
+            left: 470px;
+            top: 1030px;
+            width: 140px;
+            height: 3px;
+            background: #d4af7c;
+          }
+          #s7-sub {
+            position: absolute;
+            left: 90px;
+            top: 1068px;
+            width: 900px;
+            text-align: center;
+            font-family: "Montserrat", Arial, sans-serif;
+            font-weight: 500;
+            font-size: 36px;
+            color: #f4ede2;
+          }
+        </style>
+
+        <div id="s7-ground">
+          <div id="s7-pool"></div>
+          <img id="logo" src="../assets/brand/logo_bt_branco_transparente_391x193.png" alt="Bispo &amp; Teixeira Advogados" />
+          <div id="s7-rule"></div>
+          <div id="s7-sub">Informação jurídica com responsabilidade.</div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            // Local time: 0 = 38.5 s on the reel. The desk light dims into Midnight, then the signature.
+            const tl = gsap.timeline({ paused: true });
+            tl.fromTo("#s7-ground", { opacity: 0 }, { opacity: 1, duration: 0.75, ease: "sine.inOut" }, 0);
+            tl.fromTo("#logo", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 0.65);
+            tl.fromTo("#s7-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 1.1);
+            tl.fromTo("#s7-sub", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.35);
+            window.__timelines["assinatura"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

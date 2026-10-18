@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cena 05: textos do divórcio em cartório</title>
+  </head>
+  <body>
+    <template id="escritura-textos-template">
+      <div data-composition-id="escritura-textos" data-width="1080" data-height="1920" data-duration="9.2">
+        <style>
+          @font-face {
+            font-family: "Montserrat";
+            src: url("../assets/fonts/Montserrat-latin.woff2") format("woff2");
+            font-weight: 100 900;
+            font-style: normal;
+          }
+          [data-composition-id="escritura-textos"] {
+            position: absolute;
+            inset: 0;
+            font-family: "Montserrat", Arial, sans-serif;
+          }
+          #s5-block {
+            position: absolute;
+            left: 90px;
+            top: 290px;
+            width: 900px;
+          }
+          #s5-tag {
+            font-weight: 700;
+            font-size: 52px;
+            letter-spacing: 0.08em;
+            color: #faf8f4;
+          }
+          #s5-rule {
+            width: 130px;
+            height: 3px;
+            margin: 22px 0 26px;
+            background: #d4af7c;
+          }
+          #s5-sub {
+            font-weight: 500;
+            font-size: 40px;
+            line-height: 1.3;
+            color: #f4ede2;
+          }
+          #s5-sub .line {
+            display: block;
+          }
+        </style>
+
+        <div id="s5-block">
+          <div id="s5-tag">CONSENSO DO CASAL</div>
+          <div id="s5-rule"></div>
+          <div id="s5-sub"><span class="line">Assistência de advogado</span><span class="line">ou defensor público.</span></div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            // Local time: 0 = 22.0 s on the reel.
+            const tl = gsap.timeline({ paused: true });
+            tl.fromTo("#s5-tag", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.75);
+            tl.fromTo("#s5-rule", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.0);
+            tl.fromTo("#s5-sub", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 4.45);
+            tl.fromTo("#s5-block", { opacity: 1, y: 0 }, { opacity: 0, y: -30, duration: 0.45, ease: "power2.in" }, 8.55);
+            window.__timelines["escritura-textos"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

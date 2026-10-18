@@ -1,0 +1,9 @@
+REEL BT.01.SC DE 20/10/2026. MATERIAL ADICIONAL PARA CLAUDE CODE
+
+01 Narração integral em TXT, texto aprovado para ElevenLabs.
+02 Legendas SRT com tempos ESTIMADOS de acordo com storyboard.
+03 Logotipo branco em PNG transparente, raster de referência.
+04 Logotipo de referência original em JPG.
+00 Instruções adicionais para Claude Code com links das fotos opcionais e geração de SRT FINAL.
+
+ATENÇÃO: Sem o áudio sintetizado não existe sincronização definitiva. O .srt deste ZIP é um GUIA e deve ser atualizado após a geração da narração. Não criar arquivo .str, extensão correta de legendas SubRip é .srt.

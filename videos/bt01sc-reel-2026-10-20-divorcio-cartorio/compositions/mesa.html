@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mesa: cenas 01-06 (espaço físico único e câmera)</title>
+  </head>
+  <body>
+    <template id="mesa-template">
+      <div data-composition-id="mesa" data-width="1080" data-height="1920" data-duration="39.6">
+        <style>
+          @font-face {
+            font-family: "Cormorant Garamond";
+            src: url("../assets/fonts/CormorantGaramond-latin.woff2") format("woff2");
+            font-weight: 300 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "Montserrat";
+            src: url("../assets/fonts/Montserrat-latin.woff2") format("woff2");
+            font-weight: 100 900;
+            font-style: normal;
+          }
+          [data-composition-id="mesa"] {
+            /* BT.01.SC tokens */
+            --midnight: #081a35;
+            --navy: #0b1f4b;
+            --sand: #f4ede2;
+            --paper: #faf8f4;
+            --gold: #d4af7c;
+            --blue: #214d8c;
+            --ink: #0b1f4b;
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Montserrat", Arial, sans-serif;
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            background: var(--midnight);
+          }
+          #world {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2160px;
+            height: 3840px;
+          }
+          #world .desk {
+            position: absolute;
+            left: -2000px;
+            top: -2000px;
+            width: 6160px;
+            height: 7840px;
+            background-color: var(--midnight);
+            background-image: url("../assets/textures/mesa_grao.png");
+            background-size: 512px 512px;
+            background-blend-mode: overlay;
+          }
+          #world .pool {
+            position: absolute;
+            border-radius: 50%;
+          }
+          #pool-q {
+            left: -100px;
+            top: -250px;
+            width: 2000px;
+            height: 1900px;
+            background: radial-gradient(closest-side, rgba(244, 237, 226, 0.13), rgba(244, 237, 226, 0.05) 55%, rgba(244, 237, 226, 0) 100%);
+          }
+          #pool-f {
+            left: -500px;
+            top: 1500px;
+            width: 2100px;
+            height: 2000px;
+            background: radial-gradient(closest-side, rgba(143, 197, 239, 0.1), rgba(33, 77, 140, 0.08) 50%, rgba(11, 31, 75, 0) 100%);
+          }
+          #pool-e {
+            left: 850px;
+            top: 1500px;
+            width: 1900px;
+            height: 1900px;
+            background: radial-gradient(closest-side, rgba(244, 237, 226, 0.12), rgba(244, 237, 226, 0.04) 55%, rgba(244, 237, 226, 0) 100%);
+          }
+
+          /* ---------- paper: face + fiber + lateral light + thickness + contact shadow ---------- */
+          #world .sheet {
+            position: absolute;
+          }
+          #world .lift {
+            position: absolute;
+            inset: 0;
+            border-radius: 3px;
+            box-shadow: 0 70px 110px -16px rgba(2, 8, 20, 0.62);
+            opacity: 0;
+          }
+          #world .face {
+            position: absolute;
+            inset: 0;
+            border-radius: 3px;
+            overflow: hidden;
+            background-color: var(--sand);
+            box-shadow:
+              0 1px 0 #e6dccb,
+              0 2px 0 #d5c9b4,
+              0 3px 0 #bdb09a,
+              0 4px 7px rgba(2, 8, 20, 0.45),
+              0 26px 46px -14px rgba(2, 8, 20, 0.55);
+          }
+          #world .face.paper {
+            background-color: var(--paper);
+            box-shadow:
+              0 1px 0 #ece8e0,
+              0 2px 0 #dcd6cb,
+              0 3px 0 #c6bfb2,
+              0 4px 7px rgba(2, 8, 20, 0.45),
+              0 26px 46px -14px rgba(2, 8, 20, 0.55);
+          }
+          #world .face::before,
+          #world .face::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+          }
+          #world .face::after {
+            background-image: url("../assets/textures/paper_fibra.png");
+            background-size: 512px 512px;
+            mix-blend-mode: multiply;
+            opacity: 0.7;
+          }
+          #world .face::before {
+            background: linear-gradient(100deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 45%, rgba(8, 26, 53, 0.07));
+            z-index: 1;
+          }
+          #world .face > * {
+            position: relative;
+            z-index: 2;
+          }
+          #world .q-title {
+            font-family: var(--serif);
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 0.98;
+            letter-spacing: 0.005em;
+          }
+          #world .q-title .line {
+            display: block;
+            white-space: nowrap;
+          }
+          #world .rule {
+            display: block;
+            height: 3px;
+            background: var(--gold);
+          }
+          #world .lines {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+          }
+          #world .lines i {
+            display: block;
+            height: 10px;
+            border-radius: 5px;
+            background: rgba(11, 31, 75, 0.13);
+          }
+
+          /* scenes 01 / 02 */
+          #q1 {
+            left: 640px;
+            top: 260px;
+            width: 880px;
+            height: 880px;
+          }
+          #q1 .face {
+            padding: 104px 92px 0;
+          }
+          #q1 .q-title {
+            font-size: 132px;
+          }
+          #q1 .rule {
+            width: 132px;
+            margin: 52px 0 46px;
+          }
+          #q2 {
+            left: 690px;
+            top: 870px;
+            width: 840px;
+            height: 330px;
+          }
+          #q2 .face {
+            padding: 58px 70px 0;
+          }
+          #q2 .q-title {
+            font-size: 90px;
+          }
+          #sim {
+            left: 630px;
+            top: 350px;
+            width: 900px;
+            height: 900px;
+          }
+          #sim .face {
+            padding: 120px 96px 0;
+          }
+          #sim .q-title {
+            font-size: 260px;
+            line-height: 0.9;
+          }
+          #sim .rule {
+            width: 150px;
+            margin: 56px 0 0;
+          }
+          #slip {
+            left: 700px;
+            top: 920px;
+            width: 780px;
+            height: 132px;
+          }
+          #slip .face {
+            background-color: var(--navy);
+            box-shadow:
+              0 2px 0 #06142f,
+              0 4px 8px rgba(2, 8, 20, 0.5),
+              0 22px 40px -14px rgba(2, 8, 20, 0.6);
+            display: flex;
+            align-items: center;
+            padding: 0 56px;
+          }
+          #slip .face::after {
+            mix-blend-mode: overlay;
+            opacity: 0.35;
+          }
+          #slip .label {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 60px;
+            letter-spacing: 0.05em;
+            color: var(--paper);
+            white-space: nowrap;
+          }
+
+          /* ---------- folder (Justiça) ---------- */
+          #folder {
+            left: 180px;
+            top: 1960px;
+            width: 800px;
+            height: 1080px;
+            perspective: 2600px;
+            perspective-origin: 50% 50%;
+          }
+          #world .card {
+            position: absolute;
+            inset: 0;
+            border-radius: 6px;
+            background-color: var(--blue);
+            background-image: url("../assets/textures/cartao_fibra.png");
+            background-size: 512px 512px;
+            background-blend-mode: multiply;
+          }
+          #folder-back {
+            box-shadow:
+              0 2px 0 #183a6b,
+              0 5px 0 #133056,
+              0 7px 10px rgba(2, 8, 20, 0.5),
+              0 34px 60px -16px rgba(2, 8, 20, 0.6);
+          }
+          #folder-tab {
+            position: absolute;
+            right: 70px;
+            top: -46px;
+            width: 250px;
+            height: 60px;
+            border-radius: 12px 12px 0 0;
+            background-color: var(--blue);
+            background-image: url("../assets/textures/cartao_fibra.png");
+            background-blend-mode: multiply;
+          }
+          #world .fsheet {
+            width: 700px;
+            height: 760px;
+            left: 50px;
+          }
+          #world .fsheet .face {
+            padding: 34px 48px 0;
+          }
+          #world .fsheet .label {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 48px;
+            letter-spacing: 0.08em;
+            color: var(--ink);
+          }
+          #world .fsheet .lines {
+            margin-top: 40px;
+          }
+          #fs1 {
+            top: 40px;
+          }
+          #fs2 {
+            top: 160px;
+          }
+          #fs3 {
+            top: 280px;
+          }
+          #fs1 .face {
+            border-top: 10px solid rgba(11, 31, 75, 0.85);
+          }
+          #fs2 .grid {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+          }
+          #fs2 .grid i {
+            display: block;
+            height: 54px;
+            border: 2px solid rgba(11, 31, 75, 0.18);
+            border-radius: 4px;
+          }
+          #fs3 .cols {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+          }
+          #band {
+            position: absolute;
+            left: -50px;
+            top: 590px;
+            width: 900px;
+            height: 124px;
+            background-color: var(--navy);
+            box-shadow:
+              0 3px 0 #06142f,
+              0 8px 14px rgba(2, 8, 20, 0.45),
+              0 30px 50px -18px rgba(2, 8, 20, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #band::before,
+          #band::after {
+            content: "";
+            position: absolute;
+            left: 22px;
+            right: 22px;
+            height: 2px;
+            background: var(--gold);
+          }
+          #band::before {
+            top: 14px;
+          }
+          #band::after {
+            bottom: 14px;
+          }
+          #band span {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 46px;
+            letter-spacing: 0.07em;
+            color: var(--paper);
+            white-space: nowrap;
+          }
+          #cover {
+            position: absolute;
+            inset: 0;
+            transform-origin: 0% 50%;
+            transform-style: preserve-3d;
+          }
+          #world .cover-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+          }
+          #cover-out {
+            box-shadow: 0 2px 0 #183a6b;
+          }
+          #cover-out::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 26px;
+            background: linear-gradient(90deg, rgba(8, 26, 53, 0.35), rgba(8, 26, 53, 0));
+          }
+          #cover-in {
+            transform: rotateY(180deg);
+            background-color: #2a5796;
+          }
+          #cover-in::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(8, 26, 53, 0.25), rgba(8, 26, 53, 0) 30%);
+          }
+
+          /* ---------- escritura (Cartório) ---------- */
+          #escritura {
+            left: 1240px;
+            top: 2000px;
+            width: 700px;
+            height: 960px;
+          }
+          #escritura .face {
+            padding: 70px 72px 0;
+            text-align: center;
+          }
+          #escritura .frame {
+            position: absolute;
+            inset: 26px;
+            border: 2px solid rgba(11, 31, 75, 0.55);
+            outline: 1px solid rgba(11, 31, 75, 0.3);
+            outline-offset: 7px;
+            z-index: 2;
+          }
+          #escritura .q-title {
+            font-size: 92px;
+            line-height: 0.96;
+            margin-top: 36px;
+          }
+          #escritura .rule {
+            width: 110px;
+            margin: 36px auto 46px;
+          }
+          #escritura .lines {
+            gap: 20px;
+            padding: 0 16px;
+          }
+          #escritura .lines.second {
+            margin-top: 46px;
+          }
+          #mesa-vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(130% 95% at 42% 42%, rgba(3, 10, 24, 0) 52%, rgba(3, 10, 24, 0.5) 100%);
+          }
+        </style>
+
+        <div id="world" data-layout-allow-overflow>
+          <div class="desk" data-layout-allow-overflow></div>
+          <div class="pool" id="pool-q" data-layout-allow-overflow></div>
+          <div class="pool" id="pool-f" data-layout-allow-overflow></div>
+          <div class="pool" id="pool-e" data-layout-allow-overflow></div>
+
+          <!-- Justiça: the folder that receives the three children's questions -->
+          <div class="sheet" id="folder" data-layout-allow-overflow>
+            <div id="folder-tab" data-layout-allow-overflow></div>
+            <div class="card" id="folder-back"></div>
+            <div class="sheet fsheet" id="fs1" data-layout-allow-overflow>
+              <div class="lift"></div>
+              <div class="face">
+                <div class="label">GUARDA</div>
+                <div class="lines"><i style="width: 92%"></i><i style="width: 84%"></i><i style="width: 88%"></i><i style="width: 60%"></i><i style="width: 90%"></i><i style="width: 74%"></i></div>
+              </div>
+            </div>
+            <div class="sheet fsheet" id="fs2" data-layout-allow-overflow>
+              <div class="lift"></div>
+              <div class="face">
+                <div class="label">CONVIVÊNCIA</div>
+                <div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <div class="sheet fsheet" id="fs3" data-layout-allow-overflow>
+              <div class="lift"></div>
+              <div class="face">
+                <div class="label">ALIMENTOS</div>
+                <div class="cols">
+                  <div class="lines"><i style="width: 90%"></i><i style="width: 70%"></i><i style="width: 84%"></i><i style="width: 56%"></i><i style="width: 88%"></i><i style="width: 66%"></i><i style="width: 80%"></i></div>
+                  <div class="lines"><i style="width: 64%"></i><i style="width: 88%"></i><i style="width: 72%"></i><i style="width: 90%"></i><i style="width: 58%"></i><i style="width: 82%"></i><i style="width: 70%"></i></div>
+                </div>
+              </div>
+            </div>
+            <div id="band" data-layout-allow-overflow><span>RESOLVIDOS NA JUSTIÇA</span></div>
+            <div id="cover" data-layout-allow-overflow>
+              <div class="card cover-face" id="cover-out"></div>
+              <div class="card cover-face" id="cover-in"></div>
+            </div>
+          </div>
+
+          <!-- Cartório: escritura pública -->
+          <div class="sheet" id="escritura" data-layout-allow-overflow>
+            <div class="lift"></div>
+            <div class="face paper">
+              <div class="frame"></div>
+              <div class="q-title">ESCRITURA PÚBLICA</div>
+              <span class="rule"></span>
+              <div class="lines"><i style="width: 100%"></i><i style="width: 94%"></i><i style="width: 98%"></i><i style="width: 90%"></i><i style="width: 96%"></i><i style="width: 70%"></i></div>
+              <div class="lines second"><i style="width: 100%"></i><i style="width: 92%"></i><i style="width: 97%"></i><i style="width: 62%"></i></div>
+            </div>
+          </div>
+
+          <!-- Scenes 01-02: the questions and the answer, lifted away together -->
+          <div id="qgroup" data-layout-allow-overflow>
+            <div class="sheet" id="q1" data-layout-allow-overflow data-layout-allow-overlap>
+              <div class="lift"></div>
+              <div class="face">
+                <div class="q-title"><span class="line">FILHOS</span><span class="line">MENORES?</span></div>
+                <span class="rule"></span>
+                <div class="lines"><i style="width: 70%"></i><i style="width: 52%"></i></div>
+              </div>
+            </div>
+            <div class="sheet" id="q2" data-layout-allow-overflow data-layout-allow-overlap>
+              <div class="lift"></div>
+              <div class="face paper">
+                <div class="q-title"><span class="line">DIVÓRCIO EM</span><span class="line">CARTÓRIO?</span></div>
+              </div>
+            </div>
+            <div class="sheet" id="sim" data-layout-allow-overflow>
+              <div class="lift"></div>
+              <div class="face">
+                <div class="q-title">SIM,</div>
+                <span class="rule"></span>
+              </div>
+            </div>
+            <div class="sheet" id="slip" data-layout-allow-overflow>
+              <div class="lift"></div>
+              <div class="face"><span class="label">EM ALGUNS CASOS.</span></div>
+            </div>
+          </div>
+        </div>
+        <div id="mesa-vignette"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            const tl = gsap.timeline({ paused: true });
+
+            // Camera: world point (cx, cy) at the frame centre, scale s. GSAP composes
+            // translate then scale with origin 0 0, so screen = s * world + (x, y).
+            const cam = (cx, cy, s) => ({ x: 540 - s * cx, y: 960 - s * cy, scale: s });
+            const shot = (t, d, from, to, ease) =>
+              tl.fromTo("#world", { ...from, transformOrigin: "0 0" }, { ...to, duration: d, ease, immediateRender: t === 0 }, t);
+            const C = {
+              open: cam(1180, 760, 1.1),
+              follow: cam(1110, 800, 1.06),
+              tilt: cam(1090, 880, 1.02),
+              settle: cam(1085, 885, 1.0),
+              simPush: cam(1080, 850, 1.07),
+              folderIn: cam(790, 2595, 0.88),
+              folderDrift: cam(750, 2595, 0.88),
+              track: cam(610, 2595, 0.88),
+              trackHold: cam(595, 2600, 0.9),
+              coverPush: cam(560, 2500, 2.15),
+              coverDrift: cam(590, 2520, 2.05),
+              medium: cam(1150, 2490, 0.74),
+              open5: cam(1240, 2490, 0.68),
+              open5b: cam(1226, 2490, 0.665),
+              wide: cam(1080, 2490, 0.5),
+              wideHold: cam(1080, 2492, 0.49),
+            };
+            // Contiguous moves from 0 to 39.6 s, so every seek lands on an authored state.
+            shot(0, 1.0, C.open, C.follow, "power2.out"); // close, following the first sheet
+            shot(1.0, 1.2, C.follow, C.tilt, "sine.inOut");
+            shot(2.2, 1.1, C.tilt, C.settle, "sine.out");
+            shot(3.3, 2.7, C.settle, C.simPush, "sine.inOut"); // S2 push-in
+            shot(6.0, 1.0, C.simPush, C.folderIn, "power3.inOut"); // paper edge reveals the folder
+            shot(7.0, 2.2, C.folderIn, C.folderDrift, "sine.inOut");
+            shot(9.2, 2.2, C.folderDrift, C.track, "power1.inOut"); // lateral tracking with the sheets
+            shot(11.4, 3.05, C.track, C.trackHold, "sine.inOut");
+            shot(14.45, 0.9, C.trackHold, C.coverPush, "power2.inOut"); // the cover becomes the frame
+            shot(15.35, 6.2, C.coverPush, C.coverDrift, "sine.inOut");
+            shot(21.55, 1.2, C.coverDrift, C.medium, "power3.inOut"); // pull back: folder settles left
+            shot(22.75, 3.25, C.medium, C.open5, "power2.inOut"); // field of view opens for the escritura
+            shot(26.0, 4.8, C.open5, C.open5b, "sine.inOut");
+            shot(30.8, 3.4, C.open5b, C.wide, "power2.inOut"); // dolly-out: the synthesis
+            shot(34.2, 5.4, C.wide, C.wideHold, "sine.out");
+
+            // Paper: slides in with friction (decelerating, small settle) and a lifted shadow while moving.
+            function slideIn(sel, t, d, from, to) {
+              tl.fromTo(sel, from, { ...to, duration: d, ease: "power3.out" }, t);
+              tl.fromTo(`${sel} > .lift`, { opacity: 0.85 }, { opacity: 0, duration: d * 0.9, ease: "power2.in" }, t);
+            }
+            // Text that a sheet physically covers is switched off once covered (identical pixels).
+            const hideCovered = (sel, t) => tl.fromTo(sel, { opacity: 1 }, { opacity: 0, duration: 0.01, immediateRender: false }, t);
+
+            // S1 · 0.0-3.5 · the questions
+            slideIn("#q1", 0, 0.58, { x: 560, y: -30, rotation: 6.5, filter: "blur(3px)" }, { x: 0, y: 0, rotation: -1.2, filter: "blur(0px)" });
+            slideIn("#q2", 0.92, 0.5, { x: 40, y: 980, rotation: -5 }, { x: 0, y: 0, rotation: 1.1 });
+            tl.fromTo("#q1", { y: 0 }, { y: -10, duration: 0.3, ease: "power2.out", immediateRender: false }, 1.3); // contact nudge
+
+            // S2 · 3.5-6.2 · the answer
+            slideIn("#sim", 3.22, 0.54, { x: -1320, y: 40, rotation: -7 }, { x: 0, y: 0, rotation: 0.8 });
+            hideCovered("#q1 .q-title, #q2 .q-title", 3.8);
+            slideIn("#slip", 4.12, 0.42, { x: 1050, y: 30, rotation: 4 }, { x: 0, y: 0, rotation: -1.4 });
+            // S2 -> S3: the papers are lifted away together; their edge wipes the frame open
+            tl.fromTo("#qgroup", { y: 0, rotation: 0 }, { y: -1700, rotation: -2.5, duration: 0.95, ease: "power3.in" }, 5.95);
+            tl.fromTo("#sim > .lift", { opacity: 0 }, { opacity: 0.9, duration: 0.4, ease: "power1.out", immediateRender: false }, 5.95);
+            tl.fromTo("#pool-q", { opacity: 1 }, { opacity: 0.35, duration: 1.2, ease: "sine.inOut" }, 6.0);
+
+            // S3 · 6.2-15.0 · guarda, convivência, alimentos
+            tl.fromTo("#cover", { rotationY: -180, transformOrigin: "0% 50%" }, { rotationY: -180, duration: 0.01 }, 0);
+            const fan = [
+              { id: "#fs1", t: 9.2, x: -22, y: 6, r: -3.4 },
+              { id: "#fs2", t: 9.8, x: 26, y: 4, r: 2.6 },
+              { id: "#fs3", t: 10.6, x: -12, y: 8, r: -1.5 },
+            ];
+            fan.forEach((s, i) => {
+              slideIn(s.id, s.t, 0.52, { x: 1500, y: -70 + i * 20, rotation: 9 }, { x: s.x, y: s.y, rotation: s.r });
+              // the fan tightens: sheets squared to the folder's edge
+              tl.fromTo(s.id, { x: s.x, y: s.y, rotation: s.r }, { x: 0, y: 0, rotation: [-0.5, 0.3, -0.2][i], duration: 0.75, ease: "power2.inOut", immediateRender: false }, 11.55 + i * 0.06);
+            });
+            tl.fromTo("#band", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 12.85);
+            tl.fromTo("#band span", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 13.0);
+            // the folder closes partially; its surface becomes the next frame
+            tl.fromTo("#cover", { rotationY: -180 }, { rotationY: -16, duration: 0.8, ease: "power2.inOut", immediateRender: false }, 14.05);
+            hideCovered("#fs1 .label, #fs2 .label, #fs3 .label, #band span", 14.9);
+
+            // S5 · the folder closes and stays organized on the left; the escritura arrives from the right
+            tl.fromTo("#cover", { rotationY: -16 }, { rotationY: 0, duration: 0.55, ease: "power2.in", immediateRender: false }, 22.0);
+            slideIn("#escritura", 24.45, 0.85, { x: 1300, y: -40, rotation: 7 }, { x: 0, y: 0, rotation: 1.2 });
+            tl.fromTo("#pool-e", { opacity: 0.35 }, { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 24.6);
+            tl.fromTo("#folder", { filter: "blur(0px)" }, { filter: "blur(3px)", duration: 0.8, ease: "sine.inOut" }, 24.8); // focus moves to the notarial step
+
+            // S6 · both steps in focus for the synthesis
+            tl.fromTo("#folder", { filter: "blur(3px)" }, { filter: "blur(0px)", duration: 0.8, ease: "sine.inOut", immediateRender: false }, 31.0);
+
+            window.__timelines["mesa"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

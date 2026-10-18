@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cena 04: o cuidado necessário (sobre a capa da pasta)</title>
+  </head>
+  <body>
+    <template id="ressalva-template">
+      <div data-composition-id="ressalva" data-width="1080" data-height="1920" data-duration="7.4">
+        <style>
+          @font-face {
+            font-family: "Cormorant Garamond";
+            src: url("../assets/fonts/CormorantGaramond-latin.woff2") format("woff2");
+            font-weight: 300 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "Cormorant Garamond";
+            src: url("../assets/fonts/CormorantGaramond-Italic-latin.woff2") format("woff2");
+            font-weight: 300 700;
+            font-style: italic;
+          }
+          @font-face {
+            font-family: "Montserrat";
+            src: url("../assets/fonts/Montserrat-latin.woff2") format("woff2");
+            font-weight: 100 900;
+            font-style: normal;
+          }
+          [data-composition-id="ressalva"] {
+            position: absolute;
+            inset: 0;
+          }
+          #s4-head {
+            position: absolute;
+            left: 90px;
+            top: 250px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 600;
+            font-size: 112px;
+            line-height: 0.98;
+            color: #faf8f4;
+          }
+          #s4-head .mask {
+            display: block;
+            overflow: hidden;
+            padding-top: 0.08em;
+          }
+          #s4-head .mask > span {
+            display: block;
+          }
+          #acordo,
+          #resolucao {
+            position: absolute;
+          }
+          #acordo {
+            left: 330px;
+            top: 660px;
+            width: 600px;
+            height: 700px;
+          }
+          #resolucao {
+            left: 110px;
+            top: 760px;
+            width: 860px;
+            height: 500px;
+          }
+          [data-composition-id="ressalva"] .lift {
+            position: absolute;
+            inset: 0;
+            border-radius: 3px;
+            box-shadow: 0 70px 110px -16px rgba(2, 8, 20, 0.62);
+            opacity: 0;
+          }
+          [data-composition-id="ressalva"] .face {
+            position: absolute;
+            inset: 0;
+            border-radius: 3px;
+            overflow: hidden;
+            background-color: #f4ede2;
+            box-shadow:
+              0 1px 0 #e6dccb,
+              0 2px 0 #d5c9b4,
+              0 3px 0 #bdb09a,
+              0 4px 7px rgba(2, 8, 20, 0.45),
+              0 26px 46px -14px rgba(2, 8, 20, 0.55);
+          }
+          [data-composition-id="ressalva"] .face.paper {
+            background-color: #faf8f4;
+          }
+          [data-composition-id="ressalva"] .face::before,
+          [data-composition-id="ressalva"] .face::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+          }
+          [data-composition-id="ressalva"] .face::after {
+            background-image: url("../assets/textures/paper_fibra.png");
+            background-size: 512px 512px;
+            mix-blend-mode: multiply;
+            opacity: 0.7;
+          }
+          [data-composition-id="ressalva"] .face::before {
+            background: linear-gradient(100deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 45%, rgba(8, 26, 53, 0.07));
+            z-index: 1;
+          }
+          [data-composition-id="ressalva"] .face > * {
+            position: relative;
+            z-index: 2;
+          }
+          #acordo .face {
+            padding: 70px 62px 0;
+          }
+          #acordo .label {
+            font-family: "Montserrat", Arial, sans-serif;
+            font-weight: 700;
+            font-size: 44px;
+            letter-spacing: 0.07em;
+            line-height: 1.15;
+            color: #0b1f4b;
+          }
+          #acordo .lines {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+          }
+          #acordo .lines i {
+            display: block;
+            height: 10px;
+            border-radius: 5px;
+            background: rgba(11, 31, 75, 0.13);
+          }
+          #resolucao .face {
+            padding: 76px 78px 0;
+          }
+          #resolucao .rule {
+            display: block;
+            width: 140px;
+            height: 3px;
+            margin-bottom: 44px;
+            background: #d4af7c;
+          }
+          #resolucao p {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 74px;
+            line-height: 1.08;
+            color: #0b1f4b;
+          }
+        </style>
+
+        <div id="s4-head">
+          <span class="mask"><span>ACORDO</span></span>
+          <span class="mask"><span>PARTICULAR</span></span>
+          <span class="mask"><span>NÃO BASTA.</span></span>
+        </div>
+        <!-- conceptual private agreement: generic, no names, signatures or seals -->
+        <div id="acordo" data-layout-allow-overlap data-layout-allow-overflow>
+          <div class="lift"></div>
+          <div class="face">
+            <div class="label">ACORDO PARTICULAR</div>
+            <div class="lines"><i style="width: 96%"></i><i style="width: 88%"></i><i style="width: 92%"></i><i style="width: 70%"></i><i style="width: 94%"></i><i style="width: 84%"></i><i style="width: 58%"></i></div>
+          </div>
+        </div>
+        <!-- editorial typography for the judicial resolution: not a simulated court document -->
+        <div id="resolucao" data-layout-allow-overflow>
+          <div class="lift"></div>
+          <div class="face paper">
+            <span class="rule"></span>
+            <p>É necessária a comprovação da resolução judicial.</p>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            // Local time: 0 = 15.0 s on the reel.
+            const tl = gsap.timeline({ paused: true });
+            tl.fromTo("#acordo", { x: 700, y: 520, rotation: 11 }, { x: 0, y: 0, rotation: 2, duration: 0.5, ease: "power3.out" }, 0);
+            tl.fromTo("#acordo > .lift", { opacity: 0.85 }, { opacity: 0, duration: 0.45, ease: "power2.in" }, 0);
+            tl.fromTo("#s4-head .mask > span", { yPercent: 108 }, { yPercent: 0, duration: 0.55, ease: "power3.out", stagger: 0.14 }, 0.55);
+            // the private agreement is pushed out of focus
+            tl.fromTo(
+              "#acordo",
+              { x: 0, y: 0, rotation: 2, scale: 1, filter: "blur(0px)", opacity: 1 },
+              { x: -400, y: 140, rotation: -9, scale: 0.8, filter: "blur(10px)", opacity: 0.4, duration: 0.95, ease: "power2.inOut", immediateRender: false },
+              1.55,
+            );
+            tl.fromTo("#acordo", { opacity: 0.4 }, { opacity: 0, duration: 0.7, ease: "power1.in", immediateRender: false }, 2.6);
+            // in its place: the judicial resolution, as typography
+            tl.fromTo("#resolucao", { x: 1000, y: 60, rotation: 5 }, { x: 0, y: 0, rotation: -0.8, duration: 0.6, ease: "power3.out" }, 2.25);
+            tl.fromTo("#resolucao > .lift", { opacity: 0.85 }, { opacity: 0, duration: 0.54, ease: "power2.in" }, 2.25);
+            // the gesture of moving the paper away leads the camera to the escritura
+            tl.fromTo("#resolucao", { x: 0, rotation: -0.8 }, { x: -1200, rotation: -4, duration: 0.75, ease: "power2.in", immediateRender: false }, 6.55);
+            tl.fromTo("#s4-head", { x: 0, opacity: 1 }, { x: -260, opacity: 0, duration: 0.6, ease: "power2.in" }, 6.6);
+            window.__timelines["ressalva"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

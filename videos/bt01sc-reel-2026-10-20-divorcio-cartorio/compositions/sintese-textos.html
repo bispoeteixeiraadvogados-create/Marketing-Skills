@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cena 06: síntese Justiça / Cartório</title>
+  </head>
+  <body>
+    <template id="sintese-textos-template">
+      <div data-composition-id="sintese-textos" data-width="1080" data-height="1920" data-duration="8.6">
+        <style>
+          @font-face {
+            font-family: "Cormorant Garamond";
+            src: url("../assets/fonts/CormorantGaramond-latin.woff2") format("woff2");
+            font-weight: 300 700;
+            font-style: normal;
+          }
+          @font-face {
+            font-family: "Montserrat";
+            src: url("../assets/fonts/Montserrat-latin.woff2") format("woff2");
+            font-weight: 100 900;
+            font-style: normal;
+          }
+          [data-composition-id="sintese-textos"] {
+            position: absolute;
+            inset: 0;
+          }
+          /* zones are centred over the folder (screen x 290) and the escritura (screen x 795) in the wide shot */
+          #zone-j,
+          #zone-c {
+            position: absolute;
+            top: 470px;
+            width: 470px;
+            text-align: center;
+          }
+          #zone-j {
+            left: 55px;
+          }
+          #zone-c {
+            left: 560px;
+          }
+          #zone-j .name,
+          #zone-c .name {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 600;
+            font-size: 80px;
+            line-height: 1;
+            color: #faf8f4;
+          }
+          #zone-j .what,
+          #zone-c .what {
+            margin-top: 18px;
+            font-family: "Montserrat", Arial, sans-serif;
+            font-weight: 500;
+            font-size: 34px;
+            color: #f4ede2;
+          }
+          #link {
+            position: absolute;
+            left: 500px;
+            top: 963px;
+            width: 110px;
+            height: 3px;
+            background: #d4af7c;
+          }
+          #dot-a,
+          #dot-b {
+            position: absolute;
+            top: 957px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #d4af7c;
+          }
+          #dot-a {
+            left: 493px;
+          }
+          #dot-b {
+            left: 602px;
+          }
+        </style>
+
+        <div id="zone-j">
+          <div class="name">JUSTIÇA</div>
+          <div class="what">Questões dos filhos.</div>
+        </div>
+        <div id="zone-c">
+          <div class="name">CARTÓRIO</div>
+          <div class="what">Divórcio consensual.</div>
+        </div>
+        <div id="link"></div>
+        <div id="dot-a"></div>
+        <div id="dot-b"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            // Local time: 0 = 31.0 s on the reel.
+            const tl = gsap.timeline({ paused: true });
+            tl.fromTo("#zone-j", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 1.55);
+            tl.fromTo("#zone-c", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 4.45);
+            // a thin line relates the two steps without merging them
+            tl.fromTo("#dot-a", { scale: 0 }, { scale: 1, duration: 0.25, ease: "power2.out" }, 5.15);
+            tl.fromTo("#link", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 5.25);
+            tl.fromTo("#dot-b", { scale: 0 }, { scale: 1, duration: 0.25, ease: "power2.out" }, 5.8);
+            window.__timelines["sintese-textos"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

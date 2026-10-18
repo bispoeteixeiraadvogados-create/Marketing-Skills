@@ -6,7 +6,7 @@
   </head>
   <body>
     <template id="assinatura-template">
-      <div data-composition-id="assinatura" data-width="1080" data-height="1920" data-duration="3.5">
+      <div data-composition-id="assinatura" data-width="1080" data-height="1920" data-duration="4.5">
         <style>
           @font-face {
             font-family: "Montserrat";
@@ -39,14 +39,14 @@
           #logo {
             position: absolute;
             left: 320px;
-            top: 735px;
+            top: 640px;
             width: 440px;
             height: 217px;
           }
           #s7-rule {
             position: absolute;
             left: 470px;
-            top: 1030px;
+            top: 925px;
             width: 140px;
             height: 3px;
             background: #d4af7c;
@@ -54,13 +54,43 @@
           #s7-sub {
             position: absolute;
             left: 90px;
-            top: 1068px;
+            top: 960px;
             width: 900px;
             text-align: center;
             font-family: "Montserrat", Arial, sans-serif;
             font-weight: 500;
             font-size: 36px;
             color: #f4ede2;
+          }
+          /* office contacts (V3, at the office's request): same data and treatment as the previous BT reel */
+          #s7-contacts {
+            position: absolute;
+            left: 90px;
+            top: 1076px;
+            width: 900px;
+            text-align: center;
+            font-family: "Montserrat", Arial, sans-serif;
+          }
+          #s7-tel {
+            font-weight: 700;
+            font-size: 56px;
+            letter-spacing: 0.01em;
+            color: #faf8f4;
+          }
+          #s7-ig {
+            margin-top: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            font-weight: 600;
+            font-size: 40px;
+            color: #8fc5ef;
+          }
+          #s7-ig svg {
+            display: block;
+            width: 44px;
+            height: 44px;
           }
         </style>
 
@@ -69,17 +99,30 @@
           <img id="logo" src="../assets/brand/logo_bt_branco_transparente_391x193.png" alt="Bispo &amp; Teixeira Advogados" />
           <div id="s7-rule"></div>
           <div id="s7-sub">Informação jurídica com responsabilidade.</div>
+          <div id="s7-contacts">
+            <div id="s7-tel">(38) 9 9129-6401</div>
+            <div id="s7-ig">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="4" y="4" width="56" height="56" rx="16" fill="none" stroke="#8FC5EF" stroke-width="5" />
+                <circle cx="32" cy="32" r="13" fill="none" stroke="#8FC5EF" stroke-width="5" />
+                <circle cx="47.5" cy="16.5" r="3.6" fill="#8FC5EF" />
+              </svg>
+              <span>@bispoeteixeiraadvogados</span>
+            </div>
+          </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
         <script>
           (function () {
-            // Local time: 0 = 38.5 s on the reel. The desk light dims into Midnight, then the signature.
+            // Local time: 0 = 37.5 s on the reel. The desk light dims into Midnight, then the signature and contacts.
             const tl = gsap.timeline({ paused: true });
             tl.fromTo("#s7-ground", { opacity: 0 }, { opacity: 1, duration: 0.75, ease: "sine.inOut" }, 0);
-            tl.fromTo("#logo", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 0.65);
-            tl.fromTo("#s7-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 1.1);
-            tl.fromTo("#s7-sub", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.35);
+            tl.fromTo("#logo", { opacity: 0, scale: 0.985 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 0.6);
+            tl.fromTo("#s7-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.out" }, 1.0);
+            tl.fromTo("#s7-sub", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.2);
+            tl.fromTo("#s7-tel", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.6);
+            tl.fromTo("#s7-ig", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.8);
             window.__timelines["assinatura"] = tl;
           })();
         </script>

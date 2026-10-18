@@ -6,7 +6,7 @@
   </head>
   <body>
     <template id="mesa-template">
-      <div data-composition-id="mesa" data-width="1080" data-height="1920" data-duration="39.6">
+      <div data-composition-id="mesa" data-width="1080" data-height="1920" data-duration="38.3">
         <style>
           @font-face {
             font-family: "Cormorant Garamond";
@@ -547,7 +547,7 @@
               wide: cam(1080, 2490, 0.5),
               wideHold: cam(1080, 2492, 0.49),
             };
-            // Contiguous moves from 0 to 39.6 s, so every seek lands on an authored state.
+            // Contiguous moves from 0 to 39.6 s (the slot now ends at 38.3), so every seek lands on an authored state.
             shot(0, 1.0, C.open, C.follow, "power2.out"); // close, following the first sheet
             shot(1.0, 1.2, C.follow, C.tilt, "sine.inOut");
             shot(2.2, 1.1, C.tilt, C.settle, "sine.out");

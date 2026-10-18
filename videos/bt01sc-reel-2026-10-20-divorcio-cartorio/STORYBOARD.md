@@ -63,6 +63,6 @@ beat: Dolly-out lento termina em 34.2 s. Zonas distintas: "JUSTIÇA / Questões 
 ## Frame 7
 status: built
 src: compositions/assinatura.html
-window: 39.0-42.0 (fade de luz a partir de 38.5)
+window: 37.5-42.0 na V3 (V1/V2: 38.5-42.0); tela totalmente Midnight a partir de 38.2
 rules: ambient (nenhum loop), entrada por opacidade e escala 0.985
-beat: A luz da mesa se apaga em Midnight. Logotipo original (arquivo PNG do escritório, sem reconstrução), linha Gold, "Informação jurídica com responsabilidade." Hold estável até o último quadro.
+beat: A luz da mesa se apaga em Midnight. Logotipo original (arquivo PNG do escritório, sem reconstrução), linha Gold, "Informação jurídica com responsabilidade.", e na V3 o telefone (38) 9 9129-6401 e o Instagram @bispoeteixeiraadvogados com ícone em BT Sky. Hold estável até o último quadro.

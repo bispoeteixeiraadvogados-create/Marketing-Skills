@@ -40,8 +40,13 @@ falas e textos de tela TRAVADOS) e `briefing/00_INSTRUCOES_ASSETS_CLAUDE.md` (co
   anterior "bt-reel-divorcio-nao-quer" V3, que é ElevenLabs "Henrique - Clear and Knowledgeable"
   (`3ULAAai0IVN00DTWA6vF`, `eleven_v4`), voz MASCULINA. Isso substitui, por decisão expressa do
   usuário, o item "Locução: voz feminina" do prompt técnico. Imagem, textos e roteiro inalterados.
+- V3 (18/10/2026, pedido do usuário): assinatura final com logo, telefone (38) 9 9129-6401 e
+  Instagram @bispoeteixeiraadvogados, os mesmos dados e tratamento do Reel anterior (conferidos no
+  quadro final do vídeo enviado e no código-fonte daquele projeto). Isso substitui, por decisão
+  expressa do usuário, a regra "nenhum telefone, WhatsApp, formulário, oferta ou CTA adicional" da
+  cena 07. Para dar tempo de leitura, o escurecimento da mesa começa em 37,5 s (antes 38,5 s).
 
 - Proibido: aliança 3D, martelo, balança, colunas, tribunal 3D, selos, brasões, carimbos, assinaturas, números de processo, documentos que simulem peça judicial autêntica.
 - Gold apenas como linhas e microdetalhes; nunca metálico, partículas ou brilho.
-- Logo apenas na cena 07; sem telefone, WhatsApp, oferta ou CTA.
+- Logo apenas na cena 07; a partir da V3, com telefone e Instagram do escritório (sem WhatsApp, oferta ou CTA).
 - Não acelerar a voz artificialmente; não omitir nem trocar palavras.

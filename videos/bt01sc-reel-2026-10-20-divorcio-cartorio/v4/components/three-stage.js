@@ -383,7 +383,7 @@ function JudicialStamp() {
 // ===================== PublicDeed (cena 07, depois do match cut)
 function PublicDeed() {
   const S = scene("s07");
-  const T0 = 18.2; // match cut: o documento da ilustração vira a escritura
+  const T0 = D.match; // match cut: o documento da ilustração vira a escritura
   const renderer = makeRenderer("deed-canvas");
   const sc = new THREE.Scene();
   sc.background = new THREE.Color(COL.midnight);

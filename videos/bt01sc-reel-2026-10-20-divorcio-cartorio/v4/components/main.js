@@ -33,7 +33,7 @@
     BT.fadeIn("#s02-cat", s02 + 0.12, 0.4);
     BT.word("#s02-q1", w("no") - 0.06);
     BT.word("#s02-q2", w("cartório") - 0.06);
-    const SIM = 3.28; // início real de "Sim" (fim do silêncio anterior)
+    const SIM = BT.D.sim; // início audível de "Sim"
     tl.to("#s02-q", { opacity: 0.38, duration: 0.25, ease: E.inOut }, SIM);
     BT.punch("#s02-sim", SIM, 1.22);
     BT.ruleIn("#s02-ul", SIM + 0.18, 0.45);
@@ -98,8 +98,8 @@
       { t: back - 0.06, d: 0.82, cx: 1167, cy: 1919, s: 0.42 },
     ]);
     tl.to("#s05-doc", { opacity: 0.5, filter: R ? "none" : "blur(1.5px)", duration: 0.5, ease: E.inOut }, back + 0.15);
-    tl.to("#s05-dark", { opacity: 1, duration: 0.24, ease: E.inOut }, 12.46);
-    tl.to("#s05-scrim", { opacity: 0, duration: 0.24, ease: E.inOut }, 12.46);
+    tl.to("#s05-dark", { opacity: 1, duration: 0.24, ease: E.inOut }, BT.D.darkFrom.s05 - 0.2);
+    tl.to("#s05-scrim", { opacity: 0, duration: 0.24, ease: E.inOut }, BT.D.darkFrom.s05 - 0.2);
     BT.punch("#s05-t", w("não") - 0.03, 1.14);
     BT.card("#s05-sup", w("basta") + 0.12);
 
@@ -111,7 +111,7 @@
 
     // ---------------- Cena 07: consenso (ilustração) e match cut para a escritura 3D
     const s07 = BT.scene("s07");
-    const MATCH = 18.2;
+    const MATCH = BT.D.match;
     gsap.set("#s07b", { autoAlpha: 0 });
     BT.fadeIn("#s07-cat", s07.start + 0.06, 0.4);
     BT.word("#s07-t", w("consenso") - 0.05);
@@ -179,8 +179,8 @@
       const t3 = BT.box("#s10-w3");
       dot.place(1010, 360, s10.start + 0.08);
       dot.swoop(w("informação") - 0.05, { x: 980, y: 560 }, dot.beside(t3, 52), 0.8);
-      dot.hide(28.75);
-      dot.trail(s09.start, 29.15);
+      dot.hide(BT.scene("s11").start - 0.7);
+      dot.trail(s09.start, BT.scene("s11").start - 0.3);
     }
 
     BT.BTSubtitle.animate();

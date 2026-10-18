@@ -40,22 +40,25 @@ ou rede durante o render. A variável `reducedMotion` gera a versão acessível.
 
 Requisitos: Node 22, Python 3 com `numpy`, `scipy`, `soundfile`, `faster-whisper` e `Pillow`, e `ffmpeg`.
 
-```bash
-# 1. locução (já gerada; a regravação gasta créditos ElevenLabs): voz Henrique 3ULAAai0IVN00DTWA6vF, eleven_v4
-python3 scripts/build_voice.py      # encurta só as pausas entre frases; sem aceleração
-python3 scripts/build_timing.py     # components/timing.js e output/BT_Divorcio_Cartorio_Reel_V4.srt
-python3 scripts/build_audio.py      # efeitos sintetizados e mixagem a -16 LUFS
-./scripts/build_footage.sh          # filmagem 9:16 tratada (precisa da fonte 4K em assets/footage/source)
+Troca de voz: gere o roteiro aprovado na ElevenLabs (texto em `scripts/build_voice.py`, `SCRIPT`), salve o MP3 em
+`assets/audio/source/` e rode um único comando. Cortes de cena, legendas, SRT, mixagem, 3D e renders se ajustam sozinhos
+à nova locução:
 
-# 2. validação e render
-npx --yes hyperframes@0.8.171 lint
-npx --yes hyperframes@0.8.171 check
+```bash
+./scripts/rebuild_all.sh assets/audio/source/<take>.mp3
+```
+
+Passo a passo equivalente:
+
+```bash
+python3 scripts/build_voice.py assets/audio/source/<take>.mp3   # transcreve, confere as 66 palavras, encurta só as pausas
+python3 scripts/build_timing.py     # cortes de cena pelas palavras, components/timing.js, index.html e SRT
+python3 scripts/build_audio.py      # efeitos sintetizados e mixagem a -16 LUFS
+./scripts/build_footage.sh          # filmagem 9:16 tratada (baixa a fonte 4K se faltar)
+npx --yes hyperframes@0.8.171 lint && npx --yes hyperframes@0.8.171 check
 npx --yes hyperframes@0.8.171 render -o output/BT_Divorcio_Cartorio_Reel_V4.mp4 --fps 30 --quality delivery
 npx --yes hyperframes@0.8.171 render -o output/BT_Divorcio_Cartorio_Reel_V4_ReducedMotion.mp4 --fps 30 --quality delivery --variables '{"reducedMotion":true}'
-
-# 3. controle de qualidade
 python3 scripts/qa_render.py output/BT_Divorcio_Cartorio_Reel_V4.mp4 V4
-python3 scripts/qa_render.py output/BT_Divorcio_Cartorio_Reel_V4_ReducedMotion.mp4 V4_ReducedMotion
 NODE_PATH=<pasta com playwright-core@1.55.0> node scripts/qa_motion.mjs   # bolinha e câmeras quadro a quadro
 ```
 

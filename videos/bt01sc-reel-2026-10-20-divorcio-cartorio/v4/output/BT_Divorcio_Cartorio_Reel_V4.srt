@@ -3,31 +3,31 @@
 Tem filhos menores?
 
 2
-00:00:01,520 --> 00:00:03,288
+00:00:01,500 --> 00:00:03,288
 Pode divorciar
 no cartório?
 
 3
-00:00:03,308 --> 00:00:03,970
+00:00:03,308 --> 00:00:03,976
 Sim.
 
 4
-00:00:03,990 --> 00:00:05,960
+00:00:04,000 --> 00:00:05,975
 Mas há uma condição
 importante.
 
 5
-00:00:05,980 --> 00:00:08,055
+00:00:06,000 --> 00:00:08,055
 Guarda, convivência
 e alimentos
 
 6
-00:00:08,075 --> 00:00:10,610
+00:00:08,075 --> 00:00:10,642
 precisam estar resolvidos
 na Justiça.
 
 7
-00:00:10,630 --> 00:00:12,640
+00:00:10,667 --> 00:00:12,647
 Um acordo particular,
 sozinho,
 
@@ -36,31 +36,31 @@ sozinho,
 não basta.
 
 9
-00:00:13,690 --> 00:00:16,234
+00:00:13,667 --> 00:00:16,234
 É preciso comprovar a
 resolução judicial.
 
 10
-00:00:16,330 --> 00:00:18,198
+00:00:16,300 --> 00:00:18,198
 Com o consenso
 do casal,
 
 11
-00:00:18,218 --> 00:00:20,630
+00:00:18,218 --> 00:00:20,635
 o divórcio pode seguir
 por escritura pública.
 
 12
-00:00:20,650 --> 00:00:23,362
+00:00:20,667 --> 00:00:23,347
 Com assistência de advogado
 ou defensor público.
 
 13
-00:00:23,400 --> 00:00:25,852
+00:00:23,367 --> 00:00:25,852
 Essa é a regra
 prevista pelo CNJ.
 
 14
-00:00:26,134 --> 00:00:28,632
+00:00:26,167 --> 00:00:28,632
 Salve esta informação
 para consultar depois.

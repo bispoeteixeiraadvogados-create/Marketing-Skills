@@ -26,7 +26,8 @@ from scipy import ndimage, signal
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets/audio"
 SR = 48000
-TOTAL = 33.0
+SC = json.loads((ROOT / "assets/audio/scenes_v4.json").read_text())
+TOTAL = SC["total"]
 N = int(TOTAL * SR)
 TARGET_LUFS = -16.0
 TP_CEILING = -2.0
@@ -115,7 +116,7 @@ EVENTS = [
     (w("alimentos") - 0.04 + 0.12, lambda: paper_contact(0.07)),  # documento dos alimentos pousa
     (w("sozinho") + 0.02, lambda: paper_slide(0.55, 0.035)),  # o acordo particular se afasta
     (HIT - 0.004, lambda: stamp_impact(0.34)),  # impacto do carimbo, uma única vez
-    (18.2 + 0.10, lambda: deed_contact(0.12)),  # escritura assenta na mesa depois do match cut
+    (SC["match"] + 0.10, lambda: deed_contact(0.12)),  # escritura assenta na mesa depois do match cut
     (20.68, lambda: pen_scratch(0.84, 0.05)),  # caneta no papel, plano A da filmagem
 ]
 
